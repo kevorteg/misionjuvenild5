@@ -1,0 +1,519 @@
+/* Glassmorphism Cards */
+.glass-card {
+    background: rgba(25, 16, 34, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(243, 129, 52, 0.3);
+    background: rgba(25, 16, 34, 0.5);
+}
+
+/* Navigation */
+.nav-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+    color: var(--brand);
+    text-shadow: 0 0 15px rgba(243, 131, 52, 0.4);
+}
+
+.group:hover .dropdown-menu {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.active-nav {
+    color: #f38334;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(15, 10, 20, 0.98);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 10px 0;
+    min-width: 200px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(243, 131, 52, 0.1), transparent);
+    padding-left: 24px;
+}
+
+/* Hero Slider */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 20;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.6);
+    transition: background-image 1.2s ease-in-out;
+    transform: scale(1.05);
+    z-index: 0;
+}
+
+/* Hero Slider Navigation Redesign */
+.nav-dot {
+    position: relative;
+    border: none !important;
+    background: transparent !important;
+    overflow: hidden;
+}
+
+.nav-dot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.4s;
+}
+
+.nav-dot.active::before {
+    background: var(--brand);
+    box-shadow: 0 0 15px rgba(243, 131, 52, 0.6);
+}
+
+/* Progress bar inside active nav-dot */
+.nav-dot .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #fff;
+    width: 0%;
+    z-index: 2;
+}
+
+.nav-dot.active .progress-bar {
+    animation: sliderProgress 8s linear infinite;
+}
+
+@keyframes sliderProgress {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.nav-dot.active span:last-child {
+    color: #fff;
+}
+
+.nav-dot.active span:first-child {
+    opacity: 1;
+    color: var(--brand);
+}
+
+/* Accordion Hero Slider (MJ Style) */
+.mj-acc-hero {
+    width: 100%;
+    height: 90vh;
+    min-height: 800px;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.mj-acc-status {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--brand, #f38334);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.mj-acc-status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--brand, #f38334);
+    border-radius: 50%;
+}
+
+.mj-acc-slider {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+.mj-acc-slide {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    filter: grayscale(0.8) contrast(0.9);
+}
+
+.mj-acc-slide:hover {
+    filter: grayscale(0.3) contrast(1.1);
+}
+
+.mj-acc-slide.active {
+    flex: 4;
+    filter: grayscale(0) contrast(1);
+}
+
+.mj-acc-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(25, 16, 34, 0.9) 85%);
+}
+
+.mj-acc-content {
+    position: absolute;
+    bottom: 200px;
+    left: 40px;
+    right: 40px;
+    color: white;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.mj-acc-slide.active .mj-acc-content {
+    bottom: 320px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.mj-acc-number {
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.15);
+    line-height: 1;
+    position: absolute;
+    bottom: 200px;
+    left: 40px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    font-style: italic;
+}
+
+.mj-acc-slide.active .mj-acc-number {
+    bottom: auto;
+    top: -60px;
+    font-size: 60px;
+    left: 0;
+}
+
+.mj-acc-brand {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--brand, #f38334);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    position: absolute;
+    bottom: 320px;
+    left: 40px;
+    white-space: nowrap;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mj-acc-slide.active .mj-acc-brand {
+    transform: rotate(0deg);
+    position: static;
+    transform-origin: unset;
+}
+
+.mj-acc-title {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 0.95;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.mj-acc-slide.active .mj-acc-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.mj-acc-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 300;
+    font-style: italic;
+}
+
+.mj-acc-slide.active .mj-acc-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.mj-acc-specs {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mj-acc-slide.active .mj-acc-specs {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.mj-acc-spec-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 4px;
+}
+
+.mj-acc-spec-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.mj-acc-spec-value {
+    color: white;
+    font-weight: 700;
+}
+
+.mj-acc-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mj-acc-slide.active .mj-acc-badges {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+}
+
+.mj-acc-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.mj-acc-badge-icon {
+    width: 6px;
+    height: 6px;
+    background: var(--brand, #f38334);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--brand, #f38334);
+}
+
+.mj-acc-btn {
+    position: absolute;
+    bottom: 200px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: 2px solid var(--brand, #f38334);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 3;
+}
+
+.mj-acc-btn::before,
+.mj-acc-btn::after {
+    content: "";
+    position: absolute;
+    background: var(--brand, #f38334);
+    transition: all 0.4s ease;
+}
+
+.mj-acc-btn::before {
+    width: 16px;
+    height: 2px;
+}
+
+.mj-acc-btn::after {
+    width: 2px;
+    height: 16px;
+}
+
+.mj-acc-slide.active .mj-acc-btn {
+    background: var(--brand, #f38334);
+}
+
+.mj-acc-slide.active .mj-acc-btn::before,
+.mj-acc-slide.active .mj-acc-btn::after {
+    background: #111;
+}
+
+.mj-acc-slide.active .mj-acc-btn::after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.mj-acc-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+}
+
+.mj-acc-nav:hover {
+    background: var(--brand, #f38334);
+    border-color: var(--brand, #f38334);
+    color: #111;
+}
+
+.mj-acc-prev {
+    left: 30px;
+}
+
+.mj-acc-next {
+    right: 30px;
+}
+
+@media (max-width: 1024px) {
+    .mj-acc-hero {
+        height: auto;
+        min-height: none;
+    }
+
+    .mj-acc-slider {
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .mj-acc-slide {
+        flex: 1;
+        min-height: 100px;
+    }
+
+    .mj-acc-slide.active {
+        flex: 6;
+    }
+
+    .mj-acc-number {
+        font-size: 40px;
+    }
+
+    .mj-acc-title {
+        font-size: 28px;
+    }
+
+    .mj-acc-brand {
+        transform: none;
+        position: static;
+        margin-bottom: 5px;
+    }
+
+    .mj-acc-nav {
+        display: none;
+    }
+}

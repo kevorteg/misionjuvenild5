@@ -1,0 +1,64 @@
+/* Hero & Impacto */
+#hero {
+    background: radial-gradient(circle at top right, rgba(245, 134, 52, 0.05), transparent),
+        radial-gradient(circle at bottom left, rgba(68, 155, 209, 0.05), transparent);
+}
+
+/* Pinterest Style Grid (Muro Espiritual) */
+.pinterest-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .pinterest-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .pinterest-grid {
+        column-count: 1;
+    }
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+/* Resources Grid */
+#recursos .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* FAQ Details Styling */
+details>summary {
+    list-style: none;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] {
+    border-color: var(--azul);
+}
+
+/* Animation Utilities */
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+}

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Inicio - Misión Juvenil D5</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#f38334',
+                        secondary: '#449BD1',
+                        'background-dark': '#191022',
+                        'background-light': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/core.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<body class="bg-background-dark text-slate-100 font-sans overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div
+        class="w-full bg-[#111] py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-brand">mail</span>
+            <span>info@misionjuvenild5.com</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Social Icons: Instagram, Facebook, YouTube, TikTok -->
+            <a href="#" class="hover:text-brand transition-colors flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <!-- TikTok Custom SVG -->
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a class="nav-link active-nav" href="index.html">Inicio</a>
+                <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
+                <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">A un Click</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="podcast.html" class="dropdown-item">Podcast</a>
+                        <a href="recursos.html" class="dropdown-item">Recursos</a>
+                        <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">Servicios</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
+                        <a href="colegios.html" class="dropdown-item">Colegios</a>
+                        <a href="universidades.html" class="dropdown-item">Universidades</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
+            </nav>
+
+            <div class="flex items-center gap-6">
+                <!-- Rectangular Dark Button with Orange hover -->
+                <button
+                    class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
+                    onclick="window.location.href='#camp-feature'">
+                    Campamento 2026
+                </button>
+
+                <!-- Search Icon -->
+                <button class="text-white hover:text-brand transition-colors">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="flex-grow w-full">
+        <section class="mj-acc-hero">
+            <div class="mj-acc-status">En Vivo: Transformando Vidas</div>
+
+            <div class="mj-acc-slider">
+                <!-- Slide 01: Familia -->
+                <div class="mj-acc-slide active"
+                    style="background-image: url('media/img/FOTOS HOME/fotos slides/silde 1.jpg')">
+                    <div class="mj-acc-content">
+                        <div class="mj-acc-number">01</div>
+                        <div class="mj-acc-brand">Misión Juvenil</div>
+                        <h1 class="mj-acc-title">MÁS QUE UN GRUPO, UNA FAMILIA</h1>
+                        <p class="mj-acc-subtitle">Somos jóvenes encendidos que comparten fe, valores y propósito.</p>
+                        <div class="mj-acc-specs">
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Propósito:</span>
+                                <span class="mj-acc-spec-value">Transformar vidas</span>
+                            </div>
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Alcance:</span>
+                                <span class="mj-acc-spec-value">Vida y Restauración</span>
+                            </div>
+                        </div>
+                        <div class="mj-acc-badges">
+                            <div class="mj-acc-badge">
+                                <div class="mj-acc-badge-icon"></div>
+                                <span>Fe Inquebrantable</span>
+                            </div>
+                            <div class="mj-acc-badge">
+                                <div class="mj-acc-badge-icon"></div>
+                                <span>Identidad Real</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mj-acc-btn" onclick="window.location.href='quienes-somos.html'"></div>
+                </div>
+
+                <!-- Slide 02: Colegios -->
+                <div class="mj-acc-slide"
+                    style="background-image: url('media/img/FOTOS HOME/fotos slides/slide 2.jpg')">
+                    <div class="mj-acc-content">
+                        <div class="mj-acc-number">02</div>
+                        <div class="mj-acc-brand">Misión Juvenil</div>
+                        <h2 class="mj-acc-title">LUZ EN LOS COLEGIOS</h2>
+                        <p class="mj-acc-subtitle">Llevamos esperanza y valores a las aulas, transformando el entorno
+                            escolar.</p>
+                        <div class="mj-acc-specs">
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Objetivo:</span>
+                                <span class="mj-acc-spec-value">Valores y Ética</span>
+                            </div>
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Misión:</span>
+                                <span class="mj-acc-spec-value">Rescate Generacional</span>
+                            </div>
+                        </div>
+                        <div class="mj-acc-badges">
+                            <div class="mj-acc-badge">
+                                <div class="mj-acc-badge-icon"></div>
+                                <span>Aulas con Propósito</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mj-acc-btn" onclick="window.location.href='impacto.html'"></div>
+                </div>
+
+                <!-- Slide 03: Universidades -->
+                <div class="mj-acc-slide"
+                    style="background-image: url('media/img/FOTOS HOME/fotos slides/slide 3.jpg')">
+                    <div class="mj-acc-content">
+                        <div class="mj-acc-number">03</div>
+                        <div class="mj-acc-brand">Misión Juvenil</div>
+                        <h2 class="mj-acc-title">PASIÓN EN LA UNIVERSIDAD</h2>
+                        <p class="mj-acc-subtitle">Encendiendo la fe en los campus universitarios, formando líderes con
+                            identidad.</p>
+                        <div class="mj-acc-specs">
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Líderes:</span>
+                                <span class="mj-acc-spec-value">Identidad Firme</span>
+                            </div>
+                            <div class="mj-acc-spec-row">
+                                <span class="mj-acc-spec-label">Impacto:</span>
+                                <span class="mj-acc-spec-value">Liderazgo Profético</span>
+                            </div>
+                        </div>
+                        <div class="mj-acc-badges">
+                            <div class="mj-acc-badge">
+                                <div class="mj-acc-badge-icon"></div>
+                                <span>Campus Encendidos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mj-acc-btn" onclick="window.location.href='universidades.html'"></div>
+                </div>
+            </div>
+
+            <button class="mj-acc-nav mj-acc-prev">‹</button>
+            <button class="mj-acc-nav mj-acc-next">›</button>
+        </section>
+
+        <!-- News Banner (Moved after Hero) -->
+        <div class="news-banner">
+            <div class="marquee-content">
+                <div class="marquee-item">
+                    <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+                <div class="marquee-item">
+                    <span>Escucha el mensaje que está transformando vidas</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+                <div class="marquee-item">
+                    <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+                <!-- Repeat for smooth loop -->
+                <div class="marquee-item">
+                    <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+                <div class="marquee-item">
+                    <span>Escucha el mensaje que está transformando vidas</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+                <div class="marquee-item">
+                    <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
+                    <span class="marquee-divider">✦</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Section (Redesigned) -->
+        <section class="py-32 px-6 bg-white overflow-hidden" id="sobre-nosotros">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+                    <!-- Left: Visual Content (Image from folder) -->
+                    <div class="relative group reveal">
+                        <div
+                            class="absolute -inset-4 bg-brand/10 blur-2xl rounded-[40px] opacity-0 group-hover:opacity-100 transition-duration-700">
+                        </div>
+                        <div
+                            class="relative rounded-[40px] overflow-hidden aspect-[4/5] shadow-2xl border-8 border-slate-50">
+                            <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg"
+                                class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110"
+                                alt="Acerca de Misión Juvenil">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/40 to-transparent"></div>
+                        </div>
+                        <!-- Experience Badge -->
+                        <div
+                            class="absolute -bottom-10 -right-10 bg-brand p-8 rounded-[32px] shadow-2xl hidden md:block">
+                            <div class="text-white text-center">
+                                <span class="block text-4xl font-black italic leading-none">2026</span>
+                                <span class="block text-[10px] font-bold uppercase tracking-widest mt-2">D5
+                                    Movement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Narrative Content -->
+                    <div class="reveal delay-200">
+                        <div class="mb-10">
+                            <span
+                                class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6">
+                                Sobre nosotros
+                            </span>
+                            <h2
+                                class="text-4xl md:text-5xl font-black italic text-background-dark tracking-tighter uppercase leading-[0.9] font-display">
+                                ¿QUÉ ES MISIÓN <br><span class="text-brand">JUVENIL?</span>
+                            </h2>
+                        </div>
+
+                        <div
+                            class="space-y-8 text-slate-600 text-base md:text-lg font-light leading-relaxed italic font-sans">
+                            <p class="reveal">Somos jóvenes apasionados por Jesús, llevando su mensaje a colegios,
+                                universidades y entornos digitales.</p>
+
+                            <div class="reveal p-8 border-l-8 border-brand bg-slate-50 rounded-r-[32px]">
+                                <p
+                                    class="text-xl md:text-2xl text-background-dark font-black tracking-tight not-italic uppercase font-display italic">
+                                    No somos un evento… <br>
+                                    <span class="text-brand font-black">¡somos una familia!</span>
+                                </p>
+                            </div>
+
+                            <p class="reveal">Una voz profética en el aula, un fuego encendido en los corazones.</p>
+                            <p class="reveal font-medium text-background-dark not-italic">Con creatividad y mentoría,
+                                sembramos valores, restauramos identidades y encendemos la fe.</p>
+                        </div>
+
+                        <div class="mt-12 reveal">
+                            <button onclick="window.location.href='quienes-somos.html'"
+                                class="group flex items-center gap-6 bg-background-dark text-white font-black py-6 px-12 rounded-2xl hover:bg-brand hover:text-background-dark transition-all shadow-2xl uppercase tracking-widest text-xs font-sans">
+                                SABER MÁS
+                                <div
+                                    class="w-8 h-[2px] bg-white group-hover:bg-background-dark transition-all group-hover:w-12">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Súmate a la Misión Section (Refined) -->
+        <section class="relative py-48 px-6 overflow-hidden min-h-[700px] flex items-center" id="sumate">
+            <div class="absolute inset-0 z-0 group">
+                <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[5s]"
+                    alt="Join the Mission">
+                <div class="absolute inset-0 bg-[#0f0c14]/85 backdrop-blur-[4px]"></div>
+                <!-- Top border accent -->
+                <div
+                    class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                </div>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto w-full relative z-10">
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-20">
+
+                    <!-- Left: Narrative & Experience -->
+                    <div class="w-full lg:w-2/3 reveal">
+                        <span
+                            class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-8">
+                            Movimiento D5
+                        </span>
+                        <h2
+                            class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase leading-[0.8] mb-12 font-display">
+                            SÚMATE A <br><span class="text-brand">LA MISIÓN</span>
+                        </h2>
+
+                        <div
+                            class="relative p-10 md:p-16 rounded-[48px] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl">
+                            <div class="absolute -top-10 -left-10 w-24 h-24 bg-brand/20 blur-3xl opacity-50"></div>
+
+                            <p
+                                class="text-lg md:text-xl text-slate-200 font-light leading-relaxed italic font-sans mb-12">
+                                No estamos buscando espectadores, sino <span
+                                    class="text-white font-black not-italic border-b-2 border-brand">antorchas
+                                    encendidas</span>.
+                                Dios ha puesto un fuego en ti, y este es el tiempo de avivarlo.
+                            </p>
+
+                            <!-- Verse Quote -->
+                            <div class="relative py-12 border-t border-white/10 mt-10">
+                                <span
+                                    class="material-symbols-outlined absolute -top-8 left-0 text-brand !text-7xl opacity-40">format_quote</span>
+                                <blockquote
+                                    class="text-xl md:text-2xl text-white font-black italic uppercase leading-tight font-display pr-12">
+                                    "Cada uno, según el don que ha recibido, minístrelo a los otros, como buenos
+                                    administradores de la multiforme gracia de Dios."
+                                </blockquote>
+                                <cite
+                                    class="block mt-6 text-brand font-black text-sm tracking-[0.4em] uppercase font-sans not-italic">
+                                    — 1 Pedro 4:10
+                                </cite>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Call to Action -->
+                    <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-end reveal delay-300">
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-6 bg-brand/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                            </div>
+                            <button
+                                class="relative bg-brand text-background-dark font-black py-10 px-16 rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl uppercase tracking-[0.4em] text-sm font-sans flex flex-col items-center gap-4 overflow-hidden">
+                                <span class="relative z-10">ÚNETE A LA MISIÓN</span>
+                                <div class="w-12 h-1 bg-background-dark/20 rounded-full mt-2"></div>
+                            </button>
+                        </div>
+                        <p
+                            class="mt-8 text-white/40 text-[10px] font-bold uppercase tracking-widest text-center lg:text-right">
+                            Sé parte del cambio generacional
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#0f0c14] border-t border-[#302839] py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-[10px] font-bold uppercase tracking-widest">
+            © 2026 Misión Juvenil D5. • Transformando vidas a través del mensaje.
+        </div>
+    </footer>
+
+    <script>
+        // Accordion Hero Slider Logic
+        class AccordionSlider {
+            constructor() {
+                this.slides = document.querySelectorAll(".mj-acc-slide");
+                this.prevBtn = document.querySelector(".mj-acc-prev");
+                this.nextBtn = document.querySelector(".mj-acc-next");
+                this.currentIndex = 0;
+                this.slideInterval = null;
+
+                this.init();
+            }
+
+            init() {
+                this.slides.forEach((slide, index) => {
+                    slide.addEventListener("click", () => this.setActiveSlide(index));
+                });
+
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        this.previousSlide();
+                    });
+                }
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        this.nextSlide();
+                    });
+                }
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "ArrowLeft") this.previousSlide();
+                    if (e.key === "ArrowRight") this.nextSlide();
+                });
+
+                this.startAutoSlide();
+            }
+
+            setActiveSlide(index) {
+                this.slides.forEach((slide) => slide.classList.remove("active"));
+                this.slides[index].classList.add("active");
+                this.currentIndex = index;
+                this.startAutoSlide(); // Reset timer
+            }
+
+            nextSlide() {
+                const nextIndex = (this.currentIndex + 1) % this.slides.length;
+                this.setActiveSlide(nextIndex);
+            }
+
+            previousSlide() {
+                const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                this.setActiveSlide(prevIndex);
+            }
+
+            startAutoSlide() {
+                clearInterval(this.slideInterval);
+                this.slideInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 8000);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            new AccordionSlider();
+        });
+    </script>
+
+    <script src="https://cdn.botpress.cloud/desk/webchat/v4.0/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
+
+</body>
+
+</html>

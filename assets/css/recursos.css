@@ -1,0 +1,203 @@
+/* RECURSOS PREMIUM RESTORE - HIGH-END AESTHETIC */
+
+/* Main Hero Section with Background Photo */
+#hero-recursos {
+    display: block !important;
+    background: url('../img/recursos/hero-mj.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-overlay {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+/* Grid & Cards (The "Beautiful" Style) */
+#resources-grid {
+    display: grid;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    #resources-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    #resources-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.resource-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(10px);
+    height: 100%;
+}
+
+.resource-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(243, 131, 52, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 20px rgba(243, 131, 52, 0.1);
+}
+
+.resource-thumb-container {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+}
+
+.resource-thumb-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.resource-thumb-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.resource-card:hover .resource-thumb-container img {
+    transform: scale(1.1);
+}
+
+.resource-content {
+    padding: 28px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resource-date-badge {
+    font-size: 10px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+}
+
+.resource-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.resource-card:hover .resource-title {
+    color: #f38334;
+}
+
+.resource-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #999;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.resource-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.download-link-btn {
+    color: #f38334;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.resource-card:hover .download-link-btn {
+    gap: 12px;
+}
+
+/* Sidebar Custom Styling */
+.sidebar-title {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+.resource-category-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 24px;
+    border-radius: 16px;
+    background: transparent;
+    color: #777;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid transparent;
+}
+
+.resource-category-btn:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: #bbb;
+}
+
+.resource-category-btn.active {
+    background: rgba(243, 131, 52, 0.1);
+    color: #f38334;
+    border-color: rgba(243, 131, 52, 0.2);
+}
+
+@media (max-width: 1024px) {
+    #hero-recursos {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .glass-container {
+        padding: 40px;
+        border-radius: 30px;
+    }
+}

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quiénes Somos - Misión Juvenil D5</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/core.js" defer></script>
+    <script src="https://cdn.botpress.cloud/desk/webchat/v4.0/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div
+        class="w-full bg-[#111] py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-brand">mail</span>
+            <span>info@misionjuvenild5.com</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-brand transition-colors flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand transition-colors">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a class="nav-link text-white hover:text-brand" href="index.html">Inicio</a>
+                <a class="nav-link active-nav" href="quienes-somos.html">¿Quienes Somos?</a>
+                <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">A un Click</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <div class="dropdown-menu">
+                        <a href="podcast.html" class="dropdown-item">Podcast</a>
+                        <a href="recursos.html" class="dropdown-item">Recursos</a>
+                        <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">Servicios</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <div class="dropdown-menu">
+                        <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
+                        <a href="colegios.html" class="dropdown-item">Colegios</a>
+                        <a href="universidades.html" class="dropdown-item">Universidades</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
+            </nav>
+
+            <div class="flex items-center gap-6">
+                <button
+                    class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
+                    onclick="window.location.href='index.html#camp-feature'">
+                    Campamento 2026
+                </button>
+                <button class="text-white hover:text-brand transition-colors">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+                <button class="lg:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-violet-deep"
+                style="background-image: linear-gradient(rgba(25, 16, 34, 0.8), rgba(25, 16, 34, 0.9)), url('media/img/hero-about.webp'); background-size: cover; background-position: center;">
+            </div>
+            <div class="relative z-10 text-center max-w-4xl px-6 reveal">
+                <h1 class="text-5xl md:text-[3.5rem] font-bold text-white mb-6 leading-tight">¿Quiénes Somos?</h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-sans font-light leading-relaxed">
+                    Una historia marcada por amor, guiada con propósito. En 2004, un sentir unió a jóvenes en Univalle
+                    para ser luz. Lo que comenzó como GRACE, un oasis espiritual, es hoy Misión Juvenil, extendida a más
+                    de 14 universidades. ¡Una misión sin límites para inspirar fe y vida!
+                </p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="py-24 bg-[#140d1c] relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
+                    <div class="reveal">
+                        <span
+                            class="text-brand font-bold tracking-wider uppercase text-sm font-sans mb-4 block">Identidad</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">¿Qué es Misión Juvenil?</h2>
+                        <div class="space-y-6 text-slate-400 font-sans leading-relaxed text-base md:text-lg">
+                            <p>
+                                Misión Juvenil nació de un sentir profundo en el campus de la Universidad del Valle.
+                                Junto a un árbol especial, cinco jóvenes comenzaron a reunirse para compartir su fe,
+                                transformando la espontaneidad en un compromiso sagrado que hoy alcanza a miles.
+                            </p>
+                            <p>
+                                Somos líderes y profesionales cristianos comprometidos con llevar el mensaje de
+                                Jesucristo a colegios, universidades y entornos digitales. No somos un evento, somos una
+                                voz profética que enciende fe donde parece haberse apagado.
+                            </p>
+                            <blockquote class="border-l-4 border-brand pl-6 italic text-white py-2">
+                                "Misión Juvenil a un Click: un llamado a estar donde los jóvenes están, llevando la luz
+                                más allá de los muros."
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="reveal lg:pl-10">
+                        <div class="glass-card p-10 rounded-3xl">
+                            <h3 class="text-2xl font-bold text-white mb-6 text-center">Nuestra Esencia</h3>
+                            <div class="space-y-10">
+                                <div>
+                                    <h4 class="text-brand font-bold uppercase text-xs tracking-widest mb-3">Nuestra
+                                        Misión</h4>
+                                    <p class="text-slate-300">Formar, equipar y movilizar jóvenes para llevar el mensaje
+                                        de Jesucristo a los contextos educativos, sembrando principios bíblicos y
+                                        restaurando identidades.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-brand font-bold uppercase text-xs tracking-widest mb-3">Nuestra
+                                        Visión</h4>
+                                    <p class="text-slate-300">Ver una generación encendida por Dios en cada institución
+                                        del Distrito 5, siendo luz, sal y testimonio vivo del poder transformador del
+                                        Evangelio.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anecdotas & Testimonios -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
+                    <div class="reveal">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 italic">Anécdotas del Camino</h2>
+                        <div class="space-y-8">
+                            <div class="flex gap-6">
+                                <span class="text-brand material-symbols-outlined text-4xl">travel_explore</span>
+                                <div>
+                                    <h4 class="text-white font-bold mb-2">Los nómadas universitarios</h4>
+                                    <p class="text-slate-400 text-sm">Al principio no teníamos lugar fijo; cada semana
+                                        terminábamos en un extremo diferente del campus, una verdadera expedición
+                                        espiritual.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <span class="text-brand material-symbols-outlined text-4xl">campaign</span>
+                                <div>
+                                    <h4 class="text-white font-bold mb-2">La "cacería" de pentecostales</h4>
+                                    <p class="text-slate-400 text-sm">Empapelamos la universidad con carteles: "¿Eres
+                                        Pentecostal? Te esperamos bajo el árbol de mango". ¡Muchos pensaron que era un
+                                        club secreto!</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <span class="text-brand material-symbols-outlined text-4xl">music_note</span>
+                                <div>
+                                    <h4 class="text-white font-bold mb-2">El concierto sorpresa</h4>
+                                    <p class="text-slate-400 text-sm">En el restaurante central, a la hora del almuerzo,
+                                        una flauta interpretó "Cuán grande es Él", dejando a cientos de estudiantes sin
+                                        palabras.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-10 italic">Vidas Transformadas</h2>
+                        <div class="space-y-6">
+                            <div class="glass-card p-6 rounded-2xl bg-white/5">
+                                <p class="text-slate-300 italic mb-4 text-sm">"Llegué a un campamento con piercings y
+                                    actitud rebelde, sin intención de cambiar. Pero Dios me encontró allí; hoy mi vida
+                                    tiene un propósito eterno."</p>
+                                <span class="text-brand font-bold text-xs uppercase tracking-widest">— Testimonio
+                                    Estudiantil</span>
+                            </div>
+                            <div class="glass-card p-6 rounded-2xl bg-white/5">
+                                <p class="text-slate-300 italic mb-4 text-sm">"Docentes que eran escépticos terminaron
+                                    permitiendo que Misión Juvenil dictara la cátedra de religión en sus colegios. El
+                                    impacto es real."</p>
+                                <span class="text-brand font-bold text-xs uppercase tracking-widest">— Docente
+                                    Aliado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Section -->
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 italic">Una historia escrita por Dios en
+                        los campus
+                        del Distrito 5</h2>
+                    <p class="text-slate-500 font-sans uppercase tracking-[.25em] text-xs">Trayectoria del Reino</p>
+                </div>
+
+                <div class="relative py-10">
+                    <!-- Vertical Line -->
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-brand/0 via-brand to-brand/0 hidden md:block">
+                    </div>
+
+                    <!-- Timeline items -->
+                    <div class="space-y-24">
+                        <!-- 2004-2005 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-1 md:pr-12 md:text-right">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2004–2005</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Bajo el Árbol, Nació el Fuego</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Primeras reuniones espontáneas en la
+                                    Universidad del Valle, bajo un árbol, donde cinco jóvenes comenzaron devocionales.
+                                    Era el inicio silencioso de un gran despertar.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-2 md:pl-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">park</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2006-2010 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-2 md:pl-12">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2006–2010</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Grace: El Nombre del Primer Paso</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Nace “Grace”, grupo evangelístico
+                                    con reuniones regulares, oración y palabra entre clases. Gracia fue el nombre y la
+                                    esencia.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-1 md:pr-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">auto_awesome</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2013-2014 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-1 md:pr-12 md:text-right">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2013–2014</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Reconocidos en la Misión</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Se oficializa la figura de
+                                    “coordinador nacional de evangelismo estudiantil” dentro de la IPUC. Lo que nació
+                                    informal, ahora tenía nombre y respaldo.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-2 md:pl-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">verified</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2015-2016 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-2 md:pl-12">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2015–2016</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">De Grace a Misión Juvenil</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Transición oficial. Se unifican
+                                    visión, estructura y propósito. Ya no éramos solo un grupo… ahora éramos una misión.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-1 md:pr-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">groups</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2017-2018 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-1 md:pr-12 md:text-right">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2017–2018</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Unidos a Misiones Nacionales</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Misión Juvenil se integra a Misiones
+                                    Nacionales. Se expande a colegios y más universidades. La siembra se volvió
+                                    estrategia.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-2 md:pl-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">public</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2019-2021 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-2 md:pl-12">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2019–2021</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Conectados en Pandemia</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">A pesar del encierro, fuimos más
+                                    iglesia que nunca: vigilias, devocionales, capacitaciones. No nos detuvo el virus.
+                                    Nos activó el Espíritu.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-1 md:pr-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span class="material-symbols-outlined text-6xl text-brand/20">wifi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2022-2025 -->
+                        <div class="flex flex-col md:flex-row items-center justify-between relative group reveal">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background-dark border-4 border-brand rounded-full z-10 hidden md:block">
+                            </div>
+                            <div class="w-full md:w-5/12 order-2 md:order-1 md:pr-12 md:text-right">
+                                <span class="text-brand font-bold text-xl mb-2 block font-sans">2022–2025</span>
+                                <h3 class="text-2xl font-bold text-white mb-4">Consolidación en Fuego</h3>
+                                <p class="text-slate-400 font-sans leading-relaxed">Misión Juvenil se afirma como un
+                                    movimiento juvenil evangelístico sólido en el Distrito 5. Somos un ejército, con
+                                    identidad, visión y presencia.</p>
+                            </div>
+                            <div class="w-full md:w-5/12 order-1 md:order-2 md:pl-12 mb-8 md:mb-0">
+                                <div
+                                    class="bg-violet-surface/30 h-40 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+                                    <span
+                                        class="material-symbols-outlined text-6xl text-brand/20">local_fire_department</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-32 text-center reveal">
+                    <p class="text-2xl font-bold text-white italic mb-8">"Una generación encendida por Dios: esta es
+                        nuestra misión"</p>
+                    <button
+                        class="bg-brand text-background-dark font-bold py-4 px-12 rounded-sm hover:brightness-110 transition-all uppercase tracking-widest"
+                        onclick="window.location.href='contacto.html'">Sé parte de la familia</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#0f0c14] border-t border-[#302839] py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-xs font-sans">
+            © 2024 Misión Juvenil D5.
+        </div>
+    </footer>
+</body>
+
+</html>

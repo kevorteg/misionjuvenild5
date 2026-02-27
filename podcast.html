@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Podcast - Misión Juvenil D5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <script src="assets/js/podcast-data.js" defer></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#f38334',
+                        secondary: '#449BD1',
+                        'background-dark': '#191022',
+                        'background-light': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/podcast.css" />
+    <script src="assets/js/core.js" defer></script>
+    <script src="assets/js/podcast.js" defer></script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white transition-colors duration-300 overflow-x-hidden">
+    <!-- Top Bar -->
+    <div
+        class="w-full bg-[#111] py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400 relative z-50">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm text-brand">mail</span>
+            <span>info@misionjuvenild5.com</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="https://instagram.com/misionjuvenild5" target="_blank"
+                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg></a>
+            <a href="https://facebook.com/misionjuvenild5" target="_blank"
+                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                </svg></a>
+            <a href="https://youtube.com/c/misionjuvenild5" target="_blank"
+                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
+                </svg></a>
+            <a href="https://tiktok.com/@misionjuvenild5" target="_blank"
+                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
+                </svg></a>
+        </div>
+    </div>
+
+    <!-- Background Accents -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 dark:opacity-30 z-0">
+        <div
+            class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary rounded-full blur-[120px] mix-blend-screen">
+        </div>
+        <div
+            class="absolute bottom-[-20%] right-[-10%] w-[40%] h-[60%] bg-secondary rounded-full blur-[100px] mix-blend-screen">
+        </div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <a class="nav-link text-white hover:text-brand" href="index.html">Inicio</a>
+                <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
+                <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">A un Click</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <div class="dropdown-menu">
+                        <a href="podcast.html" class="dropdown-item active-nav">Podcast</a>
+                        <a href="recursos.html" class="dropdown-item">Recursos</a>
+                        <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer flex items-center gap-1">
+                    <span class="nav-link text-white group-hover:text-brand">Servicios</span>
+                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                    <div class="dropdown-menu">
+                        <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
+                        <a href="colegios.html" class="dropdown-item">Colegios</a>
+                        <a href="universidades.html" class="dropdown-item">Universidades</a>
+                    </div>
+                </div>
+                <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
+            </nav>
+
+            <div class="flex items-center gap-6">
+                <button
+                    class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
+                    onclick="window.location.href='index.html#camp-feature'">
+                    Campamento 2026
+                </button>
+                <button class="text-white hover:text-brand transition-colors">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="news-banner">
+        <div class="marquee-content">
+            <!-- Repeat item to ensure continuous flow -->
+            <div class="marquee-item">
+                <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+            <div class="marquee-item">
+                <span>Escucha el mensaje que está transformando vidas</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+            <div class="marquee-item">
+                <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+            <div class="marquee-item">
+                <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+            <div class="marquee-item">
+                <span>Escucha el mensaje que está transformando vidas</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+            <div class="marquee-item">
+                <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
+                <span class="marquee-divider">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="relative z-10 flex-grow px-6 md:px-12 lg:px-20 py-10 max-w-[1440px] mx-auto w-full pb-40">
+        <!-- Featured Episode Hero Card -->
+        <section class="relative mb-24">
+            <div
+                class="relative group overflow-hidden rounded-[48px] bg-[#1a1523] border border-white/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] glass-card">
+                <div class="flex flex-col lg:flex-row items-stretch min-h-[500px]">
+                    <!-- Image side -->
+                    <div id="hero-bg-trigger"
+                        class="w-full lg:w-1/2 relative overflow-hidden group-hover:cursor-pointer"
+                        onclick="playEpisode('ep-8')">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-transparent to-[#1a1523]/60 z-10 hidden lg:block">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a1523]/60 z-10 lg:hidden">
+                        </div>
+
+                        <!-- Play Overlay (Default) -->
+                        <div
+                            class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] hover-play-icon">
+                            <div
+                                class="bg-brand text-background-dark rounded-full p-6 transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
+                                <span class="material-symbols-outlined !text-[48px] fill">play_arrow</span>
+                            </div>
+                        </div>
+
+                        <!-- Playing Indicator (Persistent when active) -->
+                        <div class="playing-overlay">
+                            <div class="playing-icon">
+                                <span class="material-symbols-outlined fill animate-pulse">pause</span>
+                            </div>
+                            <div class="audio-waves">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                        </div>
+
+                        <img id="hero-image" src="media/img/podcasts/minuatura ep 7.jpg"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
+                            alt="Featured Episode">
+
+                        <!-- NEW Badge -->
+                        <div id="hero-badge-new"
+                            class="absolute top-8 left-8 z-30 bg-brand text-background-dark text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-tighter shadow-2xl">
+                            NUEVO EPISODIO
+                        </div>
+                    </div>
+
+                    <!-- Content side -->
+                    <div class="w-full lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center gap-8 relative z-20">
+                        <div id="hero-meta"
+                            class="flex items-center gap-4 text-brand font-black uppercase text-[11px] tracking-[0.3em]">
+                            <span class="material-symbols-outlined !text-sm fill">timer</span>
+                            <span>Último Lanzamiento • Feb 2026</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h1 id="hero-title"
+                                class="text-4xl md:text-[3.5rem] font-black italic tracking-tighter text-white leading-none">
+                                EP 7 | <span class="text-white/80">¿El fin del mundo?</span>
+                            </h1>
+                            <p id="hero-desc" class="text-xl text-slate-400 leading-relaxed font-light max-w-xl italic">
+                                Una reflexión profunda sobre las señales de los tiempos y nuestra esperanza en el
+                                futuro. Escucha ahora nuestra perspectiva sobre el futuro de la humanidad.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 mt-4">
+                            <button id="hero-play-btn" onclick="playEpisode('ep-8')"
+                                class="bg-brand text-black font-black py-5 px-12 rounded-2xl uppercase tracking-[0.2em] text-[11px] hover:brightness-110 hover:shadow-[0_20px_40px_rgba(245,134,52,0.3)] transition-all flex items-center justify-center gap-4 group">
+                                <span
+                                    class="material-symbols-outlined fill group-hover:scale-110 transition-transform">play_circle</span>
+                                <span class="relative z-10">Escuchar Podcast</span>
+                            </button>
+                            <button
+                                class="bg-white/5 border border-white/10 text-white font-black py-5 px-10 rounded-2xl uppercase tracking-[0.2em] text-[11px] hover:bg-white/10 transition-all flex items-center justify-center gap-4">
+                                <span class="material-symbols-outlined !text-sm">share</span>
+                                Compartir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filters & Grid Section -->
+        <section class="space-y-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/5 pb-8">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
+                        Episodios
+                        Recientes</h2>
+                    <p class="text-slate-500 font-medium italic">Explora nuestra biblioteca completa de mensajes y
+                        reflexiones.</p>
+                </div>
+
+                <!-- Filter Chips & View Switcher -->
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <div class="flex flex-wrap gap-2" id="category-filters">
+                        <button onclick="filterEpisodes('all', this)"
+                            class="filter-btn active px-6 py-3 rounded-full bg-brand text-orang text-[10px] font-black uppercase tracking-widest border border-brand transition-all">Todos</button>
+                        <button onclick="filterEpisodes('Apocalipsis', this)"
+                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Apocalipsis</button>
+                        <button onclick="filterEpisodes('Espiritualidad', this)"
+                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Espiritualidad</button>
+                        <button onclick="filterEpisodes('Juventud', this)"
+                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Juventud</button>
+                    </div>
+
+                    <div class="h-8 w-[1px] bg-white/10 hidden sm:block"></div>
+
+                    <div class="flex items-center bg-white/5 p-1 rounded-xl border border-white/5">
+                        <button onclick="switchView('grid', this)" id="btn-grid-view"
+                            class="view-btn active size-10 rounded-lg flex items-center justify-center text-brand bg-white/10 shadow-lg transition-all">
+                            <span class="material-symbols-outlined !text-xl">grid_view</span>
+                        </button>
+                        <button onclick="switchView('list', this)" id="btn-list-view"
+                            class="view-btn size-10 rounded-lg flex items-center justify-center text-slate-500 hover:text-white transition-all">
+                            <span class="material-symbols-outlined !text-xl">view_list</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Episodes Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="episodes-container">
+                <!-- Dynamically populated by podcast.js -->
+            </div>
+
+            <button
+                class="w-full py-10 text-center text-[10px] font-black text-brand hover:text-white transition-all uppercase tracking-[0.4em] border border-dashed border-white/10 rounded-[40px] mt-8 hover:bg-white/5">
+                Cargar más episodios
+            </button>
+        </section>
+
+        <!-- PODCAST EN VIDEO Section (Full Width Grid) -->
+        <section class="mt-32 mb-20">
+            <div class="text-center mb-16">
+                <h2 class="text-brand font-black text-4xl md:text-5xl italic tracking-tight uppercase leading-none">
+                    PODCAST EN VIDEO
+                </h2>
+                <div class="h-1 w-24 bg-brand/30 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+
+                <!-- EP 1 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/miniatura ep 1.webp"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=ID_EP1" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 1 | INSEGURIDADES Y EXPERIENCIAS</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EP 2 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/miniatura ep 2.webp"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=ID_EP2" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 2 | ¿QUÉ ES EL PECADO?</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EP 3 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/minuatura ep 3.jpg"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 3 | DEPRESIÓN</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EP 5 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/minuatura ep 5.jpg"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=ID_EP5" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            CO YOUTH MISSION PODCAST | EP 5 | ¿HAY TIEMPO PARA DIOS?</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EP 6 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/minuatura ep 6.jpg"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=ID_EP6" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 6 | ¿CONOCES TODO LO QUE ESTÁ DETRÁS DEL HALLOWEEN?</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EP 7 -->
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/minuatura ep 7.jpg"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 7 | ¿EL FIN DEL MUNDO?</h4>
+                        <div class="flex items-center gap-2 mt-1 star-rating">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group flex flex-col gap-4">
+                    <div
+                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                        <img src="media/img/podcasts/minuatura ep 7.jpg"
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
+                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                            <div
+                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1 px-1">
+                        <h4
+                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                            YOUTH MISSION PODCAST | EP 8 | ¿EL FIN DEL MUNDO?</h4>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                            <div class="flex text-brand">
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm fill">star</span>
+                                <span class="material-symbols-outlined !text-sm text-slate-700">star</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </section>
+    </main>
+
+    <!-- Pixabay Style Bottom Player (Enhanced) -->
+    <div id="custom-player"
+        class="fixed bottom-0 left-0 right-0 z-[100] bg-[#0b080f]/98 backdrop-blur-2xl border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.8)] transform translate-y-full transition-all duration-700 ease-in-out px-4 py-3">
+        <div class="max-w-[1500px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+
+            <!-- Left: Play button & Info -->
+            <div class="flex items-center gap-5 min-w-[320px]">
+                <button id="main-play-btn"
+                    class="size-12 rounded-full flex items-center justify-center bg-white/5 hover:bg-brand text-white hover:text-background-dark transition-all duration-300 group shadow-lg border border-white/10"
+                    onclick="togglePlay()">
+                    <span
+                        class="material-symbols-outlined fill !text-3xl group-hover:scale-110 transition-transform">play_arrow</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <img id="player-thumb" src=""
+                        class="size-12 rounded-lg object-cover border border-white/10 shadow-md" alt="">
+                    <div class="flex flex-col max-w-[180px]">
+                        <span id="player-title" class="text-white font-bold text-sm truncate leading-tight">Selecciona
+                            un episodio</span>
+                        <span id="player-category"
+                            class="text-white/60 text-[9px] uppercase font-bold tracking-[0.2em] mt-0.5">Misión
+                            Juvenil</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Progress -->
+            <div class="flex-grow w-full max-w-3xl flex items-center gap-4">
+                <span id="current-time" class="text-[10px] font-mono text-slate-500 w-10 text-right">00:00</span>
+                <div class="flex-grow h-1 bg-white/5 rounded-full relative cursor-pointer group"
+                    id="progress-bar-container" onclick="seekTo(event)">
+                    <div id="progress-bar"
+                        class="absolute left-0 top-0 h-full bg-gradient-to-r from-brand to-secondary rounded-full w-0 shadow-[0_0_10px_rgba(245,134,52,0.5)]">
+                    </div>
+                    <div class="absolute top-1/2 -translate-y-1/2 size-3 bg-white border-2 border-brand rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                        id="progress-dot"></div>
+                </div>
+                <span id="duration" class="text-[10px] font-mono text-slate-500 w-10">00:00</span>
+            </div>
+
+            <!-- Right: Feature Controls -->
+            <div class="flex items-center gap-3 md:gap-5 min-w-[350px] justify-end">
+                <!-- Volume -->
+                <div class="flex items-center gap-3 group/vol">
+                    <span
+                        class="material-symbols-outlined text-slate-400 !text-xl hover:text-brand cursor-pointer transition-colors"
+                        id="volume-icon" onclick="toggleMute()">volume_up</span>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8"
+                        class="w-20 h-1 bg-white/10 rounded-full appearance-none accent-brand cursor-pointer hover:bg-white/20 transition-all"
+                        oninput="setVolume(this.value)">
+                </div>
+
+                <div class="h-6 w-[1px] bg-white/10 mx-1 hidden sm:block"></div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <button
+                        class="size-10 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-white/5 transition-all"
+                        onclick="this.classList.toggle('text-red-500'); this.querySelector('span').classList.toggle('fill')">
+                        <span class="material-symbols-outlined !text-xl">favorite</span>
+                    </button>
+                    <button
+                        class="size-10 rounded-lg flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-white/5 transition-all"
+                        onclick="this.classList.toggle('text-secondary'); this.querySelector('span').classList.toggle('fill')">
+                        <span class="material-symbols-outlined !text-xl">bookmark</span>
+                    </button>
+                    <button
+                        class="size-10 rounded-lg flex items-center justify-center text-brand bg-brand/10 hover:bg-brand hover:text-white transition-all shadow-sm"
+                        onclick="downloadCurrentAudio()" title="Descargar">
+                        <span class="material-symbols-outlined !text-xl">download</span>
+                    </button>
+                </div>
+
+                <button onclick="closePlayer()"
+                    class="size-8 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/5 transition-all ml-2">
+                    <span class="material-symbols-outlined !text-lg">close</span>
+                </button>
+            </div>
+        </div>
+        <audio id="audio-engine" src=""></audio>
+    </div>
+
+    <footer class="bg-[#0f0c14] border-t border-white/5 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-[10px] font-bold uppercase tracking-widest">©
+            2026 Misión Juvenil D5. • Transformando vidas a través del mensaje.</div>
+    </footer>
+    <script src="assets/js/podcast.js"></script>
+    <script src="https://cdn.botpress.cloud/desk/webchat/v4.0/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
+</body>
+
+</html>

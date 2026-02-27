@@ -1,0 +1,134 @@
+:root {
+    /* Color Palette */
+    --brand: #f38334;
+    --background-dark: #191022;
+    --violet-deep: #2e1d3d;
+    --violet-surface: #3b2a4a;
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+.font-display {
+    font-family: 'Spline Sans', sans-serif;
+}
+
+.font-sans {
+    font-family: 'Spline Sans', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background-dark);
+    color: var(--text-main);
+    font-family: 'Spline Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography Scale (Refined) */
+h1 {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: 2rem;
+    /* text-3xl */
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+
+h2 {
+    font-family: 'Spline Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 3rem;
+    }
+}
+
+/* News Marquee Slider */
+.news-banner {
+    background: linear-gradient(90deg, #f38334, #ffb347);
+    color: #000;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 12px 0;
+    position: relative;
+    z-index: 40;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    min-width: 100%;
+}
+
+.marquee-item {
+    flex-shrink: 0;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.marquee-divider {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.news-banner:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Star Rating Visibility */
+.star-rating .fill {
+    color: #f38334 !important;
+}
+
+.star-rating .material-symbols-outlined:not(.fill) {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* GSAP Hidden Initial State */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
