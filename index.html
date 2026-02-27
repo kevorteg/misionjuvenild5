@@ -38,96 +38,99 @@
 
 <body class="bg-background-dark text-slate-100 font-sans overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- Top Bar -->
-    <div
-        class="w-full bg-[#111] py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400">
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm text-brand">mail</span>
-            <span>info@misionjuvenild5.com</span>
-        </div>
-        <div class="flex items-center gap-4">
-            <!-- Social Icons: Instagram, Facebook, YouTube, TikTok -->
-            <a href="#" class="hover:text-brand transition-colors flex items-center gap-1">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-            </a>
-            <a href="#" class="hover:text-brand transition-colors">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-                </svg>
-            </a>
-            <a href="#" class="hover:text-brand transition-colors">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
-                </svg>
-            </a>
-            <a href="#" class="hover:text-brand transition-colors">
-                <!-- TikTok Custom SVG -->
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
-                </svg>
-            </a>
-        </div>
-    </div>
-
-    <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center">
-                <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
-            </a>
-
-            <!-- Navigation -->
-            <nav class="hidden lg:flex items-center gap-8">
-                <a class="nav-link active-nav" href="index.html">Inicio</a>
-                <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
-                <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
-                <div class="relative group cursor-pointer flex items-center gap-1">
-                    <span class="nav-link text-white group-hover:text-brand">A un Click</span>
-                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown-menu">
-                        <a href="podcast.html" class="dropdown-item">Podcast</a>
-                        <a href="recursos.html" class="dropdown-item">Recursos</a>
-                        <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
-                    </div>
-                </div>
-                <div class="relative group cursor-pointer flex items-center gap-1">
-                    <span class="nav-link text-white group-hover:text-brand">Servicios</span>
-                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown-menu">
-                        <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
-                        <a href="colegios.html" class="dropdown-item">Colegios</a>
-                        <a href="universidades.html" class="dropdown-item">Universidades</a>
-                    </div>
-                </div>
-                <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
-            </nav>
-
-            <div class="flex items-center gap-6">
-                <!-- Rectangular Dark Button with Orange hover -->
-                <button
-                    class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
-                    onclick="window.location.href='#camp-feature'">
-                    Campamento 2026
-                </button>
-
-                <!-- Search Icon -->
-                <button class="text-white hover:text-brand transition-colors">
-                    <span class="material-symbols-outlined text-2xl">search</span>
-                </button>
-
-                <!-- Mobile Menu Button -->
-                <button class="lg:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+    <!-- Navigation Overlay -->
+    <div class="absolute top-0 left-0 w-full z-50">
+        <!-- Top Bar -->
+        <div
+            class="w-full bg-[#111]/80 py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400 backdrop-blur-sm">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm text-brand">mail</span>
+                <span>info@misionjuvenild5.com</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <!-- Social Icons: Instagram, Facebook, YouTube, TikTok -->
+                <a href="#" class="hover:text-brand transition-colors flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-brand transition-colors">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-brand transition-colors">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-brand transition-colors">
+                    <!-- TikTok Custom SVG -->
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
+                    </svg>
+                </a>
             </div>
         </div>
-    </header>
+
+        <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
+                </a>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link active-nav" href="index.html">Inicio</a>
+                    <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
+                    <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
+                    <div class="relative group cursor-pointer flex items-center gap-1">
+                        <span class="nav-link text-white group-hover:text-brand">A un Click</span>
+                        <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">Podcast</a>
+                            <a href="recursos.html" class="dropdown-item">Recursos</a>
+                            <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
+                        </div>
+                    </div>
+                    <div class="relative group cursor-pointer flex items-center gap-1">
+                        <span class="nav-link text-white group-hover:text-brand">Servicios</span>
+                        <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu">
+                            <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
+                            <a href="colegios.html" class="dropdown-item">Colegios</a>
+                            <a href="universidades.html" class="dropdown-item">Universidades</a>
+                        </div>
+                    </div>
+                    <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
+                </nav>
+
+                <div class="flex items-center gap-6">
+                    <!-- Rectangular Dark Button with Orange hover -->
+                    <button
+                        class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
+                        onclick="window.location.href='#camp-feature'">
+                        Campamento 2026
+                    </button>
+
+                    <!-- Search Icon -->
+                    <button class="text-white hover:text-brand transition-colors">
+                        <span class="material-symbols-outlined text-2xl">search</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+                </div>
+            </div>
+        </header>
+    </div>
 
 
     <main class="flex-grow w-full">
@@ -334,6 +337,92 @@
             </div>
         </section>
 
+        <!-- QUE HACEMOS Section (Premium Service Cards) -->
+        <section class="mj-services py-32 px-6 overflow-hidden" id="que-hacemos">
+            <div class="max-w-[1400px] mx-auto text-center mb-24 reveal">
+                <h2
+                    class="text-5xl md:text-6xl font-black italic text-white tracking-tighter uppercase leading-none mb-4">
+                    QUE <span class="text-brand">HACEMOS</span>
+                </h2>
+                <p class="text-slate-500 font-black uppercase tracking-[0.4em] text-xs">Espacios de Evangelismo</p>
+                <div class="w-24 h-1 bg-brand/30 mx-auto mt-8 rounded-full"></div>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto mj-services-grid">
+                <!-- Universities -->
+                <article class="mj-service-card reveal">
+                    <img src="media/img/home/que-hacemos-universidades.png" class="mj-service-img" alt="Universidades">
+                    <div class="mj-service-overlay">
+                        <h3 class="mj-service-title">UNIVERSIDADES</h3>
+                        <p class="mj-service-desc">
+                            Impulsamos comunidades de fe en el corazón de los campus. Organizamos devocionales,
+                            mentorías y actividades que fortalecen a los estudiantes, haciendo de cada aula un altar
+                            para Dios.
+                        </p>
+                        <a href="universidades.html" class="mj-service-btn">
+                            <span>LEER MÁS</span>
+                            <span class="material-symbols-outlined">east</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Schools -->
+                <article class="mj-service-card reveal delay-100">
+                    <img src="media/img/home/que-hacemos-colegios.png" class="mj-service-img" alt="Colegios">
+                    <div class="mj-service-overlay">
+                        <h3 class="mj-service-title">COLEGIOS</h3>
+                        <p class="mj-service-desc">
+                            Trabajamos con docentes, líderes y padres para formar jóvenes con identidad en Cristo.
+                            Llevamos valores bíblicos y esperanza a las aulas, despertando propósito desde temprana
+                            edad.
+                        </p>
+                        <a href="colegios.html" class="mj-service-btn">
+                            <span>LEER MÁS</span>
+                            <span class="material-symbols-outlined">east</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Digital -->
+                <article class="mj-service-card reveal delay-200">
+                    <img src="media/img/home/que-hacemos-digital.png" class="mj-service-img" alt="Digital">
+                    <div class="mj-service-overlay">
+                        <h3 class="mj-service-title">A UN CLICK</h3>
+                        <p class="mj-service-desc">
+                            Evangelismo digital accesible: redes sociales, contenidos interactivos, oraciones en línea y
+                            devocionales virtuales que llegan directo al corazón. ¡Estés donde estés, aquí estamos!
+                        </p>
+                        <a href="podcast.html" class="mj-service-btn">
+                            <span>LEER MÁS</span>
+                            <span class="material-symbols-outlined">east</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="mj-stats-container overflow-hidden">
+            <div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+                <div class="mj-stat-item reveal">
+                    <span class="mj-stat-number" data-target="50">+0</span>
+                    <span class="mj-stat-label">Colegios</span>
+                </div>
+                <div class="mj-stat-item reveal delay-100">
+                    <span class="mj-stat-number" data-target="500">+0</span>
+                    <span class="mj-stat-label">Estudiantes</span>
+                </div>
+                <div class="mj-stat-item reveal delay-200">
+                    <span class="mj-stat-number" data-target="10">+0</span>
+                    <span class="mj-stat-label">Universidades</span>
+                </div>
+                <div class="mj-stat-item reveal delay-300">
+                    <span class="mj-stat-number" data-target="100">0%</span>
+                    <span class="mj-stat-label">Compromiso</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Súmate a la Misión Section (Refined) -->
         <section class="relative py-48 px-6 overflow-hidden min-h-[700px] flex items-center" id="sumate">
             <div class="absolute inset-0 z-0 group">
@@ -348,19 +437,22 @@
             </div>
 
             <div class="max-w-[1400px] mx-auto w-full relative z-10">
-                <div class="flex flex-col lg:flex-row justify-between items-center gap-20">
+                <!-- Centered Title -->
+                <div class="text-center mb-20 reveal">
+                    <span
+                        class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6">
+                        Movimiento D5
+                    </span>
+                    <h2
+                        class="text-5xl md:text-7xl font-black italic text-white tracking-tighter uppercase leading-[0.8] font-display">
+                        SÚMATE A <br><span class="text-brand">LA MISIÓN</span>
+                    </h2>
+                </div>
+
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-20">
 
                     <!-- Left: Narrative & Experience -->
-                    <div class="w-full lg:w-2/3 reveal">
-                        <span
-                            class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-8">
-                            Movimiento D5
-                        </span>
-                        <h2
-                            class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase leading-[0.8] mb-12 font-display">
-                            SÚMATE A <br><span class="text-brand">LA MISIÓN</span>
-                        </h2>
-
+                    <div class="w-full lg:w-1/2 reveal">
                         <div
                             class="relative p-10 md:p-16 rounded-[48px] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl">
                             <div class="absolute -top-10 -left-10 w-24 h-24 bg-brand/20 blur-3xl opacity-50"></div>
@@ -391,19 +483,25 @@
                     </div>
 
                     <!-- Right: Call to Action -->
-                    <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-end reveal delay-300">
-                        <div class="relative group">
+                    <div class="w-full lg:w-1/2 flex flex-col items-center reveal delay-300">
+                        <!-- User Request: Image above the button -->
+                        <div
+                            class="mb-10 w-full max-w-[450px] rounded-[48px] overflow-hidden shadow-2xl border border-white/10 reveal sm:rotate-2">
+                            <img src="media/img/FOTOS HOME/fotos slides/silde 1.jpg"
+                                class="w-full aspect-video object-cover" alt="Join Image">
+                        </div>
+
+                        <div class="relative group mt-6">
                             <div
                                 class="absolute -inset-6 bg-brand/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-700">
                             </div>
                             <button
-                                class="relative bg-brand text-background-dark font-black py-10 px-16 rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl uppercase tracking-[0.4em] text-sm font-sans flex flex-col items-center gap-4 overflow-hidden">
+                                class="relative bg-brand text-background-dark font-black py-10 px-20 rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl uppercase tracking-[0.4em] text-sm font-sans flex flex-col items-center gap-4 overflow-hidden">
                                 <span class="relative z-10">ÚNETE A LA MISIÓN</span>
                                 <div class="w-12 h-1 bg-background-dark/20 rounded-full mt-2"></div>
                             </button>
                         </div>
-                        <p
-                            class="mt-8 text-white/40 text-[10px] font-bold uppercase tracking-widest text-center lg:text-right">
+                        <p class="mt-8 text-white/40 text-[10px] font-bold uppercase tracking-widest text-center">
                             Sé parte del cambio generacional
                         </p>
                     </div>
@@ -412,11 +510,340 @@
             </div>
         </section>
 
+        <!-- PRÓXIMOS EVENTOS SECTION -->
+        <section class="py-32 px-6 bg-white/5" id="eventos">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex justify-between items-end mb-24 reveal">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
+                            PRÓXIMOS <span class="text-brand">EVENTOS</span>
+                        </h2>
+                        <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Cronograma de
+                            Actividades 2026</p>
+                    </div>
+                    <a href="#programador"
+                        class="text-brand font-black uppercase tracking-widest text-xs border-b border-brand pb-2 hover:opacity-70 transition-opacity">Ver
+                        cronograma completo</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Event 1 -->
+                    <article class="mj-event-card reveal">
+                        <div class="mj-card-img-wrapper">
+                            <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg" class="mj-card-img"
+                                alt="Culto Pre-Campamento">
+                            <span class="mj-event-date">13 MAR</span>
+                        </div>
+                        <div class="mj-card-body">
+                            <h3 class="mj-card-title">Culto Pre-Campamento</h3>
+                            <p class="mj-card-text">Preparándonos para el gran encuentro. Un tiempo de oración y
+                                activación espiritual.</p>
+                            <a href="#" class="mj-card-link">
+                                <span>MAS DETALLES</span>
+                                <span class="material-symbols-outlined">east</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Event 2 -->
+                    <article class="mj-event-card reveal delay-100">
+                        <div class="mj-card-img-wrapper">
+                            <img src="media/img/FOTOS HOME/fotos slides/slide 2.jpg" class="mj-card-img"
+                                alt="Campamento MJ">
+                            <span class="mj-event-date">27 MAR</span>
+                        </div>
+                        <div class="mj-card-body">
+                            <h3 class="mj-card-title">Campamento Misión Juvenil</h3>
+                            <p class="mj-card-text">3 días inolvidables de gloria, palabra y amistad. ¡No te quedes por
+                                fuera del mover!</p>
+                            <a href="#" class="mj-card-link">
+                                <span>INSCRIBIRME</span>
+                                <span class="material-symbols-outlined">east</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Event 3 -->
+                    <article class="mj-event-card reveal delay-200">
+                        <div class="mj-card-img-wrapper">
+                            <img src="media/img/FOTOS HOME/fotos slides/silde 1.jpg" class="mj-card-img"
+                                alt="Impacto Zonal">
+                            <span class="mj-event-date">10 ABR</span>
+                        </div>
+                        <div class="mj-card-body">
+                            <h3 class="mj-card-title">Impacto Zonal – Zona Sur</h3>
+                            <p class="mj-card-text">Llevando la luz de Jesús a cada rincón de la ciudad. Únete a nuestro
+                                primer impacto zonal.</p>
+                            <a href="#" class="mj-card-link">
+                                <span>UNIRME</span>
+                                <span class="material-symbols-outlined">east</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALENDARIO INTERACTIVO 2026 -->
+        <section class="py-32 px-6" id="programador">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
+                        CRONOGRAMA <span class="text-brand">2026</span>
+                    </h2>
+                    <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Planifica tu año con
+                        nosotros</p>
+                </div>
+
+                <div class="mj-calendar-card reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                        <!-- Events List on the Right -->
+                        <div class="lg:col-span-7 flex flex-col order-2 lg:order-2">
+                            <h3
+                                class="text-2xl md:text-3xl font-black text-white italic uppercase mb-8 hidden lg:block">
+                                Eventos del Mes</h3>
+                            <div class="mj-event-list !mt-0 !grid-cols-1" id="upcomingList">
+                                <!-- JS Generated -->
+                            </div>
+                        </div>
+
+                        <!-- Calendar on the Left -->
+                        <div class="lg:col-span-5 order-1 lg:order-1">
+                            <div class="mj-calendar-header !mb-8">
+                                <h3 class="mj-current-month !text-2xl md:!text-3xl" id="monthDisplay">Enero 2026</h3>
+                                <div class="mj-cal-nav">
+                                    <button class="mj-cal-btn" id="calPrev">
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button class="mj-cal-btn" id="calNext">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mj-calendar-grid bg-black/20 p-4 md:p-6 rounded-3xl border border-white/5"
+                                id="calendarGrid">
+                                <!-- JS Generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-[#0f0c14] border-t border-[#302839] py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-[10px] font-bold uppercase tracking-widest">
-            © 2026 Misión Juvenil D5. • Transformando vidas a través del mensaje.
+    <!-- Scripts Adicionales -->
+    <script src="assets/js/calendar.js"></script>
+    <!-- ÚLTIMOS RECURSOS SECTION -->
+    <section class="py-32 px-6" id="ultimos-recursos">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex justify-between items-end mb-24 reveal">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
+                        ÚLTIMOS <span class="text-brand">RECURSOS</span>
+                    </h2>
+                    <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Contenido para tu
+                        crecimiento</p>
+                </div>
+                <a href="recursos.html"
+                    class="text-brand font-black uppercase tracking-widest text-xs border-b border-brand pb-2 hover:opacity-70 transition-opacity">Explorar
+                    recursos</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Resource 1 -->
+                <article class="mj-resource-card reveal">
+                    <div class="mj-card-img-wrapper">
+                        <img src="assets/img/recursos/devocional-thumb.jpg" class="mj-card-img" alt="Recurso 1"
+                            onerror="this.src='media/img/FOTOS HOME/fotos slides/slide 3.jpg'">
+                        <span class="mj-resource-badge">Devocional</span>
+                    </div>
+                    <div class="mj-card-body">
+                        <h3 class="mj-card-title">Huellas de Eternidad</h3>
+                        <p class="mj-card-text">Un devocional semanal diseñado para profundizar en tu relación con
+                            Dios en el día a día.</p>
+                        <a href="recursos.html" class="mj-card-link">
+                            <span>DESCARGAR</span>
+                            <span class="material-symbols-outlined">download</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Resource 2 -->
+                <article class="mj-resource-card reveal delay-100">
+                    <div class="mj-card-img-wrapper">
+                        <img src="assets/img/recursos/podcast-thumb.jpg" class="mj-card-img" alt="Recurso 2"
+                            onerror="this.src='media/img/FOTOS HOME/fotos slides/slide 2.jpg'">
+                        <span class="mj-resource-badge">Podcast</span>
+                    </div>
+                    <div class="mj-card-body">
+                        <h3 class="mj-card-title">Explorando el Apocalipsis</h3>
+                        <p class="mj-card-text">Nuevo episodio donde profundizamos en las señales de los tiempos y
+                            la esperanza final.</p>
+                        <a href="podcast.html" class="mj-card-link">
+                            <span>ESCUCHAR</span>
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Resource 3 -->
+                <article class="mj-resource-card reveal delay-200">
+                    <div class="mj-card-img-wrapper">
+                        <img src="assets/img/recursos/estudio-thumb.jpg" class="mj-card-img" alt="Recurso 3"
+                            onerror="this.src='media/img/FOTOS HOME/fotos slides/silde 1.jpg'">
+                        <span class="mj-resource-badge">Guía de Estudio</span>
+                    </div>
+                    <div class="mj-card-body">
+                        <h3 class="mj-card-title">Identidad en Cristo</h3>
+                        <p class="mj-card-text">Material descargable para grupos pequeños sobre cómo fundamentar tu
+                            valor en Dios.</p>
+                        <a href="recursos.html" class="mj-card-link">
+                            <span>VER GUÍA</span>
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- FAQ MINI SECTION -->
+    <section class="py-32 px-6" id="faq">
+        <div class="max-w-[1000px] mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
+                    PREGUNTAS <span class="text-brand">FRECUENTES</span>
+                </h2>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Resolvemos tus dudas</p>
+            </div>
+
+            <div class="reveal">
+                <!-- FAQ items here... -->
+                <div class="mj-faq-item">
+                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>¿Cómo puedo unirme a la misión?</h4>
+                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
+                    </div>
+                    <div class="mj-faq-content">
+                        <p>¡Es muy sencillo! Solo tienes que hacer clic en el botón "Únete a la Misión" que verás en
+                            varias secciones de nuestra web. Te llevará a un formulario donde podrás dejarnos tus datos
+                            y nos pondremos en contacto contigo para ver cómo puedes colaborar según tus talentos y
+                            disponibilidad.</p>
+                    </div>
+                </div>
+
+                <div class="mj-faq-item">
+                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>¿Tienen costo los materiales de Misión Juvenil?</h4>
+                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
+                    </div>
+                    <div class="mj-faq-content">
+                        <p>No, todos nuestros recursos digitales, devocionales y materiales de estudio son totalmente
+                            gratuitos. Creemos firmemente en democratizar el acceso al evangelismo y al crecimiento
+                            espiritual para todos los jóvenes.</p>
+                    </div>
+                </div>
+
+                <div class="mj-faq-item">
+                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>¿Hacen eventos presenciales en todo el país?</h4>
+                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
+                    </div>
+                    <div class="mj-faq-content">
+                        <p>¡Sí! Aunque tenemos una fuerte presencia digital, organizamos y apoyamos eventos en colegios
+                            y universidades en diversas ciudades. Puedes estar atento a nuestra sección de "Próximos
+                            Eventos" para ver cuándo estaremos cerca de ti.</p>
+                    </div>
+                </div>
+
+                <div class="mj-faq-item">
+                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>¿Cómo puede mi colegio o universidad participar?</h4>
+                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
+                    </div>
+                    <div class="mj-faq-content">
+                        <p>Si eres un líder estudiantil, rector o docente interesado en llevar los valores de la Misión
+                            a tu institución, escríbenos directamente a través de nuestro formulario de contacto o redes
+                            sociales. Nos encantará coordinar una visita o programa especial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="mj-footer px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+                <!-- Column 1: Brand -->
+                <div class="reveal">
+                    <img src="media/img/logo_final.png" class="mj-footer-logo" alt="Misión Juvenil Logo">
+                    <p class="text-slate-500 font-medium leading-relaxed mb-8 max-w-[300px]">
+                        Una generación apasionada por Dios, transformando cada rincón del mundo con el mensaje de
+                        esperanza en Cristo.
+                    </p>
+                    <div class="mj-footer-social">
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigation -->
+                <div class="reveal delay-100">
+                    <h5 class="mj-footer-title">Navegación</h5>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="mj-footer-link">Inicio</a></li>
+                        <li><a href="recursos.html" class="mj-footer-link">Recursos</a></li>
+                        <li><a href="podcast.html" class="mj-footer-link">Podcast</a></li>
+                        <li><a href="#sumate" class="mj-footer-link">Súmate</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact -->
+                <div class="reveal delay-200">
+                    <h5 class="mj-footer-title">Contacto</h5>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-slate-400">
+                            <span class="material-symbols-outlined text-brand text-sm">mail</span>
+                            <span class="text-sm">hola@misionjuvenil.com</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-slate-400">
+                            <span class="material-symbols-outlined text-brand text-sm">location_on</span>
+                            <span class="text-sm">Sede Global, Movimiento D5</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div class="reveal delay-300">
+                    <h5 class="mj-footer-title">Mantente al día</h5>
+                    <p class="text-slate-500 mb-6 text-sm font-sans">Suscríbete para recibir los últimos devocionales y
+                        noticias.</p>
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!')">
+                        <input type="email" placeholder="Tu correo electrónico" class="mj-newsletter-input" required>
+                        <button type="submit" class="mj-newsletter-btn">SUSCRIBIRME</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mj-footer-bottom">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-600">
+                    &copy; 2026 MISIÓN JUVENIL D5. TODOS LOS DERECHOS RESERVADOS.
+                </p>
+                <div class="flex gap-8">
+                    <a href="#"
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Privacidad</a>
+                    <a href="#"
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Términos</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -486,6 +913,44 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             new AccordionSlider();
+
+            // Stats Counter Animation Logic
+            const counters = document.querySelectorAll('.mj-stat-number');
+            const speed = 200;
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace('+', '').replace('%', '');
+                const inc = target / speed;
+
+                if (count < target) {
+                    const nextVal = Math.ceil(count + inc);
+                    if (counter.getAttribute('data-target') === '100') {
+                        counter.innerText = nextVal + '%';
+                    } else {
+                        counter.innerText = '+' + nextVal;
+                    }
+                    setTimeout(() => animateCounter(counter), 1);
+                } else {
+                    counter.innerText = (counter.getAttribute('data-target') === '100' ? target + '%' : '+' + target);
+                }
+            };
+
+            // Intersection Observer for Stats
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            counters.forEach(counter => statsObserver.observe(counter));
         });
     </script>
 

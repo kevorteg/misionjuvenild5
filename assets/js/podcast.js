@@ -6,10 +6,11 @@ let currentAudio = null;
 function toggleAudio(url, episodeId) {
     const playerBar = document.getElementById('custom-player');
     const audio = document.getElementById('audio-engine');
+    if (!audio || !playerBar) return;
 
     if (currentAudio === url) {
         if (audio.paused) {
-            audio.play();
+            audio.play().catch(e => console.error("Error playing audio:", e));
             updatePlayIcons(episodeId, 'pause_circle');
         } else {
             audio.pause();
@@ -20,15 +21,18 @@ function toggleAudio(url, episodeId) {
         updatePlayIcons(null, 'play_circle');
 
         audio.src = url;
-        audio.play();
-        updatePlayIcons(episodeId, 'pause_circle');
-
-        currentAudio = url;
-        playerBar.classList.add('active');
-        playerBar.style.transform = 'translateY(0)';
-
-        updatePlayerBarInfo(episodeId);
-        updateHeroEpisode(episodeId); // Update hero when playing
+        audio.load(); // Explicit load
+        audio.play().then(() => {
+            updatePlayIcons(episodeId, 'pause_circle');
+            currentAudio = url;
+            playerBar.classList.add('active');
+            playerBar.style.transform = 'translateY(0)';
+            updatePlayerBarInfo(episodeId);
+            updateHeroEpisode(episodeId);
+        }).catch(e => {
+            console.error("Audio failed to play:", e);
+            alert("No se pudo cargar el audio. Si estás en GitHub, verifica el estado de Git LFS.");
+        });
 
         // Auto-scroll to Hero
         window.scrollTo({ top: 0, behavior: 'smooth' });

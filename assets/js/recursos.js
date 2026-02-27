@@ -11,7 +11,7 @@ let currentCategory = 'Todos';
 
 function initRecursos() {
     renderResources();
-    setupCategories();
+    setupFilters();
     setupSearch();
     updateCartCount();
 }

@@ -178,8 +178,9 @@
 
 .mj-acc-status {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 140px;
+    /* Positioned below the main menu for better centering */
+    left: 40px;
     color: var(--brand, #f38334);
     font-size: 14px;
     font-weight: 600;
@@ -245,7 +246,8 @@
 }
 
 .mj-acc-slide.active .mj-acc-content {
-    bottom: 320px;
+    bottom: 240px;
+    /* Adjusted to be more centered in the screen */
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
@@ -278,7 +280,8 @@
     transform: rotate(-90deg);
     transform-origin: left bottom;
     position: absolute;
-    bottom: 320px;
+    bottom: 240px;
+    /* Sync with content */
     left: 40px;
     white-space: nowrap;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -515,5 +518,625 @@
 
     .mj-acc-nav {
         display: none;
+    }
+}
+
+/* --- EVENT & RESOURCE CARDS --- */
+.mj-event-card,
+.mj-resource-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mj-event-card:hover,
+.mj-resource-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(243, 131, 52, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+}
+
+.mj-card-img-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.mj-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s;
+}
+
+.mj-event-card:hover .mj-card-img,
+.mj-resource-card:hover .mj-card-img {
+    transform: scale(1.1);
+}
+
+.mj-card-body {
+    padding: 32px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mj-event-date {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--brand, #f38334);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(243, 131, 52, 0.3);
+}
+
+.mj-resource-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mj-card-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    font-style: italic;
+}
+
+.mj-card-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.mj-card-link {
+    margin-top: auto;
+    color: var(--brand, #f38334);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s;
+}
+
+.mj-card-link:hover {
+    gap: 12px;
+}
+
+/* --- MJ SERVICES SECTION (QUÉ HACEMOS) --- */
+.mj-services {
+    background-color: var(--background-dark, #191022);
+}
+
+.mj-services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .mj-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .mj-services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.mj-service-card {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background-color: #1a1523;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mj-service-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(243, 131, 52, 0.3);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+}
+
+.mj-service-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mj-service-card:hover .mj-service-img {
+    transform: scale(1.1);
+}
+
+.mj-service-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(26, 21, 35, 0.2) 0%, rgba(26, 21, 35, 0.9) 100%);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 16px;
+    backdrop-filter: blur(1px);
+    transition: all 0.5s;
+}
+
+.mj-service-card:hover .mj-service-overlay {
+    backdrop-filter: blur(3px);
+    background: linear-gradient(to bottom, rgba(26, 21, 35, 0.1) 0%, rgba(26, 21, 35, 0.95) 100%);
+}
+
+.mj-service-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.mj-service-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 24px;
+    max-width: 90%;
+}
+
+.mj-service-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--brand, #f38334);
+    color: #000;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: fit-content;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- IMPACT STATS SECTION --- */
+.mj-stats-container {
+    background: #0d0a11;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+}
+
+.mj-stat-item {
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.mj-stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.mj-stat-number {
+    font-size: 64px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: 'Outfit', sans-serif;
+    display: block;
+    background: linear-gradient(135deg, #fff 40%, var(--brand, #f38334) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 20px rgba(243, 131, 52, 0.2));
+}
+
+.mj-stat-label {
+    font-size: 14px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+}
+
+/* --- FAQ SECTION --- */
+.mj-faq-item {
+    background: rgba(40, 35, 50, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(15px);
+}
+
+.mj-faq-header {
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mj-faq-header h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -0.01em;
+}
+
+.mj-faq-icon {
+    font-size: 24px;
+    color: var(--brand, #f38334);
+    transition: transform 0.4s;
+}
+
+.mj-faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 1, 0);
+}
+
+.mj-faq-content p {
+    padding: 0 32px 32px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.mj-faq-item.active {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(243, 131, 52, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.mj-faq-item.active .mj-faq-icon {
+    transform: rotate(180deg);
+}
+
+.mj-faq-item.active .mj-faq-content {
+    max-height: 600px;
+}
+
+/* --- PREMIUM FOOTER --- */
+.mj-footer {
+    background-color: #0d0a11;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
+.mj-footer-logo {
+    height: 60px;
+    margin-bottom: 32px;
+}
+
+.mj-footer-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+}
+
+.mj-footer-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.mj-footer-link:hover {
+    color: var(--brand, #f38334);
+    transform: translateX(5px);
+}
+
+.mj-footer-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.mj-social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mj-social-icon:hover {
+    background: var(--brand, #f38334);
+    color: #000;
+    transform: translateY(-5px);
+    border-color: transparent;
+}
+
+.mj-footer-bottom {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.mj-newsletter-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.mj-newsletter-btn {
+    background: var(--brand, #f38334);
+    color: #000;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 16px;
+    border-radius: 12px;
+    width: 100%;
+    transition: opacity 0.3s;
+}
+
+.mj-newsletter-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- INTERACTIVE CALENDAR SECTION --- */
+.mj-calendar-card {
+    background: rgba(40, 35, 50, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    padding: 60px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+}
+
+.mj-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.mj-current-month {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -0.02em;
+}
+
+.mj-cal-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.mj-cal-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mj-cal-btn:hover {
+    background: var(--brand, #f38334);
+    color: #000;
+    border-color: transparent;
+    transform: scale(1.1);
+}
+
+.mj-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.mj-weekday {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--brand, #f38334);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding-bottom: 20px;
+}
+
+.mj-day {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    padding: 12px;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.mj-day:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.mj-day.empty {
+    visibility: hidden;
+}
+
+.mj-day-num {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.mj-day.today {
+    border-color: var(--brand, #f38334);
+    background: rgba(243, 131, 52, 0.05);
+}
+
+.mj-day.today .mj-day-num {
+    color: var(--brand, #f38334);
+}
+
+.mj-event-dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.mj-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand, #f38334);
+    box-shadow: 0 0 10px var(--brand, #f38334);
+}
+
+.mj-dot.zonal {
+    background: #3498db;
+    box-shadow: 0 0 10px #3498db;
+}
+
+/* Event Detail Popover/Preview */
+.mj-day.has-event {
+    cursor: pointer;
+}
+
+.mj-day.has-event:hover {
+    border-color: rgba(243, 131, 52, 0.5);
+    background: rgba(243, 131, 52, 0.1);
+}
+
+.mj-event-list {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.mj-cal-event-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    transition: all 0.3s;
+}
+
+.mj-cal-event-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--brand, #f38334);
+}
+
+.mj-cal-date-box {
+    min-width: 60px;
+    text-align: center;
+}
+
+.mj-cal-date-day {
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+    line-height: 1;
+}
+
+.mj-cal-date-month {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--brand, #f38334);
+    text-transform: uppercase;
+}
+
+.mj-cal-event-info h5 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.mj-cal-event-info p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .mj-calendar-card {
+        padding: 30px;
+    }
+
+    .mj-day-num {
+        font-size: 14px;
+    }
+
+    .mj-current-month {
+        font-size: 24px;
     }
 }
