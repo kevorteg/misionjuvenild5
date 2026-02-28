@@ -2,6 +2,8 @@
 <html class="dark" lang="es">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Quiénes Somos - Misión Juvenil D5</title>
@@ -396,9 +398,75 @@
         </section>
     </main>
 
-    <footer class="bg-[#0f0c14] border-t border-[#302839] py-12">
-        <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-xs font-sans">
-            © 2024 Misión Juvenil D5.
+    <!-- PREMIUM FOOTER -->
+    <footer class="mj-footer px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+                <!-- Column 1: Brand -->
+                <div class="reveal">
+                    <img src="media/img/logo_final.png" class="mj-footer-logo" alt="Misión Juvenil Logo">
+                    <p class="text-slate-500 font-medium leading-relaxed mb-8 max-w-[300px]">
+                        Una generación apasionada por Dios, transformando cada rincón del mundo con el mensaje de
+                        esperanza en Cristo.
+                    </p>
+                    <div class="mj-footer-social">
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigation -->
+                <div class="reveal delay-100">
+                    <h5 class="mj-footer-title">Navegación</h5>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="mj-footer-link">Inicio</a></li>
+                        <li><a href="recursos.html" class="mj-footer-link">Recursos</a></li>
+                        <li><a href="podcast.html" class="mj-footer-link">Podcast</a></li>
+                        <li><a href="#sumate" class="mj-footer-link">Súmate</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact -->
+                <div class="reveal delay-200">
+                    <h5 class="mj-footer-title">Contacto</h5>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-slate-400">
+                            <span class="material-symbols-outlined text-brand text-sm">mail</span>
+                            <span class="text-sm">hola@misionjuvenil.com</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-slate-400">
+                            <span class="material-symbols-outlined text-brand text-sm">location_on</span>
+                            <span class="text-sm">Sede Global, Movimiento D5</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div class="reveal delay-300">
+                    <h5 class="mj-footer-title">Mantente al día</h5>
+                    <p class="text-slate-500 mb-6 text-sm font-sans">Suscríbete para recibir los últimos devocionales y
+                        noticias.</p>
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!')">
+                        <input type="email" placeholder="Tu correo electrónico" class="mj-newsletter-input" required>
+                        <button type="submit" class="mj-newsletter-btn">SUSCRIBIRME</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mj-footer-bottom">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-600">
+                    &copy; 2026 MISIÓN JUVENIL D5. TODOS LOS DERECHOS RESERVADOS.
+                </p>
+                <div class="flex gap-8">
+                    <a href="#"
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Privacidad</a>
+                    <a href="#"
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Términos</a>
+                </div>
+            </div>
         </div>
     </footer>
 </body>
