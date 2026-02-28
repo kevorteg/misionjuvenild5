@@ -56,3 +56,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+const verses = [
+    { text: 'Ninguno tenga en poco tu juventud, sino sé ejemplo de los creyentes en palabra, conducta, amor, espíritu, fe y pureza.', ref: '1 Timoteo 4:12' },
+    { text: 'Acuérdate de tu Creador en los días de tu juventud...', ref: 'Eclesiastés 12:1' },
+    { text: '¿Con qué limpiará el joven su camino? Con guardar tu palabra.', ref: 'Salmo 119:9' },
+    { text: 'Esforzaos y cobrad ánimo; no temáis, ni tengáis miedo de ellos, porque Jehová tu Dios es el que va contigo; no te dejará, ni te desamparará.', ref: 'Deuteronomio 31:6' },
+    { text: 'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis.', ref: 'Jeremías 29:11' }
+];
+
+function initRotatingVerses() {
+    const verseText = document.getElementById('verse-text');
+    const verseRef = document.getElementById('verse-ref');
+    const container = document.getElementById('verse-container');
+
+    if (!verseText || !verseRef || !container) return;
+
+    let currentIndex = 0;
+
+    function updateVerse() {
+        container.style.opacity = 0;
+
+        setTimeout(() => {
+            verseText.textContent = '"' + verses[currentIndex].text + '"';
+            verseRef.textContent = verses[currentIndex].ref;
+            container.style.opacity = 1;
+
+            currentIndex = (currentIndex + 1) % verses.length;
+        }, 500); // Wait for fade out
+    }
+
+    // Initial call
+    updateVerse();
+
+    // Rotate every 8 seconds
+    setInterval(updateVerse, 8000);
+}
+
+document.addEventListener('DOMContentLoaded', initRotatingVerses);
