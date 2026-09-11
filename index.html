@@ -1,962 +1,1210 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html class="light" lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Inicio - Misión Juvenil D5</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Misión Juvenil D5 | Plataforma Institucional Juvenil</title>
 
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&amp;family=Rubik:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        brand: '#f38334',
-                        secondary: '#449BD1',
-                        'background-dark': '#191022',
-                        'background-light': '#ffffff',
+                        "on-secondary-container": "#682f00",
+                        "secondary-container": "#ff8e3b",
+                        "surface-tint": "#006491",
+                        "surface-container": "#e3effd",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#26323c",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "primary": "#006491",
+                        "primary-container": "#449bd1",
+                        "primary-dark": "#02557d",
+                        "secondary": "#984800",
+                        "secondary-orange": "#F58634",
+                        "secondary-dark": "#C86018",
+                        "duo-green": "#473458",
+                        "duo-green-dark": "#31233E",
+                        "duo-yellow": "#F58634",
+                        "duo-yellow-dark": "#C86018",
+                        "duo-purple": "#473458",
+                        "duo-purple-light": "#8E44AD",
+                        "duo-purple-dark": "#31233E",
+                        "brand-orange": "#F58634",
+                        "brand-blue": "#449BD1",
+                        "brand-purple": "#473458",
+                        "surface-bright": "#f7f9ff",
+                        "surface": "#ffffff",
+                        "neutral-light": "#F7F9FA",
+                        "border-gray": "#E5E5E5",
+                        "border-gray-dark": "#CECECE",
+                        "on-surface": "#111d26",
+                        "on-surface-variant": "#4E575F"
+                    },
+                    fontFamily: {
+                        headline: ["Rubik", "sans-serif"],
+                        body: ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "4xl": "2rem"
                     }
                 }
             }
-        }
+        };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <script src="assets/js/animations.js" defer></script>
-    <script src="assets/js/core.js" defer></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+        /* Duolingo-style Tactile 3D Buttons & Cards */
+        .btn-3d {
+            transition: all 0.12s ease-in-out;
+            position: relative;
+            user-select: none;
+        }
+        .btn-3d-orange {
+            background-color: #F58634;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #C86018;
+            border: 2px solid #C86018;
+        }
+        .btn-3d-orange:hover {
+            background-color: #ff9344;
+        }
+        .btn-3d-orange:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #C86018;
+        }
+        .btn-3d-white {
+            background-color: #ffffff;
+            color: #3b4249;
+            box-shadow: 0 4px 0 #CECECE;
+            border: 2px solid #E5E5E5;
+        }
+        .btn-3d-white:hover {
+            background-color: #F7F9FA;
+        }
+        .btn-3d-white:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #CECECE;
+        }
+        .btn-3d-green {
+            background-color: #473458;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #31233E;
+            border: 2px solid #31233E;
+        }
+        .btn-3d-green:hover {
+            background-color: #5A4A70;
+        }
+        .btn-3d-green:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #31233E;
+        }
+        .btn-3d-blue {
+            background-color: #1CB0F6;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #1899D6;
+            border: 2px solid #1899D6;
+        }
+        .btn-3d-blue:hover {
+            background-color: #2eceff;
+        }
+        .btn-3d-blue:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #1899D6;
+        }
+        .btn-3d-purple {
+            background-color: #8E44AD;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #6C3483;
+            border: 2px solid #6C3483;
+        }
+        .btn-3d-purple:hover {
+            background-color: #9B59B6;
+        }
+        .btn-3d-purple:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #6C3483;
+        }
 
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
+        /* Chunky Tactile Cards */
+        .card-chunky {
+            border: 3px solid #E5E5E5;
+            box-shadow: 0 6px 0 #E5E5E5;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card-chunky:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #D5D5D5;
+        }
+        .card-chunky-purple {
+            border: 3px solid #624878;
+            box-shadow: 0 6px 0 #31233E;
+        }
+
+        /* Dropdown 3D Menu styling */
+        .nav-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        .group:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Profundidad del hero: zoom lento Ken Burns */
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.07); }
+        }
+        .hero-zoom {
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+        }
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-slide.active img {
+            animation: heroZoom 16s ease-in-out infinite alternate;
+        }
+
+        /* Animación de aparición al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Convocatorias pasadas: se atenúan automáticamente */
+        .event-item.past {
+            opacity: 0.5;
+            filter: grayscale(0.85);
+        }
+
+        /* EXPERIMENTO: bordes redondeados a 0 (reversible: elimina esta regla) */
+        *, *::before, *::after {
+            border-radius: 0 !important;
+        }
+    </style>
 </head>
 
-<body class="bg-background-dark text-slate-100 font-sans overflow-x-hidden min-h-screen flex flex-col">
+<body class="bg-white font-body text-on-surface antialiased overflow-x-hidden selection:bg-duo-yellow selection:text-neutral-900">
 
-    <!-- Navigation Overlay -->
-    <div class="absolute top-0 left-0 w-full z-50">
-        <!-- Top Bar -->
-        <div
-            class="w-full bg-[#111]/80 py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400 backdrop-blur-sm">
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm text-brand">mail</span>
-                <span>info@misionjuvenild5.com</span>
+    <!-- DOBLE BARRA DE NAVEGACIÓN (HEADER INSTITUCIONAL) -->
+    <!-- TOP BAR: Azul Eléctrico -->
+    <div class="w-full bg-primary-container text-white text-xs font-semibold py-2 px-4 lg:px-8 border-b border-[#3684B3] relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
+            <div class="flex items-center flex-wrap gap-4 sm:gap-6 font-body">
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="mailto:info@misionjuvenild5.com">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                    </svg>
+                    <span>info@misionjuvenild5.com</span>
+                </a>
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="tel:+573000000000">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
+                    </svg>
+                    <span>+57 300 000 0000</span>
+                </a>
             </div>
-            <div class="flex items-center gap-4">
-                <!-- Social Icons: Instagram, Facebook, YouTube, TikTok -->
-                <a href="#" class="hover:text-brand transition-colors flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            <div class="flex items-center gap-3">
+                <span class="text-[11px] uppercase tracking-wider text-white/80 font-headline hidden md:inline">Síguenos:</span>
+                <a aria-label="Instagram" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
                     </svg>
                 </a>
-                <a href="#" class="hover:text-brand transition-colors">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                <a aria-label="Facebook" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"></path>
                     </svg>
                 </a>
-                <a href="#" class="hover:text-brand transition-colors">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
+                <a aria-label="YouTube" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
                     </svg>
                 </a>
-                <a href="#" class="hover:text-brand transition-colors">
-                    <!-- TikTok Custom SVG -->
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
+                <a aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.48 2.73 1.25-.07 2.39-.81 2.89-1.96.28-.62.37-1.31.37-1.99.01-4.96.01-9.92.01-14.88z"></path>
+                    </svg>
+                </a>
+                <a aria-label="Spotify" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
                     </svg>
                 </a>
             </div>
         </div>
-
-        <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
-            <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center">
-                    <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
-                </a>
-
-                <!-- Navigation -->
-                <nav class="hidden lg:flex items-center gap-8">
-                    <a class="nav-link active-nav" href="index.html">Inicio</a>
-                    <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
-                    <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
-                    <div class="relative group cursor-pointer flex items-center gap-1">
-                        <span class="nav-link text-white group-hover:text-brand">A un Click</span>
-                        <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                        <!-- Dropdown Menu -->
-                        <div class="dropdown-menu">
-                            <a href="podcast.html" class="dropdown-item">Podcast</a>
-                            <a href="recursos.html" class="dropdown-item">Recursos</a>
-                            <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
-                        </div>
-                    </div>
-                    <div class="relative group cursor-pointer flex items-center gap-1">
-                        <span class="nav-link text-white group-hover:text-brand">Servicios</span>
-                        <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                        <!-- Dropdown Menu -->
-                        <div class="dropdown-menu">
-                            <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
-                            <a href="colegios.html" class="dropdown-item">Colegios</a>
-                            <a href="universidades.html" class="dropdown-item">Universidades</a>
-                        </div>
-                    </div>
-                    <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
-                </nav>
-
-                <div class="flex items-center gap-6">
-                    <!-- Rectangular Dark Button with Orange hover -->
-                    <button
-                        class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
-                        onclick="window.location.href='#camp-feature'">
-                        Campamento 2026
-                    </button>
-
-                    <!-- Search Icon -->
-                    <button class="text-white hover:text-brand transition-colors">
-                        <span class="material-symbols-outlined text-2xl">search</span>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="lg:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
-                </div>
-            </div>
-        </header>
     </div>
 
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-white border-b-2 border-slate-200 shadow-sm px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto h-20 flex items-center justify-between gap-6">
+            <!-- Brand Logo -->
+            <a class="flex items-center group flex-shrink-0" href="index.html">
+                <img alt="Misión Juvenil D5" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" src="media/img/logos/FULL.png">
+            </a>
 
-    <main class="flex-grow w-full">
-        <section class="mj-acc-hero">
-            <div class="mj-acc-status">En Vivo: Transformando Vidas</div>
+            <!-- Menú de Navegación -->
+            <nav class="hidden xl:flex items-center gap-6 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <a class="hover:text-primary transition-colors py-2 text-primary border-b-2 border-primary" href="index.html">Inicio</a>
+                <a class="hover:text-primary transition-colors py-2" href="quienes-somos.html">¿Quiénes Somos?</a>
+                <a class="hover:text-primary transition-colors py-2" href="impacto.html">¿Qué Hacemos?</a>
 
-            <div class="mj-acc-slider">
-                <!-- Slide 01: Familia -->
-                <div class="mj-acc-slide active"
-                    style="background-image: url('media/img/FOTOS HOME/fotos slides/silde 1.jpg')">
-                    <div class="mj-acc-content">
-                        <div class="mj-acc-number">01</div>
-                        <div class="mj-acc-brand">Misión Juvenil</div>
-                        <h1 class="mj-acc-title">MÁS QUE UN GRUPO, UNA FAMILIA</h1>
-                        <p class="mj-acc-subtitle">Somos jóvenes encendidos que comparten fe, valores y propósito.</p>
-                        <div class="mj-acc-specs">
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Propósito:</span>
-                                <span class="mj-acc-spec-value">Transformar vidas</span>
-                            </div>
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Alcance:</span>
-                                <span class="mj-acc-spec-value">Vida y Restauración</span>
-                            </div>
-                        </div>
-                        <div class="mj-acc-badges">
-                            <div class="mj-acc-badge">
-                                <div class="mj-acc-badge-icon"></div>
-                                <span>Fe Inquebrantable</span>
-                            </div>
-                            <div class="mj-acc-badge">
-                                <div class="mj-acc-badge-icon"></div>
-                                <span>Identidad Real</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mj-acc-btn" onclick="window.location.href='quienes-somos.html'"></div>
-                </div>
-
-                <!-- Slide 02: Colegios -->
-                <div class="mj-acc-slide"
-                    style="background-image: url('media/img/FOTOS HOME/fotos slides/slide 2.jpg')">
-                    <div class="mj-acc-content">
-                        <div class="mj-acc-number">02</div>
-                        <div class="mj-acc-brand">Misión Juvenil</div>
-                        <h2 class="mj-acc-title">LUZ EN LOS COLEGIOS</h2>
-                        <p class="mj-acc-subtitle">Llevamos esperanza y valores a las aulas, transformando el entorno
-                            escolar.</p>
-                        <div class="mj-acc-specs">
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Objetivo:</span>
-                                <span class="mj-acc-spec-value">Valores y Ética</span>
-                            </div>
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Misión:</span>
-                                <span class="mj-acc-spec-value">Rescate Generacional</span>
-                            </div>
-                        </div>
-                        <div class="mj-acc-badges">
-                            <div class="mj-acc-badge">
-                                <div class="mj-acc-badge-icon"></div>
-                                <span>Aulas con Propósito</span>
-                            </div>
+                <!-- Dropdown: A un Click -->
+                <div class="relative group py-2">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#un-click">
+                        <span>A un Click</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown con fotos -->
+                    <div class="nav-dropdown absolute top-full left-0 w-72 pt-2 z-50">
+                        <div class="bg-white rounded-2xl p-2.5 border-[3px] border-neutral-200 shadow-[0_6px_0_#D5D5D5] space-y-1">
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="podcast.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/audio/podcasts/minuatura ep 8.jpg" alt="Podcast D5">
+                                <div class="min-w-0">
+                                    <span class="flex items-center gap-1.5 text-xs font-black text-neutral-800">Podcast D5 <span class="px-1.5 py-0.5 rounded-md bg-duo-green text-white text-[9px] font-black">NUEVO</span></span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Episodios semanales</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="recursos.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/thumb_devocionales_neutral.png" alt="Recursos">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Recursos</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Guías &amp; devocionales</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="muro-espiritual.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/FOTOS HOME/fotos slides/silde 1.jpg" alt="Muro Espiritual">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Muro Espiritual</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Peticiones y fe</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="mj-acc-btn" onclick="window.location.href='impacto.html'"></div>
                 </div>
 
-                <!-- Slide 03: Universidades -->
-                <div class="mj-acc-slide"
-                    style="background-image: url('media/img/FOTOS HOME/fotos slides/slide 3.jpg')">
-                    <div class="mj-acc-content">
-                        <div class="mj-acc-number">03</div>
-                        <div class="mj-acc-brand">Misión Juvenil</div>
-                        <h2 class="mj-acc-title">PASIÓN EN LA UNIVERSIDAD</h2>
-                        <p class="mj-acc-subtitle">Encendiendo la fe en los campus universitarios, formando líderes con
-                            identidad.</p>
-                        <div class="mj-acc-specs">
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Líderes:</span>
-                                <span class="mj-acc-spec-value">Identidad Firme</span>
-                            </div>
-                            <div class="mj-acc-spec-row">
-                                <span class="mj-acc-spec-label">Impacto:</span>
-                                <span class="mj-acc-spec-value">Liderazgo Profético</span>
-                            </div>
-                        </div>
-                        <div class="mj-acc-badges">
-                            <div class="mj-acc-badge">
-                                <div class="mj-acc-badge-icon"></div>
-                                <span>Campus Encendidos</span>
-                            </div>
+                <!-- Dropdown: Servicios -->
+                <div class="relative group py-2">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#unirme">
+                        <span>Servicios</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown con fotos -->
+                    <div class="nav-dropdown absolute top-full left-0 w-72 pt-2 z-50">
+                        <div class="bg-white rounded-2xl p-2.5 border-[3px] border-neutral-200 shadow-[0_6px_0_#D5D5D5] space-y-1">
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="salud-mental.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/FOTOS HOME/about-mj.jpg" alt="Salud Mental">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Salud Mental</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Acompañamiento 1-a-1</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="colegios.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/fotos colegios/IMG_20241120_081622.jpg" alt="Colegios">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Colegios</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Pastoral de bachillerato</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="universidades.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg" alt="Universidades">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Universidades</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Círculos y sedes activas</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="mj-acc-btn" onclick="window.location.href='universidades.html'"></div>
                 </div>
-            </div>
 
-            <button class="mj-acc-nav mj-acc-prev">‹</button>
-            <button class="mj-acc-nav mj-acc-next">›</button>
-        </section>
+                <a class="hover:text-primary transition-colors py-2" href="contacto.html">Contacto</a>
+            </nav>
 
-        <!-- News Banner (Moved after Hero) -->
-        <div class="news-banner">
-            <div class="marquee-content">
-                <div class="marquee-item">
-                    <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-                <div class="marquee-item">
-                    <span>Escucha el mensaje que está transformando vidas</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-                <div class="marquee-item">
-                    <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-                <!-- Repeat for smooth loop -->
-                <div class="marquee-item">
-                    <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-                <div class="marquee-item">
-                    <span>Escucha el mensaje que está transformando vidas</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
-                <div class="marquee-item">
-                    <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
-                    <span class="marquee-divider">✦</span>
-                </div>
+            <!-- CTA + Mobile -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <a class="btn-3d btn-3d-orange px-5 sm:px-7 py-2.5 sm:py-3 rounded-2xl font-headline font-black text-sm uppercase tracking-wider inline-flex items-center gap-2" href="#unirme">
+                    <span>¡UNIRME AHORA!</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                <button id="menuToggle" class="xl:hidden btn-3d btn-3d-white w-11 h-11 rounded-2xl flex items-center justify-center" aria-label="Abrir menú">
+                    <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+                </button>
             </div>
         </div>
 
-        <!-- About Us Section (Redesigned) -->
-        <section class="py-32 px-6 bg-white overflow-hidden" id="sobre-nosotros">
-            <div class="max-w-[1400px] mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="hidden xl:hidden border-t-2 border-slate-200 bg-white">
+            <div class="max-w-7xl mx-auto px-4 py-6 space-y-1 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <a class="block py-2.5 text-primary border-b border-slate-100" href="index.html">Inicio</a>
+                <a class="block py-2.5 border-b border-slate-100" href="quienes-somos.html">¿Quiénes Somos?</a>
+                <a class="block py-2.5 border-b border-slate-100" href="impacto.html">¿Qué Hacemos?</a>
+                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">A UN CLICK</p>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Podcast D5</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="recursos.html">Recursos</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="muro-espiritual.html">Muro Espiritual</a>
+                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">SERVICIOS</p>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="salud-mental.html">Salud Mental</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="colegios.html">Colegios</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="universidades.html">Universidades</a>
+                <a class="block py-2.5 mt-2" href="contacto.html">Contacto</a>
+            </div>
+        </div>
+    </header>
 
-                    <!-- Left: Visual Content (Image from folder) -->
-                    <div class="relative group reveal">
-                        <div
-                            class="absolute -inset-4 bg-brand/10 blur-2xl rounded-[40px] opacity-0 group-hover:opacity-100 transition-duration-700">
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="relative w-full bg-primary-container pt-10 pb-12 overflow-hidden border-b-[4px] border-[#2A75A4] min-h-[calc(100vh-5rem)] flex flex-col justify-center" id="inicio">
+            <!-- Capa de fondo: slideshow de imágenes + overlay azul institucional -->
+            <div class="absolute inset-0 z-0">
+                <div class="hero-slide active"><img src="media/img/hero-mj.jpg" alt=""></div>
+                <div class="hero-slide"><img src="media/img/FOTOS HOME/fotos slides/slide 2.jpg" alt=""></div>
+                <div class="hero-slide"><img src="media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg" alt=""></div>
+                <div class="hero-slide"><img src="media/img/FOTOS HOME/about-mj.jpg" alt=""></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-primary-container/70 via-primary-container/75 to-primary-dark/85"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-5 lg:px-12 relative z-10">
+                <!-- Institutional Eyebrow Badge -->
+                <div class="inline-flex items-center gap-2 bg-white/20 border-2 border-white/40 px-4 py-1.5 rounded-full mb-5 backdrop-blur-sm shadow-[0_3px_0_rgba(0,0,0,0.15)]">
+                    <div class="w-4 h-4 text-duo-yellow">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L9.5 7.5L4 8.5L8 12.5L7 18L12 15.5L17 18L16 12.5L20 8.5L14.5 7.5L12 2Z"></path>
+                        </svg>
+                    </div>
+                    <span class="font-headline font-extrabold text-xs text-white uppercase tracking-widest">MISION JUVENIL D5</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                    <!-- Hero Text Left -->
+                    <div class="lg:col-span-7 space-y-4 text-left">
+                        <h1 class="font-headline font-black text-[20px] sm:text-[32px] lg:text-[42px] text-white uppercase leading-[1.1] tracking-tight drop-shadow-md">
+                            ¡UNA GENERACIÓN <span class="text-duo-yellow underline decoration-wavy decoration-[#C86018]">APASIONADA</span> POR LAS ALMAS!
+                        </h1>
+                        <p class="font-body font-bold text-sm sm:text-base text-white/95 max-w-2xl leading-relaxed">
+                            Desbloquea tu vocación y liderazgo en colegios y campus universitarios. Únete a miles de jóvenes comprometidos con fe integral, excelencia académica y transformación social en toda Colombia.
+                        </p>
+                        <!-- 3D Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-3 pt-1">
+                            <a class="btn-3d btn-3d-orange px-5 py-2.5 rounded-3xl font-headline font-black text-sm sm:text-base uppercase tracking-wider inline-flex items-center gap-2" href="#unirme">
+                                <span>¡UNIRME AHORA!</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13.5 19l6.5-7-6.5-7v4H4v6h9.5v4z"></path>
+                                </svg>
+                            </a>
+                            <a class="btn-3d btn-3d-white px-5 py-2.5 rounded-3xl font-headline font-extrabold text-xs sm:text-sm uppercase tracking-wider inline-flex items-center gap-2" href="#un-click">
+                                <span>CONOCE NUESTRAS INICIATIVAS</span>
+                                <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </a>
                         </div>
-                        <div
-                            class="relative rounded-[40px] overflow-hidden aspect-[4/5] shadow-2xl border-8 border-slate-50">
-                            <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg"
-                                class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110"
-                                alt="Acerca de Misión Juvenil">
-                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/40 to-transparent"></div>
-                        </div>
-                        <!-- Experience Badge -->
-                        <div
-                            class="absolute -bottom-10 -right-10 bg-brand p-8 rounded-[32px] shadow-2xl hidden md:block">
-                            <div class="text-white text-center">
-                                <span class="block text-4xl font-black italic leading-none">2026</span>
-                                <span class="block text-[10px] font-bold uppercase tracking-widest mt-2">D5
-                                    Movement</span>
+                        <!-- Stats Mini-Chips Instituticionales -->
+                        <div class="grid grid-cols-3 gap-2.5 pt-2 max-w-md">
+                            <div class="bg-white/15 border-2 border-white/30 rounded-2xl p-2.5 text-center">
+                                <span class="block font-headline font-black text-lg text-white">+1,850</span>
+                                <span class="block text-[11px] font-bold text-white/80 uppercase">Estudiantes</span>
+                            </div>
+                            <div class="bg-white/15 border-2 border-white/30 rounded-2xl p-2.5 text-center">
+                                <span class="block font-headline font-black text-lg text-duo-yellow">14</span>
+                                <span class="block text-[11px] font-bold text-white/80 uppercase">Sedes Activas</span>
+                            </div>
+                            <div class="bg-white/15 border-2 border-white/30 rounded-2xl p-2.5 text-center">
+                                <span class="block font-headline font-black text-lg text-white">100%</span>
+                                <span class="block text-[11px] font-bold text-white/80 uppercase">Compromiso Social</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Right: Narrative Content -->
-                    <div class="reveal delay-200">
-                        <div class="mb-10">
-                            <span
-                                class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6">
-                                Sobre nosotros
-                            </span>
-                            <h2
-                                class="text-4xl md:text-5xl font-black italic text-background-dark tracking-tighter uppercase leading-[0.9] font-display">
-                                ¿QUÉ ES MISIÓN <br><span class="text-brand">JUVENIL?</span>
-                            </h2>
+                    <!-- Hero Right: Foto con marco blanco -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-sm">
+                            <!-- Main White Chunky Border Card -->
+                            <div class="bg-white rounded-4xl p-4 border-[4px] border-white shadow-[0_12px_0_rgba(0,0,0,0.18)]">
+                                <div class="rounded-3xl overflow-hidden relative aspect-[4/3] bg-neutral-100 border-2 border-border-gray">
+                                    <img alt="Jóvenes Líderes Misión D5" class="w-full h-full object-cover" src="media/img/FOTOS HOME/fotos slides/slide 3.jpg">
+                                    <div class="absolute bottom-3 left-3 bg-neutral-900/85 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-headline font-bold flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-duo-green"></span>
+                                        <span>COMUNIDAD ESTUDIANTIL ACTIVA</span>
+                                    </div>
+                                </div>
+                                <!-- Card Content -->
+                                <div class="pt-3 space-y-2.5">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h2 class="font-headline font-black text-base text-neutral-800">CÍRCULOS DE VIDA D5</h2>
+                                            <p class="text-xs font-bold text-neutral-500">Misión Universitaria &amp; Bachillerato</p>
+                                        </div>
+                                        <span class="px-3 py-1 bg-primary-container/15 text-primary-dark border-2 border-primary-container/30 rounded-xl font-headline font-black text-xs uppercase">OFICIAL</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-neutral-600 leading-relaxed">
+                                        Espacios semanales de mentoría, apoyo emocional e impacto social directo en facultades y colegios.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <div
-                            class="space-y-8 text-slate-600 text-base md:text-lg font-light leading-relaxed italic font-sans">
-                            <p class="reveal">Somos jóvenes apasionados por Jesús, llevando su mensaje a colegios,
-                                universidades y entornos digitales.</p>
+        <!-- 2. BANNER DE LA PALABRA / CITA BÍBLICA -->
+        <section class="w-full bg-duo-yellow py-8 border-b-[4px] border-duo-yellow-dark">
+            <div class="max-w-6xl mx-auto px-5 lg:px-8">
+                <div class="bg-white rounded-3xl border-[3px] border-neutral-900 p-6 lg:p-8 shadow-[0_6px_0_#111d26] flex flex-col md:flex-row items-center gap-6">
+                    <!-- Sello / Trophy SVG -->
+                    <div class="w-20 h-20 bg-duo-yellow rounded-2xl border-[3px] border-neutral-900 flex items-center justify-center flex-shrink-0 shadow-[0_4px_0_#111d26]">
+                        <svg class="w-10 h-10 text-neutral-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                        </svg>
+                    </div>
+                    <!-- Scripture Verse -->
+                    <div class="flex-1 text-center md:text-left space-y-1">
+                        <span class="text-xs font-headline font-black uppercase tracking-widest text-secondary-dark">PRINCIPIO INSTITUCIONAL // HECHOS 17:6</span>
+                        <blockquote class="font-headline font-black text-lg sm:text-xl lg:text-2xl text-neutral-900 uppercase leading-tight">
+                            «ESTOS QUE TRASTORNAN EL MUNDO ENTERO TAMBIÉN HAN VENIDO ACÁ»
+                        </blockquote>
+                    </div>
+                    <!-- Action Badge -->
+                    <div class="flex-shrink-0">
+                        <span class="inline-block px-4 py-2 bg-neutral-900 text-white rounded-xl font-headline font-extrabold text-xs uppercase tracking-wider shadow-[0_3px_0_#333]">
+                            AULAS CON ALTAR
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <div class="reveal p-8 border-l-8 border-brand bg-slate-50 rounded-r-[32px]">
-                                <p
-                                    class="text-xl md:text-2xl text-background-dark font-black tracking-tight not-italic uppercase font-display italic">
-                                    No somos un evento… <br>
-                                    <span class="text-brand font-black">¡somos una familia!</span>
+        <!-- 3. BENTO GRID: MISIÓN JUVENIL A UN CLICK -->
+        <section class="w-full bg-neutral-light py-20 border-b-[3px] border-border-gray" id="un-click">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <!-- Header Institucional -->
+                <div class="reveal text-center max-w-2xl mx-auto mb-14 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-container/15 border-2 border-primary-container text-primary-dark font-headline font-black text-xs uppercase">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <span>PLATAFORMA DIGITAL &amp; RECURSOS</span>
+                    </div>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-neutral-800 uppercase tracking-tight">
+                        MISIÓN JUVENIL <span class="text-primary-container">A UN CLICK</span>
+                    </h2>
+                    <p class="font-body font-bold text-neutral-500 text-base">
+                        Accede a las herramientas de formación, contenido multimedia, devocionales diarios y acompañamiento estudiantil.
+                    </p>
+                </div>
+
+                <!-- Filas foto + texto para jóvenes -->
+                <div class="space-y-6">
+
+                    <!-- FILA 1: PODCAST D5 FUEGO (foto izquierda) -->
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl card-chunky overflow-hidden">
+                        <!-- Media -->
+                        <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full">
+                            <img alt="Podcast D5 Fuego EP 08" class="absolute inset-0 w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                            <a class="absolute inset-0 flex items-center justify-center" href="podcast.html" aria-label="Ver episodio del podcast">
+                                <span class="btn-3d btn-3d-orange w-16 h-16 rounded-full flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                                </span>
+                            </a>
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-xl bg-white/95 text-neutral-900 font-headline font-black text-xs uppercase tracking-wider shadow">EPISODIO 08 — VIDEO</span>
+                        </div>
+                        <!-- Texto -->
+                        <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-center">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-3.5 py-1 rounded-xl bg-duo-green text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#31233E]">PODCAST</span>
+                                    <span class="font-headline font-black text-xs uppercase tracking-wider text-duo-green-dark">Contenido Semanal</span>
+                                </div>
+                                <span class="px-3 py-1 rounded-xl bg-neutral-100 text-neutral-700 font-bold text-xs border border-border-gray hidden sm:inline">SPOTIFY &amp; YOUTUBE</span>
+                            </div>
+                            <div class="space-y-3 mb-6">
+                                <h3 class="font-headline font-black text-xl text-neutral-900 uppercase">PODCAST D5 FUEGO: EL PODER DEL PROPÓSITO</h3>
+                                <p class="font-body font-bold text-neutral-600 text-sm leading-relaxed">
+                                    Episodio 08: ¿Cómo mantenerte en pie en un entorno estudiantil hostil? Charlas reales con líderes de campus sobre fe audaz, milagros y herramientas ante la presión académica.
                                 </p>
                             </div>
-
-                            <p class="reveal">Una voz profética en el aula, un fuego encendido en los corazones.</p>
-                            <p class="reveal font-medium text-background-dark not-italic">Con creatividad y mentoría,
-                                sembramos valores, restauramos identidades y encendemos la fe.</p>
-                        </div>
-
-                        <div class="mt-12 reveal">
-                            <button onclick="window.location.href='quienes-somos.html'"
-                                class="group flex items-center gap-6 bg-background-dark text-white font-black py-6 px-12 rounded-2xl hover:bg-brand hover:text-background-dark transition-all shadow-2xl uppercase tracking-widest text-xs font-sans">
-                                SABER MÁS
-                                <div
-                                    class="w-8 h-[2px] bg-white group-hover:bg-background-dark transition-all group-hover:w-12">
+                            <!-- Tactile Player -->
+                            <div class="bg-neutral-50 rounded-2xl border-2 border-border-gray p-4 flex items-center justify-between gap-4">
+                                <button aria-label="Reproducir episodio" class="btn-3d btn-3d-green w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" id="podcastPlayBtn" type="button">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" id="podcastPlayIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                                </button>
+                                <div class="flex-1 space-y-1">
+                                    <div class="flex justify-between items-center text-xs font-headline font-bold text-neutral-700">
+                                        <span id="podcastTitle">EP. 08 — CONECTADOS 24/7</span>
+                                        <span class="text-neutral-400" id="podcastDuration">42 MIN</span>
+                                    </div>
+                                    <!-- Track Bar -->
+                                    <div class="w-full h-3.5 bg-neutral-200 rounded-full overflow-hidden p-0.5 border border-border-gray">
+                                        <div class="h-full bg-duo-green rounded-full w-0" id="podcastProgress"></div>
+                                    </div>
                                 </div>
-                            </button>
+                            </div>
+                            <a class="mt-4 text-right font-headline font-black text-xs uppercase tracking-wider text-primary hover:text-primary-dark transition-colors" href="podcast.html">VER TODOS LOS EPISODIOS →</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- QUE HACEMOS Section (Premium Service Cards) -->
-        <section class="mj-services py-32 px-6 overflow-hidden" id="que-hacemos">
-            <div class="max-w-[1400px] mx-auto text-center mb-24 reveal">
-                <h2
-                    class="text-5xl md:text-6xl font-black italic text-white tracking-tighter uppercase leading-none mb-4">
-                    QUE <span class="text-brand">HACEMOS</span>
-                </h2>
-                <p class="text-slate-500 font-black uppercase tracking-[0.4em] text-xs">Espacios de Evangelismo</p>
-                <div class="w-24 h-1 bg-brand/30 mx-auto mt-8 rounded-full"></div>
-            </div>
-
-            <div class="max-w-[1400px] mx-auto mj-services-grid">
-                <!-- Universities -->
-                <article class="mj-service-card reveal">
-                    <img src="media/img/home/que-hacemos-universidades.png" class="mj-service-img" alt="Universidades">
-                    <div class="mj-service-overlay">
-                        <h3 class="mj-service-title">UNIVERSIDADES</h3>
-                        <p class="mj-service-desc">
-                            Impulsamos comunidades de fe en el corazón de los campus. Organizamos devocionales,
-                            mentorías y actividades que fortalecen a los estudiantes, haciendo de cada aula un altar
-                            para Dios.
-                        </p>
-                        <a href="universidades.html" class="mj-service-btn">
-                            <span>LEER MÁS</span>
-                            <span class="material-symbols-outlined">east</span>
-                        </a>
+                    <!-- FILA 2: RECURSOS & DEVOCIONALES (foto derecha) -->
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl card-chunky overflow-hidden">
+                        <!-- Texto -->
+                        <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="px-3.5 py-1 rounded-xl bg-secondary-orange text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#C86018]">RECURSOS &amp; DEVOCIONALES</span>
+                                    <div class="w-8 h-8 rounded-xl bg-secondary-orange/20 flex items-center justify-center text-secondary-dark">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline font-black text-xl text-neutral-900 uppercase mb-2">HUELLAS DE ETERNIDAD</h3>
+                                <p class="font-body font-bold text-neutral-600 text-sm mb-4">
+                                    Guía de 21 días de inmersión espiritual diaria antes de entrar a clases. Fundamenta tu liderazgo y principios en el aula.
+                                </p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-neutral-50 rounded-xl border-2 border-border-gray">
+                                    <span class="font-bold text-xs text-neutral-700">PDF INTERACTIVO (8.4 MB)</span>
+                                    <span class="font-headline font-black text-xs text-secondary-orange">+1,420 DESCARGAS</span>
+                                </div>
+                                <a class="btn-3d btn-3d-orange w-full py-3.5 rounded-2xl font-headline font-black text-sm uppercase tracking-wider text-center block" href="recursos.html">DESCARGAR GUÍA GRATUITA</a>
+                            </div>
+                        </div>
+                        <!-- Media -->
+                        <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full">
+                            <img alt="Guía devocional 21 días" class="absolute inset-0 w-full h-full object-cover" src="media/img/thumb_devocionales_neutral.png">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-xl bg-duo-purple text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#31233E]">GUÍA DE 21 DÍAS</span>
+                        </div>
                     </div>
-                </article>
 
-                <!-- Schools -->
-                <article class="mj-service-card reveal delay-100">
-                    <img src="media/img/home/que-hacemos-colegios.png" class="mj-service-img" alt="Colegios">
-                    <div class="mj-service-overlay">
-                        <h3 class="mj-service-title">COLEGIOS</h3>
-                        <p class="mj-service-desc">
-                            Trabajamos con docentes, líderes y padres para formar jóvenes con identidad en Cristo.
-                            Llevamos valores bíblicos y esperanza a las aulas, despertando propósito desde temprana
-                            edad.
-                        </p>
-                        <a href="colegios.html" class="mj-service-btn">
-                            <span>LEER MÁS</span>
-                            <span class="material-symbols-outlined">east</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Digital -->
-                <article class="mj-service-card reveal delay-200">
-                    <img src="media/img/home/que-hacemos-digital.png" class="mj-service-img" alt="Digital">
-                    <div class="mj-service-overlay">
-                        <h3 class="mj-service-title">A UN CLICK</h3>
-                        <p class="mj-service-desc">
-                            Evangelismo digital accesible: redes sociales, contenidos interactivos, oraciones en línea y
-                            devocionales virtuales que llegan directo al corazón. ¡Estés donde estés, aquí estamos!
-                        </p>
-                        <a href="podcast.html" class="mj-service-btn">
-                            <span>LEER MÁS</span>
-                            <span class="material-symbols-outlined">east</span>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- STATS SECTION -->
-        <section class="mj-stats-container overflow-hidden">
-            <div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
-                <div class="mj-stat-item reveal">
-                    <span class="mj-stat-number" data-target="50">+0</span>
-                    <span class="mj-stat-label">Colegios</span>
-                </div>
-                <div class="mj-stat-item reveal delay-100">
-                    <span class="mj-stat-number" data-target="500">+0</span>
-                    <span class="mj-stat-label">Estudiantes</span>
-                </div>
-                <div class="mj-stat-item reveal delay-200">
-                    <span class="mj-stat-number" data-target="10">+0</span>
-                    <span class="mj-stat-label">Universidades</span>
-                </div>
-                <div class="mj-stat-item reveal delay-300">
-                    <span class="mj-stat-number" data-target="100">0%</span>
-                    <span class="mj-stat-label">Compromiso</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Súmate a la Misión Section (Refined) -->
-        <section class="relative py-48 px-6 overflow-hidden min-h-[700px] flex items-center" id="sumate">
-            <div class="absolute inset-0 z-0 group">
-                <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg"
-                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[5s]"
-                    alt="Join the Mission">
-                <div class="absolute inset-0 bg-[#0f0c14]/85 backdrop-blur-[4px]"></div>
-                <!-- Top border accent -->
-                <div
-                    class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent">
-                </div>
-            </div>
-
-            <div class="max-w-[1400px] mx-auto w-full relative z-10">
-                <!-- Centered Title -->
-                <div class="text-center mb-20 reveal">
-                    <span
-                        class="inline-block px-4 py-2 bg-brand/10 text-brand text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6">
-                        Movimiento D5
-                    </span>
-                    <h2
-                        class="text-5xl md:text-7xl font-black italic text-white tracking-tighter uppercase leading-[0.8] font-display">
-                        SÚMATE A <br><span class="text-brand">LA MISIÓN</span>
-                    </h2>
-                </div>
-
-                <div class="flex flex-col lg:flex-row justify-between items-start gap-20">
-
-                    <!-- Left: Narrative & Experience -->
-                    <div class="w-full lg:w-1/2 reveal">
-                        <div
-                            class="relative p-10 md:p-16 rounded-[48px] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl">
-                            <div class="absolute -top-10 -left-10 w-24 h-24 bg-brand/20 blur-3xl opacity-50"></div>
-
-                            <p
-                                class="text-lg md:text-xl text-slate-200 font-light leading-relaxed italic font-sans mb-12">
-                                No estamos buscando espectadores, sino <span
-                                    class="text-white font-black not-italic border-b-2 border-brand">antorchas
-                                    encendidas</span>.
-                                Dios ha puesto un fuego en ti, y este es el tiempo de avivarlo.
-                            </p>
-
-                            <!-- Verse Quote -->
-                            <div class="relative py-12 border-t border-white/10 mt-10">
-                                <span
-                                    class="material-symbols-outlined absolute -top-8 left-0 text-brand !text-7xl opacity-40">format_quote</span>
-                                <blockquote
-                                    class="text-xl md:text-2xl text-white font-black italic uppercase leading-tight font-display pr-12">
-                                    "Cada uno, según el don que ha recibido, minístrelo a los otros, como buenos
-                                    administradores de la multiforme gracia de Dios."
-                                </blockquote>
-                                <cite
-                                    class="block mt-6 text-brand font-black text-sm tracking-[0.4em] uppercase font-sans not-italic">
-                                    — 1 Pedro 4:10
-                                </cite>
+                    <!-- FILA 3: MURO DE FE (foto izquierda) -->
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl card-chunky overflow-hidden" id="muro-espiritual">
+                        <!-- Media -->
+                        <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full">
+                            <img alt="Comunidad estudiantil en oración" class="absolute inset-0 w-full h-full object-cover" src="media/img/Universidades fotos/Javeriana/puj1.jpg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-xl bg-primary-container text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#1899D6]">ORACIÓN COMUNITARIA</span>
+                            <span class="absolute bottom-3 left-3 px-3 py-1 rounded-xl bg-white/95 text-neutral-900 font-headline font-black text-xs uppercase tracking-wider shadow">18 PETICIONES HOY</span>
+                        </div>
+                        <!-- Texto -->
+                        <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="px-3.5 py-1 rounded-xl bg-primary-container text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#1899D6]">MURO DE FE</span>
+                                        <span class="font-headline font-black text-xs uppercase tracking-wider text-primary-dark">Comunidad Unida</span>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline font-black text-xl text-neutral-900 uppercase mb-2">MURO DE FE &amp; TESTIMONIOS</h3>
+                                <p class="font-body font-bold text-neutral-600 text-sm mb-4">
+                                    Levanta un escudo de oración comunitaria con otros jóvenes por exámenes, bienestar emocional y liderazgo en tus clases.
+                                </p>
+                                <!-- Mini Feeds -->
+                                <div class="space-y-2.5 mb-4" id="muroFeed">
+                                    <div class="p-3 rounded-2xl bg-neutral-50 border-2 border-border-gray flex items-start gap-3">
+                                        <div class="w-8 h-8 rounded-xl bg-primary-container text-white font-black text-xs flex items-center justify-center flex-shrink-0">MG</div>
+                                        <div class="flex-1">
+                                            <div class="flex justify-between items-center">
+                                                <span class="font-headline font-extrabold text-xs text-neutral-800">Mateo G. • Campus Univalle</span>
+                                                <span class="text-[10px] font-bold text-neutral-400">Hace 12 min</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-neutral-600 mt-0.5">“Gran asistencia en el primer encuentro del semestre en Ingeniería con 9 compañeros nuevos.”</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 rounded-2xl bg-neutral-50 border-2 border-border-gray flex items-start gap-3">
+                                        <div class="w-8 h-8 rounded-xl bg-secondary-orange text-white font-black text-xs flex items-center justify-center flex-shrink-0">SR</div>
+                                        <div class="flex-1">
+                                            <div class="flex justify-between items-center">
+                                                <span class="font-headline font-extrabold text-xs text-neutral-800">Sofía R. • Colegio Claret</span>
+                                                <span class="text-[10px] font-bold text-neutral-400">Hace 1h</span>
+                                            </div>
+                                            <p class="text-xs font-bold text-neutral-600 mt-0.5">“Pidiendo paz y enfoque para las pruebas de admisión vocacional de este viernes.”</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input id="muroInput" class="flex-1 h-11 px-4 rounded-2xl bg-neutral-50 border-2 border-border-gray text-xs font-bold focus:border-primary-container focus:ring-0" placeholder="Escribe tu motivo de oración o testimonio..." type="text">
+                                <button class="btn-3d btn-3d-blue h-11 px-4 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" id="muroSubmit" type="button">PUBLICAR</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right: Call to Action -->
-                    <div class="w-full lg:w-1/2 flex flex-col items-center reveal delay-300">
-                        <!-- User Request: Image above the button -->
-                        <div
-                            class="mb-10 w-full max-w-[450px] rounded-[48px] overflow-hidden shadow-2xl border border-white/10 reveal sm:rotate-2">
-                            <img src="media/img/FOTOS HOME/fotos slides/silde 1.jpg"
-                                class="w-full aspect-video object-cover" alt="Join Image">
-                        </div>
-
-                        <div class="relative group mt-6">
-                            <div
-                                class="absolute -inset-6 bg-brand/30 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                    <!-- FILA 4: MENTORÍA & BIENESTAR (foto derecha) -->
+                    <div class="reveal grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl card-chunky overflow-hidden" id="mentoria">
+                        <!-- Texto -->
+                        <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="px-3.5 py-1 rounded-xl bg-duo-purple-light text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#6C3483]">MENTORÍA &amp; BIENESTAR</span>
+                                        <span class="font-headline font-black text-xs uppercase tracking-wider text-duo-purple-light">Soporte Integral</span>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-xl bg-duo-purple-light/20 flex items-center justify-center text-duo-purple-light">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm0-4h-2V7h2v2z"></path></svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-headline font-black text-xl text-neutral-900 uppercase mb-2">ACOMPAÑAMIENTO &amp; SALUD MENTAL</h3>
+                                <p class="font-body font-bold text-neutral-600 text-sm mb-4 leading-relaxed">
+                                    La presión social, los retos emocionales y la orientación vocacional no se enfrentan en soledad. Nuestro equipo de mentores y consejeros te escucha con confidencialidad y calidez.
+                                </p>
+                                <div class="grid grid-cols-2 gap-3 mb-6">
+                                    <div class="p-3 bg-neutral-50 rounded-2xl border-2 border-border-gray text-center">
+                                        <span class="block font-headline font-black text-xs text-neutral-800 uppercase">100% CONFIDENCIAL</span>
+                                        <span class="block text-[11px] font-bold text-neutral-400">Espacio Seguro</span>
+                                    </div>
+                                    <div class="p-3 bg-neutral-50 rounded-2xl border-2 border-border-gray text-center">
+                                        <span class="block font-headline font-black text-xs text-duo-purple-light uppercase">LÍNEA DIRECTA</span>
+                                        <span class="block text-[11px] font-bold text-neutral-400">Orientación Pronta</span>
+                                    </div>
+                                </div>
                             </div>
-                            <button
-                                class="relative bg-brand text-background-dark font-black py-10 px-20 rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl uppercase tracking-[0.4em] text-sm font-sans flex flex-col items-center gap-4 overflow-hidden">
-                                <span class="relative z-10">ÚNETE A LA MISIÓN</span>
-                                <div class="w-12 h-1 bg-background-dark/20 rounded-full mt-2"></div>
-                            </button>
+                            <a class="btn-3d btn-3d-purple w-full py-3.5 rounded-2xl font-headline font-black text-sm uppercase tracking-wider text-center block" href="salud-mental.html">SOLICITAR MENTORÍA PERSONALIZADA</a>
                         </div>
-                        <p class="mt-8 text-white/40 text-[10px] font-bold uppercase tracking-widest text-center">
-                            Sé parte del cambio generacional
-                        </p>
+                        <!-- Media -->
+                        <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full">
+                            <img alt="Acompañamiento emocional juvenil" class="absolute inset-0 w-full h-full object-cover" src="media/img/Universidades fotos/Uao/UAO1.jpg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-xl bg-duo-purple-light text-white font-headline font-black text-xs uppercase tracking-wider shadow-[0_3px_0_#6C3483]">SALUD MENTAL &amp; LIDERAZGO</span>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- PRÓXIMOS EVENTOS SECTION -->
-        <section class="py-32 px-6 bg-white/5" id="eventos">
-            <div class="max-w-[1400px] mx-auto">
-                <div class="flex justify-between items-end mb-24 reveal">
+        <!-- 4. RED DE CAMPUS & COLEGIOS -->
+        <section class="w-full bg-duo-purple py-20 border-b-[4px] border-duo-purple-dark text-white" id="sedes">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <!-- Header -->
+                <div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                     <div>
-                        <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
-                            PRÓXIMOS <span class="text-brand">EVENTOS</span>
-                        </h2>
-                        <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Cronograma de
-                            Actividades 2026</p>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 text-white font-headline font-black text-xs uppercase mb-3 border border-white/30">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                            </svg>
+                            <span>PRESENCIA TERRITORIAL</span>
+                        </div>
+                        <h2 class="font-headline font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">RED DE CAMPUS &amp; COLEGIOS</h2>
+                        <p class="font-body font-bold text-white/80 text-sm mt-1 max-w-xl">Conéctate con el equipo coordinador y los horarios de los círculos estudiantiles en cada sede.</p>
                     </div>
-                    <a href="#programador"
-                        class="text-brand font-black uppercase tracking-widest text-xs border-b border-brand pb-2 hover:opacity-70 transition-opacity">Ver
-                        cronograma completo</a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Event 1 -->
-                    <article class="mj-event-card reveal">
-                        <div class="mj-card-img-wrapper">
-                            <img src="media/img/FOTOS HOME/fotos slides/slide 3.jpg" class="mj-card-img"
-                                alt="Culto Pre-Campamento">
-                            <span class="mj-event-date">13 MAR</span>
-                        </div>
-                        <div class="mj-card-body">
-                            <h3 class="mj-card-title">Culto Pre-Campamento</h3>
-                            <p class="mj-card-text">Preparándonos para el gran encuentro. Un tiempo de oración y
-                                activación espiritual.</p>
-                            <a href="#" class="mj-card-link">
-                                <span>MAS DETALLES</span>
-                                <span class="material-symbols-outlined">east</span>
-                            </a>
-                        </div>
-                    </article>
+                <!-- Filter Chips -->
+                <div class="flex flex-wrap items-center gap-3 mb-10" id="campusFilters">
+                    <button class="filter-chip active btn-3d btn-3d-orange px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="all" type="button">TODAS LAS SEDES</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="univalle" type="button">UNIVALLE</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="unilibre" type="button">UNILIBRE</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="icesi" type="button">ICESI</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="usc" type="button">USC</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="sena" type="button">SENA</button>
+                    <button class="filter-chip btn-3d btn-3d-white px-5 py-2.5 rounded-2xl font-headline font-black text-xs uppercase tracking-wider" data-filter="colegios" type="button">COLEGIOS</button>
+                </div>
 
-                    <!-- Event 2 -->
-                    <article class="mj-event-card reveal delay-100">
-                        <div class="mj-card-img-wrapper">
-                            <img src="media/img/FOTOS HOME/fotos slides/slide 2.jpg" class="mj-card-img"
-                                alt="Campamento MJ">
-                            <span class="mj-event-date">27 MAR</span>
+                <!-- Campus Grid -->
+                <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="campusGrid">
+                    <!-- UNIVALLE -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="univalle">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-red-100 text-red-700 font-headline font-black text-xs rounded-xl">UNIVALLE</span>
+                                <span class="text-xs font-bold text-duo-green-dark flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-duo-green animate-pulse"></span> ACTIVO</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">Campus Meléndez &amp; San Fernando</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinador: <strong class="text-neutral-900">David Cifuentes</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Miércoles 12:30 PM (Plazoleta D1)</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>42 Estudiantes Vinculados</span></div>
+                            </div>
                         </div>
-                        <div class="mj-card-body">
-                            <h3 class="mj-card-title">Campamento Misión Juvenil</h3>
-                            <p class="mj-card-text">3 días inolvidables de gloria, palabra y amistad. ¡No te quedes por
-                                fuera del mover!</p>
-                            <a href="#" class="mj-card-link">
-                                <span>INSCRIBIRME</span>
-                                <span class="material-symbols-outlined">east</span>
-                            </a>
+                        <a class="btn-3d btn-3d-orange w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="universidades.html">CONTACTAR SEDE</a>
+                    </div>
+                    <!-- UNILIBRE -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="unilibre">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 font-headline font-black text-xs rounded-xl">UNILIBRE</span>
+                                <span class="text-xs font-bold text-duo-green-dark flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-duo-green animate-pulse"></span> ACTIVO</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">Valle del Lili &amp; Sta. Isabel</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinadora: <strong class="text-neutral-900">Valentina Duque</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Jueves 3:00 PM (Cafetería Central)</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>28 Estudiantes Vinculados</span></div>
+                            </div>
                         </div>
-                    </article>
+                        <a class="btn-3d btn-3d-blue w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="universidades.html">CONTACTAR SEDE</a>
+                    </div>
+                    <!-- ICESI -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="icesi">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-blue-200 text-blue-900 font-headline font-black text-xs rounded-xl">ICESI</span>
+                                <span class="text-xs font-bold text-duo-green-dark flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-duo-green animate-pulse"></span> ACTIVO</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">Edificio E &amp; Jardín Central</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinador: <strong class="text-neutral-900">Camilo Sanclemente</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Martes 1:15 PM (Zonas Verdes)</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>35 Estudiantes Vinculados</span></div>
+                            </div>
+                        </div>
+                        <a class="btn-3d btn-3d-blue w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="universidades.html">CONTACTAR SEDE</a>
+                    </div>
+                    <!-- USC -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="usc">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-amber-100 text-amber-800 font-headline font-black text-xs rounded-xl">SANTIAGO DE CALI</span>
+                                <span class="text-xs font-bold text-duo-green-dark flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-duo-green animate-pulse"></span> ACTIVO</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">Campus Pampalinda</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinadora: <strong class="text-neutral-900">Andrea Mera</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Viernes 4:00 PM (Bloque 4)</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>51 Estudiantes Vinculados</span></div>
+                            </div>
+                        </div>
+                        <a class="btn-3d btn-3d-orange w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="universidades.html">CONTACTAR SEDE</a>
+                    </div>
+                    <!-- SENA -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="sena">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-purple-200 text-purple-900 font-headline font-black text-xs rounded-xl">SENA SALOMIA</span>
+                                <span class="text-xs font-bold text-duo-green-dark flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-duo-green animate-pulse"></span> ACTIVO</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">Centro Formación Técnica</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinador: <strong class="text-neutral-900">Esteban Ramírez</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Lunes 12:00 PM (Plazoleta)</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>39 Aprendices Vinculados</span></div>
+                            </div>
+                        </div>
+                        <a class="btn-3d btn-3d-blue w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="universidades.html">CONTACTAR SEDE</a>
+                    </div>
+                    <!-- COLEGIOS -->
+                    <div class="campus-card bg-white rounded-3xl p-6 text-neutral-800 card-chunky flex flex-col justify-between" data-category="colegios">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-purple-100 text-purple-800 font-headline font-black text-xs rounded-xl">SECUNDARIAS</span>
+                                <span class="text-xs font-bold text-secondary-orange flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary-orange animate-pulse"></span> 8 COLEGIOS</span>
+                            </div>
+                            <h3 class="font-headline font-black text-lg text-neutral-900 uppercase mb-3">I.E. Sta. Librada &amp; San Luis</h3>
+                            <div class="space-y-2 mb-6 font-body font-bold text-xs text-neutral-600">
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">L</span><span>Coordinación: <strong class="text-neutral-900">Equipo Vocacional</strong></span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">H</span><span>Reuniones en Descansos Escolares</span></div>
+                                <div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-700 font-black">M</span><span>+600 Escolares Impactados</span></div>
+                            </div>
+                        </div>
+                        <a class="btn-3d btn-3d-purple w-full py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider text-center block" href="colegios.html">CONTACTAR SEDE</a>
+                    </div>
+                </div>
 
-                    <!-- Event 3 -->
-                    <article class="mj-event-card reveal delay-200">
-                        <div class="mj-card-img-wrapper">
-                            <img src="media/img/FOTOS HOME/fotos slides/silde 1.jpg" class="mj-card-img"
-                                alt="Impacto Zonal">
-                            <span class="mj-event-date">10 ABR</span>
+                <!-- Banner Plantar Sede -->
+                <div class="mt-10 bg-white/10 rounded-3xl border-2 border-white/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-duo-yellow text-neutral-900 flex items-center justify-center font-black text-xl flex-shrink-0">+</div>
+                        <div>
+                            <h3 class="font-headline font-black text-lg text-white">¿TU INSTITUCIÓN EDUCATIVA NO APARECE EN LA LISTA?</h3>
+                            <p class="font-body font-bold text-xs text-white/80">Recibe acompañamiento y recursos para abrir un nuevo núcleo de Misión Juvenil en tu campus.</p>
                         </div>
-                        <div class="mj-card-body">
-                            <h3 class="mj-card-title">Impacto Zonal – Zona Sur</h3>
-                            <p class="mj-card-text">Llevando la luz de Jesús a cada rincón de la ciudad. Únete a nuestro
-                                primer impacto zonal.</p>
-                            <a href="#" class="mj-card-link">
-                                <span>UNIRME</span>
-                                <span class="material-symbols-outlined">east</span>
-                            </a>
-                        </div>
-                    </article>
+                    </div>
+                    <a class="btn-3d btn-3d-white px-6 py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider whitespace-nowrap" href="#unirme">APERTURAR MI SEDE</a>
                 </div>
             </div>
         </section>
 
-        <!-- CALENDARIO INTERACTIVO 2026 -->
-        <section class="py-32 px-6" id="programador">
-            <div class="max-w-[1400px] mx-auto">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
-                        CRONOGRAMA <span class="text-brand">2026</span>
-                    </h2>
-                    <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Planifica tu año con
-                        nosotros</p>
+        <!-- 5. PRÓXIMAS CONVOCATORIAS -->
+        <section class="w-full bg-white py-20 border-b-[3px] border-border-gray" id="eventos">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <div class="reveal text-center max-w-2xl mx-auto mb-14 space-y-2">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-orange/15 border-2 border-secondary-orange text-secondary-dark font-headline font-black text-xs uppercase">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"></path>
+                        </svg>
+                        <span>AGENDA INSTITUCIONAL</span>
+                    </div>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-neutral-800 uppercase tracking-tight">PRÓXIMAS <span class="text-secondary-orange">CONVOCATORIAS</span></h2>
+                    <p class="font-body font-bold text-neutral-500 text-sm">Jornadas de capacitación, retiros nacionales y actividades de impacto estudiantil.</p>
                 </div>
-
-                <div class="mj-calendar-card reveal">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                        <!-- Events List on the Right -->
-                        <div class="lg:col-span-7 flex flex-col order-2 lg:order-2">
-                            <h3
-                                class="text-2xl md:text-3xl font-black text-white italic uppercase mb-8 hidden lg:block">
-                                Eventos del Mes</h3>
-                            <div class="mj-event-list !mt-0 !grid-cols-1" id="upcomingList">
-                                <!-- JS Generated -->
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <!-- EVENT 1 -->
+                    <div class="event-item reveal relative overflow-hidden bg-neutral-50 rounded-3xl p-6 sm:p-7 card-chunky flex flex-col sm:flex-row items-center justify-between gap-6" data-date="2026-09-19">
+                        <span class="event-flag hidden absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-neutral-900/80 text-white font-headline font-black text-[10px] uppercase tracking-wider">FINALIZADO</span>
+                        <div class="flex items-center gap-5 w-full sm:w-auto">
+                            <div class="w-16 h-16 rounded-2xl bg-primary-container text-white border-2 border-primary-dark flex flex-col items-center justify-center flex-shrink-0 shadow-[0_4px_0_#1899D6]">
+                                <span class="font-headline font-black text-xl leading-none">19</span>
+                                <span class="font-headline font-black text-[10px] uppercase tracking-wider">SEP</span>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="px-2.5 py-0.5 rounded-lg bg-neutral-200 text-neutral-700 font-bold text-[11px] uppercase">Auditorio Central • 6:30 PM</span>
+                                <h3 class="font-headline font-black text-base sm:text-lg text-neutral-900 uppercase">JORNADA DE LIDERAZGO &amp; CONSAGRACIÓN</h3>
+                                <p class="font-body font-bold text-xs text-neutral-500">Sesión formativa para coordinadores y estudiantes activos.</p>
                             </div>
                         </div>
-
-                        <!-- Calendar on the Left -->
-                        <div class="lg:col-span-5 order-1 lg:order-1">
-                            <div class="mj-calendar-header !mb-8">
-                                <h3 class="mj-current-month !text-2xl md:!text-3xl" id="monthDisplay">Enero 2026</h3>
-                                <div class="mj-cal-nav">
-                                    <button class="mj-cal-btn" id="calPrev">
-                                        <span class="material-symbols-outlined">chevron_left</span>
-                                    </button>
-                                    <button class="mj-cal-btn" id="calNext">
-                                        <span class="material-symbols-outlined">chevron_right</span>
-                                    </button>
+                        <a class="btn-3d btn-3d-white w-full sm:w-auto px-6 py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider flex-shrink-0 text-center" href="contacto.html">MÁS INFORMACIÓN</a>
+                    </div>
+                    <!-- EVENT 2: Insignia -->
+                    <div class="event-item reveal relative bg-duo-yellow/10 rounded-3xl p-6 sm:p-8 border-[3px] border-secondary-orange shadow-[0_8px_0_#C86018] flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden" data-date="2026-11-24">
+                        <span class="event-flag hidden absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-neutral-900/80 text-white font-headline font-black text-[10px] uppercase tracking-wider">FINALIZADO</span>
+                        <div class="flex items-center gap-6 w-full lg:w-auto">
+                            <div class="w-20 h-20 rounded-3xl bg-secondary-orange text-white border-[3px] border-secondary-dark flex flex-col items-center justify-center flex-shrink-0 shadow-[0_5px_0_#C86018]">
+                                <span class="font-headline font-black text-2xl leading-none">24</span>
+                                <span class="font-headline font-black text-[11px] uppercase tracking-wider">NOV</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="px-3 py-1 rounded-xl bg-secondary-orange text-white font-headline font-black text-[10px] uppercase tracking-wider">EVENTO INSIGNIA</span>
+                                    <span class="px-3 py-1 rounded-xl bg-neutral-900 text-white font-headline font-bold text-[10px] uppercase tracking-wider">3 DÍAS &amp; 2 NOCHES</span>
+                                </div>
+                                <h3 class="font-headline font-black text-lg sm:text-xl text-neutral-900 uppercase leading-tight">CONVENCIÓN NACIONAL MISIÓN JUVENIL</h3>
+                                <p class="font-body font-bold text-xs sm:text-sm text-neutral-600 max-w-lg leading-relaxed">Congreso anual estudiantil: conferencias magistrales, talleres de liderazgo vocacional, paneles de valores e integración nacional.</p>
+                                <div class="pt-2 max-w-sm space-y-1">
+                                    <div class="flex justify-between text-xs font-bold text-neutral-700">
+                                        <span class="text-secondary-dark font-black">ÚLTIMOS CUPOS DISPONIBLES</span>
+                                        <span>80% Inscrito</span>
+                                    </div>
+                                    <div class="w-full h-3 bg-white rounded-full border border-secondary-orange overflow-hidden p-0.5">
+                                        <div class="h-full bg-secondary-orange rounded-full" style="width: 80%;"></div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="mj-calendar-grid bg-black/20 p-4 md:p-6 rounded-3xl border border-white/5"
-                                id="calendarGrid">
-                                <!-- JS Generated -->
+                        </div>
+                        <a class="btn-3d btn-3d-orange w-full lg:w-auto px-8 py-4 rounded-2xl font-headline font-black text-sm uppercase tracking-wider whitespace-nowrap text-center" href="#unirme">INSCRIBIRME AHORA</a>
+                    </div>
+                    <!-- EVENT 3 -->
+                    <div class="event-item reveal relative overflow-hidden bg-neutral-50 rounded-3xl p-6 sm:p-7 card-chunky flex flex-col sm:flex-row items-center justify-between gap-6" data-date="2026-10-10">
+                        <span class="event-flag hidden absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-neutral-900/80 text-white font-headline font-black text-[10px] uppercase tracking-wider">FINALIZADO</span>
+                        <div class="flex items-center gap-5 w-full sm:w-auto">
+                            <div class="w-16 h-16 rounded-2xl bg-duo-purple-light text-white border-2 border-duo-purple-dark flex flex-col items-center justify-center flex-shrink-0 shadow-[0_4px_0_#6C3483]">
+                                <span class="font-headline font-black text-xl leading-none">10</span>
+                                <span class="font-headline font-black text-[10px] uppercase tracking-wider">OCT</span>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="px-2.5 py-0.5 rounded-lg bg-neutral-200 text-neutral-700 font-bold text-[11px] uppercase">Zona Sur • 2:00 PM</span>
+                                <h3 class="font-headline font-black text-base sm:text-lg text-neutral-900 uppercase">JORNADA DE VOLUNTARIADO CIUDADANO</h3>
+                                <p class="font-body font-bold text-xs text-neutral-500">Brigadas de apoyo escolar, actividades recreativas y servicio comunitario.</p>
                             </div>
                         </div>
+                        <a class="btn-3d btn-3d-white w-full sm:w-auto px-6 py-3 rounded-2xl font-headline font-black text-xs uppercase tracking-wider flex-shrink-0 text-center" href="#unirme">UNIRME AL VOLUNTARIADO</a>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
-
-    <!-- Scripts Adicionales -->
-    <script src="assets/js/calendar.js"></script>
-    <!-- ÚLTIMOS RECURSOS SECTION -->
-    <section class="py-32 px-6" id="ultimos-recursos">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="flex justify-between items-end mb-24 reveal">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
-                        ÚLTIMOS <span class="text-brand">RECURSOS</span>
-                    </h2>
-                    <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Contenido para tu
-                        crecimiento</p>
-                </div>
-                <a href="recursos.html"
-                    class="text-brand font-black uppercase tracking-widest text-xs border-b border-brand pb-2 hover:opacity-70 transition-opacity">Explorar
-                    recursos</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Resource 1 -->
-                <article class="mj-resource-card reveal">
-                    <div class="mj-card-img-wrapper">
-                        <img src="assets/img/recursos/devocional-thumb.jpg" class="mj-card-img" alt="Recurso 1"
-                            onerror="this.src='media/img/FOTOS HOME/fotos slides/slide 3.jpg'">
-                        <span class="mj-resource-badge">Devocional</span>
+        <!-- 6. FICHA DE CONTACTO -->
+        <section class="w-full bg-primary-container/10 py-20 border-b-[4px] border-border-gray" id="unirme">
+            <div class="max-w-4xl mx-auto px-5 lg:px-8">
+                <div class="reveal bg-white rounded-4xl border-[4px] border-border-gray p-8 sm:p-12 shadow-[0_12px_0_#E5E5E5] space-y-8">
+                    <div class="text-center space-y-2">
+                        <div class="w-16 h-16 mx-auto bg-secondary-orange text-white rounded-3xl border-[3px] border-secondary-dark flex items-center justify-center shadow-[0_4px_0_#C86018]">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                            </svg>
+                        </div>
+                        <h2 class="font-headline font-black text-2xl text-neutral-900 uppercase tracking-tight">FICHA DE CONTACTO Y LIDERAZGO</h2>
+                        <p class="font-body font-bold text-sm text-neutral-500 max-w-md mx-auto">Completa tu información institucional para que el equipo territorial te contacte y te vincule con tu sede educativa.</p>
                     </div>
-                    <div class="mj-card-body">
-                        <h3 class="mj-card-title">Huellas de Eternidad</h3>
-                        <p class="mj-card-text">Un devocional semanal diseñado para profundizar en tu relación con
-                            Dios en el día a día.</p>
-                        <a href="recursos.html" class="mj-card-link">
-                            <span>DESCARGAR</span>
-                            <span class="material-symbols-outlined">download</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Resource 2 -->
-                <article class="mj-resource-card reveal delay-100">
-                    <div class="mj-card-img-wrapper">
-                        <img src="assets/img/recursos/podcast-thumb.jpg" class="mj-card-img" alt="Recurso 2"
-                            onerror="this.src='media/img/FOTOS HOME/fotos slides/slide 2.jpg'">
-                        <span class="mj-resource-badge">Podcast</span>
-                    </div>
-                    <div class="mj-card-body">
-                        <h3 class="mj-card-title">Explorando el Apocalipsis</h3>
-                        <p class="mj-card-text">Nuevo episodio donde profundizamos en las señales de los tiempos y
-                            la esperanza final.</p>
-                        <a href="podcast.html" class="mj-card-link">
-                            <span>ESCUCHAR</span>
-                            <span class="material-symbols-outlined">play_arrow</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Resource 3 -->
-                <article class="mj-resource-card reveal delay-200">
-                    <div class="mj-card-img-wrapper">
-                        <img src="assets/img/recursos/estudio-thumb.jpg" class="mj-card-img" alt="Recurso 3"
-                            onerror="this.src='media/img/FOTOS HOME/fotos slides/silde 1.jpg'">
-                        <span class="mj-resource-badge">Guía de Estudio</span>
-                    </div>
-                    <div class="mj-card-body">
-                        <h3 class="mj-card-title">Identidad en Cristo</h3>
-                        <p class="mj-card-text">Material descargable para grupos pequeños sobre cómo fundamentar tu
-                            valor en Dios.</p>
-                        <a href="recursos.html" class="mj-card-link">
-                            <span>VER GUÍA</span>
-                            <span class="material-symbols-outlined">menu_book</span>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <!-- FAQ MINI SECTION -->
-    <section class="py-32 px-6" id="faq">
-        <div class="max-w-[1000px] mx-auto">
-            <div class="text-center mb-24 reveal">
-                <h2 class="text-4xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
-                    PREGUNTAS <span class="text-brand">FRECUENTES</span>
-                </h2>
-                <p class="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Resolvemos tus dudas</p>
-            </div>
-
-            <div class="reveal">
-                <!-- FAQ items here... -->
-                <div class="mj-faq-item">
-                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
-                        <h4>¿Cómo puedo unirme a la misión?</h4>
-                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
-                    </div>
-                    <div class="mj-faq-content">
-                        <p>¡Es muy sencillo! Solo tienes que hacer clic en el botón "Únete a la Misión" que verás en
-                            varias secciones de nuestra web. Te llevará a un formulario donde podrás dejarnos tus datos
-                            y nos pondremos en contacto contigo para ver cómo puedes colaborar según tus talentos y
-                            disponibilidad.</p>
-                    </div>
-                </div>
-
-                <div class="mj-faq-item">
-                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
-                        <h4>¿Tienen costo los materiales de Misión Juvenil?</h4>
-                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
-                    </div>
-                    <div class="mj-faq-content">
-                        <p>No, todos nuestros recursos digitales, devocionales y materiales de estudio son totalmente
-                            gratuitos. Creemos firmemente en democratizar el acceso al evangelismo y al crecimiento
-                            espiritual para todos los jóvenes.</p>
-                    </div>
-                </div>
-
-                <div class="mj-faq-item">
-                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
-                        <h4>¿Hacen eventos presenciales en todo el país?</h4>
-                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
-                    </div>
-                    <div class="mj-faq-content">
-                        <p>¡Sí! Aunque tenemos una fuerte presencia digital, organizamos y apoyamos eventos en colegios
-                            y universidades en diversas ciudades. Puedes estar atento a nuestra sección de "Próximos
-                            Eventos" para ver cuándo estaremos cerca de ti.</p>
-                    </div>
-                </div>
-
-                <div class="mj-faq-item">
-                    <div class="mj-faq-header" onclick="this.parentElement.classList.toggle('active')">
-                        <h4>¿Cómo puede mi colegio o universidad participar?</h4>
-                        <span class="material-symbols-outlined mj-faq-icon">expand_more</span>
-                    </div>
-                    <div class="mj-faq-content">
-                        <p>Si eres un líder estudiantil, rector o docente interesado en llevar los valores de la Misión
-                            a tu institución, escríbenos directamente a través de nuestro formulario de contacto o redes
-                            sociales. Nos encantará coordinar una visita o programa especial.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PREMIUM FOOTER -->
-    <footer class="mj-footer px-6">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-                <!-- Column 1: Brand -->
-                <div class="reveal">
-                    <img src="media/img/logo_final.png" class="mj-footer-logo" alt="Misión Juvenil Logo">
-                    <p class="text-slate-500 font-medium leading-relaxed mb-8 max-w-[300px]">
-                        Una generación apasionada por Dios, transformando cada rincón del mundo con el mensaje de
-                        esperanza en Cristo.
-                    </p>
-                    <div class="mj-footer-social">
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Column 2: Navigation -->
-                <div class="reveal delay-100">
-                    <h5 class="mj-footer-title">Navegación</h5>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="mj-footer-link">Inicio</a></li>
-                        <li><a href="recursos.html" class="mj-footer-link">Recursos</a></li>
-                        <li><a href="podcast.html" class="mj-footer-link">Podcast</a></li>
-                        <li><a href="#sumate" class="mj-footer-link">Súmate</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Contact -->
-                <div class="reveal delay-200">
-                    <h5 class="mj-footer-title">Contacto</h5>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-4 text-slate-400">
-                            <span class="material-symbols-outlined text-brand text-sm">mail</span>
-                            <span class="text-sm">hola@misionjuvenil.com</span>
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-400">
-                            <span class="material-symbols-outlined text-brand text-sm">location_on</span>
-                            <span class="text-sm">Sede Global, Movimiento D5</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 4: Newsletter -->
-                <div class="reveal delay-300">
-                    <h5 class="mj-footer-title">Mantente al día</h5>
-                    <p class="text-slate-500 mb-6 text-sm font-sans">Suscríbete para recibir los últimos devocionales y
-                        noticias.</p>
-                    <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!')">
-                        <input type="email" placeholder="Tu correo electrónico" class="mj-newsletter-input" required>
-                        <button type="submit" class="mj-newsletter-btn">SUSCRIBIRME</button>
+                    <form class="space-y-5" onsubmit="event.preventDefault(); alert('¡Información enviada con éxito! Un coordinador de Misión Juvenil se comunicará contigo.');">
+                        <div class="space-y-1.5">
+                            <label class="block font-headline font-black text-xs uppercase text-neutral-700">Nombre Completo del Estudiante / Líder</label>
+                            <input class="w-full h-12 px-5 rounded-2xl bg-neutral-50 border-[3px] border-border-gray font-bold text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:border-secondary-orange focus:ring-0 transition-all" placeholder="Ej: Juan Camilo Ortiz" required="" type="text">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label class="block font-headline font-black text-xs uppercase text-neutral-700">WhatsApp / Teléfono de Contacto</label>
+                                <input class="w-full h-12 px-5 rounded-2xl bg-neutral-50 border-[3px] border-border-gray font-bold text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:border-secondary-orange focus:ring-0 transition-all" placeholder="+57 300 000 0000" required="" type="tel">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="block font-headline font-black text-xs uppercase text-neutral-700">Colegio o Universidad</label>
+                                <input class="w-full h-12 px-5 rounded-2xl bg-neutral-50 border-[3px] border-border-gray font-bold text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:border-secondary-orange focus:ring-0 transition-all" placeholder="Ej: Univalle o I.E. Sta. Librada" required="" type="text">
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="block font-headline font-black text-xs uppercase text-neutral-700">Área o Programa de Interés</label>
+                            <select class="w-full h-12 px-5 rounded-2xl bg-neutral-50 border-[3px] border-border-gray font-bold text-neutral-800 focus:bg-white focus:border-secondary-orange focus:ring-0 transition-all">
+                                <option>Liderazgo de Campus / Círculos Estudiantiles</option>
+                                <option>Podcast &amp; Producción de Contenidos</option>
+                                <option>Voluntariado Social &amp; Brigadas Comunitarias</option>
+                                <option>Acompañamiento &amp; Mentoría de Salud Mental</option>
+                            </select>
+                        </div>
+                        <div class="pt-2">
+                            <button class="btn-3d btn-3d-orange w-full py-4 rounded-3xl font-headline font-black text-base sm:text-lg uppercase tracking-wider text-center" type="submit">ENVIAR REGISTRO INSTITUCIONAL</button>
+                        </div>
+                        <p class="text-[11px] font-bold text-center text-neutral-400">Garantizamos confidencialidad estricta según las leyes de protección de datos personales. Tus datos solo se utilizarán para fines formativos de Misión Juvenil D5.</p>
                     </form>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Bottom Bar -->
-            <div class="mj-footer-bottom">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-600">
-                    &copy; 2026 MISIÓN JUVENIL D5. TODOS LOS DERECHOS RESERVADOS.
-                </p>
-                <div class="flex gap-8">
-                    <a href="#"
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Privacidad</a>
-                    <a href="#"
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Términos</a>
+    <!-- FOOTER -->
+    <footer class="w-full bg-[#1F2E3D] text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-5 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-neutral-700">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 px-3 bg-white rounded-xl flex items-center justify-center">
+                            <img alt="Logo D5" class="h-6 w-auto object-contain" src="media/img/logos/FULL.png">
+                        </div>
+                        <span class="font-headline font-black text-xl tracking-tight">MISIÓN JUVENIL D5</span>
+                    </div>
+                    <p class="font-body font-bold text-sm text-neutral-300 leading-relaxed">Plataforma juvenil de valores, liderazgo y bienestar integral en colegios, institutos y facultades de toda la nación.</p>
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 rounded-xl bg-duo-green/20 border border-duo-green text-duo-green text-xs font-headline font-black uppercase">VINCULACIÓN ABIERTA</span>
+                        <span class="px-3 py-1 rounded-xl bg-secondary-orange/20 border border-secondary-orange text-secondary-orange text-xs font-headline font-black uppercase">OFICIAL</span>
+                    </div>
+                </div>
+                <!-- Col 2: Ecosistema -->
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">ECOSISTEMA</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="podcast.html">Podcast D5 Fuego</a></li>
+                        <li><a class="hover:text-white transition-colors" href="recursos.html">Huellas de Eternidad</a></li>
+                        <li><a class="hover:text-white transition-colors" href="muro-espiritual.html">Muro de Oración</a></li>
+                        <li><a class="hover:text-white transition-colors" href="salud-mental.html">Red de Mentores</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: Sedes -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">CAMPUS &amp; SEDES</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad del Valle</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Libre</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Icesi</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Santiago de Cali</a></li>
+                        <li><a class="hover:text-white transition-colors" href="colegios.html">SENA &amp; Red de Bachilleratos</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4: Boletín -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">BOLETÍN INFORMATIVO</h4>
+                    <p class="font-body font-bold text-xs text-neutral-300">Recibe comunicados oficiales, fechas de campamentos y talleres en tu correo.</p>
+                    <div class="flex gap-2" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte al boletín!');">
+                        <input id="newsletterEmail" class="flex-1 h-11 px-3.5 rounded-xl bg-neutral-800 border-2 border-neutral-700 text-xs text-white font-bold placeholder:text-neutral-500 focus:border-secondary-orange focus:ring-0" placeholder="tu.correo@institucion.edu.co" type="email">
+                        <button class="btn-3d btn-3d-orange px-4 h-11 rounded-xl font-headline font-black text-xs uppercase" id="newsletterBtn" type="button">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body font-bold text-xs text-neutral-400">
+                <p>© 2026 Misión Juvenil D5. Identidad, liderazgo y comunidad estudiantil.</p>
+                <div class="flex items-center gap-6">
+                    <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="#">Estatutos</a>
+                    <a class="hover:text-white transition-colors" href="contacto.html">Contacto Institucional</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Audio oculto del podcast -->
+    <audio id="podcastAudio" preload="none" src="media/audio/podcasts/podcast-ep8.mp3"></audio>
+
     <script>
-        // Accordion Hero Slider Logic
-        class AccordionSlider {
-            constructor() {
-                this.slides = document.querySelectorAll(".mj-acc-slide");
-                this.prevBtn = document.querySelector(".mj-acc-prev");
-                this.nextBtn = document.querySelector(".mj-acc-next");
-                this.currentIndex = 0;
-                this.slideInterval = null;
-
-                this.init();
+        // Animación de aparición al hacer scroll
+        (function () {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.classList.add('reveal-visible'));
+                return;
             }
-
-            init() {
-                this.slides.forEach((slide, index) => {
-                    slide.addEventListener("click", () => this.setActiveSlide(index));
-                });
-
-                if (this.prevBtn) {
-                    this.prevBtn.addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        this.previousSlide();
-                    });
-                }
-                if (this.nextBtn) {
-                    this.nextBtn.addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        this.nextSlide();
-                    });
-                }
-
-                document.addEventListener("keydown", (e) => {
-                    if (e.key === "ArrowLeft") this.previousSlide();
-                    if (e.key === "ArrowRight") this.nextSlide();
-                });
-
-                this.startAutoSlide();
-            }
-
-            setActiveSlide(index) {
-                this.slides.forEach((slide) => slide.classList.remove("active"));
-                this.slides[index].classList.add("active");
-                this.currentIndex = index;
-                this.startAutoSlide(); // Reset timer
-            }
-
-            nextSlide() {
-                const nextIndex = (this.currentIndex + 1) % this.slides.length;
-                this.setActiveSlide(nextIndex);
-            }
-
-            previousSlide() {
-                const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-                this.setActiveSlide(prevIndex);
-            }
-
-            startAutoSlide() {
-                clearInterval(this.slideInterval);
-                this.slideInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 8000);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            new AccordionSlider();
-
-            // Stats Counter Animation Logic
-            const counters = document.querySelectorAll('.mj-stat-number');
-            const speed = 200;
-
-            const animateCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText.replace('+', '').replace('%', '');
-                const inc = target / speed;
-
-                if (count < target) {
-                    const nextVal = Math.ceil(count + inc);
-                    if (counter.getAttribute('data-target') === '100') {
-                        counter.innerText = nextVal + '%';
-                    } else {
-                        counter.innerText = '+' + nextVal;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('reveal-visible');
+                        io.unobserve(e.target);
                     }
-                    setTimeout(() => animateCounter(counter), 1);
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        // Búsqueda de convocatorias: fechas pasadas se atenúan automáticamente
+        (function () {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            document.querySelectorAll('.event-item').forEach(e => {
+                const dateStr = e.getAttribute('data-date');
+                if (!dateStr) return;
+                const event = new Date(dateStr + 'T00:00:00');
+                if (event < today) {
+                    e.classList.add('past');
+                    const flag = e.querySelector('.event-flag');
+                    if (flag) flag.classList.remove('hidden');
+                }
+            });
+        })();
+
+        // Slideshow del hero: cruzado de imágenes
+        (function () {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length < 2) return;
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 6000);
+        })();
+
+        // Menú móvil
+        (function () {
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    const hidden = menu.classList.toggle('hidden');
+                    icon.textContent = hidden ? 'menu' : 'close';
+                });
+            }
+        })();
+
+        // Campus Filtering
+        (function () {
+            const chips = document.querySelectorAll('#campusFilters .filter-chip');
+            const cards = document.querySelectorAll('#campusGrid .campus-card');
+
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const filter = chip.getAttribute('data-filter');
+                    chips.forEach(c => {
+                        c.classList.remove('btn-3d-orange', 'active');
+                        c.classList.add('btn-3d-white');
+                    });
+                    chip.classList.remove('btn-3d-white');
+                    chip.classList.add('btn-3d-orange', 'active');
+                    cards.forEach(card => {
+                        const cat = card.getAttribute('data-category');
+                        card.style.display = (filter === 'all' || cat === filter) ? 'flex' : 'none';
+                    });
+                });
+            });
+        })();
+
+        // Podcast Player (EP 8 real)
+        (function () {
+            const btn = document.getElementById('podcastPlayBtn');
+            const icon = document.getElementById('podcastPlayIcon');
+            const audio = document.getElementById('podcastAudio');
+            const progress = document.getElementById('podcastProgress');
+            if (!btn || !audio) return;
+
+            btn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    btn.classList.remove('btn-3d-green');
+                    btn.classList.add('btn-3d-orange');
                 } else {
-                    counter.innerText = (counter.getAttribute('data-target') === '100' ? target + '%' : '+' + target);
+                    audio.pause();
+                    btn.classList.remove('btn-3d-orange');
+                    btn.classList.add('btn-3d-green');
                 }
-            };
+            });
 
-            // Intersection Observer for Stats
-            const observerOptions = {
-                threshold: 0.5
-            };
+            audio.addEventListener('play', () => {
+                icon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+            });
+            audio.addEventListener('pause', () => {
+                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                btn.classList.remove('btn-3d-orange');
+                btn.classList.add('btn-3d-green');
+            });
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    progress.style.width = ((audio.currentTime / audio.duration) * 100) + '%';
+                }
+            });
+            audio.addEventListener('ended', () => {
+                btn.classList.remove('btn-3d-orange');
+                btn.classList.add('btn-3d-green');
+            });
+        })();
 
-            const statsObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+        // Muro de Fe: publicar petición
+        (function () {
+            const feed = document.getElementById('muroFeed');
+            const input = document.getElementById('muroInput');
+            const submit = document.getElementById('muroSubmit');
+            if (!feed || !input || !submit) return;
 
-            counters.forEach(counter => statsObserver.observe(counter));
-        });
+            submit.addEventListener('click', () => {
+                const text = input.value.trim();
+                if (!text) return;
+                const item = document.createElement('div');
+                item.className = 'p-3 rounded-2xl bg-neutral-50 border-2 border-border-gray flex items-start gap-3';
+                item.innerHTML = '\<div class="w-8 h-8 rounded-xl bg-secondary-orange text-white font-black text-xs flex items-center justify-center flex-shrink-0">TU</div>'
+                    + '\<div class="flex-1">'
+                    + '\<div class="flex justify-between items-center">'
+                    + '\<span class="font-headline font-extrabold text-xs text-neutral-800">Tú • Recién publicado</span>'
+                    + '\<span class="text-[10px] font-bold text-neutral-400">Ahora</span>'
+                    + '\</div>'
+                    + '\<p class="text-xs font-bold text-neutral-600 mt-0.5">"\<span></span>"</p>'
+                    + '\</div>';
+                item.querySelector('span').textContent = text;
+                feed.prepend(item);
+                input.value = '';
+            });
+        })();
+
+        // Newsletter
+        (function () {
+            const btn = document.getElementById('newsletterBtn');
+            const email = document.getElementById('newsletterEmail');
+            if (!btn || !email) return;
+            btn.addEventListener('click', () => {
+                alert('¡Gracias por suscribirte al boletín!');
+                email.value = '';
+            });
+        })();
     </script>
 
-    <script src="https://cdn.botpress.cloud/desk/webchat/v4.0/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
-
 </body>
-
 </html>

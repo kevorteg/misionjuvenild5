@@ -1,705 +1,1327 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html class="light" lang="es">
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Podcast - Misión Juvenil D5</title>
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <script src="assets/js/podcast-data.js" defer></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Podcast D5 Fuego | Misión Juvenil</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&amp;family=Rubik:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        brand: '#f38334',
-                        secondary: '#449BD1',
-                        'background-dark': '#191022',
-                        'background-light': '#ffffff',
+                        "on-secondary-container": "#682f00",
+                        "secondary-container": "#ff8e3b",
+                        "secondary-fixed": "#ffdbc8",
+                        "secondary-fixed-dim": "#ffb689",
+                        "surface-tint": "#006491",
+                        "surface-container": "#e3effd",
+                        "surface-dim": "#cfdbe9",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#26323c",
+                        "inverse-on-surface": "#e7f2ff",
+                        "inverse-primary": "#8aceff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#006491",
+                        "primary-container": "#449bd1",
+                        "primary-dark": "#02557d",
+                        "secondary": "#984800",
+                        "secondary-orange": "#F58634",
+                        "secondary-dark": "#C86018",
+                        "duo-green": "#473458",
+                        "duo-green-dark": "#31233E",
+                        "duo-yellow": "#F58634",
+                        "duo-yellow-dark": "#C86018",
+                        "duo-purple": "#473458",
+                        "duo-purple-light": "#8E44AD",
+                        "duo-purple-dark": "#31233E",
+                        "brand-orange": "#F58634",
+                        "brand-blue": "#449BD1",
+                        "brand-purple": "#473458",
+                        "surface-bright": "#f7f9ff",
+                        "surface": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#ecf4ff",
+                        "surface-container-high": "#ddeaf7",
+                        "surface-container-highest": "#d8e4f1",
+                        "neutral-light": "#F7F9FA",
+                        "border-gray": "#E5E5E5",
+                        "border-gray-dark": "#CECECE",
+                        "on-surface": "#111d26",
+                        "on-surface-variant": "#4E575F",
+                        "tertiary": "#6b567c",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a28bb5",
+                        "on-tertiary-container": "#372548",
+                        "on-primary-container": "#003049",
+                        "on-error-container": "#410002",
+                        "outline": "#6f7883",
+                        "outline-variant": "#c6c7cf"
+                    },
+                    fontFamily: {
+                        headline: ["Rubik", "sans-serif"],
+                        body: ["Nunito Sans", "sans-serif"]
                     }
                 }
             }
-        }
+        };
     </script>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/podcast.css" />
-    <script src="assets/js/core.js" defer></script>
-    <script src="assets/js/podcast.js" defer></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Duolingo-style Tactile 3D Buttons & Cards */
+        .btn-3d {
+            transition: all 0.12s ease-in-out;
+            position: relative;
+            user-select: none;
+        }
+        .btn-3d-orange {
+            background-color: #F58634;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #C86018;
+            border: 2px solid #C86018;
+        }
+        .btn-3d-orange:hover {
+            background-color: #ff9344;
+        }
+        .btn-3d-orange:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #C86018;
+        }
+        .btn-3d-white {
+            background-color: #ffffff;
+            color: #3b4249;
+            box-shadow: 0 4px 0 #CECECE;
+            border: 2px solid #E5E5E5;
+        }
+        .btn-3d-white:hover {
+            background-color: #F7F9FA;
+        }
+        .btn-3d-white:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #CECECE;
+        }
+        .btn-3d-green {
+            background-color: #473458;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #31233E;
+            border: 2px solid #31233E;
+        }
+        .btn-3d-green:hover {
+            background-color: #5A4A70;
+        }
+        .btn-3d-green:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #31233E;
+        }
+        .btn-3d-blue {
+            background-color: #1CB0F6;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #1899D6;
+            border: 2px solid #1899D6;
+        }
+        .btn-3d-blue:hover {
+            background-color: #2eceff;
+        }
+        .btn-3d-blue:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #1899D6;
+        }
+        .btn-3d-purple {
+            background-color: #8E44AD;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #6C3483;
+            border: 2px solid #6C3483;
+        }
+        .btn-3d-purple:hover {
+            background-color: #9B59B6;
+        }
+        .btn-3d-purple:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #6C3483;
+        }
+
+        /* Chunky Tactile Cards */
+        .card-chunky {
+            border: 3px solid #E5E5E5;
+            box-shadow: 0 6px 0 #E5E5E5;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card-chunky:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #D5D5D5;
+        }
+        .card-chunky-purple {
+            border: 3px solid #624878;
+            box-shadow: 0 6px 0 #31233E;
+        }
+
+        /* Dropdown 3D Menu styling */
+        .nav-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        .group:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Animación de aparición al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Tarjeta de episodio que se está reproduciendo */
+        .episode-card.playing {
+            border-color: #F58634;
+            box-shadow: 0 5px 0 #C86018;
+        }
+
+        /* Chip de filtro activo */
+        .category-btn.active {
+            background-color: #006491 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 0 #02557d !important;
+            border-color: #02557d !important;
+        }
+
+        /* Fondo del hero: UNA imagen (la del último episodio) con zoom lento Ken Burns */
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.07); }
+        }
+        .hero-bg-img {
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        /* EXPERIMENTO: bordes redondeados a 0 (reversible: elimina esta regla) */
+        *, *::before, *::after {
+            border-radius: 0 !important;
+        }
+    </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white transition-colors duration-300 overflow-x-hidden">
-    <!-- Top Bar -->
-    <div
-        class="w-full bg-[#111] py-2 px-6 border-b border-white/5 flex items-center justify-between text-[11px] font-sans text-slate-400 relative z-50">
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm text-brand">mail</span>
-            <span>info@misionjuvenild5.com</span>
-        </div>
-        <div class="flex items-center gap-4">
-            <a href="https://instagram.com/misionjuvenild5" target="_blank"
-                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg></a>
-            <a href="https://facebook.com/misionjuvenild5" target="_blank"
-                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-                </svg></a>
-            <a href="https://youtube.com/c/misionjuvenild5" target="_blank"
-                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M23.498 6.186c-.275-1.031-1.082-1.838-2.115-2.113-1.864-.499-9.383-.499-9.383-.499s-7.519 0-9.382.499c-1.033.275-1.84 1.082-2.115 2.113-.5 1.864-.5 5.748-.5 5.748s0 3.884.5 5.748c.275 1.031 1.082 1.838 2.115 2.113 1.863.499 9.382.499 9.382.499s7.519 0 9.383-.499c1.033-.275 1.84-1.082 2.115-2.113.5-1.864.5-5.748.5-5.748s0-3.884-.5-5.748zm-13.498 9.314v-7l6 3.5-6 3.5z" />
-                </svg></a>
-            <a href="https://tiktok.com/@misionjuvenild5" target="_blank"
-                class="hover:text-brand transition-colors"><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M12.525.02c1.31 0 2.591.214 3.75.606V7.06c-1.427-.273-2.518-.72-3.75-1.356v10.3c0 3.535-2.866 6.4-6.4 6.4-3.535 0-6.4-2.865-6.4-6.4 0-3.535 2.865-6.4 6.4-6.4 1.002 0 1.954.232 2.8.64V0c2.144.02 4.144.02 6.4.02zm-1.875 12.8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z" />
-                </svg></a>
+<body class="bg-surface-container-low font-body text-on-surface antialiased overflow-x-hidden selection:bg-duo-yellow selection:text-neutral-900">
+
+<!-- DOBLE BARRA DE NAVEGACIÓN (HEADER INSTITUCIONAL) -->
+    <!-- TOP BAR: Azul Eléctrico -->
+    <div class="w-full bg-primary-container text-white text-xs font-semibold py-2 px-4 lg:px-8 border-b border-[#3684B3] relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
+            <div class="flex items-center flex-wrap gap-4 sm:gap-6 font-body">
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="mailto:info@misionjuvenild5.com">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                    </svg>
+                    <span>info@misionjuvenild5.com</span>
+                </a>
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="tel:+573000000000">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
+                    </svg>
+                    <span>+57 300 000 0000</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-[11px] uppercase tracking-wider text-white/80 font-headline hidden md:inline">Síguenos:</span>
+                <a aria-label="Instagram" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg>
+                </a>
+                <a aria-label="Facebook" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"></path>
+                    </svg>
+                </a>
+                <a aria-label="YouTube" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                    </svg>
+                </a>
+                <a aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.48 2.73 1.25-.07 2.39-.81 2.89-1.96.28-.62.37-1.31.37-1.99.01-4.96.01-9.92.01-14.88z"></path>
+                    </svg>
+                </a>
+                <a aria-label="Spotify" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Background Accents -->
-    <div class="fixed inset-0 pointer-events-none opacity-20 dark:opacity-30 z-0">
-        <div
-            class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary rounded-full blur-[120px] mix-blend-screen">
-        </div>
-        <div
-            class="absolute bottom-[-20%] right-[-10%] w-[40%] h-[60%] bg-secondary rounded-full blur-[100px] mix-blend-screen">
-        </div>
-    </div>
-
-    <!-- Header / Nav -->
-    <header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center">
-                <img src="media/img/logos/DUOTONO.png" alt="Misión Juvenil D5" class="h-12">
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-white border-b-2 border-slate-200 shadow-sm px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto h-20 flex items-center justify-between gap-6">
+            <!-- Brand Logo -->
+            <a class="flex items-center group flex-shrink-0" href="index.html">
+                <img alt="Misión Juvenil D5" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" src="media/img/logos/FULL.png">
             </a>
 
-            <nav class="hidden lg:flex items-center gap-8">
-                <a class="nav-link text-white hover:text-brand" href="index.html">Inicio</a>
-                <a class="nav-link text-white hover:text-brand" href="quienes-somos.html">¿Quienes Somos?</a>
-                <a class="nav-link text-white hover:text-brand" href="impacto.html">¿Qué Hacemos?</a>
-                <div class="relative group cursor-pointer flex items-center gap-1">
-                    <span class="nav-link text-white group-hover:text-brand">A un Click</span>
-                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                    <div class="dropdown-menu">
-                        <a href="podcast.html" class="dropdown-item active-nav">Podcast</a>
-                        <a href="recursos.html" class="dropdown-item">Recursos</a>
-                        <a href="muro-espiritual.html" class="dropdown-item">Muro Espiritual</a>
+            <!-- Menú de Navegación -->
+            <nav class="hidden xl:flex items-center gap-6 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <a class="hover:text-primary transition-colors py-2 text-primary border-b-2 border-primary" href="index.html">Inicio</a>
+                <a class="hover:text-primary transition-colors py-2" href="quienes-somos.html">¿Quiénes Somos?</a>
+                <a class="hover:text-primary transition-colors py-2" href="impacto.html">¿Qué Hacemos?</a>
+
+                <!-- Dropdown: A un Click -->
+                <div class="relative group py-2">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#un-click">
+                        <span>A un Click</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown con fotos -->
+                    <div class="nav-dropdown absolute top-full left-0 w-72 pt-2 z-50">
+                        <div class="bg-white rounded-2xl p-2.5 border-[3px] border-neutral-200 shadow-[0_6px_0_#D5D5D5] space-y-1">
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="podcast.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/audio/podcasts/minuatura ep 8.jpg" alt="Podcast D5">
+                                <div class="min-w-0">
+                                    <span class="flex items-center gap-1.5 text-xs font-black text-neutral-800">Podcast D5 <span class="px-1.5 py-0.5 rounded-md bg-duo-green text-white text-[9px] font-black">NUEVO</span></span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Episodios semanales</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="recursos.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/thumb_devocionales_neutral.png" alt="Recursos">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Recursos</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Guías &amp; devocionales</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="muro-espiritual.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/FOTOS HOME/fotos slides/silde 1.jpg" alt="Muro Espiritual">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Muro Espiritual</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Peticiones y fe</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="relative group cursor-pointer flex items-center gap-1">
-                    <span class="nav-link text-white group-hover:text-brand">Servicios</span>
-                    <span class="material-symbols-outlined text-sm group-hover:text-brand">expand_more</span>
-                    <div class="dropdown-menu">
-                        <a href="salud-mental.html" class="dropdown-item">Salud Mental</a>
-                        <a href="colegios.html" class="dropdown-item">Colegios</a>
-                        <a href="universidades.html" class="dropdown-item">Universidades</a>
+
+                <!-- Dropdown: Servicios -->
+                <div class="relative group py-2">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#unirme">
+                        <span>Servicios</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown con fotos -->
+                    <div class="nav-dropdown absolute top-full left-0 w-72 pt-2 z-50">
+                        <div class="bg-white rounded-2xl p-2.5 border-[3px] border-neutral-200 shadow-[0_6px_0_#D5D5D5] space-y-1">
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="salud-mental.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/FOTOS HOME/about-mj.jpg" alt="Salud Mental">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Salud Mental</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Acompañamiento 1-a-1</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="colegios.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/fotos colegios/IMG_20241120_081622.jpg" alt="Colegios">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Colegios</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Pastoral de bachillerato</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="universidades.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg" alt="Universidades">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Universidades</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Círculos y sedes activas</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <a class="nav-link text-white hover:text-brand" href="contacto.html">Contactos</a>
+
+                <a class="hover:text-primary transition-colors py-2" href="contacto.html">Contacto</a>
             </nav>
 
-            <div class="flex items-center gap-6">
-                <button
-                    class="bg-[#2a2a2a] text-white text-[11px] font-bold px-6 py-3 rounded-sm uppercase tracking-widest hover:bg-brand transition-colors"
-                    onclick="window.location.href='index.html#camp-feature'">
-                    Campamento 2026
+            <!-- CTA + Mobile -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <a class="btn-3d btn-3d-orange px-5 sm:px-7 py-2.5 sm:py-3 rounded-2xl font-headline font-black text-sm uppercase tracking-wider inline-flex items-center gap-2" href="#unirme">
+                    <span>¡UNIRME AHORA!</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                <button id="menuToggle" class="xl:hidden btn-3d btn-3d-white w-11 h-11 rounded-2xl flex items-center justify-center" aria-label="Abrir menú">
+                    <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
                 </button>
-                <button class="text-white hover:text-brand transition-colors">
-                    <span class="material-symbols-outlined text-2xl">search</span>
-                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="hidden xl:hidden border-t-2 border-slate-200 bg-white">
+            <div class="max-w-7xl mx-auto px-4 py-6 space-y-1 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <a class="block py-2.5 text-primary border-b border-slate-100" href="index.html">Inicio</a>
+                <a class="block py-2.5 border-b border-slate-100" href="quienes-somos.html">¿Quiénes Somos?</a>
+                <a class="block py-2.5 border-b border-slate-100" href="impacto.html">¿Qué Hacemos?</a>
+                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">A UN CLICK</p>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Podcast D5</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="recursos.html">Recursos</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="muro-espiritual.html">Muro Espiritual</a>
+                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">SERVICIOS</p>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="salud-mental.html">Salud Mental</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="colegios.html">Colegios</a>
+                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="universidades.html">Universidades</a>
+                <a class="block py-2.5 mt-2" href="contacto.html">Contacto</a>
             </div>
         </div>
     </header>
 
-    <div class="news-banner">
-        <div class="marquee-content">
-            <!-- Repeat item to ensure continuous flow -->
-            <div class="marquee-item">
-                <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-            <div class="marquee-item">
-                <span>Escucha el mensaje que está transformando vidas</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-            <div class="marquee-item">
-                <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-            <div class="marquee-item">
-                <span>Nuevo Episodio: EP 8 | El Poder del Propósito — ¡Ya disponible!</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-            <div class="marquee-item">
-                <span>Escucha el mensaje que está transformando vidas</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-            <div class="marquee-item">
-                <span>Misión Juvenil D5 | Campamento 2026 Muy Pronto</span>
-                <span class="marquee-divider">✦</span>
-            </div>
-        </div>
-    </div>
+    <main class="relative z-10">
 
-    <main class="relative z-10 flex-grow px-6 md:px-12 lg:px-20 py-10 max-w-[1440px] mx-auto w-full pb-40">
-        <!-- Featured Episode Hero Card -->
-        <section class="relative mb-24">
-            <div
-                class="relative group overflow-hidden rounded-[48px] bg-[#1a1523] border border-white/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] glass-card">
-                <div class="flex flex-col lg:flex-row items-stretch min-h-[500px]">
-                    <!-- Image side -->
-                    <div id="hero-bg-trigger"
-                        class="w-full lg:w-1/2 relative overflow-hidden group-hover:cursor-pointer"
-                        onclick="playEpisode('ep-8')">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-transparent to-[#1a1523]/60 z-10 hidden lg:block">
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a1523]/60 z-10 lg:hidden">
-                        </div>
+        <!-- ============ HERO: PODCAST D5 FUEGO ============ -->
+        <section class="w-full bg-primary-container text-white relative overflow-hidden py-10 lg:py-14 px-5 lg:px-8 border-b-2 border-primary-dark">
+            <!-- Capa de fondo: UNA imagen, siempre la del último episodio (se actualiza sola al agregar uno nuevo en EPISODES) -->
+            <div class="absolute inset-0 z-0">
+                <img id="hero-bg" src="media/audio/podcasts/minuatura ep 8.jpg" alt="" class="w-full h-full object-cover hero-bg-img">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary-container/70 via-primary-container/75 to-primary-dark/85"></div>
+            </div>
 
-                        <!-- Play Overlay (Default) -->
-                        <div
-                            class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] hover-play-icon">
-                            <div
-                                class="bg-brand text-background-dark rounded-full p-6 transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
-                                <span class="material-symbols-outlined !text-[48px] fill">play_arrow</span>
-                            </div>
-                        </div>
-
-                        <!-- Playing Indicator (Persistent when active) -->
-                        <div class="playing-overlay">
-                            <div class="playing-icon">
-                                <span class="material-symbols-outlined fill animate-pulse">pause</span>
-                            </div>
-                            <div class="audio-waves">
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                            </div>
-                        </div>
-
-                        <img id="hero-image" src="media/img/podcasts/minuatura ep 7.jpg"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
-                            alt="Featured Episode">
-
-                        <!-- NEW Badge -->
-                        <div id="hero-badge-new"
-                            class="absolute top-8 left-8 z-30 bg-brand text-background-dark text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-tighter shadow-2xl">
-                            NUEVO EPISODIO
-                        </div>
+            <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
+                <!-- Columna texto + badges -->
+                <div class="w-full lg:w-7/12 flex flex-col items-start gap-3 sm:gap-4">
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 reveal">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#984800]">
+                            <span class="material-symbols-outlined !text-sm">local_fire_department</span>
+                            Temporada 2026
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white text-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#8aceff]">
+                            <span class="material-symbols-outlined !text-sm">podcasts</span>
+                            +7 Episodios
+                        </span>
+                
                     </div>
 
-                    <!-- Content side -->
-                    <div class="w-full lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center gap-8 relative z-20">
-                        <div id="hero-meta"
-                            class="flex items-center gap-4 text-brand font-black uppercase text-[11px] tracking-[0.3em]">
-                            <span class="material-symbols-outlined !text-sm fill">timer</span>
-                            <span>Último Lanzamiento • Feb 2026</span>
-                        </div>
+                    <p class="font-headline font-black text-[10px] uppercase tracking-[0.35em] text-secondary-orange">Podcast de Misión Juvenil D5</p>
+                    <h1 class="font-headline font-black text-[20px] sm:text-[32px] lg:text-[40px] uppercase leading-[1.1] tracking-tight">
+                        PODCAST D5 FUEGO:<br>
+                        <span class="text-secondary-orange">VOCES QUE ENCIENDEN PROPÓSITO</span>
+                    </h1>
+                    <p class="font-body font-bold text-sm sm:text-base text-white/95 max-w-2xl leading-relaxed">
+                        Conversaciones reales sobre fe viva, liderazgo estudiantil, salud mental y victorias en los pasillos
+                        universitarios. Nuevo episodio cada semana en todas las plataformas.
+                    </p>
 
-                        <div class="space-y-4">
-                            <h1 id="hero-title"
-                                class="text-4xl md:text-[3.5rem] font-black italic tracking-tighter text-white leading-none">
-                                EP 7 | <span class="text-white/80">¿El fin del mundo?</span>
-                            </h1>
-                            <p id="hero-desc" class="text-xl text-slate-400 leading-relaxed font-light max-w-xl italic">
-                                Una reflexión profunda sobre las señales de los tiempos y nuestra esperanza en el
-                                futuro. Escucha ahora nuestra perspectiva sobre el futuro de la humanidad.
+                    <!-- Botones de streaming 3D -->
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-on-surface font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#8aceff] active:translate-y-1 active:shadow-none transition-all">
+                            <span class="material-symbols-outlined !text-sm text-primary">graphic_eq</span>
+                            Spotify
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-on-surface font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#8aceff] active:translate-y-1 active:shadow-none transition-all">
+                            <span class="material-symbols-outlined !text-sm text-error">smart_display</span>
+                            YouTube Show
+                        </a>
+                        <!-- Apple Podcasts: OCULTO por ahora (posible futuro enlace). Si se habilita, quitar las marcas de comentario. -->
+                        <!--
+                        <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-on-surface font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#8aceff] active:translate-y-1 active:shadow-none transition-all">
+                            <span class="material-symbols-outlined !text-sm text-tertiary">headphones</span>
+                            Apple Podcasts
+                        </a>
+                        -->
+                    </div>
+                </div>
+
+                <!-- Tarjeta destacada: SIEMPRE el último episodio (renderLatestEpisode la llena al cargar) -->
+                <div class="w-full lg:w-4/12 flex justify-center reveal">
+                    <div class="w-full max-w-sm bg-white text-on-surface p-2.5 sm:p-3 shadow-[0_5px_0_#02557d] flex flex-col gap-2.5 border-2 border-primary-dark">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container-high border-2 border-border-gray">
+                            <img id="heroCardArt" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito">
+                            <span id="heroCardBadge" class="absolute top-2 left-2 px-2 py-0.5 bg-secondary text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#682f00]">Episodio 08 • Estreno</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-inverse-surface/90 text-inverse-on-surface font-headline font-bold text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-xs">schedule</span> <span id="heroCardDur">28:44</span>
+                            </span>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex items-center justify-between">
+                                <span id="heroCardCat" class="text-secondary font-headline font-black text-[10px] uppercase tracking-widest">Devocionales Fuego</span>
+                                <span id="heroCardDate" class="text-on-surface-variant font-headline font-bold text-[10px]">12 Sep 2026</span>
+                            </div>
+                            <h2 id="heroCardTitle" class="font-headline font-black text-base sm:text-lg text-on-surface leading-snug uppercase">El Poder del Propósito</h2>
+                            <p id="heroCardDesc" class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                                ¿Para qué estás realmente en la universidad? Hablamos de vocación, miedo al futuro y cómo encontrar el porqué que enciende cada día.
                             </p>
                         </div>
-
-                        <div class="flex flex-wrap gap-4 mt-4">
-                            <button id="hero-play-btn" onclick="playEpisode('ep-8')"
-                                class="bg-brand text-black font-black py-5 px-12 rounded-2xl uppercase tracking-[0.2em] text-[11px] hover:brightness-110 hover:shadow-[0_20px_40px_rgba(245,134,52,0.3)] transition-all flex items-center justify-center gap-4 group">
-                                <span
-                                    class="material-symbols-outlined fill group-hover:scale-110 transition-transform">play_circle</span>
-                                <span class="relative z-10">Escuchar Podcast</span>
-                            </button>
-                            <button
-                                class="bg-white/5 border border-white/10 text-white font-black py-5 px-10 rounded-2xl uppercase tracking-[0.2em] text-[11px] hover:bg-white/10 transition-all flex items-center justify-center gap-4">
-                                <span class="material-symbols-outlined !text-sm">share</span>
-                                Compartir
-                            </button>
-                        </div>
+                        <button id="heroPlayBtn" onclick="playEpisode('ep8')" class="w-full py-2.5 bg-secondary-container text-on-secondary font-headline font-black text-xs uppercase tracking-wider shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined !text-lg">play_circle</span>
+                            Reproducir Ahora
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Category Filters & Grid Section -->
-        <section class="space-y-12">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/5 pb-8">
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-black italic text-white tracking-tighter uppercase mb-4">
-                        Episodios
-                        Recientes</h2>
-                    <p class="text-slate-500 font-medium italic">Explora nuestra biblioteca completa de mensajes y
-                        reflexiones.</p>
+        <!-- ============ FILTROS + GRILLA DE EPISODIOS ============ -->
+        <section class="max-w-7xl mx-auto px-5 lg:px-12 py-10 lg:py-12">
+            <div class="flex flex-col gap-2 sm:gap-3 reveal">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined !text-2xl text-primary">filter_list</span>
+                        Explorar por Temáticas
+                    </h2>
+                    <span class="font-body font-bold text-sm text-on-surface-variant">Selecciona un canal temático</span>
                 </div>
 
-                <!-- Filter Chips & View Switcher -->
-                <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <div class="flex flex-wrap gap-2" id="category-filters">
-                        <button onclick="filterEpisodes('all', this)"
-                            class="filter-btn active px-6 py-3 rounded-full bg-brand text-orang text-[10px] font-black uppercase tracking-widest border border-brand transition-all">Todos</button>
-                        <button onclick="filterEpisodes('Apocalipsis', this)"
-                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Apocalipsis</button>
-                        <button onclick="filterEpisodes('Espiritualidad', this)"
-                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Espiritualidad</button>
-                        <button onclick="filterEpisodes('Juventud', this)"
-                            class="filter-btn px-6 py-3 rounded-full bg-white/5 text-slate-200 text-[10px] font-black uppercase tracking-widest border border-white/5 hover:border-white/20 hover:text-white transition-all">Juventud</button>
-                    </div>
-
-                    <div class="h-8 w-[1px] bg-white/10 hidden sm:block"></div>
-
-                    <div class="flex items-center bg-white/5 p-1 rounded-xl border border-white/5">
-                        <button onclick="switchView('grid', this)" id="btn-grid-view"
-                            class="view-btn active size-10 rounded-lg flex items-center justify-center text-brand bg-white/10 shadow-lg transition-all">
-                            <span class="material-symbols-outlined !text-xl">grid_view</span>
-                        </button>
-                        <button onclick="switchView('list', this)" id="btn-list-view"
-                            class="view-btn size-10 rounded-lg flex items-center justify-center text-slate-500 hover:text-white transition-all">
-                            <span class="material-symbols-outlined !text-xl">view_list</span>
-                        </button>
-                    </div>
+                <!-- Barra de filtros 3D -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2" id="categories-bar">
+                    <button onclick="filterCategory('all', this)" class="category-btn active flex-shrink-0 px-4 py-2 bg-primary text-on-primary font-headline font-black text-[11px] uppercase tracking-wider border-2 border-primary-dark shadow-[0_4px_0_#02557d] active:translate-y-1 active:shadow-none transition-all">Todos</button>
+                    <button onclick="filterCategory('universidad', this)" class="category-btn flex-shrink-0 px-4 py-2 bg-white text-on-surface font-headline font-black text-[11px] uppercase tracking-wider border-2 border-outline-variant shadow-[0_4px_0_#c6c7cf] active:translate-y-1 active:shadow-none transition-all">Vida Universitaria</button>
+                    <button onclick="filterCategory('salud-mental', this)" class="category-btn flex-shrink-0 px-4 py-2 bg-white text-on-surface font-headline font-black text-[11px] uppercase tracking-wider border-2 border-outline-variant shadow-[0_4px_0_#c6c7cf] active:translate-y-1 active:shadow-none transition-all">Salud Mental &amp; Emocional</button>
+                    <button onclick="filterCategory('liderazgo', this)" class="category-btn flex-shrink-0 px-4 py-2 bg-white text-on-surface font-headline font-black text-[11px] uppercase tracking-wider border-2 border-outline-variant shadow-[0_4px_0_#c6c7cf] active:translate-y-1 active:shadow-none transition-all">Liderazgo en Aulas</button>
+                    <button onclick="filterCategory('relaciones', this)" class="category-btn flex-shrink-0 px-4 py-2 bg-white text-on-surface font-headline font-black text-[11px] uppercase tracking-wider border-2 border-outline-variant shadow-[0_4px_0_#c6c7cf] active:translate-y-1 active:shadow-none transition-all">Relaciones &amp; Amistades</button>
+                    <button onclick="filterCategory('devocional', this)" class="category-btn flex-shrink-0 px-4 py-2 bg-white text-on-surface font-headline font-black text-[11px] uppercase tracking-wider border-2 border-outline-variant shadow-[0_4px_0_#c6c7cf] active:translate-y-1 active:shadow-none transition-all">Devocionales Fuego</button>
                 </div>
             </div>
 
-            <!-- Episodes Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="episodes-container">
-                <!-- Dynamically populated by podcast.js -->
+            <!-- Grid de episodios -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6" id="episodes-grid">
+
+                <!-- EP 08 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="devocional" data-id="ep8">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#984800]">Nuevo Ep. 08</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">28 min</span>
+                            <button onclick="playEpisode('ep8')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-secondary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">whatshot</span>
+                            Devocionales Fuego
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">El Poder del Propósito</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Estrategias bíblicas y testimonios reales para resistir presiones académicas y vivir con propósito.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep8')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">142</span>
+                            </button>
+                            <button onclick="downloadAsset('ep8')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 06 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="salud-mental" data-id="ep6">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/minuatura ep 6.jpg" alt="Silenciar el Ruido Interior">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-primary-container text-on-primary-container font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#02557d]">Ep. 06</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">31 min</span>
+                            <button onclick="playEpisode('ep6')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-primary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">psychology</span>
+                            Salud Mental &amp; Emocional
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Silenciar el Ruido Interior</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Ansiedad, sobrecarga y cómo cultivar hábitos de descanso y paz en medio de la presión académica.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep6')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">218</span>
+                            </button>
+                            <button onclick="downloadAsset('ep6')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 05 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="liderazgo" data-id="ep5">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/minuatura ep 5.jpg" alt="Liderazgo que Enciende">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#682f00]">Ep. 05</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">26 min</span>
+                            <button onclick="playEpisode('ep5')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-secondary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">groups</span>
+                            Liderazgo en Aulas
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Liderazgo que Enciende</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Cómo empezar un grupo de oración e intercesión estudiantil durante los recreos sin avergonzarte.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep5')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">95</span>
+                            </button>
+                            <button onclick="downloadAsset('ep5')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 03 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="universidad" data-id="ep3">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/minuatura ep 3.jpg" alt="Bienvenido a la U">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#984800]">Ep. 03</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">22 min</span>
+                            <button onclick="playEpisode('ep3')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-secondary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">school</span>
+                            Vida Universitaria
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Bienvenido a la U</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Primer semestre, nuevos horizontes: cómo pisar la universidad con identidad y propósito.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep3')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">310</span>
+                            </button>
+                            <button onclick="downloadAsset('ep3')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 02 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="salud-mental" data-id="ep2">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/miniatura ep 2.webp" alt="Inseguridades y Experiencias">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-primary-container text-on-primary-container font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#02557d]">Ep. 02</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">29 min</span>
+                            <button onclick="playEpisode('ep2')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-primary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">psychology</span>
+                            Salud Mental &amp; Emocional
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Inseguridades y Experiencias</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Conversación honesta sobre inseguridad, ansiedad social y cómo volver a creer en uno mismo.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep2')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">184</span>
+                            </button>
+                            <button onclick="downloadAsset('ep2')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 01 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="relaciones" data-id="ep1">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/miniatura ep 1.webp" alt="La Primera Conversación">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-tertiary-container text-on-tertiary-container font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#372548]">Ep. 01</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">25 min</span>
+                            <button onclick="playEpisode('ep1')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-tertiary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">favorite</span>
+                            Relaciones &amp; Amistades
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">La Primera Conversación</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Rodearte de mentores pares, poner límites sanos y construir un círculo que te desafíe a crecer.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep1')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">522</span>
+                            </button>
+                            <button onclick="downloadAsset('ep1')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EP 07 (oculto hasta Cargar más) -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all hidden extra-episode reveal" data-category="devocional" data-id="ep7">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/img/podcasts/minuatura ep 7.jpg" alt="Fe en Primera Línea">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-duo-green text-white font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#31233E]">Ep. 07 • Muy pronto</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">Estreno</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-secondary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">whatshot</span>
+                            Devocionales Fuego
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Fe en Primera Línea</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Devocionales que encienden tu intimidad con Dios cuando nadie te está mirando.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <span class="px-3 py-1.5 bg-neutral-200 text-neutral-600 font-headline font-black text-[10px] uppercase tracking-wider">Próximo estreno</span>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">76</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
             </div>
 
-            <button
-                class="w-full py-10 text-center text-[10px] font-black text-brand hover:text-white transition-all uppercase tracking-[0.4em] border border-dashed border-white/10 rounded-[40px] mt-8 hover:bg-white/5">
-                Cargar más episodios
+            <!-- Cargar más -->
+            <button onclick="loadMoreEpisodes(this)" class="w-full py-3.5 mt-7 text-center font-headline font-black text-xs uppercase tracking-[0.3em] text-primary border-2 border-dashed border-outline shadow-[0_3px_0_#c6c7cf] hover:bg-primary-container/20 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined !text-lg">sync</span>
+                Cargar Más Episodios
             </button>
         </section>
 
-        <!-- PODCAST EN VIDEO Section (Full Width Grid) -->
-        <section class="mt-32 mb-20">
-            <div class="text-center mb-16">
-                <h2 class="text-brand font-black text-4xl md:text-5xl italic tracking-tight uppercase leading-none">
-                    PODCAST EN VIDEO
-                </h2>
-                <div class="h-1 w-24 bg-brand/30 mx-auto mt-6 rounded-full"></div>
+        <!-- ============ BUZÓN ANÓNIMO ============ -->
+        <section class="max-w-7xl mx-auto px-5 lg:px-12 pb-10 lg:pb-12">
+            <div class="bg-surface-container border-2 border-outline-variant shadow-[0_6px_0_#c6c7cf] p-5 sm:p-8 lg:p-10 relative overflow-hidden reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+                    <!-- Info -->
+                    <div class="lg:col-span-5 flex flex-col gap-2.5 sm:gap-3">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#984800] self-start">
+                            <span class="material-symbols-outlined !text-sm">live_help</span>
+                            Buzón Abierto
+                        </span>
+                        <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight leading-tight">¿Tienes dudas de fe, sexualidad o presión social?</h2>
+                        <p class="font-body font-bold text-sm text-on-surface-variant leading-relaxed">
+                            Envía tu pregunta de forma 100% anónima. En cada episodio leemos las dudas reales de los jóvenes
+                            y las respondemos a la luz de la Palabra y la orientación profesional.
+                        </p>
+                        <div class="bg-white p-3 shadow-[0_4px_0_#c6c7cf] flex items-center gap-3 border-2 border-border-gray">
+                            <div class="w-11 h-11 bg-primary-container text-on-primary-container flex items-center justify-center shadow-[0_3px_0_#02557d]">
+                                <span class="material-symbols-outlined !text-2xl">lock</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-headline font-black text-sm text-on-surface uppercase">Privacidad Garantizada</span>
+                                <span class="font-headline font-bold text-[10px] uppercase tracking-wider text-on-surface-variant">No guardamos direcciones IP ni nombres.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form -->
+                    <div class="lg:col-span-7 bg-white p-4 sm:p-6 shadow-[0_6px_0_#c6c7cf] border-2 border-border-gray">
+                        <form class="flex flex-col gap-3" id="cabin-form" onsubmit="submitQuestion(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface">Pseudónimo o Apodo (Opcional)</label>
+                                    <input class="w-full px-3 py-2 bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body font-bold text-sm border-2 border-outline-variant focus:border-primary focus:outline-none" placeholder="Ej. Juan de Cali" type="text">
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface">Categoría</label>
+                                    <select class="w-full px-3 py-2 bg-surface-container-low text-on-surface font-body font-bold text-sm border-2 border-outline-variant focus:border-primary focus:outline-none" required="">
+                                        <option value="universidad">Vida Universitaria &amp; Carrera</option>
+                                        <option value="salud-mental">Salud Mental &amp; Depresión</option>
+                                        <option value="fe">Dudas de Fe &amp; Ateísmo</option>
+                                        <option value="noviazgo">Noviazgo &amp; Pureza</option>
+                                        <option value="familia">Conflictos Familiares</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface">Tu Pregunta para la Cabina D5</label>
+                                <textarea class="w-full px-3 py-2 bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body font-bold text-sm border-2 border-outline-variant focus:border-primary focus:outline-none" placeholder="Escribe tu consulta con total confianza..." required="" rows="4"></textarea>
+                            </div>
+                            <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
+                                <span class="font-headline font-bold text-[10px] uppercase tracking-wider text-on-surface-variant flex items-center gap-1">
+                                    <span class="material-symbols-outlined !text-sm text-secondary">verified</span>
+                                    Se responderá en los episodios semanales
+                                </span>
+                                <button class="px-5 py-2.5 bg-secondary-container text-on-secondary font-headline font-black text-xs uppercase tracking-wider shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1.5" type="submit">
+                                    <span class="material-symbols-outlined !text-lg">send</span>
+                                    Enviar a Cabina
+                                </button>
+                            </div>
+                            <div class="hidden w-full p-2.5 bg-surface-container-high border-2 border-primary-container text-primary font-headline font-black text-xs text-center" id="cabin-toast">
+                                ¡Pregunta enviada exitosamente al equipo de producción!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PODCAST EN VIDEO ============ -->
+        <section class="max-w-7xl mx-auto px-5 lg:px-12 pb-10 lg:pb-12">
+            <div class="flex items-end justify-between flex-wrap gap-2 mb-5 reveal">
+                <div>
+                    <p class="font-headline font-black text-[10px] uppercase tracking-[0.3em] text-secondary mb-1">Episodios con imagen</p>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined !text-2xl text-error">smart_display</span>
+                        Podcast en Video
+                    </h2>
+                </div>
+                <span class="font-body font-bold text-sm text-on-surface-variant">Disfruta el podcast con imágenes en YouTube</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
+                    <img loading="lazy" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
+                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        Ver en YouTube
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 08</span>
+                </a>
 
-                <!-- EP 1 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/miniatura ep 1.webp"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=ID_EP1" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 1 | INSEGURIDADES Y EXPERIENCIAS</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm">star</span>
-                            </div>
+                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
+                    <img loading="lazy" src="media/img/podcasts/minuatura ep 6.jpg" alt="Silenciar el Ruido Interior en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
+                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        Ver en YouTube
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 06</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
+                    <img loading="lazy" src="media/img/podcasts/miniatura ep 2.webp" alt="Inseguridades y Experiencias en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
+                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        Ver en YouTube
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 02</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============ REPRODUCTOR (STICKY: pegado ARRIBA del footer) ============ -->
+        <section class="hidden sticky bottom-0 z-30 px-3 sm:px-6 pb-3">
+            <!-- Barra principal -->
+            <div id="playerBar" class="max-w-7xl mx-auto bg-white border-2 border-surface-container-highest shadow-[0_6px_0_#cfdbe9]">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-3">
+                    <!-- Info del episodio -->
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img id="playerArt" src="media/audio/podcasts/minuatura ep 8.jpg" alt="Carátula" class="w-12 h-12 object-cover border-2 border-border-gray flex-shrink-0">
+                        <div class="min-w-0">
+                            <p id="player-title" class="font-headline font-black text-sm text-on-surface truncate">El Poder del Propósito</p>
+                            <p id="player-subtitle" class="text-[10px] font-bold uppercase tracking-widest text-secondary">Podcast D5 Fuego</p>
                         </div>
+                        <button onclick="togglePlayerLike()" id="playerLikeBtn" class="ml-1 w-9 h-9 flex-shrink-0 flex items-center justify-center border-2 border-border-gray hover:border-secondary-orange transition-all" aria-label="Me gusta">
+                            <span class="material-symbols-outlined !text-lg text-on-surface-variant icon-heart">favorite</span>
+                        </button>
+                    </div>
+
+                    <!-- Controles -->
+                    <div class="flex items-center justify-center gap-1.5 sm:gap-2">
+                        <button onclick="seekRelative(-15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="-15 segundos"><span class="material-symbols-outlined !text-lg">replay</span></button>
+                        <button onclick="togglePlayState()" id="playerPlayBtn" class="w-11 h-11 bg-secondary-container text-on-secondary shadow-[0_4px_0_#984800] flex items-center justify-center transition-all" aria-label="Reproducir">
+                            <span class="material-symbols-outlined !text-2xl" id="playerPlayIcon">play_arrow</span>
+                        </button>
+                        <button onclick="seekRelative(15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="+15 segundos"><span class="material-symbols-outlined !text-lg">forward_media</span></button>
+                        <button onclick="cyclePlaybackSpeed()" id="playbackSpeedBtn" class="h-9 px-2 font-headline font-black text-xs tracking-wider border-2 border-border-gray text-on-surface-variant hover:border-primary transition-all">1.0x</button>
+                    </div>
+
+                    <!-- Progreso -->
+                    <div class="flex items-center gap-2 min-w-0 flex-1 lg:max-w-sm">
+                        <span id="current-time" class="text-[11px] font-bold text-on-surface-variant w-10 text-right tabular-nums">00:00</span>
+                        <div id="scrubBar" onclick="handleScrubClick(event)" class="relative flex-1 h-3 bg-surface-container-low border-2 border-border-gray cursor-pointer group">
+                            <div id="scrubFill" class="absolute left-0 top-0 h-full bg-secondary-container w-0"></div>
+                            <div id="scrubThumb" class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-2 border-secondary-orange -translate-x-1/2 hidden group-hover:block" style="left:0"></div>
+                        </div>
+                        <span id="duration" class="text-[11px] font-bold text-on-surface-variant w-10 tabular-nums">00:00</span>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="flex items-center justify-center gap-2">
+                        <button onclick="downloadAsset(currentId)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Descargar"><span class="material-symbols-outlined !text-lg">download</span></button>
+                        <button onclick="shareCurrentEpisode()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Compartir"><span class="material-symbols-outlined !text-lg">share</span></button>
+                        <button onclick="minimizePlayer()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Minimizar"><span class="material-symbols-outlined !text-lg">keyboard_double_arrow_down</span></button>
                     </div>
                 </div>
+            </div>
 
-                <!-- EP 2 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/miniatura ep 2.webp"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=ID_EP2" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 2 | ¿QUÉ ES EL PECADO?</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EP 3 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/minuatura ep 3.jpg"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 3 | DEPRESIÓN</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EP 5 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/minuatura ep 5.jpg"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=ID_EP5" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            CO YOUTH MISSION PODCAST | EP 5 | ¿HAY TIEMPO PARA DIOS?</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EP 6 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/minuatura ep 6.jpg"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=ID_EP6" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 6 | ¿CONOCES TODO LO QUE ESTÁ DETRÁS DEL HALLOWEEN?</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EP 7 -->
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/minuatura ep 7.jpg"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 7 | ¿EL FIN DEL MUNDO?</h4>
-                        <div class="flex items-center gap-2 mt-1 star-rating">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group flex flex-col gap-4">
-                    <div
-                        class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
-                        <img src="media/img/podcasts/minuatura ep 7.jpg"
-                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
-                        <a href="https://www.youtube.com/watch?v=va2iUmu5Cno" target="_blank"
-                            class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
-                            <div
-                                class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <svg class="size-8 fill-white" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="flex flex-col gap-1 px-1">
-                        <h4
-                            class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
-                            YOUTH MISSION PODCAST | EP 8 | ¿EL FIN DEL MUNDO?</h4>
-                        <div class="flex items-center gap-2 mt-1">
-                            <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
-                            <div class="flex text-brand">
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm fill">star</span>
-                                <span class="material-symbols-outlined !text-sm text-slate-700">star</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+            <!-- Chip para reabrir reproductor minimizado -->
+            <button id="miniOpenBtn" onclick="openPlayer()" class="hidden ml-auto mr-4 btn-3d btn-3d-orange px-4 py-2 font-headline font-black text-[11px] uppercase tracking-wider gap-2 items-center rounded-2xl" aria-label="Abrir reproductor">
+                <span class="material-symbols-outlined !text-lg">arrow_drop_up</span>
+                <span>Reproductor</span>
+            </button>
         </section>
     </main>
 
-    <!-- Pixabay Style Bottom Player (Enhanced) -->
-    <div id="custom-player"
-        class="fixed bottom-0 left-0 right-0 z-[100] bg-[#0b080f]/98 backdrop-blur-2xl border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.8)] transform translate-y-full transition-all duration-700 ease-in-out px-4 py-3">
-        <div class="max-w-[1500px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-
-            <!-- Left: Play button & Info -->
-            <div class="flex items-center gap-5 min-w-[320px]">
-                <button id="main-play-btn"
-                    class="size-12 rounded-full flex items-center justify-center bg-white/5 hover:bg-brand text-white hover:text-background-dark transition-all duration-300 group shadow-lg border border-white/10"
-                    onclick="togglePlay()">
-                    <span
-                        class="material-symbols-outlined fill !text-3xl group-hover:scale-110 transition-transform">play_arrow</span>
-                </button>
-                <div class="flex items-center gap-3">
-                    <img id="player-thumb" src=""
-                        class="size-12 rounded-lg object-cover border border-white/10 shadow-md" alt="">
-                    <div class="flex flex-col max-w-[180px]">
-                        <span id="player-title" class="text-white font-bold text-sm truncate leading-tight">Selecciona
-                            un episodio</span>
-                        <span id="player-category"
-                            class="text-white/60 text-[9px] uppercase font-bold tracking-[0.2em] mt-0.5">Misión
-                            Juvenil</span>
+    <!-- FOOTER -->
+    <footer class="w-full bg-[#1F2E3D] text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-5 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-neutral-700">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 px-3 bg-white rounded-xl flex items-center justify-center">
+                            <img alt="Logo D5" class="h-6 w-auto object-contain" src="media/img/logos/FULL.png">
+                        </div>
+                        <span class="font-headline font-black text-xl tracking-tight">MISIÓN JUVENIL D5</span>
+                    </div>
+                    <p class="font-body font-bold text-sm text-neutral-300 leading-relaxed">Plataforma juvenil de valores, liderazgo y bienestar integral en colegios, institutos y facultades de toda la nación.</p>
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 rounded-xl bg-duo-green/20 border border-duo-green text-duo-green text-xs font-headline font-black uppercase">VINCULACIÓN ABIERTA</span>
+                        <span class="px-3 py-1 rounded-xl bg-secondary-orange/20 border border-secondary-orange text-secondary-orange text-xs font-headline font-black uppercase">OFICIAL</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Center: Progress -->
-            <div class="flex-grow w-full max-w-3xl flex items-center gap-4">
-                <span id="current-time" class="text-[10px] font-mono text-slate-500 w-10 text-right">00:00</span>
-                <div class="flex-grow h-1 bg-white/5 rounded-full relative cursor-pointer group"
-                    id="progress-bar-container" onclick="seekTo(event)">
-                    <div id="progress-bar"
-                        class="absolute left-0 top-0 h-full bg-gradient-to-r from-brand to-secondary rounded-full w-0 shadow-[0_0_10px_rgba(245,134,52,0.5)]">
-                    </div>
-                    <div class="absolute top-1/2 -translate-y-1/2 size-3 bg-white border-2 border-brand rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                        id="progress-dot"></div>
-                </div>
-                <span id="duration" class="text-[10px] font-mono text-slate-500 w-10">00:00</span>
-            </div>
-
-            <!-- Right: Feature Controls -->
-            <div class="flex items-center gap-3 md:gap-5 min-w-[350px] justify-end">
-                <!-- Volume -->
-                <div class="flex items-center gap-3 group/vol">
-                    <span
-                        class="material-symbols-outlined text-slate-400 !text-xl hover:text-brand cursor-pointer transition-colors"
-                        id="volume-icon" onclick="toggleMute()">volume_up</span>
-                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8"
-                        class="w-20 h-1 bg-white/10 rounded-full appearance-none accent-brand cursor-pointer hover:bg-white/20 transition-all"
-                        oninput="setVolume(this.value)">
-                </div>
-
-                <div class="h-6 w-[1px] bg-white/10 mx-1 hidden sm:block"></div>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center gap-1 sm:gap-2">
-                    <button
-                        class="size-10 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-white/5 transition-all"
-                        onclick="this.classList.toggle('text-red-500'); this.querySelector('span').classList.toggle('fill')">
-                        <span class="material-symbols-outlined !text-xl">favorite</span>
-                    </button>
-                    <button
-                        class="size-10 rounded-lg flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-white/5 transition-all"
-                        onclick="this.classList.toggle('text-secondary'); this.querySelector('span').classList.toggle('fill')">
-                        <span class="material-symbols-outlined !text-xl">bookmark</span>
-                    </button>
-                    <button
-                        class="size-10 rounded-lg flex items-center justify-center text-brand bg-brand/10 hover:bg-brand hover:text-white transition-all shadow-sm"
-                        onclick="downloadCurrentAudio()" title="Descargar">
-                        <span class="material-symbols-outlined !text-xl">download</span>
-                    </button>
-                </div>
-
-                <button onclick="closePlayer()"
-                    class="size-8 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/5 transition-all ml-2">
-                    <span class="material-symbols-outlined !text-lg">close</span>
-                </button>
-            </div>
-        </div>
-        <audio id="audio-engine" src=""></audio>
-    </div>
-
-    <!-- PREMIUM FOOTER -->
-    <footer class="mj-footer px-6">
-        <div class="max-w-[1400px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-                <!-- Column 1: Brand -->
-                <div class="reveal">
-                    <img src="media/img/logo_final.png" class="mj-footer-logo" alt="Misión Juvenil Logo">
-                    <p class="text-slate-500 font-medium leading-relaxed mb-8 max-w-[300px]">
-                        Una generación apasionada por Dios, transformando cada rincón del mundo con el mensaje de
-                        esperanza en Cristo.
-                    </p>
-                    <div class="mj-footer-social">
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="mj-social-icon"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Column 2: Navigation -->
-                <div class="reveal delay-100">
-                    <h5 class="mj-footer-title">Navegación</h5>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="mj-footer-link">Inicio</a></li>
-                        <li><a href="recursos.html" class="mj-footer-link">Recursos</a></li>
-                        <li><a href="podcast.html" class="mj-footer-link">Podcast</a></li>
-                        <li><a href="#sumate" class="mj-footer-link">Súmate</a></li>
+                <!-- Col 2: Ecosistema -->
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">ECOSISTEMA</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="podcast.html">Podcast D5 Fuego</a></li>
+                        <li><a class="hover:text-white transition-colors" href="recursos.html">Huellas de Eternidad</a></li>
+                        <li><a class="hover:text-white transition-colors" href="muro-espiritual.html">Muro de Oración</a></li>
+                        <li><a class="hover:text-white transition-colors" href="salud-mental.html">Red de Mentores</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 3: Contact -->
-                <div class="reveal delay-200">
-                    <h5 class="mj-footer-title">Contacto</h5>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-4 text-slate-400">
-                            <span class="material-symbols-outlined text-brand text-sm">mail</span>
-                            <span class="text-sm">hola@misionjuvenil.com</span>
-                        </li>
-                        <li class="flex items-center gap-4 text-slate-400">
-                            <span class="material-symbols-outlined text-brand text-sm">location_on</span>
-                            <span class="text-sm">Sede Global, Movimiento D5</span>
-                        </li>
+                <!-- Col 3: Sedes -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">CAMPUS &amp; SEDES</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad del Valle</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Libre</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Icesi</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Santiago de Cali</a></li>
+                        <li><a class="hover:text-white transition-colors" href="colegios.html">SENA &amp; Red de Bachilleratos</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 4: Newsletter -->
-                <div class="reveal delay-300">
-                    <h5 class="mj-footer-title">Mantente al día</h5>
-                    <p class="text-slate-500 mb-6 text-sm font-sans">Suscríbete para recibir los últimos devocionales y
-                        noticias.</p>
-                    <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!')">
-                        <input type="email" placeholder="Tu correo electrónico" class="mj-newsletter-input" required>
-                        <button type="submit" class="mj-newsletter-btn">SUSCRIBIRME</button>
-                    </form>
+                <!-- Col 4: Boletín -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">BOLETÍN INFORMATIVO</h4>
+                    <p class="font-body font-bold text-xs text-neutral-300">Recibe comunicados oficiales, fechas de campamentos y talleres en tu correo.</p>
+                    <div class="flex gap-2">
+                        <input id="newsletterEmail" class="flex-1 h-11 px-3.5 rounded-xl bg-neutral-800 border-2 border-neutral-700 text-xs text-white font-bold placeholder:text-neutral-500 focus:border-secondary-orange focus:ring-0" placeholder="tu.correo@institucion.edu.co" type="email">
+                        <button class="btn-3d btn-3d-orange px-4 h-11 rounded-xl font-headline font-black text-xs uppercase" id="newsletterBtn" type="button">OK</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Bottom Bar -->
-            <div class="mj-footer-bottom">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-600">
-                    &copy; 2026 MISIÓN JUVENIL D5. TODOS LOS DERECHOS RESERVADOS.
-                </p>
-                <div class="flex gap-8">
-                    <a href="#"
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Privacidad</a>
-                    <a href="#"
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand transition-colors">Términos</a>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body font-bold text-xs text-neutral-400">
+                <p>© 2026 Misión Juvenil D5. Identidad, liderazgo y comunidad estudiantil.</p>
+                <div class="flex items-center gap-6">
+                    <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="#">Estatutos</a>
+                    <a class="hover:text-white transition-colors" href="contacto.html">Contacto Institucional</a>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="assets/js/podcast.js"></script>
-    <script src="https://cdn.botpress.cloud/desk/webchat/v4.0/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
-</body>
 
+    <!-- Audio del reproductor -->
+    <audio id="playerAudio" preload="none"></audio>
+
+    <!-- Toast de feedback -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 bg-inverse-surface text-white font-headline font-black text-sm uppercase tracking-wider opacity-0 pointer-events-none transition-all duration-300 shadow-[0_6px_0_#111d26]"></div>
+
+    <script>
+        // ---- Datos de episodios (assets reales) ----
+        // El HERO (fondo + cajita) usa SIEMPRE el episodio de mayor número que tenga audio.
+        // Al agregar un episodio nuevo, cópialo con id epN y ¡el hero se actualiza solo!
+        // El resto de campos son opcionales: name, cat, date, dur, badge, desc.
+        const EPISODES = {
+            ep8: { title: 'EP 08 | El Poder del Propósito', name: 'El Poder del Propósito', audio: 'media/audio/podcasts/podcast-ep8.mp3', img: 'media/audio/podcasts/minuatura ep 8.jpg', cat: 'Devocionales Fuego', date: '12 Sep 2026', dur: '28:44', badge: 'Episodio 08 • Estreno', desc: '¿Para qué estás realmente en la universidad? Hablamos de vocación, miedo al futuro y cómo encontrar el porqué que enciende cada día.' },
+            ep1: { title: 'EP 01 | La Primera Conversación', audio: 'media/audio/podcasts/podcast-ep1.mp3', img: 'media/img/podcasts/miniatura ep 1.webp' },
+            ep2: { title: 'EP 02 | Inseguridades y Experiencias', audio: 'media/audio/podcasts/podcast-ep2.mp3', img: 'media/img/podcasts/miniatura ep 2.webp' },
+            ep3: { title: 'EP 03 | Bienvenido a la U', audio: 'media/audio/podcasts/podcast-ep3.mp3', img: 'media/img/podcasts/minuatura ep 3.jpg' },
+            ep5: { title: 'EP 05 | Liderazgo que Enciende', audio: 'media/audio/podcasts/podcast-ep5.mp3', img: 'media/img/podcasts/minuatura ep 5.jpg' },
+            ep6: { title: 'EP 06 | Silenciar el Ruido Interior', audio: 'media/audio/podcasts/podcast-ep6.mp3', img: 'media/img/podcasts/minuatura ep 6.jpg' },
+            ep7: { title: 'EP 07 | Fe en Primera Línea', audio: '', img: 'media/img/podcasts/minuatura ep 7.jpg' }
+        };
+
+        // ---- HERO DINÁMICO: llena fondo y cajita con el último episodio (mayor número con audio) ----
+        function renderLatestEpisode() {
+            const ids = Object.keys(EPISODES).filter(k => /^ep\d+$/.test(k) && EPISODES[k].audio);
+            if (!ids.length) return;
+            ids.sort((a, b) => parseInt(a.slice(2), 10) - parseInt(b.slice(2), 10));
+            const id = ids[ids.length - 1];
+            const ep = EPISODES[id];
+            const num = id.slice(2);
+            const set = (idEl, v) => {
+                const el = document.getElementById(idEl);
+                if (el) el.textContent = v || '';
+            };
+            const bg = document.getElementById('hero-bg');
+            if (bg) bg.src = ep.img;
+            const art = document.getElementById('heroCardArt');
+            if (art) {
+                art.src = ep.img;
+                art.alt = ep.title;
+            }
+            set('heroCardTitle', ep.name || ep.title.replace(/^EP \d+ \| /, ''));
+            set('heroCardCat', ep.cat || 'Podcast D5 Fuego');
+            set('heroCardDate', ep.date || '');
+            set('heroCardDur', ep.dur || '');
+            set('heroCardBadge', ep.badge || ('Episodio ' + num + ' • Nuevo'));
+            set('heroCardDesc', ep.desc || '');
+            const btn = document.getElementById('heroPlayBtn');
+            if (btn) btn.onclick = function () { playEpisode(id); };
+        }
+        renderLatestEpisode();
+
+        const audio = document.getElementById('playerAudio');
+        const playerTitle = document.getElementById('player-title');
+        const playerSubtitle = document.getElementById('player-subtitle');
+        const playerArt = document.getElementById('playerArt');
+        const playBtn = document.getElementById('playerPlayBtn');
+        const playIcon = document.getElementById('playerPlayIcon');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        const scrubFill = document.getElementById('scrubFill');
+        const scrubThumb = document.getElementById('scrubThumb');
+        const speedBtn = document.getElementById('playbackSpeedBtn');
+        const playerBar = document.getElementById('playerBar');
+        const toast = document.getElementById('toast');
+        const episodeCards = document.querySelectorAll('.episode-card');
+        let currentId = 'ep8';
+        let speeds = [1.0, 1.25, 1.5];
+        let speedIdx = 0;
+        let toastTimer = null;
+
+        function fmt(sec) {
+            if (!isFinite(sec)) return '00:00';
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+        }
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.add('opacity-0', 'pointer-events-none'), 2200);
+        }
+
+        function markPlaying(id) {
+            episodeCards.forEach(c => c.classList.remove('playing'));
+            const active = document.querySelector('.episode-card[data-id="' + id + '"]');
+            if (active) active.classList.add('playing');
+        }
+
+        function playEpisode(id) {
+            const ep = EPISODES[id];
+            if (!ep) return;
+            if (!ep.audio) {
+                showToast('EP 07: estreno muy pronto');
+                return;
+            }
+            currentId = id;
+            playerTitle.textContent = ep.title;
+            playerSubtitle.textContent = 'Podcast D5 Fuego';
+            playerArt.src = ep.img;
+            audio.src = ep.audio;
+            audio.currentTime = 0;
+            markPlaying(id);
+            audio.play();
+            openPlayer();
+            showToast('Reproduciendo ' + ep.title);
+        }
+
+        function getCurrentId() {
+            return currentId;
+        }
+
+        function togglePlayState() {
+            if (!audio.src) {
+                playEpisode('ep8');
+                return;
+            }
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        audio.addEventListener('play', () => {
+            playIcon.textContent = 'pause';
+        });
+        audio.addEventListener('pause', () => {
+            playIcon.textContent = 'play_arrow';
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = fmt(audio.duration);
+        });
+        audio.addEventListener('timeupdate', () => {
+            currentTimeEl.textContent = fmt(audio.currentTime);
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                scrubFill.style.width = pct + '%';
+                scrubThumb.style.left = pct + '%';
+            }
+        });
+        audio.addEventListener('ended', () => {
+            playIcon.textContent = 'play_arrow';
+            showToast('Episodio finalizado');
+        });
+
+        function seekRelative(sec) {
+            if (!audio.src) {
+                playEpisode('ep8');
+                return;
+            }
+            audio.currentTime = Math.min(Math.max(audio.currentTime + sec, 0), audio.duration || 0);
+        }
+
+        function handleScrubClick(e) {
+            if (!audio.duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const ratio = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = ratio * audio.duration;
+        }
+
+        function cyclePlaybackSpeed() {
+            speedIdx = (speedIdx + 1) % speeds.length;
+            audio.playbackRate = speeds[speedIdx];
+            speedBtn.textContent = speeds[speedIdx].toFixed(2).replace(/\.00$/, '.0') + 'x';
+        }
+
+        // ---- Likes ----
+        function toggleCardLike(el) {
+            const on = el.dataset.liked === '1';
+            el.dataset.liked = on ? '0' : '1';
+            el.classList.toggle('text-error', !on);
+            const counter = el.querySelector('.like-counter');
+            if (counter) {
+                let val = parseInt(counter.textContent, 10) || 0;
+                counter.textContent = on ? val - 1 : val + 1;
+            }
+            showToast(on ? 'Quitaste tu me gusta' : '¡Gracias por tu me gusta!');
+        }
+        function togglePlayerLike() {
+            const btn = document.getElementById('playerLikeBtn');
+            const liked = btn.dataset.liked === '1';
+            btn.dataset.liked = liked ? '0' : '1';
+            const ico = btn.querySelector('.icon-heart');
+            ico.classList.toggle('!fill-current', !liked);
+            btn.classList.toggle('text-secondary-orange', !liked);
+            btn.classList.toggle('border-secondary-orange', !liked);
+            showToast(liked ? 'Quitado de favoritos' : 'Guardado en tus favoritos');
+        }
+
+        // ---- Descargar / Compartir ----
+        function downloadAsset(id) {
+            const ep = EPISODES[id];
+            if (!ep || !ep.audio) {
+                showToast('Audio disponible próximamente');
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = ep.audio;
+            a.download = ep.title + '.mp3';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            showToast('Descargando ' + ep.title);
+        }
+        function shareCurrentEpisode() {
+            const ep = EPISODES[currentId];
+            const text = '🎙️ Podcast D5 Fuego | ' + (ep ? ep.title : '') + ' — Misión Juvenil D5';
+            if (navigator.share) {
+                navigator.share({ title: 'Podcast D5 Fuego', text }).catch(() => {});
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => showToast('Enlace copiado'));
+            } else {
+                showToast('Comparte a un amigo');
+            }
+        }
+
+        // ---- Minimizar / abrir reproductor ----
+        function minimizePlayer() {
+            playerBar.classList.add('hidden');
+            const chip = document.getElementById('miniOpenBtn');
+            chip.classList.remove('hidden');
+            chip.classList.add('flex');
+        }
+        function openPlayer() {
+            playerBar.classList.remove('hidden');
+            const chip = document.getElementById('miniOpenBtn');
+            chip.classList.add('hidden');
+            chip.classList.remove('flex');
+        }
+
+        // ---- Filtros de categoría ----
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.category-btn').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.episode-card').forEach(card => {
+                const ok = cat === 'all' || card.dataset.category === cat;
+                card.style.display = ok ? 'flex' : 'none';
+            });
+        }
+
+        // ---- Cargar más ----
+        function loadMoreEpisodes(btn) {
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin !text-lg">refresh</span> Cargando...';
+            setTimeout(() => {
+                document.querySelectorAll('.extra-episode').forEach(c => {
+                    c.classList.remove('hidden');
+                    const io = new IntersectionObserver((entries) => {
+                        entries.forEach(e => {
+                            if (e.isIntersecting) {
+                                e.target.classList.add('reveal-visible');
+                                io.unobserve(e.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    io.observe(c);
+                });
+                btn.innerHTML = '<span class="material-symbols-outlined !text-lg">check</span> Todos los episodios cargados';
+                btn.classList.add('opacity-60', 'pointer-events-none');
+                showToast('Todos los episodios cargados');
+            }, 800);
+        }
+
+        // ---- Buzón a cabina ----
+        function submitQuestion(e) {
+            e.preventDefault();
+            const toast = document.getElementById('cabin-toast');
+            if (toast) {
+                toast.classList.remove('hidden');
+                e.target.reset();
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            }
+        }
+
+        // ---- Animación de aparición al hacer scroll ----
+        (function () {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.classList.add('reveal-visible'));
+                return;
+            }
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('reveal-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        // ---- Menú móvil ----
+        (function () {
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    const hidden = menu.classList.toggle('hidden');
+                    icon.textContent = hidden ? 'menu' : 'close';
+                });
+            }
+        })();
+
+        // ---- Newsletter ----
+        (function () {
+            const btn = document.getElementById('newsletterBtn');
+            const email = document.getElementById('newsletterEmail');
+            if (!btn || !email) return;
+            btn.addEventListener('click', () => {
+                alert('¡Gracias por suscribirte al boletín!');
+                email.value = '';
+            });
+        })();
+    </script>
+
+</body>
 </html>

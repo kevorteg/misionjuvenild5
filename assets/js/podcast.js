@@ -97,7 +97,7 @@ function renderEpisodes() {
 
         article.innerHTML = `
             <div class="relative aspect-video rounded-[32px] overflow-hidden shadow-2xl bg-[#1a1523] flex items-center justify-center image-container">
-                <img src="${ep.image}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <img src="${ep.image}" alt="${ep.title}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
                     <span class="material-symbols-outlined text-white !text-6xl">play_circle</span>
                 </div>
@@ -356,6 +356,7 @@ async function handleDownload(url, filename) {
 document.addEventListener('DOMContentLoaded', () => {
     updateHeroEpisode();
     renderEpisodes();
+    renderVideoPodcasts();
 
     const audio = document.getElementById('audio-engine');
     if (audio) {
@@ -410,3 +411,43 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 });
+
+function renderVideoPodcasts() {
+    const container = document.getElementById('video-podcasts-container');
+    if (!container || typeof videoPodcasts === 'undefined') return;
+
+    container.innerHTML = '';
+
+    videoPodcasts.forEach(vp => {
+        const starsHtml = Array.from({ length: 5 }).map((_, i) =>
+            `<span class="material-symbols-outlined !text-sm ${i < vp.rating ? 'fill text-brand' : 'text-slate-700'}">star</span>`
+        ).join('');
+
+        const article = document.createElement('div');
+        article.className = 'group flex flex-col gap-4';
+        article.innerHTML = `
+            <div class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10 group-hover:ring-brand/40 transition-all duration-500 bg-[#1a1523] flex items-center justify-center">
+                <img src="${vp.image}" alt="${vp.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <a href="${vp.link}" target="_blank" class="absolute inset-0 bg-[#0f0a18]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[2px]">
+                    <div class="bg-red-600 p-3 rounded-2xl shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <svg class="size-8 fill-white" viewBox="0 0 24 24">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            <div class="flex flex-col gap-1 px-1">
+                <h4 class="font-bold text-white text-sm leading-tight group-hover:text-brand transition-colors uppercase tracking-tight">
+                    ${vp.title}
+                </h4>
+                <div class="flex items-center gap-2 mt-1 star-rating">
+                    <span class="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">RATING:</span>
+                    <div class="flex">
+                        ${starsHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(article);
+    });
+}

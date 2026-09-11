@@ -82,7 +82,7 @@ function createResourceCard(resource) {
                 
                 <div class="resource-footer">
                     <button onclick="handleDownload('${resource.url}', '${resource.title}')" 
-                            class="download-link-btn group/btn">
+                            class="download-link-btn group/btn" aria-label="Descargar ${resource.title}">
                         <span>Bajar ${resource.type || 'Recurso'}</span>
                         <span class="material-symbols-outlined !text-lg">east</span>
                     </button>
