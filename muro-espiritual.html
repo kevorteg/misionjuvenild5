@@ -406,17 +406,18 @@
 <main class="relative z-10">
 
         <!-- ============ HERO ============ -->
-        <section class="w-full bg-primary-container text-on-primary relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 24px 24px;"></div>
+        <section class="w-full relative overflow-hidden">
+            <img src="media/img/hero-mj.jpg" alt="Fondo cafetero Misión Juvenil D5" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,100,145,0.88) 0%, rgba(17,29,38,0.94) 100%);"></div>
             <div class="max-w-7xl mx-auto px-5 lg:px-12 py-16 lg:py-20 relative z-10 flex flex-col items-center text-center">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-surface-container-lowest text-on-primary-container border-2 border-white/20 shadow-md mb-6 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/95 text-primary-container border-2 border-white/40 shadow-md mb-6 reveal">
                     <span class="material-symbols-outlined !text-[16px] text-primary">verified_user</span>
                     <span class="font-headline font-black text-[10px] uppercase tracking-widest">Intercesión Continua // 100% Confidencial y Anónimo</span>
                 </div>
-                <h1 class="text-[20px] sm:text-[32px] lg:text-[42px] font-headline font-black uppercase tracking-tight text-surface-container-lowest max-w-4xl mb-6 reveal">
+                <h1 class="text-[20px] sm:text-[32px] lg:text-[42px] font-headline font-black uppercase tracking-tight text-white max-w-4xl mb-6 reveal">
                     Muro Espiritual: <br class="hidden sm:block"> Nunca Caminas Solo
                 </h1>
-                <p class="font-body font-bold text-sm sm:text-base text-surface-container-lowest/90 max-w-3xl mb-12 reveal">
+                <p class="font-body font-bold text-sm sm:text-base text-neutral-200 max-w-3xl mb-12 reveal">
                     Deposita tu carga, petición o agradecimiento. Cientos de jóvenes, intercesores y líderes en Colombia y el mundo oran activamente por tu situación ahora mismo.
                 </p>
                 <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -452,8 +453,9 @@
         </section>
 
         <!-- ============ FORMULARIO PETICION / TESTIMONIO ============ -->
-        <section class="max-w-4xl w-full mx-auto px-5 lg:px-12 -mt-8 relative z-20">
-            <div class="bg-surface-container-lowest border-2 border-outline-variant shadow-[0_8px_0_#c6c7cf] p-6 sm:p-10 reveal">
+        <section class="max-w-7xl w-full mx-auto px-5 lg:px-12 -mt-8 relative z-20">
+            <div class="grid md:grid-cols-2 gap-6 items-start">
+                <div class="bg-surface-container-lowest border-2 border-outline-variant shadow-[0_8px_0_#c6c7cf] p-6 sm:p-10 reveal">
                 <div class="flex gap-2 mb-6 p-1.5 bg-surface-container-low border-2 border-outline-variant">
                     <button class="flex-1 py-3 px-4 font-headline font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all bg-surface-container-lowest text-primary border-2 border-primary shadow-[0_3px_0_#006491]" id="tab-peticion" onclick="setTab('peticion')" type="button">
                         <span class="material-symbols-outlined !text-[18px]">send_time_extension</span>
@@ -521,6 +523,15 @@
                         </div>
                         <textarea class="w-full p-4 bg-surface-container-low text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary border-2 border-outline-variant resize-none transition-colors" id="petition-text" maxlength="400" oninput="updateCounter(this)" placeholder="Escribe aquí con total libertad. Nuestro equipo y la comunidad intercederán con fe por este motivo..." rows="4"></textarea>
                     </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-headline font-black text-xs uppercase tracking-wider text-on-surface" for="file-upload">Adjunta foto o video <span class="font-body font-bold text-[10px] text-on-surface-variant normal-case">(opcional)</span></label>
+                        <label class="flex items-center gap-3 w-full p-3.5 bg-surface-container-low border-2 border-dashed border-outline-variant text-on-surface-variant cursor-pointer transition-colors hover:border-secondary-orange hover:text-secondary-orange" for="file-upload">
+                            <span class="material-symbols-outlined !text-2xl">add_photo_alternate</span>
+                            <span class="font-body font-bold text-xs" id="file-upload-name">Sube una foto o video de tu historia</span>
+                        </label>
+                        <input class="sr-only" id="file-upload" type="file" accept="image/*,video/*" onchange="handleFileSelect(this)">
+                        <div class="hidden overflow-hidden border-2 border-outline-variant" id="file-upload-preview"></div>
+                    </div>
                     <div class="flex items-center gap-3 p-3.5 bg-secondary-container/10 border-2 border-secondary-container/30">
                         <input class="w-5 h-5 accent-secondary cursor-pointer" id="check-support" type="checkbox">
                         <label class="font-body font-bold text-xs text-on-surface select-none cursor-pointer" for="check-support">
@@ -534,6 +545,32 @@
                         </button>
                     </div>
                 </form>
+                </div>
+
+                <!-- DERECHA: FOTO + GUÍA -->
+                <div class="grid gap-4 lg:sticky lg:top-24 reveal">
+                    <div class="relative overflow-hidden border-2 border-outline-variant shadow-[0_6px_0_#c6c7cf]">
+                        <img src="media/img/FOTOS HOME/about-mj.jpg" alt="Jóvenes en comunidad Misión D5" class="w-full h-52 sm:h-64 object-cover">
+                        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(17,29,38,0) 40%, rgba(17,29,38,0.9) 100%);"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <span class="inline-flex items-center gap-1.5 bg-white/95 text-on-surface px-2.5 py-1 border-2 border-outline-variant font-headline font-black text-[10px] uppercase tracking-widest mb-2">
+                                <span class="material-symbols-outlined !text-sm text-primary">front_hand</span>
+                                Muro en vivo
+                            </span>
+                            <p class="font-headline font-black text-sm sm:text-base text-white uppercase leading-snug">Miles de jóvenes están orando por ti ahora mismo</p>
+                        </div>
+                    </div>
+                    <div class="bg-duo-green text-white p-5 border-2 border-duo-green-dark shadow-[0_5px_0_#31233E]">
+                        <h4 class="font-headline font-black text-xs uppercase tracking-wider text-secondary-orange mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined !text-base">menu_book</span> Guía rápida
+                        </h4>
+                        <ol class="space-y-2">
+                            <li class="flex items-start gap-2.5"><span class="w-6 h-6 bg-white/15 border-2 border-white/40 flex items-center justify-center shrink-0 font-headline font-black text-[10px]">1</span><span class="font-body font-bold text-xs leading-relaxed">Escribe tu motivo con total libertad</span></li>
+                            <li class="flex items-start gap-2.5"><span class="w-6 h-6 bg-white/15 border-2 border-white/40 flex items-center justify-center shrink-0 font-headline font-black text-[10px]">2</span><span class="font-body font-bold text-xs leading-relaxed">Elige el área de oración que necesitas</span></li>
+                            <li class="flex items-start gap-2.5"><span class="w-6 h-6 bg-white/15 border-2 border-white/40 flex items-center justify-center shrink-0 font-headline font-black text-[10px]">3</span><span class="font-body font-bold text-xs leading-relaxed">Levanta tu petición y sé anónimo si lo prefieres</span></li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1004,6 +1041,96 @@
             </div>
         </section>
 
+        <!-- ============ PREGUNTAS DE JÓVENES (FAQ) ============ -->
+        <section class="bg-surface-container-low border-y-2 border-outline-variant">
+            <div class="max-w-4xl mx-auto px-5 lg:px-12 py-10 lg:py-14">
+                <div class="mb-8 reveal">
+                    <div class="inline-block px-3 py-1.5 bg-secondary-container text-on-secondary shadow-[0_3px_0_#984800] mb-3">
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest">Café & Respuestas</span>
+                    </div>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">
+                        Preguntas que todo joven se hace
+                    </h2>
+                    <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant mt-2 max-w-2xl">
+                        Sin pena, sin juzgar. Respondemos con honestidad las dudas que tienes — siendo cristiano o no.
+                    </p>
+                </div>
+
+                <div class="grid gap-3">
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿Qué hago cuando me siento solo?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">La soledad no define tu valor. Dios dice que está cerca de los que tienen el corazón herido (Salmo 34:18). No te aísles: busca una comunidad real (Hebreos 10:24-25) y cuéntale a un líder o mentor de confianza. Compartir el peso lo hace más ligero.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿Debo cambiar mi forma de vestir para ser cristiano?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">No. Dios mira el corazón, no la ropa (1 Samuel 16:7). Tu estilo puede expresar tu fe con autenticidad; lo que se transforma es tu carácter, no tu identidad. Nadie se acerca a Cristo por el código de vestimenta, sino por el amor real.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿Está mal tener dudas?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">No. Tomás dudó y Jesús no lo rechazó: lo invitó a acercarse y tocar sus heridas. Las dudas no te hacen menos discípulo. La fe madura haciendo preguntas honestas, no evitándolas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿Si he cometido errores, Dios todavía me ama?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">Sí. Su amor no se gana ni se pierde: es misericordia nueva cada mañana (Lamentaciones 3:22-23). Dios no da "segundas oportunidades", da inicios nuevos. Lleva tus errores a Él con honestidad y déjate restaurar.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿Cómo sé cuál es mi vocación?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">No tienes que tenerlo todo claro hoy. Camina un paso a la vez: ora (Proverbios 3:5-6), sirve donde estás y pide consejo sabio. Dios guía a quienes lo buscan. Mi vocación se descubre sirviendo, no solo pensando.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-surface-container-lowest border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] reveal">
+                        <button class="faq-q w-full flex items-center justify-between gap-4 p-4 font-headline font-black text-xs sm:text-sm text-on-surface uppercase tracking-wider text-left" onclick="toggleFaq(this)" type="button">
+                            <span>¿La fe y la razón se contradicen?</span>
+                            <span class="faq-icon material-symbols-outlined !text-2xl shrink-0 text-primary">add</span>
+                        </button>
+                        <div class="faq-a hidden px-4 pb-4">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface-variant leading-relaxed">No. La fe responde el "porqué" y la ciencia el "cómo". Muchos grandes científicos creen en Dios. Tener fe no apaga tu mente: la usa. Puedes ser intelectual, crítico y creyente al mismo tiempo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Envíanos tu pregunta -->
+                <div class="mt-8 bg-duo-green-dark text-white p-5 sm:p-6 border-2 border-duo-green shadow-[0_5px_0_#211a2b] reveal">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1">
+                            <h3 class="font-headline font-black text-sm sm:text-base uppercase text-secondary-orange">¿Tienes otra pregunta?</h3>
+                            <p class="font-body font-bold text-xs text-neutral-300 mt-1 leading-relaxed">Escríbenosla y un consejero de Misión D5 te responde por WhatsApp, sin vueltas y sin juicios.</p>
+                        </div>
+                        <form class="flex flex-col sm:flex-row gap-2 w-full md:w-auto" onsubmit="submitQuestion(event)">
+                            <input class="flex-1 min-w-0 px-3.5 py-2.5 bg-white border-2 border-white text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-secondary-orange" id="faq-question-input" placeholder="Escribe tu pregunta sin pena..." type="text" required>
+                            <button class="px-5 py-2.5 bg-secondary-container text-on-secondary font-headline font-black text-xs uppercase tracking-wider shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2" type="submit">
+                                <span class="material-symbols-outlined !text-lg">send</span> Enviar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ============ MODAL DE ÁNIMO ============ -->
         <div id="encourage-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
             <div class="bg-surface-container-lowest border-2 border-outline-variant shadow-[0_8px_0_#c6c7cf] p-6 max-w-md w-full">
@@ -1124,11 +1251,13 @@
                 btnT.className = 'flex-1 py-3 px-4 font-headline font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all bg-transparent text-on-surface-variant border-2 border-transparent hover:border-outline-variant';
                 labelDesc.innerText = 'Describe tu petici\u00f3n';
                 btnSubmit.innerText = 'Levantar Petici\u00f3n al Muro';
+                document.getElementById('file-upload-name').innerText = 'Adjunta una foto de tu situaci\u00f3n (opcional)';
             } else {
                 btnT.className = 'flex-1 py-3 px-4 font-headline font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all bg-surface-container-lowest text-secondary border-2 border-secondary shadow-[0_3px_0_#984800]';
                 btnP.className = 'flex-1 py-3 px-4 font-headline font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all bg-transparent text-on-surface-variant border-2 border-transparent hover:border-outline-variant';
                 labelDesc.innerText = 'Describe tu testimonio de victoria';
                 btnSubmit.innerText = 'Publicar Testimonio';
+                document.getElementById('file-upload-name').innerText = 'Sube la foto o video de tu testimonio';
             }
         }
 
@@ -1169,10 +1298,26 @@
             var btnLabel = isTestimonio ? 'Am\u00e9n' : 'Orar';
             var btnStyle = isTestimonio ? 'bg-tertiary-container/25 text-tertiary border-2 border-tertiary-container' : 'bg-secondary-container/20 text-secondary border-2 border-secondary-container';
             var btnIcon = isTestimonio ? 'sentiment_very_satisfied' : 'local_fire_department';
-            newCard.innerHTML = '<div><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center gap-1.5 px-3 py-1 ' + badgeColor + ' font-headline font-black text-[10px] uppercase"><span class="material-symbols-outlined !text-[14px]">' + badgeIcon + '</span>' + badgeLabel + '</span><span class="font-body font-bold text-[10px] text-on-surface-variant">Ahora mismo</span></div><div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined !text-[16px] text-primary">person_pin</span><span class="font-headline font-black text-xs text-on-surface uppercase">' + authorInput + ' (' + locationInput + ')</span></div><p class="font-body font-bold text-xs text-on-surface-variant mb-5 leading-relaxed">\u201c' + text + '\u201d</p></div><div class="flex items-center justify-between pt-3 border-t-2 border-outline-variant"><button class="prayer-btn flex items-center gap-2 px-3 py-1.5 ' + btnStyle + ' font-headline font-black text-[11px] uppercase tracking-wider transition-transform active:translate-y-[2px]" onclick="incrementPrayer(this)" type="button"><span class="material-symbols-outlined !text-[18px]">' + btnIcon + '</span><span>' + btnLabel + ' (<span class="count">1</span>)</span></button><button class="flex items-center gap-1 text-primary font-headline font-black text-[11px] uppercase tracking-wider hover:underline" onclick="openEncourageModal(\'' + authorInput.replace(/'/g, "\\'") + '\')" type="button"><span class="material-symbols-outlined !text-[16px]">add_comment</span><span>' + (isTestimonio ? 'Celebrar' : 'Palabra') + '</span></button></div>';
+            var mediaHtml = '';
+            var fileUpload = document.getElementById('file-upload');
+            if (fileUpload && fileUpload.files.length) {
+                var fu = fileUpload.files[0];
+                var fUrl = URL.createObjectURL(fu);
+                mediaHtml = (fu.type.indexOf('video') > -1)
+                    ? '<div class="mt-3 overflow-hidden border-2 border-outline-variant"><video src="' + fUrl + '" controls class="w-full h-36 object-cover bg-black"></video></div>'
+                    : '<div class="mt-3 overflow-hidden border-2 border-outline-variant"><img src="' + fUrl + '" class="w-full h-36 object-cover" alt="Adjunto"></div>';
+            }
+            newCard.innerHTML = '<div><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center gap-1.5 px-3 py-1 ' + badgeColor + ' font-headline font-black text-[10px] uppercase"><span class="material-symbols-outlined !text-[14px]">' + badgeIcon + '</span>' + badgeLabel + '</span><span class="font-body font-bold text-[10px] text-on-surface-variant">Ahora mismo</span></div><div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined !text-[16px] text-primary">person_pin</span><span class="font-headline font-black text-xs text-on-surface uppercase">' + authorInput + ' (' + locationInput + ')</span></div><p class="font-body font-bold text-xs text-on-surface-variant mb-5 leading-relaxed">\u201c' + text + '\u201d</p>' + mediaHtml + '</div><div class="flex items-center justify-between pt-3 border-t-2 border-outline-variant"><button class="prayer-btn flex items-center gap-2 px-3 py-1.5 ' + btnStyle + ' font-headline font-black text-[11px] uppercase tracking-wider transition-transform active:translate-y-[2px]" onclick="incrementPrayer(this)" type="button"><span class="material-symbols-outlined !text-[18px]">' + btnIcon + '</span><span>' + btnLabel + ' (<span class="count">1</span>)</span></button><button class="flex items-center gap-1 text-primary font-headline font-black text-[11px] uppercase tracking-wider hover:underline" onclick="openEncourageModal(\'' + authorInput.replace(/'/g, "\\'") + '\')" type="button"><span class="material-symbols-outlined !text-[16px]">add_comment</span><span>' + (isTestimonio ? 'Celebrar' : 'Palabra') + '</span></button></div>';
             wallGrid.prepend(newCard);
             textEl.value = '';
             document.getElementById('char-counter').innerText = '0 / 400';
+            if (fileUpload) {
+                fileUpload.value = '';
+                document.getElementById('file-upload-name').innerText = 'Sube una foto o video de tu historia';
+                var prevReset = document.getElementById('file-upload-preview');
+                prevReset.classList.add('hidden');
+                prevReset.innerHTML = '';
+            }
             alert('\u00a1Tu petici\u00f3n ha sido colocada en el Muro Espiritual!');
         }
 
@@ -1227,6 +1372,40 @@
             if (navigator.share) {
                 navigator.share({ title: 'Muro Espiritual D5', text: 'Filipenses 4:6-7', url: window.location.href });
             } else { copyVerse(); }
+        }
+
+        function toggleFaq(btn) {
+            var item = btn.closest('.faq-item');
+            var ans = item.querySelector('.faq-a');
+            var icon = btn.querySelector('.faq-icon');
+            var isOpen = !ans.classList.contains('hidden');
+            ans.classList.toggle('hidden', isOpen);
+            icon.textContent = isOpen ? 'add' : 'close';
+        }
+
+        function handleFileSelect(input) {
+            var nameEl = document.getElementById('file-upload-name');
+            var prev = document.getElementById('file-upload-preview');
+            var f = input.files[0];
+            if (!f) {
+                nameEl.innerText = 'Sube una foto o video de tu historia';
+                prev.classList.add('hidden');
+                prev.innerHTML = '';
+                return;
+            }
+            nameEl.innerText = f.name;
+            prev.classList.remove('hidden');
+            var url = URL.createObjectURL(f);
+            prev.innerHTML = (f.type.indexOf('video') > -1)
+                ? '<video src="' + url + '" controls class="w-full h-32 object-cover bg-black"></video>'
+                : '<img src="' + url + '" class="w-full h-32 object-cover" alt="Vista previa">';
+        }
+
+        function submitQuestion(e) {
+            e.preventDefault();
+            var q = document.getElementById('faq-question-input').value.trim();
+            if (!q) { return; }
+            window.open('https://wa.me/573137159439?text=' + encodeURIComponent('Hola! Tengo una pregunta para Misión Juvenil D5: ' + q), '_blank');
         }
     </script>
 </body>
