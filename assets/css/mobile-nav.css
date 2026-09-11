@@ -1,4 +1,27 @@
 @media (max-width: 1279px) {
+    body > div.w-full.bg-primary-container > div > div:first-child {
+        gap: 0.5rem;
+        font-size: 10px;
+    }
+
+    body > div.w-full.bg-primary-container > div > div:last-child {
+        display: none;
+    }
+
+    footer {
+        padding-top: 2.5rem !important;
+        padding-bottom: 6rem !important;
+    }
+
+    footer .grid {
+        gap: 1.5rem !important;
+    }
+
+    footer .footer-socials {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
     #menuToggle {
         display: none !important;
     }
