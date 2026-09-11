@@ -1,0 +1,120 @@
+@media (max-width: 1279px) {
+    #menuToggle {
+        display: none !important;
+    }
+
+    .mobile-nav-cta {
+        display: none !important;
+    }
+
+    .mobile-join-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        color: #ffffff;
+        background: #f58634;
+        border: 2px solid #c86018;
+        box-shadow: 0 3px 0 #c86018;
+    }
+
+    .mobile-join-action:active {
+        transform: translateY(3px);
+        box-shadow: none;
+    }
+
+    #mobileMenu.mobile-app-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        overflow-y: auto;
+        display: block;
+        background: #ffffff;
+        padding: 1rem 1rem 6.5rem;
+    }
+
+    #mobileMenu.mobile-app-menu.hidden {
+        display: none;
+    }
+
+    .mobile-menu-shell {
+        max-width: 34rem;
+        margin: 0 auto;
+    }
+
+    .mobile-menu-topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0 1.25rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .mobile-app-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 3.25rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .mobile-app-link .material-symbols-outlined {
+        color: #006491;
+    }
+
+    .mobile-app-section {
+        padding-top: 1.5rem;
+        padding-bottom: 0.35rem;
+        color: #6b7280;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+    }
+
+    .mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 45;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        min-height: 4.25rem;
+        padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+        background: #ffffff;
+        border-top: 2px solid #dbe3eb;
+        box-shadow: 0 -4px 0 rgba(207, 219, 233, 0.55);
+    }
+
+    .mobile-bottom-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.15rem;
+        color: #64748b;
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .mobile-bottom-nav a.active {
+        color: #006491;
+    }
+
+    .mobile-bottom-nav .material-symbols-outlined {
+        font-size: 22px;
+    }
+
+    body.mobile-menu-open {
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 1280px) {
+    .mobile-bottom-nav {
+        display: none;
+    }
+}

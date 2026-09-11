@@ -169,6 +169,89 @@
             pointer-events: auto;
         }
 
+        @media (max-width: 1279px) {
+            #menuToggle { display: none !important; }
+            .mobile-join-action {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 2.75rem;
+                height: 2.75rem;
+                color: #ffffff;
+                background: #F58634;
+                border: 2px solid #C86018;
+                box-shadow: 0 3px 0 #C86018;
+            }
+            .mobile-join-action:active { transform: translateY(3px); box-shadow: none; }
+            #mobileMenu {
+                position: fixed;
+                inset: 0;
+                z-index: 60;
+                overflow-y: auto;
+                background: #ffffff;
+                padding: 1rem 1rem 6.5rem;
+            }
+            .mobile-menu-shell {
+                max-width: 34rem;
+                margin: 0 auto;
+            }
+            .mobile-menu-topline {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.5rem 0 1.25rem;
+                border-bottom: 2px solid #e2e8f0;
+            }
+            .mobile-app-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 3.25rem;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .mobile-app-link .material-symbols-outlined { color: #006491; }
+            .mobile-app-section {
+                padding-top: 1.5rem;
+                padding-bottom: 0.35rem;
+                color: #6b7280;
+                font-size: 10px;
+                letter-spacing: 0.16em;
+            }
+            .mobile-bottom-nav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 45;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                min-height: 4.25rem;
+                padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+                background: #ffffff;
+                border-top: 2px solid #dbe3eb;
+                box-shadow: 0 -4px 0 rgba(207, 219, 233, 0.55);
+            }
+            .mobile-bottom-nav a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.15rem;
+                color: #64748b;
+                font-size: 9px;
+                font-weight: 900;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+            .mobile-bottom-nav a.active { color: #006491; }
+            .mobile-bottom-nav .material-symbols-outlined { font-size: 22px; }
+            body.mobile-menu-open { overflow: hidden; }
+        }
+        @media (min-width: 1280px) {
+            .mobile-bottom-nav { display: none; }
+        }
+
         /* Profundidad del hero: zoom lento Ken Burns */
         @keyframes heroZoom {
             from { transform: scale(1); }
@@ -399,42 +482,57 @@
 
             <!-- CTA + Mobile -->
             <div class="flex items-center gap-3 flex-shrink-0">
-                <a class="btn-3d btn-3d-orange px-5 sm:px-7 py-2.5 sm:py-3 rounded-2xl font-headline font-black text-sm uppercase tracking-wider inline-flex items-center gap-2" href="https://chat.whatsapp.com/FDTf5jQ5yfF4xSTOev0JeT" target="_blank" rel="noopener">
+                <a class="hidden xl:inline-flex btn-3d btn-3d-orange px-5 sm:px-7 py-2.5 sm:py-3 rounded-2xl font-headline font-black text-sm uppercase tracking-wider items-center gap-2" href="https://chat.whatsapp.com/FDTf5jQ5yfF4xSTOev0JeT" target="_blank" rel="noopener">
                     <span>¡UNIRME AHORA!</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </a>
-                <button id="menuToggle" class="xl:hidden btn-3d btn-3d-white w-11 h-11 rounded-2xl flex items-center justify-center" aria-label="Abrir menú">
+                <a class="mobile-join-action xl:hidden" href="https://chat.whatsapp.com/FDTf5jQ5yfF4xSTOev0JeT" target="_blank" rel="noopener" aria-label="Unirme ahora">
+                    <span class="material-symbols-outlined">group_add</span>
+                </a>
+                <button id="menuToggle" class="xl:hidden btn-3d btn-3d-white w-11 h-11 rounded-2xl flex items-center justify-center" aria-label="Abrir navegación" aria-expanded="false">
                     <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
                 </button>
             </div>
         </div>
 
         <!-- Menú móvil -->
-        <div id="mobileMenu" class="hidden xl:hidden border-t-2 border-slate-200 bg-white">
-            <div class="max-w-7xl mx-auto px-4 py-6 space-y-1 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
-                <a class="block py-2.5 text-primary border-b border-slate-100" href="index.html">Inicio</a>
-                <a class="block py-2.5 border-b border-slate-100" href="quienes-somos.html">¿Quiénes Somos?</a>
-                <a class="block py-2.5 border-b border-slate-100" href="impacto.html">¿Qué Hacemos?</a>
-                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">A UN CLICK</p>
-                <p class="pl-3 pt-1 pb-0.5 text-[10px] font-black uppercase tracking-widest text-secondary-orange">MISIÓN JUVENIL A UN CLICK · PODCAST</p>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Ep. 08 · El Poder del Propósito</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Ep. 06 · Silenciar el Ruido Interior</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Ep. 05 · Liderazgo que Enciende</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Ep. 03 · Bienvenido a la U</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="podcast.html">Podcast D5</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="recursos.html">Recursos</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="muro-espiritual.html">Muro Espiritual</a>
-<a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="digital.html">A un Click</a>
-                <p class="pt-4 pb-1 text-[10px] font-black text-neutral-400 tracking-widest">SERVICIOS</p>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="salud-mental.html">Salud Mental</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="colegios.html">Colegios</a>
-                <a class="block py-2.5 pl-3 rounded-xl hover:bg-neutral-50" href="universidades.html">Universidades</a>
-                <a class="block py-2.5 mt-2" href="contacto.html">Contacto</a>
+        <div id="mobileMenu" class="hidden xl:hidden" aria-hidden="true">
+            <div class="mobile-menu-shell font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <div class="mobile-menu-topline">
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.18em] text-secondary-orange">MISIÓN JUVENIL D5</p>
+                        <p class="mt-1 text-base font-black text-neutral-900">NAVEGACIÓN</p>
+                    </div>
+                    <button id="mobileMenuClose" class="btn-3d btn-3d-white w-10 h-10 flex items-center justify-center" type="button" aria-label="Cerrar navegación">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <p class="mobile-app-section">PRINCIPAL</p>
+                <a class="mobile-app-link text-primary" href="index.html"><span>Inicio</span><span class="material-symbols-outlined">home</span></a>
+                <a class="mobile-app-link" href="quienes-somos.html"><span>Quiénes somos</span><span class="material-symbols-outlined">groups</span></a>
+                <a class="mobile-app-link" href="impacto.html"><span>Qué hacemos</span><span class="material-symbols-outlined">insights</span></a>
+                <p class="mobile-app-section">A UN CLICK</p>
+                <a class="mobile-app-link" href="podcast.html"><span>Podcast D5</span><span class="material-symbols-outlined">podcasts</span></a>
+                <a class="mobile-app-link" href="recursos.html"><span>Recursos</span><span class="material-symbols-outlined">menu_book</span></a>
+                <a class="mobile-app-link" href="muro-espiritual.html"><span>Muro espiritual</span><span class="material-symbols-outlined">volunteer_activism</span></a>
+                <a class="mobile-app-link" href="digital.html"><span>A un Click</span><span class="material-symbols-outlined">bolt</span></a>
+                <p class="mobile-app-section">SERVICIOS</p>
+                <a class="mobile-app-link" href="salud-mental.html"><span>Salud mental</span><span class="material-symbols-outlined">psychology</span></a>
+                <a class="mobile-app-link" href="colegios.html"><span>Colegios</span><span class="material-symbols-outlined">school</span></a>
+                <a class="mobile-app-link" href="universidades.html"><span>Universidades</span><span class="material-symbols-outlined">account_balance</span></a>
+                <a class="mobile-app-link" href="contacto.html"><span>Contacto</span><span class="material-symbols-outlined">mail</span></a>
             </div>
         </div>
     </header>
+
+    <nav class="mobile-bottom-nav xl:hidden" aria-label="Navegación principal móvil">
+        <a class="active" href="index.html"><span class="material-symbols-outlined">home</span><span>Inicio</span></a>
+        <a href="podcast.html"><span class="material-symbols-outlined">podcasts</span><span>Podcast</span></a>
+        <a href="recursos.html"><span class="material-symbols-outlined">menu_book</span><span>Recursos</span></a>
+        <a href="#" id="mobileBottomMenu"><span class="material-symbols-outlined">apps</span><span>Más</span></a>
+    </nav>
 
     <main>
         <!-- 1. HERO SECTION -->
@@ -1244,12 +1342,23 @@
             const toggle = document.getElementById('menuToggle');
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('menuIcon');
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    const hidden = menu.classList.toggle('hidden');
-                    icon.textContent = hidden ? 'menu' : 'close';
-                });
-            }
+            const close = document.getElementById('mobileMenuClose');
+            const bottomMenu = document.getElementById('mobileBottomMenu');
+            if (!toggle || !menu) return;
+            const setMenu = (open) => {
+                menu.classList.toggle('hidden', !open);
+                menu.setAttribute('aria-hidden', String(!open));
+                toggle.setAttribute('aria-expanded', String(open));
+                document.body.classList.toggle('mobile-menu-open', open);
+                if (icon) icon.textContent = open ? 'close' : 'menu';
+            };
+            toggle.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
+            if (close) close.addEventListener('click', () => setMenu(false));
+            if (bottomMenu) bottomMenu.addEventListener('click', (event) => {
+                event.preventDefault();
+                setMenu(true);
+            });
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
         })();
 
         // Campus Filtering
