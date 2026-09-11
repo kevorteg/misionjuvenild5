@@ -584,11 +584,11 @@
                         <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full">
                             <img alt="Podcast D5 Fuego EP 08" class="absolute inset-0 w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
-                            <a class="absolute inset-0 flex items-center justify-center" href="podcast.html" aria-label="Ver episodio del podcast">
+                            <button class="absolute inset-0 flex items-center justify-center" type="button" onclick="document.getElementById('podcastPlayBtn')?.click()" aria-label="Reproducir episodio del podcast">
                                 <span class="btn-3d btn-3d-orange w-16 h-16 rounded-full flex items-center justify-center">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                                 </span>
-                            </a>
+                            </button>
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-xl bg-white/95 text-neutral-900 font-headline font-black text-xs uppercase tracking-wider shadow">EPISODIO 08 — VIDEO</span>
                         </div>
                         <!-- Texto -->
@@ -1284,7 +1284,10 @@
 
             btn.addEventListener('click', () => {
                 if (audio.paused) {
-                    audio.play();
+                    audio.play().catch(() => {
+                        btn.classList.remove('btn-3d-orange');
+                        btn.classList.add('btn-3d-green');
+                    });
                     btn.classList.remove('btn-3d-green');
                     btn.classList.add('btn-3d-orange');
                 } else {

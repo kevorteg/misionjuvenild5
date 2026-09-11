@@ -938,19 +938,19 @@
                             <p id="player-title" class="font-headline font-black text-sm text-on-surface truncate">El Poder del Propósito</p>
                             <p id="player-subtitle" class="text-[10px] font-bold uppercase tracking-widest text-secondary">Podcast D5 Fuego</p>
                         </div>
-                        <button onclick="togglePlayerLike()" id="playerLikeBtn" class="ml-1 w-9 h-9 flex-shrink-0 flex items-center justify-center border-2 border-border-gray hover:border-secondary-orange transition-all" aria-label="Me gusta">
+                        <button onclick="togglePlayerLike()" id="playerLikeBtn" class="ml-1 w-9 h-9 flex-shrink-0 flex items-center justify-center border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none hover:border-secondary-orange transition-all" aria-label="Me gusta">
                             <span class="material-symbols-outlined !text-lg text-on-surface-variant icon-heart">favorite</span>
                         </button>
                     </div>
 
                     <!-- Controles -->
                     <div class="flex items-center justify-center gap-1.5 sm:gap-2">
-                        <button onclick="seekRelative(-15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="-15 segundos"><span class="material-symbols-outlined !text-lg">replay</span></button>
-                        <button onclick="togglePlayState()" id="playerPlayBtn" class="w-11 h-11 bg-secondary-container text-on-secondary shadow-[0_4px_0_#984800] flex items-center justify-center transition-all" aria-label="Reproducir">
+                        <button onclick="seekRelative(-15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="-15 segundos"><span class="material-symbols-outlined !text-lg">replay</span></button>
+                        <button onclick="togglePlayState()" id="playerPlayBtn" class="w-11 h-11 bg-secondary-container text-on-secondary shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none flex items-center justify-center transition-all" aria-label="Reproducir">
                             <span class="material-symbols-outlined !text-2xl" id="playerPlayIcon">play_arrow</span>
                         </button>
-                        <button onclick="seekRelative(15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="+15 segundos"><span class="material-symbols-outlined !text-lg">forward_media</span></button>
-                        <button onclick="cyclePlaybackSpeed()" id="playbackSpeedBtn" class="h-9 px-2 font-headline font-black text-xs tracking-wider border-2 border-border-gray text-on-surface-variant hover:border-primary transition-all">1.0x</button>
+                        <button onclick="seekRelative(15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="+15 segundos"><span class="material-symbols-outlined !text-lg">forward_media</span></button>
+                        <button onclick="cyclePlaybackSpeed()" id="playbackSpeedBtn" class="h-9 px-2 font-headline font-black text-xs tracking-wider border-2 border-border-gray text-on-surface-variant hover:border-primary shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all">1.0x</button>
                     </div>
 
                     <!-- Progreso -->
@@ -965,9 +965,9 @@
 
                     <!-- Acciones -->
                     <div class="flex items-center justify-center gap-2">
-                        <button onclick="downloadAsset(currentId)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Descargar"><span class="material-symbols-outlined !text-lg">download</span></button>
-                        <button onclick="shareCurrentEpisode()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Compartir"><span class="material-symbols-outlined !text-lg">share</span></button>
-                        <button onclick="minimizePlayer()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray transition-all" aria-label="Minimizar"><span class="material-symbols-outlined !text-lg">keyboard_double_arrow_down</span></button>
+                        <button onclick="downloadAsset(currentId)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Descargar"><span class="material-symbols-outlined !text-lg">download</span></button>
+                        <button onclick="shareCurrentEpisode()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Compartir"><span class="material-symbols-outlined !text-lg">share</span></button>
+                        <button onclick="minimizePlayer()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Minimizar"><span class="material-symbols-outlined !text-lg">keyboard_double_arrow_down</span></button>
                     </div>
                 </div>
             </div>
@@ -1145,9 +1145,13 @@
             audio.src = ep.audio;
             audio.currentTime = 0;
             markPlaying(id);
-            audio.play();
             openPlayer();
-            showToast('Reproduciendo ' + ep.title);
+            audio.play().then(() => {
+                showToast('Reproduciendo ' + ep.title);
+            }).catch(() => {
+                playIcon.textContent = 'play_arrow';
+                showToast('No se pudo cargar el audio');
+            });
         }
 
         function getCurrentId() {
@@ -1276,6 +1280,12 @@
             chip.classList.add('hidden');
             chip.classList.remove('flex');
             chip.style.display = '';
+        }
+
+        const requestedEpisode = new URLSearchParams(window.location.search).get('episode');
+        const shouldAutoplay = new URLSearchParams(window.location.search).get('autoplay') === '1';
+        if (shouldAutoplay && requestedEpisode && EPISODES[requestedEpisode]) {
+            playEpisode(requestedEpisode);
         }
 
         // ---- Filtros de categoría ----
