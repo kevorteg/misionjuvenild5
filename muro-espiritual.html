@@ -230,6 +230,7 @@
         }
     </style>
     <link rel="stylesheet" href="assets/css/mobile-nav.css">
+    <script src="assets/js/launch-gate.js"></script>
 </head>
 
 <body class="bg-surface-container-low font-body text-on-surface antialiased overflow-x-hidden selection:bg-duo-yellow selection:text-neutral-900">
@@ -306,58 +307,101 @@
                         </svg>
                     </a>
                     <!-- Dropdown con fotos -->
-                        <div class="nav-dropdown absolute top-full pt-2 z-50" style="left:50%;margin-left:-340px">
+                        <div class="nav-dropdown absolute top-full pt-2 z-50" style="left:50%;margin-left:-310px">
                             <div class="bg-white border-[3px] border-neutral-200 shadow-[0_10px_30px_-12px_rgba(17,29,38,0.35)]">
                                 <div class="flex items-center justify-between gap-4 px-5 py-3.5 bg-secondary-orange border-b-[3px] border-secondary-dark">
                                     <div>
                                         <p class="font-headline font-black text-white text-[12px] uppercase tracking-wider leading-tight">Misión Juvenil A un Click</p>
                                         <p class="text-[9px] font-bold uppercase tracking-widest text-white/85 mt-1">El podcast oficial · episodio nuevo cada semana</p>
                                     </div>
-                                    <a href="podcast.html" class="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-white text-secondary-dark border-2 border-secondary-dark font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#C86018] hover:translate-y-0.5 hover:shadow-none active:translate-y-1 active:shadow-none transition-all">
-                                        Ver todos
-                                        <span class="material-symbols-outlined !text-base">arrow_forward</span>
-                                    </a>
+                                    <a href="podcast.html" class="flex-shrink-0 flex items-center justify-center px-4 py-2 bg-white text-secondary-dark border-2 border-secondary-dark font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#C86018] hover:translate-y-0.5 hover:shadow-none active:translate-y-1 active:shadow-none transition-all">Ver todos</a>
                                 </div>
-                                <div class="grid grid-cols-4 gap-3 px-5 py-4">
-                                    <a href="podcast.html" class="block group/ep" title="El Poder del Propósito">
-                                        <div class="relative overflow-hidden border-[3px] border-neutral-200 shadow-[0_3px_0_#E2E6EA] transition-all group-hover/ep:-translate-y-1 group-hover/ep:border-primary group-hover/ep:shadow-[0_6px_0_#D0D4D9]">
-                                            <img loading="lazy" src="media/audio/podcasts/minuatura ep 8.jpg" alt="EP 08 · El Poder del Propósito" class="aspect-square w-full object-cover">
-                                            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 font-headline font-black text-[9px] uppercase tracking-wider text-white bg-secondary-orange shadow-[0_2px_0_#C86018]">EP 08 · NUEVO</span>
+                                <div class="flex gap-6 p-4 sm:p-5">
+                                    <div class="flex-1 min-w-0 border-r-[3px] border-neutral-100 pr-4 sm:pr-5">
+                                        <p class="pb-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-neutral-400">Episodios</p>
+                                        <div class="divide-y divide-neutral-100">
+                                            <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/audio/podcasts/minuatura ep 8.jpg" alt="Carátula del episodio 08" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-secondary-orange shadow-[0_2px_0_#C86018]">Ep 08 · Nuevo</span>
+                                                </span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">El Poder del Propósito</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Propósito y fe</span>
+                                                </span>
+                                            </a>
+                                            <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/img/podcasts/minuatura ep 6.jpg" alt="Carátula del episodio 06" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">Ep 06</span>
+                                                </span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Silenciar el Ruido Interior</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Descanso mental</span>
+                                                </span>
+                                            </a>
+                                            <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/img/podcasts/minuatura ep 5.jpg" alt="Carátula del episodio 05" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">Ep 05</span>
+                                                </span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Liderazgo que Enciende</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Liderazgo estudiantil</span>
+                                                </span>
+                                            </a>
+                                            <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/img/podcasts/minuatura ep 3.jpg" alt="Carátula del episodio 03" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">Ep 03</span>
+                                                </span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Bienvenido a la U</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Vida universitaria</span>
+                                                </span>
+                                            </a>
                                         </div>
-                                        <p class="mt-2 font-headline font-black text-[10px] uppercase leading-tight text-[#111D26] group-hover/ep:text-primary transition-colors">El Poder del Propósito</p>
-                                        <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Propósito y fe</p>
-                                    </a>
-                                    <a href="podcast.html" class="block group/ep" title="Silenciar el Ruido Interior">
-                                        <div class="relative overflow-hidden border-[3px] border-neutral-200 shadow-[0_3px_0_#E2E6EA] transition-all group-hover/ep:-translate-y-1 group-hover/ep:border-primary group-hover/ep:shadow-[0_6px_0_#D0D4D9]">
-                                            <img loading="lazy" src="media/img/podcasts/minuatura ep 6.jpg" alt="EP 06 · Silenciar el Ruido Interior" class="aspect-square w-full object-cover">
-                                            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 font-headline font-black text-[9px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">EP 06</span>
+                                    </div>
+                                    <div class="w-[190px] shrink-0">
+                                        <p class="pb-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-neutral-400">A un Click</p>
+                                        <div class="divide-y divide-neutral-100">
+                                            <a href="podcast.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-secondary-orange flex-shrink-0">music_note</span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Podcast D5 Fuego</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Todos los episodios</span>
+                                                </span>
+                                            </a>
+                                            <a href="recursos.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">menu_book</span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Recursos &amp; Guías</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Para tu crecimiento</span>
+                                                </span>
+                                            </a>
+                                            <a href="muro-espiritual.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">volunteer_activism</span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Muro Espiritual</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Oración y peticiones</span>
+                                                </span>
+                                            </a>
+                                            <a href="digital.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">bolt</span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">A un Click Digital</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Contenido breve</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">podcasts</span>
+                                                <span class="min-w-0">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Escuchar en Spotify</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Streaming oficial</span>
+                                                </span>
+                                            </a>
                                         </div>
-                                        <p class="mt-2 font-headline font-black text-[10px] uppercase leading-tight text-[#111D26] group-hover/ep:text-primary transition-colors">Silenciar el Ruido Interior</p>
-                                        <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Descanso mental</p>
-                                    </a>
-                                    <a href="podcast.html" class="block group/ep" title="Liderazgo que Enciende">
-                                        <div class="relative overflow-hidden border-[3px] border-neutral-200 shadow-[0_3px_0_#E2E6EA] transition-all group-hover/ep:-translate-y-1 group-hover/ep:border-primary group-hover/ep:shadow-[0_6px_0_#D0D4D9]">
-                                            <img loading="lazy" src="media/img/podcasts/minuatura ep 5.jpg" alt="EP 05 · Liderazgo que Enciende" class="aspect-square w-full object-cover">
-                                            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 font-headline font-black text-[9px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">EP 05</span>
-                                        </div>
-                                        <p class="mt-2 font-headline font-black text-[10px] uppercase leading-tight text-[#111D26] group-hover/ep:text-primary transition-colors">Liderazgo que Enciende</p>
-                                        <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Liderazgo estudiantil</p>
-                                    </a>
-                                    <a href="podcast.html" class="block group/ep" title="Bienvenido a la U">
-                                        <div class="relative overflow-hidden border-[3px] border-neutral-200 shadow-[0_3px_0_#E2E6EA] transition-all group-hover/ep:-translate-y-1 group-hover/ep:border-primary group-hover/ep:shadow-[0_6px_0_#D0D4D9]">
-                                            <img loading="lazy" src="media/img/podcasts/minuatura ep 3.jpg" alt="EP 03 · Bienvenido a la U" class="aspect-square w-full object-cover">
-                                            <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 font-headline font-black text-[9px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">EP 03</span>
-                                        </div>
-                                        <p class="mt-2 font-headline font-black text-[10px] uppercase leading-tight text-[#111D26] group-hover/ep:text-primary transition-colors">Bienvenido a la U</p>
-                                        <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Vida universitaria</p>
-                                    </a>
-                                </div>
-                                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-3 border-t-[3px] border-neutral-100">
-                                    <a href="podcast.html" class="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-neutral-500 hover:text-primary transition-colors"><span class="material-symbols-outlined !text-sm text-secondary-orange flex-shrink-0">mic</span>Podcast D5</a>
-                                    <a href="recursos.html" class="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-neutral-500 hover:text-primary transition-colors"><span class="material-symbols-outlined !text-sm text-primary flex-shrink-0">auto_stories</span>Recursos</a>
-                                    <a href="muro-espiritual.html" class="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-neutral-500 hover:text-primary transition-colors"><span class="material-symbols-outlined !text-sm text-primary flex-shrink-0">cell_tower</span>Muro Espiritual</a>
-                                    <a href="digital.html" class="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-neutral-500 hover:text-primary transition-colors"><span class="material-symbols-outlined !text-sm text-primary flex-shrink-0">smart_display</span>A un Click</a>
-                                    <a href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-neutral-500 hover:text-primary transition-colors"><span class="material-symbols-outlined !text-sm text-primary flex-shrink-0">graphic_eq</span>Spotify</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

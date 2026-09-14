@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nueva experiencia digital de Misión Juvenil D5.">
+    <title>Nueva experiencia | Misión Juvenil D5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&family=Rubik:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        :root {
+            --blue: #006491;
+            --blue-deep: #02557d;
+            --orange: #F58634;
+            --orange-deep: #C86018;
+            --purple: #473458;
+            --ink: #18232d;
+            --paper: #f7f9fb;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            margin: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: var(--ink);
+            color: #ffffff;
+            font-family: 'Nunito Sans', sans-serif;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        .launch-page {
+            position: relative;
+            min-height: 100svh;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--blue-deep);
+        }
+
+        .access-gate {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+            padding: 0.75rem;
+            background: linear-gradient(180deg, transparent, rgba(24, 35, 45, 0.96) 35%);
+        }
+
+        .access-gate.is-unlocked {
+            display: none;
+        }
+
+        .access-card {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto auto;
+            align-items: center;
+            gap: 0.5rem 0.75rem;
+            width: min(100%, 52rem);
+            padding: 0.55rem 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--ink);
+            box-shadow: 3px 3px 0 rgba(200, 96, 24, 0.8);
+        }
+
+        .access-card h1 {
+            max-width: none;
+            margin: 0;
+            color: var(--ink);
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            grid-column: 2;
+        }
+
+        .access-card p {
+            grid-column: 1 / -1;
+            margin: 0;
+            color: #51606c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .access-card .launch-kicker {
+            align-self: center;
+            padding: 0.4rem 0.55rem;
+            font-size: 9px;
+            box-shadow: 0 2px 0 var(--orange-deep);
+        }
+
+        .access-label {
+            display: block;
+            margin: 0;
+            color: var(--purple);
+            font-family: 'Rubik', sans-serif;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .access-input {
+            width: 10rem;
+            min-height: 2.2rem;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cfdbe9;
+            color: var(--ink);
+            font: 700 0.8rem 'Nunito Sans', sans-serif;
+        }
+
+        .access-input:focus {
+            outline: 3px solid rgba(0, 100, 145, 0.2);
+            border-color: var(--blue);
+        }
+
+        .access-submit {
+            min-height: 2.2rem;
+            padding: 0 0.7rem;
+            border: 1px solid var(--orange-deep);
+            background: rgba(245, 134, 52, 0.9);
+            color: var(--ink);
+            cursor: pointer;
+            font-family: 'Rubik', sans-serif;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 2px 0 var(--orange-deep);
+        }
+
+        .access-submit:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .access-error {
+            grid-column: 1 / -1;
+            min-height: 0;
+            margin: 0 !important;
+            color: #b42318 !important;
+            font-size: 0.75rem !important;
+            font-weight: 900 !important;
+        }
+
+        .access-error:empty {
+            display: none;
+        }
+
+        .launch-page::before {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            content: '';
+            background: url('media/img/hero-mj.jpg') center / cover no-repeat;
+            opacity: 0.42;
+        }
+
+        .launch-page::after {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            content: '';
+            background: rgba(2, 55, 83, 0.82);
+        }
+
+        .launch-shell {
+            display: flex;
+            flex-direction: column;
+            width: min(100% - 2rem, 76rem);
+            min-height: 100svh;
+            margin: 0 auto;
+            padding: 1.25rem 0 2rem;
+        }
+
+        .launch-topbar,
+        .launch-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .launch-topbar {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .launch-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .launch-brand img {
+            width: auto;
+            height: 2.25rem;
+            padding: 0.25rem 0.45rem;
+            background: #ffffff;
+            object-fit: contain;
+        }
+
+        .launch-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            color: #ffd9ba;
+        }
+
+        .launch-status::before {
+            width: 0.5rem;
+            height: 0.5rem;
+            content: '';
+            background: var(--orange);
+            box-shadow: 0 0 0 4px rgba(245, 134, 52, 0.18);
+        }
+
+        .launch-main {
+            display: grid;
+            flex: 1;
+            grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+            align-items: center;
+            gap: clamp(2rem, 7vw, 7rem);
+            padding: 4rem 0;
+        }
+
+        .launch-copy {
+            max-width: 42rem;
+        }
+
+        .launch-kicker {
+            display: inline-flex;
+            padding: 0.55rem 0.8rem;
+            color: var(--ink);
+            background: var(--orange);
+            font-family: 'Rubik', sans-serif;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 0 var(--orange-deep);
+        }
+
+        h1 {
+            max-width: 12ch;
+            margin: 1.5rem 0 1rem;
+            font-family: 'Rubik', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 0.98;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        h1 span {
+            color: #ffd1a8;
+        }
+
+        .launch-copy p {
+            max-width: 38rem;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: clamp(0.9rem, 1.6vw, 1rem);
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .launch-countdown {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(0, 1fr);
+            max-width: 35rem;
+            margin-top: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(5, 37, 57, 0.55);
+        }
+
+        .countdown-cell {
+            min-width: 0;
+            padding: 1rem 0.75rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .countdown-cell:last-child {
+            border-right: 0;
+        }
+
+        .countdown-number {
+            display: block;
+            font-family: 'Rubik', sans-serif;
+            font-size: clamp(1.35rem, 3vw, 2rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            display: block;
+            margin-top: 0.45rem;
+            color: #ffd1a8;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .countdown-message {
+            margin-top: 0.8rem !important;
+            color: #ffd1a8 !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .launch-experience {
+            padding: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--ink);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+
+        .experience-image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: var(--purple);
+        }
+
+        .experience-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .experience-label {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            padding: 0.45rem 0.6rem;
+            background: var(--purple);
+            color: #ffffff;
+            font-family: 'Rubik', sans-serif;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .experience-copy {
+            padding-top: 1rem;
+        }
+
+        .experience-copy h2 {
+            margin: 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .experience-copy p {
+            margin: 0.5rem 0 1rem;
+            color: #51606c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            min-height: 3rem;
+            padding: 0.6rem 0.75rem;
+            border: 2px solid var(--blue-deep);
+            background: var(--blue);
+            color: #ffffff;
+            cursor: pointer;
+            font-family: 'Rubik', sans-serif;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: 0 3px 0 var(--blue-deep);
+        }
+
+        .audio-control:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+
+        .audio-control:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .launch-footer {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .launch-footer span:last-child {
+            color: #ffd1a8;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -2rem;
+            width: 0.35rem;
+            height: 1.25rem;
+            opacity: 0.85;
+            animation: fall 8s linear infinite;
+        }
+
+        .confetti:nth-child(1) { left: 8%; background: var(--orange); animation-delay: -2s; }
+        .confetti:nth-child(2) { left: 22%; background: #ffd1a8; animation-delay: -6s; transform: rotate(35deg); }
+        .confetti:nth-child(3) { left: 67%; background: #7fc4e6; animation-delay: -4s; transform: rotate(60deg); }
+        .confetti:nth-child(4) { left: 86%; background: var(--orange); animation-delay: -7s; transform: rotate(20deg); }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0); }
+            100% { transform: translateY(115vh) rotate(360deg); }
+        }
+
+        @media (max-width: 760px) {
+            .access-gate {
+                padding: 0.5rem;
+            }
+
+            .access-card {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.45rem 0.5rem;
+                padding: 0.65rem;
+            }
+
+            .access-card .launch-kicker { display: none; }
+            .access-card h1 { flex: 1 1 12rem; font-size: 1rem; }
+            .access-label { display: none; }
+            .access-input { flex: 1 1 8rem; width: auto; min-width: 0; }
+            .access-submit { flex: 0 0 auto; width: auto; padding: 0 0.75rem; }
+            .access-error { flex: 0 0 100%; }
+
+            .launch-shell {
+                width: min(100% - 1.25rem, 36rem);
+                padding-top: 0.9rem;
+            }
+
+            .launch-topbar {
+                font-size: 9px;
+            }
+
+            .launch-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 0 2.5rem;
+            }
+
+            h1 {
+                max-width: 18ch;
+                margin-top: 1.2rem;
+                font-size: clamp(20px, 8vw, 28px);
+            }
+
+            .launch-copy p {
+                font-size: 0.95rem;
+            }
+
+            .launch-countdown {
+                margin-top: 1.5rem;
+            }
+
+            .countdown-cell {
+                padding: 0.75rem 0.4rem;
+            }
+
+            .countdown-number {
+                font-size: 1.45rem;
+            }
+
+            .launch-footer {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
+        <form class="access-card" id="accessForm">
+            <span class="launch-kicker">Acceso anticipado</span>
+            <h1 id="accessTitle">Ingresa la contraseña para ver</h1>
+            <label class="access-label" for="accessCode">Clave de acceso</label>
+            <input class="access-input" id="accessCode" type="password" autocomplete="off" required>
+            <button class="access-submit" type="submit">Ingresar</button>
+            <p class="access-error" id="accessError" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <main class="launch-page">
+        <span class="confetti" aria-hidden="true"></span>
+        <span class="confetti" aria-hidden="true"></span>
+        <span class="confetti" aria-hidden="true"></span>
+        <span class="confetti" aria-hidden="true"></span>
+
+        <div class="launch-shell">
+            <header class="launch-topbar">
+                <div class="launch-brand">
+                    <img src="media/img/logos/FULL.png" alt="Misión Juvenil D5">
+                    <span>Misión Juvenil D5</span>
+                </div>
+                <span class="launch-status">Nueva experiencia</span>
+            </header>
+
+            <section class="launch-main" aria-labelledby="launch-title">
+                <div class="launch-copy">
+                    <span class="launch-kicker">Estamos preparando algo nuevo</span>
+                    <h1 id="launch-title">La misión entra en una <span>nueva etapa.</span></h1>
+                    <p>Estamos rediseñando la experiencia digital de Misión Juvenil D5 para conectar mejor con cada colegio, universidad, historia y comunidad.</p>
+
+                            <div class="launch-countdown" id="countdown" aria-live="polite">
+                                <div class="countdown-cell"><span class="countdown-number" id="days">--</span><span class="countdown-label">Días</span></div>
+                                <div class="countdown-cell"><span class="countdown-number" id="hours">--</span><span class="countdown-label">Horas</span></div>
+                                <div class="countdown-cell"><span class="countdown-number" id="minutes">--</span><span class="countdown-label">Minutos</span></div>
+                                <div class="countdown-cell"><span class="countdown-number" id="seconds">--</span><span class="countdown-label">Segundos</span></div>
+                    </div>
+                    <p class="countdown-message" id="countdownMessage">Fecha de lanzamiento por anunciar</p>
+                </div>
+
+                <aside class="launch-experience" aria-label="Vista previa de la nueva experiencia">
+                    <div class="experience-image">
+                        <img src="media/img/hero-mj.jpg" alt="Comunidad de Misión Juvenil">
+                        <span class="experience-label">Próxima experiencia</span>
+                    </div>
+                    <div class="experience-copy">
+                        <h2>Fe, historias y acción</h2>
+                        <p>Una plataforma renovada para escuchar, participar y encontrar tu próximo paso.</p>
+                        <button class="audio-control" id="audioControl" type="button" disabled aria-label="Activar música de lanzamiento">
+                            <span class="material-symbols-outlined" id="audioIcon">volume_off</span>
+                            <span id="audioLabel">Música disponible próximamente</span>
+                        </button>
+                        <audio id="launchAudio" preload="metadata"></audio>
+                    </div>
+                </aside>
+            </section>
+
+            <footer class="launch-footer">
+                <span>Una nueva experiencia digital de Misión Juvenil D5</span>
+                <span>Próximamente</span>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const launchConfig = {
+            // Cambia esta clave antes de compartir la vista previa.
+            accessCode: 'MJD5-ANTICIPO',
+            // Usa formato ISO con zona horaria. Ejemplo: 2026-17-01T19:00:00-05:00
+            targetDate: '2026-09-17T00:00:00-05:00',
+            // Sustituir cuando exista el MP3 ambiental autorizado.
+            audioSrc: 'media/audio/lanzamiento.mp3'
+        };
+
+        const accessGate = document.getElementById('accessGate');
+        const accessForm = document.getElementById('accessForm');
+        const accessInput = document.getElementById('accessCode');
+        const accessError = document.getElementById('accessError');
+
+        if (sessionStorage.getItem('mjd5-launch-access') === 'granted') {
+            accessGate.classList.add('is-unlocked');
+        }
+
+        accessForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (accessInput.value.trim() !== launchConfig.accessCode) {
+                accessError.textContent = 'La clave no coincide.';
+                accessInput.select();
+                return;
+            }
+            sessionStorage.setItem('mjd5-launch-access', 'granted');
+            sessionStorage.setItem('mjd5-site-preview-access', 'granted');
+            accessError.textContent = '';
+            accessGate.classList.add('is-unlocked');
+        });
+
+        const countdownMessage = document.getElementById('countdownMessage');
+        const countdown = document.getElementById('countdown');
+        const countdownEls = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds')
+        };
+
+        function updateCountdown() {
+            if (!launchConfig.targetDate) {
+                countdownMessage.textContent = 'Fecha de lanzamiento por anunciar';
+                return;
+            }
+
+            const distance = new Date(launchConfig.targetDate).getTime() - Date.now();
+            if (distance <= 0) {
+                countdown.hidden = true;
+                countdownMessage.textContent = 'La nueva experiencia ya está disponible';
+                return;
+            }
+
+            countdownMessage.textContent = 'Lanzamiento: 17 de septiembre de 2026';
+            countdownEls.days.textContent = Math.floor(distance / 86400000);
+            countdownEls.hours.textContent = String(Math.floor((distance / 3600000) % 24)).padStart(2, '0');
+            countdownEls.minutes.textContent = String(Math.floor((distance / 60000) % 60)).padStart(2, '0');
+            countdownEls.seconds.textContent = String(Math.floor((distance / 1000) % 60)).padStart(2, '0');
+        }
+
+        const audio = document.getElementById('launchAudio');
+        const audioControl = document.getElementById('audioControl');
+        const audioIcon = document.getElementById('audioIcon');
+        const audioLabel = document.getElementById('audioLabel');
+
+        if (launchConfig.audioSrc) {
+            audio.src = launchConfig.audioSrc;
+            audio.addEventListener('error', () => {
+                audioControl.disabled = true;
+                audioLabel.textContent = 'Música disponible próximamente';
+            });
+            audio.addEventListener('loadedmetadata', () => {
+                audioControl.disabled = false;
+                audioLabel.textContent = 'Activar música de lanzamiento';
+            });
+            audio.addEventListener('play', () => {
+                audioIcon.textContent = 'volume_up';
+                audioLabel.textContent = 'Silenciar música';
+            });
+            audio.addEventListener('pause', () => {
+                audioIcon.textContent = 'volume_off';
+                audioLabel.textContent = 'Activar música de lanzamiento';
+            });
+            audioControl.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().catch(() => {
+                        audioLabel.textContent = 'Pulsa para activar la música';
+                    });
+                } else {
+                    audio.pause();
+                }
+            });
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
