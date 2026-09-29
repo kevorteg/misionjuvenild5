@@ -193,6 +193,17 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Barra de filtros 3D: scroll horizontal sin barra visible */
+        #categories-bar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        #categories-bar::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
         /* Slider de volumen del reproductor */
         .player-volume {
             -webkit-appearance: none;
@@ -321,9 +332,10 @@
                 padding-bottom: 5.25rem;
                 padding-left: 0.5rem;
             }
-            /* Móvil: fila de info, fila de progreso y UNA línea con todos los controles */
+            /* Móvil: info, controles en una línea y barra al final */
             .pj-body {
-                display: flex;
+                display: flex !important;
+                flex-direction: row !important;
                 flex-wrap: wrap;
                 align-items: center;
                 gap: 0.25rem;
@@ -336,9 +348,9 @@
                 min-width: 0;
             }
             .pj-progress {
-                order: 2;
+                order: 3;
                 flex: 1 1 100%;
-                max-width: none;
+                max-width: none !important;
             }
             .pj-controls,
             .pj-actions {
@@ -346,7 +358,7 @@
             }
             .pj-controls > *,
             .pj-actions > * {
-                order: 3;
+                order: 2;
                 flex: 0 0 auto;
             }
             .pj-controls > button,
@@ -366,14 +378,6 @@
             }
             #playerPlayBtn .material-symbols-outlined {
                 font-size: 1.3rem;
-            }
-            /* "1.0x" no debe recortarse: ancho automático */
-            #playbackSpeedBtn {
-                width: auto;
-                min-width: 2.5rem;
-                height: 1.9rem;
-                padding: 0 0.3rem;
-                font-size: 0.6rem;
             }
             .js-time {
                 font-size: 0.6rem !important;
@@ -1312,7 +1316,6 @@
                             <span class="material-symbols-outlined !text-2xl" id="playerPlayIcon">play_arrow</span>
                         </button>
                         <button onclick="seekRelative(15)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="+15 segundos"><span class="material-symbols-outlined !text-lg">forward_media</span></button>
-                        <button onclick="cyclePlaybackSpeed()" id="playbackSpeedBtn" class="h-9 px-2 font-headline font-black text-xs tracking-wider border-2 border-border-gray text-on-surface-variant hover:border-primary shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all">1.0x</button>
                         <!-- Tiempos solo móvil: en la misma línea de botones -->
                         <span id="current-time-m" class="js-time xl:hidden text-[10px] font-bold text-on-surface-variant tabular-nums">00:00</span>
                         <span id="duration-m" class="js-time xl:hidden text-[10px] font-bold text-on-surface-variant tabular-nums">00:00</span>
@@ -1336,7 +1339,6 @@
                     <!-- Acciones -->
                     <div class="pj-actions flex items-center justify-center gap-2">
                         <button onclick="downloadAsset(currentId)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Descargar"><span class="material-symbols-outlined !text-lg">download</span></button>
-                        <button onclick="shareCurrentEpisode()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Compartir"><span class="material-symbols-outlined !text-lg">share</span></button>
                         <button onclick="minimizePlayer()" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none transition-all" aria-label="Minimizar"><span class="material-symbols-outlined !text-lg">keyboard_double_arrow_down</span></button>
                     </div>
                 </div>
