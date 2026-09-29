@@ -270,11 +270,10 @@
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
                     </svg>
                 </a>
-                <a aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
-                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <button type="button" aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors cursor-pointer"><svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.48 2.73 1.25-.07 2.39-.81 2.89-1.96.28-.62.37-1.31.37-1.99.01-4.96.01-9.92.01-14.88z"></path>
                     </svg>
-                </a>
+                </button>
                 <a aria-label="Spotify" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener">
                     <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
@@ -307,7 +306,7 @@
                         </svg>
                     </a>
                     <!-- Dropdown con fotos -->
-                        <div class="nav-dropdown absolute top-full pt-2 z-50" style="left:50%;margin-left:-310px">
+                        <div class="nav-dropdown nav-dropdown--wide absolute top-full pt-2 z-50" style="left:50%;transform:translateX(-50%)">
                             <div class="bg-white border-[3px] border-neutral-200 shadow-[0_10px_30px_-12px_rgba(17,29,38,0.35)]">
                                 <div class="flex items-center justify-between gap-4 px-5 py-3.5 bg-secondary-orange border-b-[3px] border-secondary-dark">
                                     <div>
@@ -601,190 +600,6 @@
             </div>
         </section>
 
-        <!-- ============ ANÉCDOTAS DEL CAMINO ============ -->
-        <section class="max-w-7xl mx-auto px-5 lg:px-12 py-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b-2 border-surface-container-highest pb-4 mb-5 reveal">
-                <div>
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="w-1.5 h-7 bg-tertiary flex-shrink-0"></span>
-                        <span class="font-headline font-black text-[11px] uppercase tracking-wider text-tertiary">Ecosistema · Historias reales</span>
-                    </div>
-                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">Anécdotas del Camino</h2>
-                    <p class="font-body font-bold text-sm text-on-surface-variant mt-0.5">Recuerdos que marcaron los primeros pasos de la misión.</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-primary-container/20 text-primary flex items-center justify-center border-2 border-primary-container shadow-[0_3px_0_#449bd1] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">travel_explore</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Los primeros pasos</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">Los nómadas universitarios</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        Al principio el grupo no tenía lugar fijo para reunirse: cada semana terminaba en un extremo
-                        diferente de la universidad. Era como una expedición para encontrar el sitio de reunión.
-                    </p>
-                </article>
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-secondary-container/20 text-secondary flex items-center justify-center border-2 border-secondary-container shadow-[0_3px_0_#ff8e3b] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">campaign</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Estrategia creativa</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">La cacería de pentecostales</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        Empapelaron la universidad con hojas que decían: "¿Eres Pentecostal? Te invitamos a nuestro
-                        devocional debajo del árbol de mango". Algunos estudiantes creyeron que era un club secreto.
-                    </p>
-                </article>
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-tertiary-container/25 text-tertiary flex items-center justify-center border-2 border-tertiary-container shadow-[0_3px_0_#a28bb5] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">music_note</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Momentos memorables</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El concierto sorpresa</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        Un concierto en el restaurante central a la hora del almuerzo: la primera pieza fue una flauta
-                        traversa interpretando "Cuán grande es Él", dejando boquiabiertos a los estudiantes.
-                    </p>
-                </article>
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-duo-green/15 text-duo-green flex items-center justify-center border-2 border-duo-green shadow-[0_3px_0_#31233E] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">local_police</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Presencia real</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El vigilante confundido</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        En una reunión la presencia de Dios se sintió tan fuerte que un vigilante llegó a interrumpir…
-                        y al ver lo que ocurrida, cerró la puerta y decidió no molestarlos.
-                    </p>
-                </article>
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-secondary-container/20 text-secondary flex items-center justify-center border-2 border-secondary-container shadow-[0_3px_0_#ff8e3b] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">mood</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Historia de cambio</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El estudiante inesperado</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        Un joven con piercings y apariencia rebelde llegó a un campamento sin intención de cambiar…
-                        y terminó bautizándose. Hoy es un miembro activo de la comunidad.
-                    </p>
-                </article>
-                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-11 h-11 bg-primary-container/20 text-primary flex items-center justify-center border-2 border-primary-container shadow-[0_3px_0_#449bd1] flex-shrink-0">
-                            <span class="material-symbols-outlined !text-2xl">park</span>
-                        </span>
-                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">El punto de partida</span>
-                    </div>
-                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El árbol de los inicios</h3>
-                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
-                        Todo empezó bajo un árbol en la Universidad del Valle: cinco personas que esperaban hasta una
-                        hora para que todos llegaran, cambiando de lugar en cada reunión.
-                    </p>
-                </article>
-            </div>
-        </section>
-
-        <!-- ============ VIDAS TRANSFORMADAS + GALERÍA ============ -->
-        <section class="max-w-7xl mx-auto px-5 lg:px-12 py-10 lg:py-12">
-            <div class="flex flex-col lg:flex-row gap-6">
-                <div class="lg:w-5/12 flex flex-col">
-                    <div class="flex items-center gap-2 mb-3 reveal">
-                        <span class="w-1.5 h-7 bg-secondary-orange flex-shrink-0"></span>
-                        <span class="font-headline font-black text-[11px] uppercase tracking-wider text-secondary-orange">Testimonios</span>
-                    </div>
-                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight reveal">Vidas Transformadas</h2>
-                    <p class="font-body font-bold text-sm text-on-surface-variant mt-1 leading-relaxed reveal">
-                        El mejor resumen de nuestra historia son las vidas que Dios ha tocado en cada campus.
-                    </p>
-                    <div class="flex flex-col gap-3 mt-5">
-                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-secondary-container shadow-[0_4px_0_#c6c7cf] p-4 reveal">
-                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
-                                "Llegué a un campamento con piercings y actitud rebelde, sin intención de cambiar.
-                                Pero Dios me encontró allí; hoy mi vida tiene un propósito eterno."
-                            </p>
-                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-secondary">— Testimonio Estudiantil</span>
-                        </div>
-                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-duo-green shadow-[0_4px_0_#c6c7cf] p-4 reveal">
-                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
-                                "Docentes que eran escépticos terminaron permitiendo que Misión Juvenil dictara la
-                                cátedra de religión en sus colegios. El impacto es real."
-                            </p>
-                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-duo-green">— Docente Aliado</span>
-                        </div>
-                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-primary shadow-[0_4px_0_#c6c7cf] p-4 reveal">
-                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
-                                "Lo que comenzó como un pequeño grupo en una universidad terminó extendiéndose a más
-                                de 14 instituciones, con líderes en cada una de ellas."
-                            </p>
-                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-primary">— Líder del Movimiento</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Galería -->
-                <div class="lg:w-7/12">
-                    <div class="flex items-center gap-2 mb-3 reveal">
-                        <span class="material-symbols-outlined !text-lg text-primary">photo_library</span>
-                        <span class="font-headline font-black text-[11px] uppercase tracking-widest text-primary">Momentos en los campus</span>
-                    </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG_20241120_081622.jpg" alt="Célula de oración en la Universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Células y oración</span>
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0033.jpg" alt="Encuentro juvenil" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Encuentros</span>
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0027.jpg" alt="Campamento D5" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Campamentos</span>
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG_20241120_101747.jpg" alt="Devocional en la universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG_20241120_082447.jpg" alt="Vigilia juvenil" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0026.jpg" alt="Comunidad en los campus" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/IMG_20241120_081932.jpg" alt="Universidad San Buenaventura" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_081628.jpg" alt="Universidad San Buenaventura" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_081930.jpg" alt="Universidad Autónoma de Occidente" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_101750.jpg" alt="Devocional en la universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Devocionales</span>
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/uao2.jpg" alt="Universidad Autónoma de Occidente" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Universidades</span>
-                        </div>
-                        <div class="overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal">
-                            <img src="media/img/QUIENES SOMOS/UVsanfer4.jpg" alt="Universidad de San Francisco" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Campus</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- ============ NUESTRA HISTORIA (narrativa) ============ -->
         <section class="bg-surface-container-low border-y-2 border-surface-container-high">
             <div class="max-w-7xl mx-auto px-5 lg:px-12 py-10 lg:py-12">
@@ -804,9 +619,19 @@
                             <span class="font-headline font-black text-[11px] uppercase tracking-widest text-secondary-orange">Documental · Nuestra Historia</span>
                         </div>
                         <div class="bg-white border-2 border-primary-dark shadow-[0_5px_0_#02557d] p-2">
-                            <div class="aspect-video overflow-hidden bg-surface-container">
-                                <iframe src="https://www.youtube.com/embed/zbpWCwwbBDU" title="Documental — Nuestra Historia | Misión Juvenil D5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="w-full h-full"></iframe>
-                            </div>
+                            <button type="button" onclick="openVideoPlayer('doc')" class="relative aspect-video overflow-hidden bg-surface-container w-full cursor-pointer group text-left" aria-label="Reproducir documental">
+                                <img src="media/video/documentales/documental-mj5.jpg" alt="Documental — Nuestra Historia | Misión Juvenil D5" class="absolute inset-0 w-full h-full object-cover">
+                                <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                                    <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                                        <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                                    </span>
+                                </span>
+                                <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider">Reproducir documental</span>
+                            </button>
+                            <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed mt-2.5">
+                                Toda la trayectoria de Misión Juvenil en una sola historia: del primer devocional bajo el árbol
+                                hasta el movimiento que hoy alcanza todo el Distrito 5.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -996,11 +821,197 @@
                         </div>
                         <div class="w-full md:pl-12 mt-3 md:mt-0 order-first md:order-last">
                             <div class="bg-white border-2 border-duo-green shadow-[0_5px_0_#31233E] p-2">
-                                <img src="media/img/QUIENES SOMOS/Captura-de-pantalla-2025-07-15-131901-1024x478.png" alt="2025" class="w-full h-auto object-contain">
+                                <img src="media/img/QUIENES SOMOS/timeline/6.jpg" alt="2025" class="w-full h-auto object-contain">
                             </div>
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- ============ ANÉCDOTAS DEL CAMINO ============ -->
+        <section class="max-w-7xl mx-auto px-5 lg:px-12 py-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b-2 border-surface-container-highest pb-4 mb-5 reveal">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="w-1.5 h-7 bg-tertiary flex-shrink-0"></span>
+                        <span class="font-headline font-black text-[11px] uppercase tracking-wider text-tertiary">Ecosistema · Historias reales</span>
+                    </div>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">Anécdotas del Camino</h2>
+                    <p class="font-body font-bold text-sm text-on-surface-variant mt-0.5">Recuerdos que marcaron los primeros pasos de la misión.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-primary-container/20 text-primary flex items-center justify-center border-2 border-primary-container shadow-[0_3px_0_#449bd1] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">travel_explore</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Los primeros pasos</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">Los nómadas universitarios</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        Al principio el grupo no tenía lugar fijo para reunirse: cada semana terminaba en un extremo
+                        diferente de la universidad. Era como una expedición para encontrar el sitio de reunión.
+                    </p>
+                </article>
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-secondary-container/20 text-secondary flex items-center justify-center border-2 border-secondary-container shadow-[0_3px_0_#ff8e3b] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">campaign</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Estrategia creativa</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">La cacería de pentecostales</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        Empapelaron la universidad con hojas que decían: "¿Eres Pentecostal? Te invitamos a nuestro
+                        devocional debajo del árbol de mango". Algunos estudiantes creyeron que era un club secreto.
+                    </p>
+                </article>
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-tertiary-container/25 text-tertiary flex items-center justify-center border-2 border-tertiary-container shadow-[0_3px_0_#a28bb5] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">music_note</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Momentos memorables</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El concierto sorpresa</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        Un concierto en el restaurante central a la hora del almuerzo: la primera pieza fue una flauta
+                        traversa interpretando "Cuán grande es Él", dejando boquiabiertos a los estudiantes.
+                    </p>
+                </article>
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-duo-green/15 text-duo-green flex items-center justify-center border-2 border-duo-green shadow-[0_3px_0_#31233E] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">local_police</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Presencia real</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El vigilante confundido</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        En una reunión la presencia de Dios se sintió tan fuerte que un vigilante llegó a interrumpir…
+                        y al ver lo que ocurrida, cerró la puerta y decidió no molestarlos.
+                    </p>
+                </article>
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-secondary-container/20 text-secondary flex items-center justify-center border-2 border-secondary-container shadow-[0_3px_0_#ff8e3b] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">mood</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">Historia de cambio</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El estudiante inesperado</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        Un joven con piercings y apariencia rebelde llegó a un campamento sin intención de cambiar…
+                        y terminó bautizándose. Hoy es un miembro activo de la comunidad.
+                    </p>
+                </article>
+                <article class="resource-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-4 flex flex-col gap-3 reveal">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-11 h-11 bg-primary-container/20 text-primary flex items-center justify-center border-2 border-primary-container shadow-[0_3px_0_#449bd1] flex-shrink-0">
+                            <span class="material-symbols-outlined !text-2xl">park</span>
+                        </span>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-on-surface-variant">El punto de partida</span>
+                    </div>
+                    <h3 class="font-headline font-black text-base sm:text-lg text-on-surface leading-tight uppercase">El árbol de los inicios</h3>
+                    <p class="font-body font-bold text-xs text-on-surface-variant leading-relaxed">
+                        Todo empezó bajo un árbol en la Universidad del Valle: cinco personas que esperaban hasta una
+                        hora para que todos llegaran, cambiando de lugar en cada reunión.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ VIDAS TRANSFORMADAS + GALERÍA ============ -->
+        <section class="max-w-7xl mx-auto px-5 lg:px-12 py-10 lg:py-12">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="lg:w-5/12 flex flex-col">
+                    <div class="flex items-center gap-2 mb-3 reveal">
+                        <span class="w-1.5 h-7 bg-secondary-orange flex-shrink-0"></span>
+                        <span class="font-headline font-black text-[11px] uppercase tracking-wider text-secondary-orange">Testimonios</span>
+                    </div>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight reveal">Vidas Transformadas</h2>
+                    <p class="font-body font-bold text-sm text-on-surface-variant mt-1 leading-relaxed reveal">
+                        El mejor resumen de nuestra historia son las vidas que Dios ha tocado en cada campus.
+                    </p>
+                    <div class="flex flex-col gap-3 mt-5">
+                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-secondary-container shadow-[0_4px_0_#c6c7cf] p-4 reveal">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
+                                "Llegué a un campamento con piercings y actitud rebelde, sin intención de cambiar.
+                                Pero Dios me encontró allí; hoy mi vida tiene un propósito eterno."
+                            </p>
+                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-secondary">— Testimonio Estudiantil</span>
+                        </div>
+                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-duo-green shadow-[0_4px_0_#c6c7cf] p-4 reveal">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
+                                "Docentes que eran escépticos terminaron permitiendo que Misión Juvenil dictara la
+                                cátedra de religión en sus colegios. El impacto es real."
+                            </p>
+                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-duo-green">— Docente Aliado</span>
+                        </div>
+                        <div class="bg-white border-2 border-outline-variant border-l-4 border-l-primary shadow-[0_4px_0_#c6c7cf] p-4 reveal">
+                            <p class="font-body font-bold text-xs sm:text-sm text-on-surface italic leading-relaxed">
+                                "Lo que comenzó como un pequeño grupo en una universidad terminó extendiéndose a más
+                                de 14 instituciones, con líderes en cada una de ellas."
+                            </p>
+                            <span class="block mt-2 font-headline font-black text-[10px] uppercase tracking-widest text-primary">— Líder del Movimiento</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Galería -->
+                <div class="lg:w-7/12">
+                    <div class="flex items-center gap-2 mb-3 reveal">
+                        <span class="material-symbols-outlined !text-lg text-primary">photo_library</span>
+                        <span class="font-headline font-black text-[11px] uppercase tracking-widest text-primary">Momentos en los campus</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG_20241120_081622.jpg" alt="Célula de oración en la Universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Células y oración</span>
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0033.jpg" alt="Encuentro juvenil" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Encuentros</span>
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0027.jpg" alt="Campamento D5" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Campamentos</span>
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG_20241120_101747.jpg" alt="Devocional en la universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG_20241120_082447.jpg" alt="Vigilia juvenil" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG-20241108-WA0026.jpg" alt="Comunidad en los campus" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/IMG_20241120_081932.jpg" alt="Universidad San Buenaventura" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_081628.jpg" alt="Universidad San Buenaventura" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_081930.jpg" alt="Universidad Autónoma de Occidente" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/_storage_emulated_0_DCIM_Camera_IMG_20241120_101750.jpg" alt="Devocional en la universidad" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Devocionales</span>
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/uao2.jpg" alt="Universidad Autónoma de Occidente" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Universidades</span>
+                        </div>
+                        <div class="gallery-cell overflow-hidden relative border-2 border-outline-variant shadow-[0_3px_0_#c6c7cf] bg-surface-container h-28 reveal cursor-pointer">
+                            <img src="media/img/QUIENES SOMOS/UVsanfer4.jpg" alt="Universidad de San Francisco" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <span class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline font-black text-[10px]">Campus</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1365,7 +1376,68 @@
             btn.addEventListener('click', () => { alert('¡Gracias por suscribirte al boletín!'); email.value = ''; });
         })();
     </script>
+    <script src="assets/js/menu.js" defer></script>
+    <script src="assets/js/video-player.js" defer></script>
     <script src="assets/js/mobile-nav.js" defer></script>
     <script src="assets/js/social-footer.js" defer></script>
+
+    <!-- GALERÍA LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 z-[90] hidden bg-black/90 backdrop-blur-sm p-4">
+        <button onclick="closeLightbox()" class="btn-3d btn-3d-white absolute top-4 right-4 w-11 h-11 flex items-center justify-center !shadow-[0_4px_0_#c6c7cf]" aria-label="Cerrar galería"><span class="material-symbols-outlined !text-2xl">close</span></button>
+        <button onclick="navLightbox(-1)" class="btn-3d btn-3d-white absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center !shadow-[0_4px_0_#c6c7cf]" aria-label="Imagen anterior"><span class="material-symbols-outlined !text-2xl">chevron_left</span></button>
+        <button onclick="navLightbox(1)" class="btn-3d btn-3d-white absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center !shadow-[0_4px_0_#c6c7cf]" aria-label="Imagen siguiente"><span class="material-symbols-outlined !text-2xl">chevron_right</span></button>
+        <div class="w-full h-full flex items-center justify-center" onclick="if(event.target===this)closeLightbox()">
+            <figure class="max-w-full max-h-full flex flex-col gap-3" onclick="event.stopPropagation()">
+                <img id="lightboxImg" class="max-h-[78vh] w-auto object-contain" alt="Foto ampliada">
+                <figcaption class="font-headline font-black text-[11px] uppercase tracking-widest text-white text-center">
+                    <span id="lightboxIndex">1 / 12</span>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <script>
+        // Galería lightbox con navegación
+        (function () {
+            const cells = Array.prototype.slice.call(document.querySelectorAll('.gallery-cell'));
+            const images = cells.map(c => {
+                const img = c.querySelector('img');
+                return { src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' };
+            });
+            let current = 0;
+            let open = false;
+            const box = document.getElementById('lightbox');
+            const imgEl = document.getElementById('lightboxImg');
+            const indexEl = document.getElementById('lightboxIndex');
+
+            window.openLightbox = function (i) {
+                current = (i + images.length) % images.length;
+                imgEl.src = images[current].src;
+                imgEl.alt = images[current].alt;
+                indexEl.textContent = (current + 1) + ' / ' + images.length;
+                box.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                open = true;
+            };
+            window.navLightbox = function (dir) { openLightbox(current + dir); };
+            window.closeLightbox = function () {
+                box.classList.add('hidden');
+                document.body.style.overflow = '';
+                open = false;
+            };
+            document.addEventListener('keydown', (e) => {
+                if (!open) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navLightbox(-1);
+                if (e.key === 'ArrowRight') navLightbox(1);
+            });
+            cells.forEach((c, i) => {
+                c.setAttribute('role', 'button');
+                c.setAttribute('tabindex', '0');
+                c.addEventListener('click', () => openLightbox(i));
+            });
+        })();
+    </script>
+    <script src="assets/js/nav-active.js" defer></script>
 </body>
 </html>

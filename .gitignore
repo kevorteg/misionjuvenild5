@@ -1,0 +1,35 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos temporales y logs
+*.tmp
+*.temp
+*.log
+
+# Carpetas generadas por herramientas
+node_modules/
+dist/
+build/
+.cache/
+
+# Configuración local del editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Archivos locales de entorno
+.env
+.env.*
+!.env.example
+
+# Media pesada servida desde Cloudflare R2 (nunca en git)
+media/audio/**/*.mp3
+media/audio/**/*.wav
+media/video/**/*.mp4
+media/video/**/*.webm
+
+# Archivos del proyecto que deben permanecer versionados
+!AUDITORIA_COMPLETA_MJD5.md
+!bajar-recursos.ps1

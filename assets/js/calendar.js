@@ -5,9 +5,9 @@
 
 const MJ_EVENTS = [
     { date: '2026-02-14', title: 'Ayuno Misión Juvenil', loc: 'IPUC Diamante', type: 'general' },
-    { date: '2026-02-22', title: 'Encuentro Distrital MJ', loc: 'Distrito 5', type: 'general' },
+    { date: '2026-02-22', title: 'Encuentro Distrital MJ', loc: 'Distrito 5', type: 'general', description: 'Una jornada para encontrarnos, fortalecer la unidad y proyectar el trabajo juvenil del Distrito 5.', image: 'media/img/QUIENES SOMOS/IMG-20241108-WA0025.jpg' },
     { date: '2026-03-13', title: 'Culto Pre-Campamento', loc: 'IPUC Sedes', type: 'general' },
-    { date: '2026-03-27', title: 'Campamento Misión Juvenil', loc: 'Sede Recreacional', type: 'general', end: '2026-03-29' },
+    { date: '2026-03-27', title: 'Campamento Distrital Misión Juvenil', loc: 'Sede Recreacional', type: 'general', end: '2026-03-29', description: 'Tres días de formación, convivencia y servicio para jóvenes del Distrito 5.', image: 'media/img/FOTOS HOME/fotos slides/slide 2.jpg' },
     { date: '2026-04-10', title: 'Impacto Zonal – Zona Sur', loc: 'Cali Sur', type: 'zonal' },
     { date: '2026-05-29', title: 'Impacto Zonal – Zona Oriente', loc: 'Cali Oriente', type: 'zonal' },
     { date: '2026-06-14', title: 'Integración MJ', loc: 'Por definir', type: 'general' },
@@ -16,10 +16,15 @@ const MJ_EVENTS = [
     { date: '2026-07-31', title: 'Impacto Zonal – Zona Yumbo', loc: 'Yumbo', type: 'zonal' },
     { date: '2026-08-28', title: 'Impacto Zonal – Zona Jamundí', loc: 'Jamundí', type: 'zonal' },
     { date: '2026-09-18', title: 'Impacto Zonal – Zona Ladera', loc: 'Cali Ladera', type: 'zonal' },
-    { date: '2026-09-27', title: 'Amor y Amistad MJ', loc: 'Por definir', type: 'general' },
+    { date: '2026-09-27', title: 'Amor y Amistad MJ', loc: 'Por definir', type: 'general', description: 'Una actividad de integración para compartir, cuidar los vínculos y vivir la misión en comunidad.', image: 'media/img/QUIENES SOMOS/IMG-20241108-WA0026.jpg' },
     { date: '2026-10-17', title: 'Congreso Ciencias y Fe', loc: 'Auditorio Principal', type: 'general' },
-    { date: '2026-11-29', title: 'Noche de Gala Distrital', loc: 'Centro de Eventos', type: 'general' }
+    { date: '2026-11-29', title: 'Noche de Gala Distrital', loc: 'Centro de Eventos', type: 'general', description: 'Cierre anual para reconocer el servicio, celebrar los frutos y compartir como comunidad.', image: 'media/img/FOTOS HOME/about-mj.jpg' }
 ];
+
+MJ_EVENTS.forEach((event) => {
+    event.description ||= 'Encuentro de Misión Juvenil D5 para formar, acompañar y servir a nuevas generaciones.';
+    event.image ||= 'media/img/hero-mj.jpg';
+});
 
 let currentYear = 2026;
 let currentMonth = new Date().getMonth(); // Start with current month in 2026
@@ -143,7 +148,7 @@ function renderCalendar() {
                 }
 
                 return `
-                    <div class="mj-cal-event-card ${boxBg} transition-all duration-300">
+                    <button type="button" class="mj-cal-event-card ${boxBg} transition-all duration-300 text-left w-full" data-event-date="${e.date}">
                         <div class="mj-cal-date-box">
                             <span class="mj-cal-date-day ${textCol} drop-shadow-md">${d}</span>
                             <span class="mj-cal-date-month ${textCol} opacity-80">${m}</span>
@@ -152,13 +157,43 @@ function renderCalendar() {
                             <h5 class="${textCol} font-black uppercase text-lg mb-1 flex items-center flex-wrap gap-2">${e.title} ${badgeHtml}</h5>
                             <p class="text-slate-300 font-medium"><span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle;">location_on</span> ${e.loc}</p>
                         </div>
-                    </div>
+                    </button>
                 `;
             }).join('');
+            upcomingList.querySelectorAll('[data-event-date]').forEach((card) => {
+                card.addEventListener('click', () => selectEvent(card.dataset.eventDate));
+            });
+            selectEvent(displayEvents[0].date);
         } else {
             upcomingList.innerHTML = '<p class="text-slate-500 italic text-center py-10 w-full col-span-full">No hay eventos programados para este mes.</p>';
         }
     }
+}
+
+function selectEvent(date) {
+    const event = MJ_EVENTS.find((item) => item.date === date);
+    const detail = document.getElementById('eventDetail');
+    if (!event || !detail) return;
+
+    detail.innerHTML = `
+        <div class="event-detail-media"><img src="${event.image}" alt="${event.title}"></div>
+        <div class="event-detail-copy">
+            <p class="event-detail-kicker">Actividad seleccionada</p>
+            <h2>${event.title}</h2>
+            <p>${event.description}</p>
+            <dl>
+                <div><dt>Fecha</dt><dd>${formatEventDate(event.date, event.end)}</dd></div>
+                <div><dt>Lugar</dt><dd>${event.loc}</dd></div>
+            </dl>
+        </div>
+    `;
+}
+
+function formatEventDate(start, end) {
+    const formatter = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    const startDate = new Date(`${start}T12:00:00`);
+    if (!end) return formatter.format(startDate);
+    return `${formatter.format(startDate)} al ${formatter.format(new Date(`${end}T12:00:00`))}`;
 }
 
 // Initialize on load

@@ -1,4 +1,6 @@
 (function () {
+    if (window.__mjd5MenuInitialized) return;
+
     const menu = document.getElementById('mobileMenu');
     const toggle = document.getElementById('menuToggle');
     if (!menu || !toggle) return;
@@ -8,6 +10,7 @@
         ['index.html', 'Inicio', 'home'],
         ['quienes-somos.html', 'Quiénes somos', 'groups'],
         ['impacto.html', 'Qué hacemos', 'insights'],
+        ['calendario.html', 'Calendario', 'event'],
         ['podcast.html', 'Podcast D5', 'podcasts'],
         ['recursos.html', 'Recursos', 'menu_book'],
         ['muro-espiritual.html', 'Muro espiritual', 'volunteer_activism'],
@@ -33,11 +36,11 @@
                 </button>
             </div>
             <p class="mobile-app-section">PRINCIPAL</p>
-            ${links.slice(0, 3).map(item => linkMarkup(...item)).join('')}
+            ${links.slice(0, 4).map(item => linkMarkup(...item)).join('')}
             <p class="mobile-app-section">A UN CLICK</p>
-            ${links.slice(3, 7).map(item => linkMarkup(...item)).join('')}
+            ${links.slice(4, 8).map(item => linkMarkup(...item)).join('')}
             <p class="mobile-app-section">SERVICIOS</p>
-            ${links.slice(7).map(item => linkMarkup(...item)).join('')}
+            ${links.slice(8).map(item => linkMarkup(...item)).join('')}
         </div>`;
 
     document.querySelectorAll('header a[href^="https://chat.whatsapp.com"]').forEach(cta => cta.classList.add('mobile-nav-cta'));
@@ -71,7 +74,7 @@
             <a class="${currentPage === 'index.html' ? 'active' : ''}" href="index.html"><span class="material-symbols-outlined">home</span><span>Inicio</span></a>
             <a class="${currentPage === 'podcast.html' ? 'active' : ''}" href="podcast.html"><span class="material-symbols-outlined">podcasts</span><span>Podcast</span></a>
             <a class="${currentPage === 'recursos.html' ? 'active' : ''}" href="recursos.html"><span class="material-symbols-outlined">menu_book</span><span>Recursos</span></a>
-            <a class="${!['index.html', 'podcast.html', 'recursos.html'].includes(currentPage) ? 'active' : ''}" href="#" id="mobileBottomMenu"><span class="material-symbols-outlined">apps</span><span>Más</span></a>
+            <button class="${!['index.html', 'podcast.html', 'recursos.html'].includes(currentPage) ? 'active' : ''}" type="button" id="mobileBottomMenu" aria-label="Abrir más opciones"><span class="material-symbols-outlined">apps</span><span>Más</span></button>
         </nav>`);
 
     document.getElementById('mobileBottomMenu').addEventListener('click', event => {

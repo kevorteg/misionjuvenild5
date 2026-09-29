@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de actividades | Misión Juvenil D5</title>
+    <meta name="description" content="Consulta las actividades, encuentros y campamentos de Misión Juvenil D5.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/mobile-nav.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#006491',
+                        'primary-dark': '#02557d',
+                        'primary-container': '#449bd1',
+                        'secondary-orange': '#F58634',
+                        'secondary-dark': '#C86018',
+                        'duo-purple': '#473458'
+                    },
+                    fontFamily: {
+                        headline: ['Rubik', 'sans-serif'],
+                        body: ['Nunito Sans', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root { --blue: #006491; --blue-dark: #02557d; --orange: #F58634; --orange-dark: #C86018; --ink: #111d26; --line: #dbe5ec; }
+        * { box-sizing: border-box; }
+        body { margin: 0; color: var(--ink); background: #f7f9fa; font-family: 'Nunito Sans', sans-serif; }
+        .calendar-hero { background: linear-gradient(110deg, #02557d 0%, #006491 58%, #449bd1 100%); }
+        .calendar-shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+        .calendar-board { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr); gap: 18px; align-items: start; }
+        .calendar-panel, .events-panel, .event-detail { background: #fff; border: 2px solid var(--line); box-shadow: 0 5px 0 #cbd8e1; }
+        .calendar-panel { padding: 18px; }
+        .calendar-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 2px solid var(--line); }
+        .calendar-nav { display: flex; gap: 8px; }
+        .calendar-nav button { width: 38px; height: 38px; border: 2px solid var(--blue); color: var(--blue); background: #fff; font-size: 22px; line-height: 1; }
+        .calendar-nav button:hover { background: #e8f3fa; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; margin-top: 16px; }
+        .mj-weekday { color: #6c7c87; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; padding: 5px 4px; }
+        .mj-day { min-height: 94px; padding: 8px; border: 1px solid var(--line); background: #fbfdfe; }
+        .mj-day.empty { background: #f1f5f7; border-color: transparent; }
+        .mj-day.today { outline: 3px solid var(--orange); outline-offset: -3px; }
+        .mj-day.has-event { background: #f0f8fc; }
+        .mj-day-num { display: block; color: #31424d; font-size: 12px; font-weight: 900; }
+        .mj-event-dots { display: flex; gap: 4px; }
+        .mj-dot { width: 7px; height: 7px; background: var(--orange); }
+        .mj-dot.zonal { background: var(--blue-container, #3498db); }
+        .events-panel { padding: 18px; }
+        .events-panel h2, .event-detail h2 { margin: 0; font-family: 'Rubik', sans-serif; font-weight: 900; text-transform: uppercase; }
+        .events-panel h2 { font-size: 18px; }
+        .events-panel > p { margin: 5px 0 14px; color: #657782; font-size: 12px; font-weight: 700; }
+        #upcomingList { display: grid; gap: 10px; max-height: 480px; overflow-y: auto; padding-right: 3px; }
+        .mj-cal-event-card { display: flex; gap: 10px; align-items: center; padding: 10px; border: 2px solid #f4c29e; background: #fff8f3; cursor: pointer; }
+        .mj-cal-event-card:hover, .mj-cal-event-card:focus-visible { border-color: var(--orange); outline: none; transform: translateX(2px); }
+        .mj-cal-date-box { width: 43px; flex: 0 0 43px; text-align: center; border-right: 2px solid currentColor; }
+        .mj-cal-date-day { display: block; font-family: 'Rubik', sans-serif; font-size: 22px; font-weight: 900; line-height: 1; }
+        .mj-cal-date-month { display: block; margin-top: 4px; font-size: 9px; font-weight: 900; text-transform: uppercase; }
+        .mj-cal-event-info h5 { margin: 0; color: #26343c; font-family: 'Rubik', sans-serif; font-size: 11px; line-height: 1.2; text-transform: uppercase; }
+        .mj-cal-event-info p { margin: 4px 0 0; color: #71808a; font-size: 11px; font-weight: 700; }
+        .event-detail { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr); margin-top: 24px; overflow: hidden; }
+        .event-detail-media { min-height: 250px; background: var(--blue-dark); }
+        .event-detail-media img { width: 100%; height: 100%; min-height: 250px; display: block; object-fit: cover; }
+        .event-detail-copy { padding: 26px; }
+        .event-detail-kicker { margin: 0 0 8px; color: var(--orange-dark); font-size: 10px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+        .event-detail h2 { font-size: 25px; line-height: 1.1; }
+        .event-detail-copy > p:not(.event-detail-kicker) { max-width: 600px; margin: 14px 0 22px; color: #596c77; font-size: 15px; font-weight: 700; line-height: 1.6; }
+        .event-detail dl { display: flex; flex-wrap: wrap; gap: 22px; margin: 0; }
+        .event-detail dt { color: #8797a0; font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+        .event-detail dd { margin: 3px 0 0; color: var(--blue); font-size: 13px; font-weight: 900; }
+        @media (max-width: 900px) {
+            .calendar-board, .event-detail { grid-template-columns: 1fr; }
+            .event-detail-media, .event-detail-media img { min-height: 210px; max-height: 280px; }
+        }
+        @media (max-width: 600px) {
+            .calendar-shell { padding: 0 14px; }
+            .calendar-panel, .events-panel { padding: 12px; }
+            .mj-day { min-height: 58px; padding: 6px; }
+            .mj-weekday { font-size: 8px; letter-spacing: .04em; }
+            .mj-day .hidden { display: none; }
+            .calendar-panel-head h1 { font-size: 18px; }
+            .event-detail-copy { padding: 20px; }
+        }
+        *, *::before, *::after { border-radius: 0 !important; }
+    </style>
+</head>
+<body>
+    <header aria-label="Encabezado principal"></header>
+
+    <main>
+        <section class="calendar-hero px-5 py-12 sm:py-16">
+            <div class="calendar-shell">
+                <p class="font-headline text-[10px] font-black uppercase tracking-[0.2em] text-white/75">Misión Juvenil D5</p>
+                <h1 class="mt-3 max-w-3xl font-headline text-[28px] font-black uppercase leading-tight text-white sm:text-[42px]">Calendario de actividades</h1>
+                <p class="mt-4 max-w-2xl font-body text-sm font-bold leading-relaxed text-white/90 sm:text-base">Encuentra las fechas de nuestros encuentros, campamentos, jornadas de impacto y espacios de integración.</p>
+            </div>
+        </section>
+
+        <section class="calendar-shell py-10 sm:py-14">
+            <div class="calendar-board">
+                <div class="calendar-panel">
+                    <div class="calendar-panel-head">
+                        <div>
+                            <p class="font-headline text-[10px] font-black uppercase tracking-[0.16em] text-secondary-orange">Agenda anual</p>
+                            <h2 id="monthDisplay" class="mt-1 font-headline text-2xl font-black uppercase text-neutral-900">Septiembre 2026</h2>
+                        </div>
+                        <div class="calendar-nav" aria-label="Cambiar mes">
+                            <button id="calPrev" type="button" aria-label="Mes anterior">&lsaquo;</button>
+                            <button id="calNext" type="button" aria-label="Mes siguiente">&rsaquo;</button>
+                        </div>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid" aria-live="polite"></div>
+                </div>
+
+                <aside class="events-panel">
+                    <p class="font-headline text-[10px] font-black uppercase tracking-[0.16em] text-primary">Agenda del mes</p>
+                    <h2>Próximas actividades</h2>
+                    <p>Selecciona una actividad para consultar sus detalles.</p>
+                    <div id="upcomingList"></div>
+                </aside>
+            </div>
+
+            <section id="eventDetail" class="event-detail" aria-live="polite"></section>
+        </section>
+    </main>
+
+    <footer class="bg-[#1F2E3D] px-5 py-10 text-white">
+        <div class="mx-auto grid max-w-7xl gap-8 sm:grid-cols-3">
+            <div><img src="media/img/logos/BLANCO.png" alt="Misión Juvenil D5" class="h-10 w-auto"><p class="mt-4 max-w-xs text-xs font-bold leading-relaxed text-white/70">Fe, formación y comunidad para acompañar a nuevas generaciones.</p></div>
+            <div><h2 class="font-headline text-xs font-black uppercase tracking-widest text-secondary-orange">Ecosistema</h2><a class="mt-3 block text-sm font-bold text-white/75 hover:text-white" href="podcast.html">Podcast D5</a><a class="mt-2 block text-sm font-bold text-white/75 hover:text-white" href="recursos.html">Recursos</a></div>
+            <div><h2 class="font-headline text-xs font-black uppercase tracking-widest text-secondary-orange">Contacto</h2><a class="mt-3 block text-sm font-bold text-white/75 hover:text-white" href="contacto.html">Escríbenos</a><a class="mt-2 block text-sm font-bold text-white/75 hover:text-white" href="https://wa.me/573137159439" target="_blank" rel="noopener">WhatsApp</a></div>
+        </div>
+    </footer>
+
+    <script src="assets/js/menu.js" defer></script>
+    <script src="assets/js/calendar.js" defer></script>
+</body>
+</html>

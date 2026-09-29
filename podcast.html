@@ -400,11 +400,10 @@
                         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
                     </svg>
                 </a>
-                <a aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="#">
-                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <button type="button" aria-label="TikTok" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors cursor-pointer"><svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.48 2.73 1.25-.07 2.39-.81 2.89-1.96.28-.62.37-1.31.37-1.99.01-4.96.01-9.92.01-14.88z"></path>
                     </svg>
-                </a>
+                </button>
                 <a aria-label="Spotify" class="w-6 h-6 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener">
                     <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
@@ -437,7 +436,7 @@
                         </svg>
                     </a>
                     <!-- Dropdown con fotos -->
-                        <div class="nav-dropdown absolute top-full pt-2 z-50" style="left:50%;margin-left:-310px">
+                        <div class="nav-dropdown nav-dropdown--wide absolute top-full pt-2 z-50" style="left:50%;transform:translateX(-50%)">
                             <div class="bg-white border-[3px] border-neutral-200 shadow-[0_10px_30px_-12px_rgba(17,29,38,0.35)]">
                                 <div class="flex items-center justify-between gap-4 px-5 py-3.5 bg-secondary-orange border-b-[3px] border-secondary-dark">
                                     <div>
@@ -450,14 +449,14 @@
                                     <div class="flex-1 min-w-0 border-r-[3px] border-neutral-100 pr-4 sm:pr-5">
                                         <p class="pb-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-neutral-400">Episodios</p>
                                         <div class="divide-y divide-neutral-100">
-                                            <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+<a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
                                                 <span class="relative flex-shrink-0">
-                                                    <img src="media/audio/podcasts/minuatura ep 8.jpg" alt="Carátula del episodio 08" class="w-14 h-14 object-cover border-2 border-neutral-200">
-                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-secondary-orange shadow-[0_2px_0_#C86018]">Ep 08 · Nuevo</span>
+                                                    <img src="media/audio/podcasts/minuatura ep 9.jpg" alt="Carátula del episodio 09" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-secondary-orange shadow-[0_2px_0_#C86018]">Ep 09 · Nuevo</span>
                                                 </span>
                                                 <span class="min-w-0">
-                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">El Poder del Propósito</span>
-                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Propósito y fe</span>
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Desafíos en la Academia</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Vida universitaria</span>
                                                 </span>
                                             </a>
                                             <a href="podcast.html" class="flex items-center gap-3 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
@@ -627,7 +626,7 @@
         <a href="index.html"><span class="material-symbols-outlined">home</span><span>Inicio</span></a>
         <a class="active" href="podcast.html"><span class="material-symbols-outlined">podcasts</span><span>Podcast</span></a>
         <a href="recursos.html"><span class="material-symbols-outlined">menu_book</span><span>Recursos</span></a>
-        <a href="#" id="mobileBottomMenu"><span class="material-symbols-outlined">apps</span><span>Más</span></a>
+        <button type="button" id="mobileBottomMenu" aria-label="Abrir menú"><span class="material-symbols-outlined">apps</span><span>Más</span></button>
     </nav>
 
     <main class="relative z-10">
@@ -636,7 +635,7 @@
         <section class="w-full bg-primary-container text-white relative overflow-hidden py-10 lg:py-14 px-5 lg:px-8 border-b-2 border-primary-dark">
             <!-- Capa de fondo: UNA imagen, siempre la del último episodio (se actualiza sola al agregar uno nuevo en EPISODES) -->
             <div class="absolute inset-0 z-0">
-                <img id="hero-bg" src="media/audio/podcasts/minuatura ep 8.jpg" alt="" class="w-full h-full object-cover hero-bg-img">
+                <img id="hero-bg" src="media/audio/podcasts/minuatura ep 9.jpg" alt="" class="w-full h-full object-cover hero-bg-img">
                 <div class="absolute inset-0 bg-gradient-to-b from-primary-container/70 via-primary-container/75 to-primary-dark/85"></div>
             </div>
 
@@ -689,7 +688,7 @@
                 <div class="w-full lg:w-4/12 flex justify-center reveal">
                     <div class="w-full max-w-sm bg-white text-on-surface p-2.5 sm:p-3 shadow-[0_5px_0_#02557d] flex flex-col gap-2.5 border-2 border-primary-dark">
                         <div class="relative w-full aspect-video overflow-hidden bg-surface-container-high border-2 border-border-gray">
-                            <img id="heroCardArt" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito">
+                            <img id="heroCardArt" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 9.jpg" alt="Desafíos en la academia">
                             <span id="heroCardBadge" class="absolute top-2 left-2 px-2 py-0.5 bg-secondary text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#682f00]">Episodio 08 • Estreno</span>
                             <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-inverse-surface/90 text-inverse-on-surface font-headline font-bold text-[10px] flex items-center gap-1">
                                 <span class="material-symbols-outlined !text-xs">schedule</span> <span id="heroCardDur">28:44</span>
@@ -700,12 +699,12 @@
                                 <span id="heroCardCat" class="text-secondary font-headline font-black text-[10px] uppercase tracking-widest">Devocionales Fuego</span>
                                 <span id="heroCardDate" class="text-on-surface-variant font-headline font-bold text-[10px]">12 Sep 2026</span>
                             </div>
-                            <h2 id="heroCardTitle" class="font-headline font-black text-base sm:text-lg text-on-surface leading-snug uppercase">El Poder del Propósito</h2>
+<h2 id="heroCardTitle" class="font-headline font-black text-base sm:text-lg text-on-surface leading-snug uppercase">Desafíos en la Academia</h2>
                             <p id="heroCardDesc" class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
-                                ¿Para qué estás realmente en la universidad? Hablamos de vocación, miedo al futuro y cómo encontrar el porqué que enciende cada día.
+                                ¿Cómo mantener tu fe, identidad y propósito cuando el entorno universitario presiona? Conversación honesta para jóvenes creyentes en la academia.
                             </p>
                         </div>
-                        <button id="heroPlayBtn" onclick="playEpisode('ep8')" class="w-full py-2.5 bg-secondary-container text-on-secondary font-headline font-black text-xs uppercase tracking-wider shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2">
+                        <button id="heroPlayBtn" onclick="playEpisode('ep9')" class="w-full py-2.5 bg-secondary-container text-on-secondary font-headline font-black text-xs uppercase tracking-wider shadow-[0_4px_0_#984800] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined !text-lg">play_circle</span>
                             Reproducir Ahora
                         </button>
@@ -739,12 +738,48 @@
             <!-- Grid de episodios -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6" id="episodes-grid">
 
+<!-- EP 09 -->
+                <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="universidad" data-id="ep9">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
+                            <img loading="lazy" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 9.jpg" alt="Desafíos que enfrentan los jóvenes cristianos en la academia">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#984800]">Nuevo Ep. 09</span>
+                            <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">1 h 07 min</span>
+                            <button onclick="playEpisode('ep9')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
+                                <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-secondary font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">school</span>
+                            Vida Universitaria
+                        </div>
+                        <h3 class="font-headline font-black text-sm text-on-surface leading-tight line-clamp-2 uppercase">Desafíos que enfrentan los jóvenes cristianos en la academia</h3>
+                        <p class="font-body font-bold text-xs text-on-surface-variant line-clamp-2">
+                            Identidad, fe y presión del entorno universitario: conversación real sobre vivir tu fe en la academia.
+                        </p>
+                    </div>
+                    <div class="pt-2.5 mt-2.5 flex items-center justify-between bg-surface-container-low p-2 border border-border-gray">
+                        <button onclick="playEpisode('ep9')" class="px-3 py-1.5 bg-primary text-on-primary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#02557d] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1">
+                            <span class="material-symbols-outlined !text-sm">play_arrow</span>
+                            Escuchar
+                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="toggleCardLike(this)" class="p-1.5 bg-white text-on-surface-variant hover:text-error shadow-[0_2px_0_#c6c7cf] font-headline font-black text-[10px] flex items-center gap-1">
+                                <span class="material-symbols-outlined !text-sm">favorite</span><span class="like-counter">89</span>
+                            </button>
+                            <button onclick="downloadAsset('ep9')" title="Descargar Audio" class="p-1.5 bg-white text-primary shadow-[0_2px_0_#c6c7cf]">
+                                <span class="material-symbols-outlined !text-sm">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
                 <!-- EP 08 -->
                 <article class="episode-card bg-white border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] p-3 flex flex-col justify-between transition-all reveal" data-category="devocional" data-id="ep8">
                     <div class="flex flex-col gap-2.5">
                         <div class="relative w-full aspect-video overflow-hidden bg-surface-container border-2 border-border-gray">
                             <img loading="lazy" class="w-full h-full object-cover" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito">
-                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#984800]">Nuevo Ep. 08</span>
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-secondary-container text-on-secondary font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_2px_0_#984800]">Ep. 08</span>
                             <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/80 text-surface-container-lowest font-headline font-bold text-[10px]">28 min</span>
                             <button onclick="playEpisode('ep8')" class="absolute inset-0 bg-inverse-surface/0 hover:bg-inverse-surface/25 flex items-center justify-center transition-all" aria-label="Reproducir">
                                 <span class="material-symbols-outlined !text-2xl text-white drop-shadow-lg">play_circle</span>
@@ -1068,51 +1103,107 @@
                         Podcast en Video
                     </h2>
                 </div>
-                <span class="font-body font-bold text-sm text-on-surface-variant">Disfruta el podcast con imágenes en YouTube</span>
+                <span class="font-body font-bold text-sm text-on-surface-variant">Disfruta el podcast en video con nuestro reproductor</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
-                    <img loading="lazy" src="media/audio/podcasts/minuatura ep 8.jpg" alt="El Poder del Propósito en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
-                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
-                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5" id="podcast-video-grid">
+                <button type="button" onclick="openVideoPlayer('ep9')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep9.jpg" alt="Episodio 09 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
                         </span>
                     </span>
                     <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
                         <span class="material-symbols-outlined !text-xs">smart_display</span>
-                        Ver en YouTube
+                        REPRODUCIR AQUÍ
                     </span>
-                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 08</span>
-                </a>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 09</span>
+                </button>
 
-                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
-                    <img loading="lazy" src="media/img/podcasts/minuatura ep 6.jpg" alt="Silenciar el Ruido Interior en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
-                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
-                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                <button type="button" onclick="openVideoPlayer('ep1')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep1.jpg" alt="Episodio 01 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
                         </span>
                     </span>
                     <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
                         <span class="material-symbols-outlined !text-xs">smart_display</span>
-                        Ver en YouTube
+                        REPRODUCIR AQUÍ
                     </span>
-                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 06</span>
-                </a>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 01</span>
+                </button>
 
-                <a href="https://www.youtube.com/watch?v=zbpWCwwbBDU" target="_blank" rel="noopener" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal block">
-                    <img loading="lazy" src="media/img/podcasts/miniatura ep 2.webp" alt="Inseguridades y Experiencias en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/35 flex items-center justify-center transition-all">
-                        <span class="w-14 h-14 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
-                            <span class="material-symbols-outlined !text-3xl">play_arrow</span>
+                <button type="button" onclick="openVideoPlayer('ep2')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep2.jpg" alt="Episodio 02 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
                         </span>
                     </span>
                     <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
                         <span class="material-symbols-outlined !text-xs">smart_display</span>
-                        Ver en YouTube
+                        REPRODUCIR AQUÍ
                     </span>
                     <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 02</span>
-                </a>
+                </button>
+
+                <button type="button" onclick="openVideoPlayer('ep3')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep3.jpg" alt="Episodio 03 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        REPRODUCIR AQUÍ
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 03</span>
+                </button>
+
+                <button type="button" onclick="openVideoPlayer('ep5')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep5.jpg" alt="Episodio 05 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        REPRODUCIR AQUÍ
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 05</span>
+                </button>
+
+                <button type="button" onclick="openVideoPlayer('ep6')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep6.jpg" alt="Episodio 06 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        REPRODUCIR AQUÍ
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 06</span>
+                </button>
+
+                <button type="button" onclick="openVideoPlayer('ep7')" class="group relative aspect-video overflow-hidden bg-surface-container border-2 border-outline-variant shadow-[0_5px_0_#c6c7cf] reveal text-left">
+                    <img loading="lazy" src="media/video/podcasts/ep7.jpg" alt="Episodio 07 en video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute inset-0 bg-inverse-surface/20 group-hover:bg-inverse-surface/40 flex items-center justify-center transition-all">
+                        <span class="w-10 h-10 bg-secondary-orange text-white flex items-center justify-center shadow-[0_4px_0_#C86018] border-2 border-white/80">
+                            <span class="material-symbols-outlined !text-2xl">play_arrow</span>
+                        </span>
+                    </span>
+                    <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-inverse-surface/90 text-white font-headline font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
+                        <span class="material-symbols-outlined !text-xs">smart_display</span>
+                        REPRODUCIR AQUÍ
+                    </span>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 bg-error text-white font-headline font-black text-[10px] uppercase tracking-wider">Ep. 07</span>
+                </button>
             </div>
         </section>
 
@@ -1123,9 +1214,9 @@
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-3">
                     <!-- Info del episodio -->
                     <div class="flex items-center gap-3 min-w-0">
-                        <img id="playerArt" src="media/audio/podcasts/minuatura ep 8.jpg" alt="Carátula" class="w-12 h-12 object-cover border-2 border-border-gray flex-shrink-0">
+<img id="playerArt" src="media/audio/podcasts/minuatura ep 9.jpg" alt="Carátula" class="w-12 h-12 object-cover border-2 border-border-gray flex-shrink-0">
                         <div class="min-w-0">
-                            <p id="player-title" class="font-headline font-black text-sm text-on-surface truncate">El Poder del Propósito</p>
+                            <p id="player-title" class="font-headline font-black text-sm text-on-surface truncate">Desafíos que enfrentan los jóvenes cristianos en la academia</p>
                             <p id="player-subtitle" class="text-[10px] font-bold uppercase tracking-widest text-secondary">Podcast D5 Fuego</p>
                         </div>
                         <button onclick="togglePlayerLike()" id="playerLikeBtn" class="ml-1 w-9 h-9 flex-shrink-0 flex items-center justify-center border-2 border-border-gray shadow-[0_2px_0_#c6c7cf] active:translate-y-0.5 active:shadow-none hover:border-secondary-orange transition-all" aria-label="Me gusta">
@@ -1237,247 +1328,9 @@
     <!-- Toast de feedback -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 bg-inverse-surface text-white font-headline font-black text-sm uppercase tracking-wider opacity-0 pointer-events-none transition-all duration-300 shadow-[0_6px_0_#111d26]"></div>
 
+    <script src="assets/js/podcast-player.js" defer></script>
+    <script src="assets/js/video-player.js" defer></script>
     <script>
-        // ---- Datos de episodios (assets reales) ----
-        // El HERO (fondo + cajita) usa SIEMPRE el episodio de mayor número que tenga audio.
-        // Al agregar un episodio nuevo, cópialo con id epN y ¡el hero se actualiza solo!
-        // El resto de campos son opcionales: name, cat, date, dur, badge, desc.
-        const EPISODES = {
-            ep8: { title: 'EP 08 | El Poder del Propósito', name: 'El Poder del Propósito', audio: 'media/audio/podcasts/podcast-ep8.mp3', img: 'media/audio/podcasts/minuatura ep 8.jpg', cat: 'Devocionales Fuego', date: '12 Sep 2026', dur: '28:44', badge: 'Episodio 08 • Estreno', desc: '¿Para qué estás realmente en la universidad? Hablamos de vocación, miedo al futuro y cómo encontrar el porqué que enciende cada día.' },
-            ep1: { title: 'EP 01 | La Primera Conversación', audio: 'media/audio/podcasts/podcast-ep1.mp3', img: 'media/img/podcasts/miniatura ep 1.webp' },
-            ep2: { title: 'EP 02 | Inseguridades y Experiencias', audio: 'media/audio/podcasts/podcast-ep2.mp3', img: 'media/img/podcasts/miniatura ep 2.webp' },
-            ep3: { title: 'EP 03 | Bienvenido a la U', audio: 'media/audio/podcasts/podcast-ep3.mp3', img: 'media/img/podcasts/minuatura ep 3.jpg' },
-            ep5: { title: 'EP 05 | Liderazgo que Enciende', audio: 'media/audio/podcasts/podcast-ep5.mp3', img: 'media/img/podcasts/minuatura ep 5.jpg' },
-            ep6: { title: 'EP 06 | Silenciar el Ruido Interior', audio: 'media/audio/podcasts/podcast-ep6.mp3', img: 'media/img/podcasts/minuatura ep 6.jpg' },
-            ep7: { title: 'EP 07 | Fe en Primera Línea', audio: '', img: 'media/img/podcasts/minuatura ep 7.jpg' }
-        };
-
-        // ---- HERO DINÁMICO: llena fondo y cajita con el último episodio (mayor número con audio) ----
-        function renderLatestEpisode() {
-            const ids = Object.keys(EPISODES).filter(k => /^ep\d+$/.test(k) && EPISODES[k].audio);
-            if (!ids.length) return;
-            ids.sort((a, b) => parseInt(a.slice(2), 10) - parseInt(b.slice(2), 10));
-            const id = ids[ids.length - 1];
-            const ep = EPISODES[id];
-            const num = id.slice(2);
-            const set = (idEl, v) => {
-                const el = document.getElementById(idEl);
-                if (el) el.textContent = v || '';
-            };
-            const bg = document.getElementById('hero-bg');
-            if (bg) bg.src = ep.img;
-            const art = document.getElementById('heroCardArt');
-            if (art) {
-                art.src = ep.img;
-                art.alt = ep.title;
-            }
-            set('heroCardTitle', ep.name || ep.title.replace(/^EP \d+ \| /, ''));
-            set('heroCardCat', ep.cat || 'Podcast D5 Fuego');
-            set('heroCardDate', ep.date || '');
-            set('heroCardDur', ep.dur || '');
-            set('heroCardBadge', ep.badge || ('Episodio ' + num + ' • Nuevo'));
-            set('heroCardDesc', ep.desc || '');
-            const btn = document.getElementById('heroPlayBtn');
-            if (btn) btn.onclick = function () { playEpisode(id); };
-        }
-        renderLatestEpisode();
-
-        const audio = document.getElementById('playerAudio');
-        const playerTitle = document.getElementById('player-title');
-        const playerSubtitle = document.getElementById('player-subtitle');
-        const playerArt = document.getElementById('playerArt');
-        const playBtn = document.getElementById('playerPlayBtn');
-        const playIcon = document.getElementById('playerPlayIcon');
-        const currentTimeEl = document.getElementById('current-time');
-        const durationEl = document.getElementById('duration');
-        const scrubFill = document.getElementById('scrubFill');
-        const scrubThumb = document.getElementById('scrubThumb');
-        const speedBtn = document.getElementById('playbackSpeedBtn');
-        const playerBar = document.getElementById('playerBar');
-        const toast = document.getElementById('toast');
-        const episodeCards = document.querySelectorAll('.episode-card');
-        let currentId = 'ep8';
-        let speeds = [1.0, 1.25, 1.5];
-        let speedIdx = 0;
-        let toastTimer = null;
-
-        function fmt(sec) {
-            if (!isFinite(sec)) return '00:00';
-            const m = Math.floor(sec / 60);
-            const s = Math.floor(sec % 60);
-            return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-        }
-
-        function showToast(msg) {
-            toast.textContent = msg;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.add('opacity-0', 'pointer-events-none'), 2200);
-        }
-
-        function markPlaying(id) {
-            episodeCards.forEach(c => c.classList.remove('playing'));
-            const active = document.querySelector('.episode-card[data-id="' + id + '"]');
-            if (active) active.classList.add('playing');
-        }
-
-        function playEpisode(id) {
-            const ep = EPISODES[id];
-            if (!ep) return;
-            if (!ep.audio) {
-                showToast('EP 07: estreno muy pronto');
-                return;
-            }
-            currentId = id;
-            playerTitle.textContent = ep.title;
-            playerSubtitle.textContent = 'Podcast D5 Fuego';
-            playerArt.src = ep.img;
-            audio.src = ep.audio;
-            audio.currentTime = 0;
-            markPlaying(id);
-            openPlayer();
-            audio.play().then(() => {
-                showToast('Reproduciendo ' + ep.title);
-            }).catch(() => {
-                playIcon.textContent = 'play_arrow';
-                showToast('No se pudo cargar el audio');
-            });
-        }
-
-        function getCurrentId() {
-            return currentId;
-        }
-
-        function togglePlayState() {
-            if (!audio.src) {
-                playEpisode('ep8');
-                return;
-            }
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-
-        audio.addEventListener('play', () => {
-            playIcon.textContent = 'pause';
-        });
-        audio.addEventListener('pause', () => {
-            playIcon.textContent = 'play_arrow';
-        });
-
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = fmt(audio.duration);
-        });
-        audio.addEventListener('timeupdate', () => {
-            currentTimeEl.textContent = fmt(audio.currentTime);
-            if (audio.duration) {
-                const pct = (audio.currentTime / audio.duration) * 100;
-                scrubFill.style.width = pct + '%';
-                scrubThumb.style.left = pct + '%';
-            }
-        });
-        audio.addEventListener('ended', () => {
-            playIcon.textContent = 'play_arrow';
-            showToast('Episodio finalizado');
-        });
-
-        function seekRelative(sec) {
-            if (!audio.src) {
-                playEpisode('ep8');
-                return;
-            }
-            audio.currentTime = Math.min(Math.max(audio.currentTime + sec, 0), audio.duration || 0);
-        }
-
-        function handleScrubClick(e) {
-            if (!audio.duration) return;
-            const rect = e.currentTarget.getBoundingClientRect();
-            const ratio = (e.clientX - rect.left) / rect.width;
-            audio.currentTime = ratio * audio.duration;
-        }
-
-        function cyclePlaybackSpeed() {
-            speedIdx = (speedIdx + 1) % speeds.length;
-            audio.playbackRate = speeds[speedIdx];
-            speedBtn.textContent = speeds[speedIdx].toFixed(2).replace(/\.00$/, '.0') + 'x';
-        }
-
-        // ---- Likes ----
-        function toggleCardLike(el) {
-            const on = el.dataset.liked === '1';
-            el.dataset.liked = on ? '0' : '1';
-            el.classList.toggle('text-error', !on);
-            const counter = el.querySelector('.like-counter');
-            if (counter) {
-                let val = parseInt(counter.textContent, 10) || 0;
-                counter.textContent = on ? val - 1 : val + 1;
-            }
-            showToast(on ? 'Quitaste tu me gusta' : '¡Gracias por tu me gusta!');
-        }
-        function togglePlayerLike() {
-            const btn = document.getElementById('playerLikeBtn');
-            const liked = btn.dataset.liked === '1';
-            btn.dataset.liked = liked ? '0' : '1';
-            const ico = btn.querySelector('.icon-heart');
-            ico.classList.toggle('!fill-current', !liked);
-            btn.classList.toggle('text-secondary-orange', !liked);
-            btn.classList.toggle('border-secondary-orange', !liked);
-            showToast(liked ? 'Quitado de favoritos' : 'Guardado en tus favoritos');
-        }
-
-        // ---- Descargar / Compartir ----
-        function downloadAsset(id) {
-            const ep = EPISODES[id];
-            if (!ep || !ep.audio) {
-                showToast('Audio disponible próximamente');
-                return;
-            }
-            const a = document.createElement('a');
-            a.href = ep.audio;
-            a.download = ep.title + '.mp3';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            showToast('Descargando ' + ep.title);
-        }
-        function shareCurrentEpisode() {
-            const ep = EPISODES[currentId];
-            const text = '🎙️ Podcast D5 Fuego | ' + (ep ? ep.title : '') + ' — Misión Juvenil D5';
-            if (navigator.share) {
-                navigator.share({ title: 'Podcast D5 Fuego', text }).catch(() => {});
-            } else if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(() => showToast('Enlace copiado'));
-            } else {
-                showToast('Comparte a un amigo');
-            }
-        }
-
-        // ---- Minimizar / abrir reproductor ----
-        const playerSection = document.getElementById('playerSection');
-        function minimizePlayer() {
-            if (playerSection) playerSection.classList.remove('hidden');
-            playerBar.style.display = 'none';
-            const chip = document.getElementById('miniOpenBtn');
-            chip.classList.remove('hidden');
-            chip.style.display = 'flex';
-        }
-        function openPlayer() {
-            if (playerSection) playerSection.classList.remove('hidden');
-            playerBar.style.display = '';
-            const chip = document.getElementById('miniOpenBtn');
-            chip.classList.add('hidden');
-            chip.classList.remove('flex');
-            chip.style.display = '';
-        }
-
-        const requestedEpisode = new URLSearchParams(window.location.search).get('episode');
-        const shouldAutoplay = new URLSearchParams(window.location.search).get('autoplay') === '1';
-        if (shouldAutoplay && requestedEpisode && EPISODES[requestedEpisode]) {
-            playEpisode(requestedEpisode);
-        }
-
         // ---- Filtros de categoría ----
         function filterCategory(cat, btn) {
             document.querySelectorAll('.category-btn').forEach(c => c.classList.remove('active'));
@@ -1510,7 +1363,7 @@
             }, 800);
         }
 
-        // ---- Buzón a cabina ----
+// ---- Buzón a cabina ----
         function submitQuestion(e) {
             e.preventDefault();
             const toast = document.getElementById('cabin-toast');
@@ -1521,7 +1374,7 @@
             }
         }
 
-        // ---- Animación de aparición al hacer scroll ----
+// ---- Animación de aparición al hacer scroll ----
         (function () {
             const els = document.querySelectorAll('.reveal');
             if (!('IntersectionObserver' in window)) {
@@ -1576,5 +1429,6 @@
     </script>
 
     <script src="assets/js/social-footer.js" defer></script>
+    <script src="assets/js/nav-active.js" defer></script>
 </body>
 </html>
