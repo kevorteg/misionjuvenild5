@@ -30,14 +30,15 @@ var playerSubtitle = document.getElementById('player-subtitle');
 var playerArt = document.getElementById('playerArt');
 var playBtn = document.getElementById('playerPlayBtn');
 var playIcon = document.getElementById('playerPlayIcon');
-var currentTimeEl = document.getElementById('current-time');
-var durationEl = document.getElementById('duration');
 var scrubFill = document.getElementById('scrubFill');
 var scrubThumb = document.getElementById('scrubThumb');
 var speedBtn = document.getElementById('playbackSpeedBtn');
 var playerBar = document.getElementById('playerBar');
 var playerSectionRef = document.getElementById('playerSection');
 var toastEl = document.getElementById('toast');
+var volumeBtn = document.getElementById('playerVolumeBtn');
+var volumeIcon = document.getElementById('playerVolumeIcon');
+var volumeSlider = document.getElementById('playerVolume');
 var episodeCardsEl = document.querySelectorAll('.episode-card');
 
 var currentId = 'ep9';
@@ -50,6 +51,16 @@ function fmt(sec) {
     var m = Math.floor(sec / 60);
     var s = Math.floor(sec % 60);
     return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+// Actualiza todos los elementos con clase .js-time (escritura y móvil)
+function setTimes(cur, dur) {
+    var nodes = document.querySelectorAll('.js-time');
+    for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (n.id === 'current-time' || n.id === 'current-time-m') n.textContent = fmt(cur);
+        else if (n.id === 'duration' || n.id === 'duration-m') n.textContent = fmt(dur);
+    }
 }
 
 function showToast(msg) {
@@ -81,8 +92,9 @@ function playEpisode(id) {
     audio.currentTime = 0;
     markPlaying(id);
     openPlayer();
+    var label = 'EP ' + (id.match(/\d+/) || [''])[0];
     audio.play().then(function () {
-        showToast('Reproduciendo ' + ep.title);
+        showToast('▶ ' + label + ' · Reproduciendo');
     }).catch(function () {
         if (playIcon) playIcon.textContent = 'play_arrow';
         showToast('No se pudo cargar el audio');
@@ -113,10 +125,10 @@ audio.addEventListener('pause', function () {
 });
 
 audio.addEventListener('loadedmetadata', function () {
-    if (durationEl) durationEl.textContent = fmt(audio.duration);
+    setTimes(audio.currentTime, audio.duration);
 });
 audio.addEventListener('timeupdate', function () {
-    if (currentTimeEl) currentTimeEl.textContent = fmt(audio.currentTime);
+    setTimes(audio.currentTime, audio.duration);
     if (audio.duration) {
         var pct = (audio.currentTime / audio.duration) * 100;
         if (scrubFill) scrubFill.style.width = pct + '%';
@@ -147,6 +159,41 @@ function cyclePlaybackSpeed() {
     speedIdx = (speedIdx + 1) % speeds.length;
     audio.playbackRate = speeds[speedIdx];
     if (speedBtn) speedBtn.textContent = speeds[speedIdx].toFixed(2).replace(/\.00$/, '.0') + 'x';
+}
+
+// ---- Volumen ----
+var lastVolume = 1;
+function updateVolumeIcon() {
+    if (!volumeIcon) return;
+    var v = audio.muted ? 0 : audio.volume;
+    var icon = v === 0 ? 'volume_off' : (v < 0.5 ? 'volume_down' : 'volume_up');
+    volumeIcon.textContent = icon;
+    if (volumeBtn) volumeBtn.setAttribute('aria-label', audio.muted || v === 0 ? 'Activar sonido' : 'Silenciar');
+}
+function setVolume(v) {
+    audio.volume = Math.max(0, Math.min(1, v));
+    if (audio.volume > 0) {
+        lastVolume = audio.volume;
+        audio.muted = false;
+    }
+    if (volumeSlider) volumeSlider.value = String(audio.muted ? 0 : audio.volume);
+    updateVolumeIcon();
+}
+function togglePlayerMute() {
+    if (audio.muted || audio.volume === 0) {
+        audio.muted = false;
+        audio.volume = lastVolume || 1;
+    } else {
+        lastVolume = audio.volume;
+        audio.muted = true;
+    }
+    if (volumeSlider) volumeSlider.value = String(audio.muted ? 0 : audio.volume);
+    updateVolumeIcon();
+}
+if (volumeSlider) {
+    volumeSlider.value = String(audio.volume);
+    volumeSlider.addEventListener('input', function () { setVolume(parseFloat(volumeSlider.value)); });
+    updateVolumeIcon();
 }
 
 // ---- Likes ----

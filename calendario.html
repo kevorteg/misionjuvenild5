@@ -89,6 +89,68 @@
             .calendar-panel-head h1 { font-size: 18px; }
             .event-detail-copy { padding: 20px; }
         }
+        /* Duolingo-style Tactile 3D Buttons */
+        .btn-3d {
+            transition: all 0.12s ease-in-out;
+            position: relative;
+            user-select: none;
+        }
+        .btn-3d-orange {
+            background-color: #F58634;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #C86018;
+            border: 2px solid #C86018;
+        }
+        .btn-3d-orange:hover { background-color: #ff9344; }
+        .btn-3d-orange:active { transform: translateY(4px); box-shadow: 0 0 0 #C86018; }
+        .btn-3d-white {
+            background-color: #ffffff;
+            color: #3b4249;
+            box-shadow: 0 4px 0 #CECECE;
+            border: 2px solid #E5E5E5;
+        }
+        .btn-3d-white:hover { background-color: #F7F9FA; }
+        .btn-3d-white:active { transform: translateY(4px); box-shadow: 0 0 0 #CECECE; }
+        .btn-3d-green {
+            background-color: #473458;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #31233E;
+            border: 2px solid #31233E;
+        }
+        .btn-3d-green:hover { background-color: #5A4A70; }
+        .btn-3d-green:active { transform: translateY(4px); box-shadow: 0 0 0 #31233E; }
+        .btn-3d-blue {
+            background-color: #1CB0F6;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #1899D6;
+            border: 2px solid #1899D6;
+        }
+        .btn-3d-blue:hover { background-color: #2eceff; }
+        .btn-3d-blue:active { transform: translateY(4px); box-shadow: 0 0 0 #1899D6; }
+        .btn-3d-purple {
+            background-color: #8E44AD;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #6C3483;
+            border: 2px solid #6C3483;
+        }
+        .btn-3d-purple:hover { background-color: #9B59B6; }
+        .btn-3d-purple:active { transform: translateY(4px); box-shadow: 0 0 0 #6C3483; }
+
+        /* Dropdown 3D Menu styling */
+        .nav-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        .group:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
         *, *::before, *::after { border-radius: 0 !important; }
     </style>
 </head>

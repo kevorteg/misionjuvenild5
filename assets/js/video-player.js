@@ -21,7 +21,7 @@ var MJ_VIDEOS = {
 };
 
 (function () {
-    var overlay, video, svgPlay, svgPause, lblPlay, curEl, durEl, fill, thumb, titleEl, subEl, btnSpeed, speedIdx = 0, speeds = [1, 1.25, 1.5];
+    var overlay, video, svgPlay, svgPause, lblPlay, curEl, durEl, fill, thumb, titleEl, subEl, btnSpeed, volSlider, volBtn, volIcon, speedIdx = 0, speeds = [1, 1.25, 1.5];
 
     function fmt(s) {
         if (!isFinite(s)) return '00:00';
@@ -53,12 +53,18 @@ var MJ_VIDEOS = {
         titleEl = document.getElementById('mjVTitle');
         subEl = document.getElementById('mjVSubtitle');
         btnSpeed = document.getElementById('mjVSpeed');
+        volSlider = document.getElementById('mjVVolume');
+        volBtn = document.getElementById('mjVMute');
+        volIcon = document.getElementById('mjVVolumeIcon');
 
         document.getElementById('mjVClose').addEventListener('click', closePlayer);
         document.getElementById('mjVPlay').addEventListener('click', togglePlay);
         document.getElementById('mjVBack').addEventListener('click', function () { video.currentTime = Math.max(0, video.currentTime - 15); });
         document.getElementById('mjVFwd').addEventListener('click', function () { video.currentTime = Math.min(video.duration || 1e9, video.currentTime + 15); });
         btnSpeed.addEventListener('click', function () { speedIdx = (speedIdx + 1) % speeds.length; video.playbackRate = speeds[speedIdx]; btnSpeed.textContent = speeds[speedIdx] + 'x'; });
+        volSlider.addEventListener('input', function () { setVolume(parseFloat(volSlider.value)); });
+        volBtn.addEventListener('click', toggleMute);
+        setVolume(video.volume);
         document.getElementById('mjVDownload').addEventListener('click', function () {
             var a = document.createElement('a');
             a.href = video.currentSrc;
@@ -106,6 +112,35 @@ var MJ_VIDEOS = {
     function togglePlay() {
         if (!video.currentSrc) return;
         if (video.paused) { video.play().catch(function () { }); } else { video.pause(); }
+    }
+
+    // ---- Volumen ----
+    var lastVolume = 1;
+    function updateVolIcon() {
+        if (!volIcon) return;
+        var v = video.muted ? 0 : video.volume;
+        volIcon.textContent = v === 0 ? 'volume_off' : (v < 0.5 ? 'volume_down' : 'volume_up');
+        if (volBtn) volBtn.setAttribute('aria-label', (video.muted || v === 0) ? 'Activar sonido' : 'Silenciar');
+    }
+    function setVolume(v) {
+        video.volume = Math.max(0, Math.min(1, v));
+        if (video.volume > 0) {
+            lastVolume = video.volume;
+            video.muted = false;
+        }
+        if (volSlider) volSlider.value = String(video.muted ? 0 : video.volume);
+        updateVolIcon();
+    }
+    function toggleMute() {
+        if (video.muted || video.volume === 0) {
+            video.muted = false;
+            video.volume = lastVolume || 1;
+        } else {
+            lastVolume = video.volume;
+            video.muted = true;
+        }
+        if (volSlider) volSlider.value = String(video.muted ? 0 : video.volume);
+        updateVolIcon();
     }
 
     function closePlayer() {
@@ -166,6 +201,8 @@ var MJ_VIDEOS = {
             '</button>' +
             '<button id="mjVFwd" class="mjv-btn" aria-label="Avanzar 15 segundos"><span class="material-symbols-outlined">forward_media</span></button>' +
             '<button id="mjVSpeed" class="mjv-btn mjv-speed" aria-label="Velocidad">1x</button>' +
+            '<button id="mjVMute" class="mjv-btn" aria-label="Silenciar"><span id="mjVVolumeIcon" class="material-symbols-outlined">volume_up</span></button>' +
+            '<input id="mjVVolume" class="mjv-range" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volumen">' +
             '<button id="mjVDownload" class="mjv-btn" aria-label="Descargar video"><span class="material-symbols-outlined">download</span></button>' +
             '<button id="mjVFull" class="mjv-btn" aria-label="Pantalla completa"><span class="material-symbols-outlined">fullscreen</span></button>' +
             '</div>' +
@@ -200,6 +237,12 @@ var MJ_VIDEOS = {
             '.mjv-btn-play svg{width:24px;height:24px;fill:#fff;display:block}' +
             '.mjv-btn-close{background:#F58634;border-color:#C86018;box-shadow:0 3px 0 #C86018;width:38px;height:38px}' +
             '.mjv-speed{font-family:"Nunito Sans",sans-serif;font-weight:900;font-size:11px;text-transform:uppercase}' +
+            '.mjv-range{-webkit-appearance:none;appearance:none;width:78px;height:24px;background:transparent;cursor:pointer}' +
+            '.mjv-range::-webkit-slider-runnable-track{height:6px;background:#161F26;border:2px solid #39464F}' +
+            '.mjv-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;margin-top:-6px;background:#F58634;border:2px solid #C86018}' +
+            '.mjv-range::-moz-range-track{height:6px;background:#161F26;border:2px solid #39464F}' +
+            '.mjv-range::-moz-range-thumb{width:11px;height:11px;background:#F58634;border:2px solid #C86018}' +
+            '@media(max-width:600px){.mjv-range{width:56px}}' +
             '.mjv-panel:fullscreen{width:100vw;height:100vh;border-radius:0}' +
             '.mjv-panel:fullscreen .mjv-video{flex:1}' +
             '.mjv-panel:fullscreen .mjv-controls{position:static}' +
