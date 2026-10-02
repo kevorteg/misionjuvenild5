@@ -32,7 +32,6 @@ var playBtn = document.getElementById('playerPlayBtn');
 var playIcon = document.getElementById('playerPlayIcon');
 var scrubFill = document.getElementById('scrubFill');
 var scrubThumb = document.getElementById('scrubThumb');
-var speedBtn = document.getElementById('playbackSpeedBtn');
 var playerBar = document.getElementById('playerBar');
 var playerSectionRef = document.getElementById('playerSection');
 var toastEl = document.getElementById('toast');
@@ -42,8 +41,6 @@ var volumeSlider = document.getElementById('playerVolume');
 var episodeCardsEl = document.querySelectorAll('.episode-card');
 
 var currentId = 'ep9';
-var speeds = [1.0, 1.25, 1.5];
-var speedIdx = 0;
 var toastTimer = null;
 
 function fmt(sec) {
@@ -155,12 +152,6 @@ function handleScrubClick(e) {
     audio.currentTime = ratio * audio.duration;
 }
 
-function cyclePlaybackSpeed() {
-    speedIdx = (speedIdx + 1) % speeds.length;
-    audio.playbackRate = speeds[speedIdx];
-    if (speedBtn) speedBtn.textContent = speeds[speedIdx].toFixed(2).replace(/\.00$/, '.0') + 'x';
-}
-
 // ---- Volumen ----
 var lastVolume = 1;
 function updateVolumeIcon() {
@@ -235,18 +226,6 @@ function downloadAsset(id) {
     a.remove();
     showToast('Descargando ' + ep.title);
 }
-function shareCurrentEpisode() {
-    var ep = EPISODES[currentId];
-    var text = '🎙️ Podcast D5 Fuego | ' + (ep ? ep.title : '') + ' — Misión Juvenil D5';
-    if (navigator.share) {
-        navigator.share({ title: 'Podcast D5 Fuego', text: text }).catch(function () {});
-    } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () { showToast('Enlace copiado'); });
-    } else {
-        showToast('Comparte a un amigo');
-    }
-}
-
 // ---- Minimizar / abrir reproductor ----
 function minimizePlayer() {
     if (playerSectionRef) playerSectionRef.classList.remove('hidden');

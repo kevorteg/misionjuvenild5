@@ -56,15 +56,28 @@ Copiar SIEMPRE el `<header>` y `<footer>` de `index.html`:
 - `.reveal` → `.reveal-visible` con IntersectionObserver (script estándar).
 - Episodio reproduciéndose: `.ep-card.playing` con borde naranja.
 
-## 9. Reproductor de podcast
+## 9. Reproductor de podcast (compartido home + podcast.html)
 - Debe quedar `position: sticky; bottom: 0` DENTRO de `<main>`, justo encima del footer
   (el usuario lo pidió explícitamente: "el reproductor arriba del footer").
+- HTML: la barra usa clases `.pj-body`, `.pj-info`, `.pj-controls`, `.pj-progress`,
+  `.pj-actions`. En móvil el bloque de controles usa `display: contents !important`
+  para que todos los botones caigan en UNA sola línea (fila 2) entre info (fila 1)
+  y barra (fila 3). NO quitar ese `!important` ni el `flex-wrap: wrap`.
+- Volumen: botón `#playerVolumeBtn` + slider `#playerVolume` (`togglePlayerMute`).
 - Funciones estándar: `playEpisode`, `togglePlayState`, `seekRelative(±15)`,
-  `handleScrubClick`, `cyclePlaybackSpeed` (1.0/1.25/1.5), `togglePlayerLike`,
-  `toggleCardLike`, `downloadAsset`, `shareCurrentEpisode`, `minimizePlayer`,
-  `filterCategory`, `submitQuestion`, `loadMoreEpisodes`.
+  `handleScrubClick`, `togglePlayerMute`, `togglePlayerLike`, `toggleCardLike`,
+  `downloadAsset`, `minimizePlayer`, `openPlayer`, `filterCategory`, `submitQuestion`,
+  `loadMoreEpisodes`.
+- ELIMINADOS por decisión del usuario: `cyclePlaybackSpeed` / `1.0x` y
+  `shareCurrentEpisode` / botón Compartir. NO reintroducirlos.
+- `video-player.js` SÍ conserva velocidad (es el reproductor de MP4, otro control).
+- Tiempos: los `#current-time-m` / `#duration-m` son móvil (`xl:hidden`) y
+  `#current-time` / `#duration` son desktop (`hidden xl:inline`). Ambos se escriben
+  desde `setTimes()` vía la clase `.js-time`.
 
 ## 10. Convenciones de archivo
 - Una página por archivo HTML estático con Tailwind CDN + `tailwind.config` inline
   (mismo bloque de tokens de colores en todas las páginas).
+- NO existe un `tailwind.config.js` compartido: cada página lleva el suyo inline
+  en la línea ~15. No crear un archivo global de tokens.
 - Verificar balance de etiquetas tras editar con PowerShell.
