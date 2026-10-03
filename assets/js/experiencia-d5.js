@@ -409,6 +409,7 @@
         lsSet(LS.tour, true);
         if (mascotaHiddenByTour && mascotaEl) { mascotaEl.style.display = ''; mascotaHiddenByTour = false; }
         say('¡Listo! Ya conoces lo principal. Toca a Chispa si quieres repetir el tour.');
+        setTimeout(function () { if (!bubbleBusy()) showVerse(); }, 4500);
     }
 
     // ---------------------------------------------------------------- tips
@@ -478,7 +479,15 @@
         return !!(bubble && !bubble.hidden);
     }
 
-    var VERSES = [];
+    var FALLBACK_VERSES = [
+        { text: 'Ninguno tenga en poco tu juventud, sino sé ejemplo de los creyentes en palabra, conducta, amor, espíritu, fe y pureza.', ref: '1 Timoteo 4:12' },
+        { text: 'Acuérdate de tu Creador en los días de tu juventud, antes que vengan los días malos...', ref: 'Eclesiastés 12:1' },
+        { text: '¿Con qué limpiará el joven su camino? Con guardar tu palabra.', ref: 'Salmo 119:9' },
+        { text: 'Esforzaos y cobrad ánimo; no temáis, ni tengáis miedo de ellos, porque Jehová tu Dios es el que va contigo; no te dejará, ni te desamparará.', ref: 'Deuteronomio 31:6' },
+        { text: 'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis.', ref: 'Jeremías 29:11' },
+        { text: 'No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.', ref: 'Isaías 41:10' }
+    ];
+    var VERSES = FALLBACK_VERSES.slice();
     var verseIdx = 0;
 
     function loadVerses() {
@@ -490,11 +499,12 @@
                 var tmp = data[i]; data[i] = data[j]; data[j] = tmp;
             }
             VERSES = data;
-        }).catch(function () { /* sin versículos */ });
+            verseIdx = 0;
+        }).catch(function () { /* usamos el respaldo */ });
     }
 
     function showVerse() {
-        if (!VERSES.length) return;
+        if (!VERSES.length) VERSES = FALLBACK_VERSES.slice();
         var v = VERSES[verseIdx % VERSES.length];
         verseIdx++;
         say('"' + v.text + '" — ' + v.ref, 9000);
@@ -619,6 +629,7 @@
             '<div class="chispa-menu" role="menu">' +
             '<button type="button" data-act="tour"><span class="material-symbols-outlined">school</span>Hacer el tour</button>' +
             '<button type="button" data-act="wa"><span class="material-symbols-outlined">chat</span>Hablar por WhatsApp</button>' +
+            '<button type="button" data-act="verse"><span class="material-symbols-outlined">auto_stories</span>Dame un versículo</button>' +
             '<button type="button" data-act="sound"><span class="material-symbols-outlined">' + (soundEnabled ? 'volume_up' : 'volume_off') + '</span><span class="lbl">Sonido: ' + (soundEnabled ? 'activado' : 'desactivado') + '</span></button>' +
             '<button type="button" data-act="close"><span class="material-symbols-outlined">close</span>Cerrar</button>' +
             '</div>' +
@@ -648,6 +659,11 @@
             else if (act === 'wa') {
                 menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
                 window.open('https://wa.me/573137159439?text=' + encodeURIComponent('Hola, quiero unirme a Misión Juvenil D5'), '_blank', 'noopener');
+            }
+            else if (act === 'verse') {
+                menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
+                jump();
+                showVerse();
             }
             else if (act === 'sound') { setSound(!soundEnabled); }
             else if (act === 'close') { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); }
@@ -701,15 +717,15 @@
             say(pick(IDLE_PHRASES));
         }, 50000);
 
-        // Versículos: después del saludo/tour, Chispa comparte uno cada rato
+        // Versículos: Chispa comparte uno sin invadir otras burbujas
         loadVerses();
         setTimeout(function () {
             if (!tourActive && !bubbleBusy()) showVerse();
-            setInterval(function () {
-                if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
-                showVerse();
-            }, 60000);
-        }, reduceMotion ? 9000 : 24000);
+        }, reduceMotion ? 6000 : 12000);
+        setInterval(function () {
+            if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
+            showVerse();
+        }, 75000);
 
         // Tour sólo en la home, una vez.
         if (page === 'index.html' && !lsGet(LS.tour, false)) {
@@ -738,6 +754,7 @@
         tour: function () { startTour(); },
         sound: setSound,
         sfx: sfx,
+        verse: function () { showVerse(); },
         celebrate: celebrate,
         reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); } catch (e) {} }
     };
