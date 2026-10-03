@@ -1065,10 +1065,14 @@ const tf=document.getElementById("testimonio-form");if(tf){tf.addEventListener("
 function togglePray(btn){if(!btn.dataset.prayed){btn.dataset.prayed="true";btn.innerHTML='<span class="material-symbols-outlined !text-sm align-middle">check</span> Or\u00e9';btn.className="flex-1 px-3 py-2 bg-primary text-on-primary border-2 border-primary-dark font-headline font-black text-[10px] uppercase tracking-wider transition-all shadow-[0_3px_0_#004b6f]";}}
 function toggleAmen(btn){var c=btn.querySelector(".amen-count");if(c){var n=parseInt(c.innerText.replace(/[^0-9]/g,""),10)+1;c.innerText="("+n+")";if(!btn.dataset.amend){btn.dataset.amend="true";btn.classList.add("bg-tertiary","text-on-tertiary","border-tertiary");btn.classList.remove("bg-surface-container-low","text-on-surface-variant","border-outline-variant");}}}
 </script>
+<script src="assets/js/fuego-bubble.js" defer></script>
     <script src="assets/js/menu.js" defer></script>
     <script src="assets/js/mobile-nav.js" defer></script>
     <script src="assets/js/social-footer.js" defer></script>
     <script src="assets/js/nav-active.js" defer></script>
+<!-- Botpress (chatbot temporal mientras termina Fuego D5 IA) -->
+<script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
 </body>
 
 </html>
