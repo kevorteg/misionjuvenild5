@@ -171,6 +171,45 @@ http://localhost:8000/index.html
 
 El uso de un servidor local evita restricciones del navegador que pueden afectar la carga o reproducción de archivos multimedia mediante `file:`.
 
+## Despliegue (Vercel)
+
+El sitio se publica como proyecto estático en **Vercel**.
+
+- Producción: `https://misionjuvenild5.vercel.app`
+- Repositorio: `https://github.com/kevorteg/misionjuvenild5` (rama `main`)
+- El despliegue es **automático**: cada `git push` a `main` publica una nueva versión en producción.
+
+### Configuración del proyecto en Vercel
+
+- Framework preset: **Other** (sitio estático, sin compilación).
+- Build command: vacío.
+- Output directory: raíz del repositorio.
+- Root directory: raíz.
+
+### Flujo para publicar un cambio
+
+1. Editar los archivos en local y probarlos con el servidor HTTP local.
+2. Revisar el estado: `git status` y `git diff`.
+3. Confirmar y subir:
+   ```powershell
+   git add .
+   git commit -m "descripcion del cambio"
+   git push origin main
+   ```
+4. Vercel detecta el push y publica solo. La web queda actualizada en `https://misionjuvenild5.vercel.app`.
+
+Conviene no hacer `push` de cambios a medio terminar: todo lo que llegue a `main` se publica.
+
+### Medios pesados (Cloudflare R2)
+
+Los `mp3` y `mp4` no viven en el repositorio ni en Vercel: se sirven desde **Cloudflare R2**.
+
+- Bucket: `mision-juvenil-media`.
+- Base pública usada por el sitio: `https://pub-1da551c3ef58478dbee4fc941a3cab52.r2.dev/`, definida como `MJ_MEDIA_BASE` en `assets/js/podcast-player.js` y `assets/js/video-player.js`.
+- Para subir o actualizar media, ejecutar `subir-r2.ps1` con `R2_ACCOUNT_ID`, `R2_ACCESS_KEY` y `R2_SECRET_KEY` (requiere `rclone`).
+
+Las credenciales de R2 y de otros servicios se definen como variables de entorno; nunca se guardan en el repositorio.
+
 ## Recursos y mantenimiento
 
 ### Recursos descargables
@@ -214,6 +253,8 @@ Antes de publicar cambios, comprobar que los archivos multimedia existan y que n
 ## Estado del proyecto
 
 Proyecto web estático en evolución. Las páginas, recursos y scripts se mantienen dentro del mismo repositorio para facilitar su despliegue, revisión y actualización.
+
+En producción en Vercel: `https://misionjuvenild5.vercel.app` (ver [Despliegue](#despliegue-vercel)).
 
 La asistente **Fuego D5 IA** (`fuego-d5.html`, `assets/js/fuego-ia.js`, `workers/fuego-d5/` y `kb/`) está **en pausa** y se conserva archivada. La burbuja `assets/js/fuego-bubble.js` permanece desactivada, por lo que hoy el acompañamiento conversacional lo cubre exclusivamente Chispa. Reactivar la IA requiere desplegar el Worker en Cloudflare y configurar sus credenciales.
 
