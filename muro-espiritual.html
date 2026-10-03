@@ -654,6 +654,31 @@
             </div>
         </section>
 
+        <!-- ============ MURO DE FUEGO (visualizacion 2D) ============ -->
+        <section class="w-full bg-[#1F2E3D] border-y-4 border-primary-container" id="muro-fuego">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12 py-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-7">
+                    <div>
+                        <span class="font-headline font-black text-[10px] uppercase tracking-widest text-secondary-container block mb-1">Comunidad viva</span>
+                        <h2 class="font-headline font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">Muro de Fuego</h2>
+                        <p class="font-body font-bold text-xs text-white/70 mt-2 max-w-xl">Cada petición es una luz. Toca una brasa para ir a esa petición y orar por ella: mientras más oramos, más brilla.</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="text-right">
+                            <div class="font-headline font-black text-3xl text-secondary-orange leading-none"><span id="fuego-total">0</span></div>
+                            <span class="font-body font-bold text-[10px] uppercase tracking-widest text-white/60">Oraciones elevadas</span>
+                        </div>
+                        <button id="fuego-scroll" type="button" class="btn-3d btn-3d-orange px-4 py-2.5 font-headline font-black text-[11px] uppercase tracking-wider">Ir al muro</button>
+                    </div>
+                </div>
+                <div id="fuego-stage" class="relative w-full overflow-hidden border-2 border-white/15 bg-[#141d27]" style="height:clamp(260px,42vh,420px)">
+                    <canvas id="fuego-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+                    <div id="fuego-label" class="hidden absolute max-w-[240px] bg-white text-on-surface border-2 border-secondary-orange shadow-[0_4px_0_#C86018] p-3 pointer-events-none"></div>
+                    <p class="sr-only">Visualización decorativa de las peticiones como brasas de fuego. La lista accesible de peticiones está más abajo.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ============ FEED + FILTROS ============ -->
         <section class="max-w-7xl mx-auto px-5 lg:px-12 pt-16 pb-12">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
@@ -1497,5 +1522,7 @@
 <!-- Botpress (chatbot temporal mientras termina Fuego D5 IA) -->
 <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
+<script src="assets/js/experiencia-d5.js" defer></script>
+<script src="assets/js/muro-fuego.js" defer></script>
 </body>
 </html>
