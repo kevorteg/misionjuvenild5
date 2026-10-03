@@ -44,7 +44,7 @@
         var D = window.ChispaD5;
         if (!D || !D.say) return;
         if (D.busy && D.busy()) return;
-        D.say(t, ms || 3500);
+        D.say(t, ms || 3500, 1);
     }
     function tourOpen() { var t = document.getElementById('d5Tour'); return !!(t && !t.hidden); }
     function isTyping() {

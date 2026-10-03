@@ -497,13 +497,44 @@
     }
 
     // ---------------------------------------------------------------- mascota
-    function say(text, ms) {
+    // Voz con prioridad para que las reacciones contextuales no pisen
+    // versículos (4), pero sí puedan responder a una acción del usuario (3)
+    // por encima del saludo (2) o la inactividad (1).
+    var sayPrio = 0, sayAt = 0;
+    var voiceOn = lsGet('mjd5-voice', false);
+
+    function speak(text) {
+        if (!voiceOn || !soundEnabled || !window.speechSynthesis) return;
+        try {
+            var u = new SpeechSynthesisUtterance(String(text).replace(/[¿?¡!"«»]/g, '').slice(0, 220));
+            u.lang = 'es-ES';
+            u.rate = 1.02;
+            u.pitch = 1.15;
+            u.volume = 0.9;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(u);
+        } catch (e) { /* TTS opcional: si falla, seguimos con la burbuja */ }
+    }
+
+    function say(text, ms, prio) {
         var bubble = mascotaEl && mascotaEl.querySelector('.chispa-bubble');
         if (!bubble) return;
+        prio = prio || 2;
+        var now = Date.now();
+        if (!bubble.hidden) {
+            if (prio < sayPrio) return;                       // no interrumpe algo más importante
+            if (prio === sayPrio && now - sayAt < 700) return; // evita parpadeo
+        } else {
+            var gap = prio <= 1 ? 20000 : 6000;               // cooldown anti-cháchara
+            if (prio <= 2 && now - sayAt < gap) return;
+        }
         bubble.querySelector('span').textContent = text;
         bubble.hidden = false;
+        sayPrio = prio;
+        sayAt = now;
         clearTimeout(say._t);
-        say._t = setTimeout(function () { bubble.hidden = true; }, ms || 6000);
+        say._t = setTimeout(function () { bubble.hidden = true; sayPrio = 0; }, ms || 6000);
+        if (prio >= 2) speak(text);
     }
 
     function bubbleBusy() {
@@ -539,7 +570,7 @@
         if (!VERSES.length) VERSES = FALLBACK_VERSES.slice();
         var v = VERSES[verseIdx % VERSES.length];
         verseIdx++;
-        say('"' + v.text + '" — ' + v.ref, 9000);
+        say('"' + v.text + '" — ' + v.ref, 9000, 4);
     }
 
     var mascotaDrag = { active: false };
@@ -784,11 +815,11 @@
         // Reacciones a la actividad del sitio
         window.addEventListener('d5:pray', function () {
             celebrate();
-            say(pick(PRAISE));
+            say(pick(PRAISE), 6000, 3);
         });
         window.addEventListener('d5:submit', function () {
             celebrate();
-            say(pick(WELCOME));
+            say(pick(WELCOME), 6000, 3);
         });
 
         // Saludo inicial
@@ -803,7 +834,7 @@
         setInterval(function () {
             if (quietMode || tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
             if (Date.now() - lastUser < 40000) return;
-            say(pick(IDLE_PHRASES));
+            say(pick(IDLE_PHRASES), 6000, 1);
         }, 50000);
 
         // Versículos: Chispa comparte uno sin invadir otras burbujas
@@ -854,6 +885,13 @@
         say: say,
         busy: bubbleBusy,
         celebrate: celebrate,
+        page: page,
+        voice: function (on) {
+            voiceOn = !!on;
+            try { lsSet('mjd5-voice', voiceOn); } catch (e) {}
+            if (!voiceOn && window.speechSynthesis) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+            return voiceOn;
+        },
         reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); localStorage.removeItem('mjd5-roam'); } catch (e) {} }
     };
 })();

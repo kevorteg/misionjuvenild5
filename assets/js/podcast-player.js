@@ -24,6 +24,15 @@ var MJ_MEDIA_BASE = 'https://pub-1da551c3ef58478dbee4fc941a3cab52.r2.dev/';
 function mediaUrl(p) {
     return MJ_MEDIA_BASE ? MJ_MEDIA_BASE + p : p;
 }
+
+// Avisa al "cerebro" de Chispa sobre lo que pasa en el reproductor.
+function d5Emit(action, detail) {
+    try {
+        var d = detail || {};
+        d.action = action;
+        window.dispatchEvent(new CustomEvent('d5:podcast', { detail: d }));
+    } catch (e) { /* CustomEvent opcional */ }
+}
 var audio = document.getElementById('playerAudio');
 var playerTitle = document.getElementById('player-title');
 var playerSubtitle = document.getElementById('player-subtitle');
@@ -89,6 +98,7 @@ function playEpisode(id) {
     audio.currentTime = 0;
     markPlaying(id);
     openPlayer();
+    d5Emit('select', { id: id, title: ep.title, cat: ep.cat });
     var label = 'EP ' + (id.match(/\d+/) || [''])[0];
     audio.play().then(function () {
         showToast('▶ ' + label + ' · Reproduciendo');
@@ -116,9 +126,11 @@ function togglePlayState() {
 
 audio.addEventListener('play', function () {
     if (playIcon) playIcon.textContent = 'pause';
+    d5Emit('play', { id: currentId });
 });
 audio.addEventListener('pause', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';
+    d5Emit('pause', { id: currentId });
 });
 
 audio.addEventListener('loadedmetadata', function () {
@@ -135,6 +147,7 @@ audio.addEventListener('timeupdate', function () {
 audio.addEventListener('ended', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';
     showToast('Episodio finalizado');
+    d5Emit('ended', { id: currentId });
 });
 
 function seekRelative(sec) {
@@ -198,6 +211,7 @@ function toggleCardLike(el) {
         counter.textContent = on ? val - 1 : val + 1;
     }
     showToast(on ? 'Quitaste tu me gusta' : '¡Gracias por tu me gusta!');
+    if (!on) d5Emit('like', { id: el.getAttribute('data-id') || currentId });
 }
 function togglePlayerLike() {
     var btn = document.getElementById('playerLikeBtn');
@@ -209,6 +223,7 @@ function togglePlayerLike() {
     btn.classList.toggle('text-secondary-orange', !liked);
     btn.classList.toggle('border-secondary-orange', !liked);
     showToast(liked ? 'Quitado de favoritos' : 'Guardado en tus favoritos');
+    if (!liked) d5Emit('like', { id: currentId });
 }
 
 // ---- Descargar / Compartir ----
@@ -225,6 +240,7 @@ function downloadAsset(id) {
     a.click();
     a.remove();
     showToast('Descargando ' + ep.title);
+    d5Emit('download', { id: id, title: ep.title });
 }
 // ---- Minimizar / abrir reproductor ----
 function minimizePlayer() {

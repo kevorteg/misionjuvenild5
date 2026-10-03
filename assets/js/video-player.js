@@ -32,6 +32,11 @@ var MJ_VIDEOS = {
         return String(m).padStart(2, '0') + ':' + ss;
     }
 
+    // Avisa al "cerebro" de Chispa sobre lo que pasa en el video.
+    function d5Emit(action) {
+        try { window.dispatchEvent(new CustomEvent('d5:video', { detail: { action: action } })); } catch (e) { }
+    }
+
     if (!document.getElementById('mjVideoOverlay')) {
         var style = document.createElement('style');
         style.textContent = requirePlayerCss();
@@ -107,6 +112,7 @@ var MJ_VIDEOS = {
         if (svgPlay) svgPlay.style.display = isPlay ? 'block' : 'none';
         if (svgPause) svgPause.style.display = isPlay ? 'none' : 'block';
         if (lblPlay) lblPlay.textContent = isPlay ? 'play_arrow' : 'pause';
+        d5Emit(isPlay ? 'pause' : 'play');
     }
 
     function togglePlay() {
@@ -148,6 +154,7 @@ var MJ_VIDEOS = {
         overlay.classList.remove('mjv-open');
         document.body.style.overflow = '';
         video.pause();
+        d5Emit('close');
     }
 
     window.openVideoPlayer = function (key, startOverride) {
@@ -164,6 +171,7 @@ var MJ_VIDEOS = {
         if (durEl) durEl.textContent = '00:00';
         overlay.classList.add('mjv-open');
         document.body.style.overflow = 'hidden';
+        d5Emit('open');
         var onMeta = function () {
             video.removeEventListener('loadedmetadata', onMeta);
             if (start > 0) video.currentTime = start;
