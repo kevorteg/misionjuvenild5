@@ -62,9 +62,9 @@
     + '.chispa-bubble strong{display:block;font-family:Rubik,sans-serif;font-weight:900;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#C86018;margin-bottom:.15rem}'
     + '.chispa-menu{display:none;flex-direction:column;background:#ffffff;border:2px solid #006491;box-shadow:0 5px 0 #02557d;min-width:190px}'
     + '.chispa-menu.is-open{display:flex}'
-    + '.chispa-menu button{display:flex;align-items:center;gap:.5rem;width:100%;padding:.6rem .75rem;border:0;border-bottom:1px solid #E5E5E5;background:#ffffff;cursor:pointer;font-family:Rubik,sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#111d26;text-align:left}'
-    + '.chispa-menu button:last-child{border-bottom:0}'
-    + '.chispa-menu button:hover{background:#F7F9FA;color:#006491}'
+            + '.chispa-menu button,.chispa-menu a{display:flex;align-items:center;gap:.5rem;width:100%;padding:.6rem .75rem;border:0;border-bottom:1px solid #E5E5E5;background:#ffffff;cursor:pointer;font-family:Rubik,sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#111d26;text-align:left;text-decoration:none}'
+            + '.chispa-menu button:last-child,.chispa-menu a:last-child{border-bottom:0}'
+            + '.chispa-menu button:hover,.chispa-menu a:hover{background:#F7F9FA;color:#006491}'
     + '.chispa-menu .material-symbols-outlined{font-size:18px;color:#006491}'
     + '.chispa-hide{display:none!important}'
 
@@ -714,7 +714,7 @@
             '<div class="chispa-bubble" hidden><strong>Chispa</strong><span></span></div>' +
             '<div class="chispa-menu" role="menu">' +
             '<button type="button" data-act="tour"><span class="material-symbols-outlined">school</span>Hacer el tour</button>' +
-            '<button type="button" data-act="wa"><span class="material-symbols-outlined">chat</span>Hablar por WhatsApp</button>' +
+                '<a data-act="wa" href="https://wa.me/573137159439?text=Hola%2C%20quiero%20unirme%20a%20Misi%C3%B3n%20Juvenil%20D5" target="_blank" rel="noopener"><span class="material-symbols-outlined">chat</span>Hablar por WhatsApp</a>' +
             '<button type="button" data-act="verse"><span class="material-symbols-outlined">auto_stories</span>Dame un versículo</button>' +
             '<button type="button" data-act="sound"><span class="material-symbols-outlined">' + (soundEnabled ? 'volume_up' : 'volume_off') + '</span><span class="lbl">Sonido: ' + (soundEnabled ? 'activado' : 'desactivado') + '</span></button>' +
             '<button type="button" data-act="close"><span class="material-symbols-outlined">close</span>Cerrar</button>' +
@@ -744,7 +744,6 @@
             if (act === 'tour') { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); startTour(); }
             else if (act === 'wa') {
                 menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
-                window.open('https://wa.me/573137159439?text=' + encodeURIComponent('Hola, quiero unirme a Misión Juvenil D5'), '_blank', 'noopener');
             }
             else if (act === 'verse') {
                 menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
