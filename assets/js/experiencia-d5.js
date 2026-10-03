@@ -84,7 +84,7 @@
     + '#d5Tour-dots i.on{background:#F58634}'
 
     // Micro-tip
-    + '#d5Tip{position:fixed;left:1rem;bottom:5.5rem;z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
+    + '#d5Tip{position:fixed;right:1rem;bottom:5.5rem;z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
     + '#d5Tip[hidden]{display:none}'
     + '#d5Tip strong{display:flex;align-items:center;gap:.4rem;font-family:Rubik,sans-serif;font-weight:900;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#473458;margin-bottom:.25rem}'
     + '#d5Tip strong .material-symbols-outlined{font-size:16px}'
@@ -464,13 +464,40 @@
     }
 
     // ---------------------------------------------------------------- mascota
-    function say(text) {
+    function say(text, ms) {
         var bubble = mascotaEl && mascotaEl.querySelector('.chispa-bubble');
         if (!bubble) return;
         bubble.querySelector('span').textContent = text;
         bubble.hidden = false;
         clearTimeout(say._t);
-        say._t = setTimeout(function () { bubble.hidden = true; }, 6000);
+        say._t = setTimeout(function () { bubble.hidden = true; }, ms || 6000);
+    }
+
+    function bubbleBusy() {
+        var bubble = mascotaEl && mascotaEl.querySelector('.chispa-bubble');
+        return !!(bubble && !bubble.hidden);
+    }
+
+    var VERSES = [];
+    var verseIdx = 0;
+
+    function loadVerses() {
+        if (!window.fetch) return;
+        fetch('assets/data/versiculos.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+            if (!data || !data.length) return;
+            for (var i = data.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = data[i]; data[i] = data[j]; data[j] = tmp;
+            }
+            VERSES = data;
+        }).catch(function () { /* sin versículos */ });
+    }
+
+    function showVerse() {
+        if (!VERSES.length) return;
+        var v = VERSES[verseIdx % VERSES.length];
+        verseIdx++;
+        say('"' + v.text + '" — ' + v.ref, 9000);
     }
 
     var mascotaDrag = { active: false };
@@ -499,16 +526,16 @@
     }
 
     function savePos() {
-        lsSet('mjd5-pos', { left: parseInt(mascotaEl.style.left, 10), bottom: parseInt(mascotaEl.style.bottom, 10) });
+        lsSet('mjd5-pos-v2', { right: parseInt(mascotaEl.style.right, 10), bottom: parseInt(mascotaEl.style.bottom, 10) });
     }
 
     function restorePos() {
-        var p = lsGet('mjd5-pos', null);
-        if (!p || typeof p.left !== 'number' || typeof p.bottom !== 'number' || isNaN(p.left) || isNaN(p.bottom)) return;
+        var p = lsGet('mjd5-pos-v2', null);
+        if (!p || typeof p.right !== 'number' || typeof p.bottom !== 'number' || isNaN(p.right) || isNaN(p.bottom)) return;
         var r = mascotaEl.getBoundingClientRect();
-        mascotaEl.style.left = clamp(p.left, 8, window.innerWidth - r.width - 8) + 'px';
+        mascotaEl.style.left = 'auto';
+        mascotaEl.style.right = clamp(p.right, 8, window.innerWidth - r.width - 8) + 'px';
         mascotaEl.style.bottom = clamp(p.bottom, 8, window.innerHeight - r.height - 8) + 'px';
-        mascotaEl.style.right = 'auto';
     }
 
     function initEyes(trigger) {
@@ -544,14 +571,14 @@
     }
 
     function initDrag(trigger) {
-        var startX = 0, startY = 0, startLeft = 0, startBottom = 0, w = 0, h = 0, moved = false;
+        var startX = 0, startY = 0, startRight = 0, startBottom = 0, w = 0, h = 0, moved = false;
         trigger.addEventListener('pointerdown', function (e) {
             if (e.button && e.button !== 0) return;
             var r = mascotaEl.getBoundingClientRect();
             mascotaDrag.active = true;
             moved = false;
             startX = e.clientX; startY = e.clientY;
-            startLeft = r.left; startBottom = window.innerHeight - r.bottom;
+            startRight = window.innerWidth - r.right; startBottom = window.innerHeight - r.bottom;
             w = r.width; h = r.height;
             try { trigger.setPointerCapture(e.pointerId); } catch (err) {}
         });
@@ -563,9 +590,9 @@
                 moved = true;
                 mascotaEl.classList.add('is-drag');
             }
-            mascotaEl.style.left = clamp(startLeft + dx, 8, window.innerWidth - w - 8) + 'px';
+            mascotaEl.style.left = 'auto';
+            mascotaEl.style.right = clamp(startRight - dx, 8, window.innerWidth - w - 8) + 'px';
             mascotaEl.style.bottom = clamp(startBottom - dy, 8, window.innerHeight - h - 8) + 'px';
-            mascotaEl.style.right = 'auto';
             e.preventDefault();
         });
         function end() {
@@ -591,6 +618,7 @@
             '<div class="chispa-bubble" hidden><strong>Chispa</strong><span></span></div>' +
             '<div class="chispa-menu" role="menu">' +
             '<button type="button" data-act="tour"><span class="material-symbols-outlined">school</span>Hacer el tour</button>' +
+            '<button type="button" data-act="wa"><span class="material-symbols-outlined">chat</span>Hablar por WhatsApp</button>' +
             '<button type="button" data-act="sound"><span class="material-symbols-outlined">' + (soundEnabled ? 'volume_up' : 'volume_off') + '</span><span class="lbl">Sonido: ' + (soundEnabled ? 'activado' : 'desactivado') + '</span></button>' +
             '<button type="button" data-act="close"><span class="material-symbols-outlined">close</span>Cerrar</button>' +
             '</div>' +
@@ -617,6 +645,10 @@
             if (!b) return;
             var act = b.getAttribute('data-act');
             if (act === 'tour') { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); startTour(); }
+            else if (act === 'wa') {
+                menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
+                window.open('https://wa.me/573137159439?text=' + encodeURIComponent('Hola, quiero unirme a Misión Juvenil D5'), '_blank', 'noopener');
+            }
             else if (act === 'sound') { setSound(!soundEnabled); }
             else if (act === 'close') { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); }
         });
@@ -664,10 +696,20 @@
 
         // Frases espontáneas cuando el usuario llevó un rato inactivo
         setInterval(function () {
-            if (tourActive || document.hidden || mascotaDrag.active) return;
+            if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
             if (Date.now() - lastUser < 40000) return;
             say(pick(IDLE_PHRASES));
         }, 50000);
+
+        // Versículos: después del saludo/tour, Chispa comparte uno cada rato
+        loadVerses();
+        setTimeout(function () {
+            if (!tourActive && !bubbleBusy()) showVerse();
+            setInterval(function () {
+                if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
+                showVerse();
+            }, 60000);
+        }, reduceMotion ? 9000 : 24000);
 
         // Tour sólo en la home, una vez.
         if (page === 'index.html' && !lsGet(LS.tour, false)) {
@@ -697,6 +739,6 @@
         sound: setSound,
         sfx: sfx,
         celebrate: celebrate,
-        reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos'); } catch (e) {} }
+        reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); } catch (e) {} }
     };
 })();
