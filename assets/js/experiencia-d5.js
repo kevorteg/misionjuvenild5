@@ -502,6 +502,16 @@
     // por encima del saludo (2) o la inactividad (1).
     var sayPrio = 0, sayAt = 0;
     var voiceOn = lsGet('mjd5-voice', false);
+    var ctxStamps = [];
+
+    // Las reacciones contextuales (prioridad 3) se limitan a 1 cada 25 s y
+    // máximo 2 por minuto, para no volverse ruido. Versículos y tour no.
+    function ctxAllow(now) {
+        ctxStamps = ctxStamps.filter(function (t) { return now - t < 60000; });
+        if (ctxStamps.length >= 2) return false;
+        if (ctxStamps.length && now - ctxStamps[ctxStamps.length - 1] < 25000) return false;
+        return true;
+    }
 
     function speak(text) {
         if (!voiceOn || !soundEnabled || !window.speechSynthesis) return;
@@ -521,6 +531,7 @@
         if (!bubble) return;
         prio = prio || 2;
         var now = Date.now();
+        if (prio === 3 && !ctxAllow(now)) return;
         if (!bubble.hidden) {
             if (prio < sayPrio) return;                       // no interrumpe algo más importante
             if (prio === sayPrio && now - sayAt < 700) return; // evita parpadeo
@@ -532,6 +543,7 @@
         bubble.hidden = false;
         sayPrio = prio;
         sayAt = now;
+        if (prio === 3) ctxStamps.push(now);
         clearTimeout(say._t);
         say._t = setTimeout(function () { bubble.hidden = true; sayPrio = 0; }, ms || 6000);
         if (prio >= 2) speak(text);
@@ -822,12 +834,17 @@
             say(pick(WELCOME), 6000, 3);
         });
 
-        // Saludo inicial
+        // Saludo inicial (una vez por sesión, no en cada página)
         if (!quietMode) {
-            setTimeout(function () {
-                if (tourActive) return;
-                say('¡Hola! Soy Chispa, tu guía del D5.');
-            }, reduceMotion ? 200 : 1400);
+            var greeted = false;
+            try { greeted = sessionStorage.getItem('mjd5-greet') === '1'; } catch (e) {}
+            if (!greeted) {
+                try { sessionStorage.setItem('mjd5-greet', '1'); } catch (e) {}
+                setTimeout(function () {
+                    if (tourActive) return;
+                    say('¡Hola! Soy Chispa, tu guía del D5.');
+                }, reduceMotion ? 200 : 1400);
+            }
         }
 
         // Frases espontáneas cuando el usuario llevó un rato inactivo
@@ -892,6 +909,17 @@
             if (!voiceOn && window.speechSynthesis) { try { window.speechSynthesis.cancel(); } catch (e) {} }
             return voiceOn;
         },
-        reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); localStorage.removeItem('mjd5-roam'); } catch (e) {} }
+        reset: function () {
+            ctxStamps = [];
+            try {
+                localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips);
+                localStorage.removeItem('mjd5-pos-v2'); localStorage.removeItem('mjd5-roam');
+                sessionStorage.removeItem('mjd5-greet'); sessionStorage.removeItem('mjd5-cb-podplay');
+                for (var i = sessionStorage.length - 1; i >= 0; i--) {
+                    var k = sessionStorage.key(i);
+                    if (k && k.indexOf('mjd5-cb-') === 0) sessionStorage.removeItem(k);
+                }
+            } catch (e) {}
+        }
     };
 })();
