@@ -130,6 +130,22 @@
         });
     };
 
+    // Bloquea el envío de cualquier formulario que exija autorización de datos
+    // ([data-consent]) mientras la casilla no esté marcada.
+    document.addEventListener('submit', function (e) {
+        var f = e.target;
+        if (!f || f.tagName !== 'FORM') return;
+        var c = f.querySelector('[data-consent]');
+        if (c && !c.checked) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            D5Alert('Para enviar, primero autoriza el tratamiento de tus datos personales.', {
+                type: 'warning', title: 'Falta autorizar', ok: 'ENTENDIDO'
+            });
+            try { c.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (x) {}
+        }
+    }, true);
+
     window.D5Alert = D5Alert;
     window.alert = function (m) { D5Alert(m); };
 })();
