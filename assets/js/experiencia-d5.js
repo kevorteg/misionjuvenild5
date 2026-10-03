@@ -20,6 +20,8 @@
     var page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
     var isLanzamiento = page === 'lanzamiento.html';
     var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var mqQuiet = window.matchMedia ? window.matchMedia('(pointer:coarse) and (max-height:430px)') : null;
+    var quietMode = mqQuiet ? mqQuiet.matches : false;
 
     // ---------------------------------------------------------------- estado
     var LS = { tour: 'mjd5-tour-v1', tips: 'mjd5-tips-v1', sound: 'mjd5-sound' };
@@ -37,9 +39,9 @@
 
     // ---------------------------------------------------------------- estilos
     var CSS = ''
-    + '#chispaD5{position:fixed;right:1rem;bottom:1rem;z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;font-family:Rubik,sans-serif}'
+    + '#chispaD5{position:fixed;right:1rem;bottom:var(--d5-chispa-bottom,1rem);z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;font-family:Rubik,sans-serif}'
     + '#chispaD5 *{box-sizing:border-box}'
-    + '#chispaTrigger{width:64px;height:64px;padding:0;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 4px 0 rgba(200,96,24,.35));transition:transform .15s ease;touch-action:none}'
+    + '#chispaTrigger{width:64px;height:64px;padding:0;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 4px 0 rgba(200,96,24,.35));transition:transform .15s ease;touch-action:pan-y}'
     + '#chispaTrigger:hover{transform:translateY(-3px)}'
     + '#chispaTrigger:active{transform:translateY(1px)}'
     + '#chispaTrigger svg{display:block;width:100%;height:100%;animation:chispaBob 3.8s ease-in-out infinite}'
@@ -84,7 +86,7 @@
     + '#d5Tour-dots i.on{background:#F58634}'
 
     // Micro-tip
-    + '#d5Tip{position:fixed;right:1rem;bottom:5.5rem;z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
+    + '#d5Tip{position:fixed;right:1rem;bottom:calc(var(--d5-chispa-bottom,1rem) + 4.75rem);z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
     + '#d5Tip[hidden]{display:none}'
     + '#d5Tip strong{display:flex;align-items:center;gap:.4rem;font-family:Rubik,sans-serif;font-weight:900;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#473458;margin-bottom:.25rem}'
     + '#d5Tip strong .material-symbols-outlined{font-size:16px}'
@@ -101,10 +103,13 @@
     + '@keyframes chispaBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.045,.955)}}'
     + '@keyframes chispaJump{0%{transform:translateY(0) scale(1,1)}28%{transform:translateY(-11px) scale(.93,1.09)}58%{transform:translateY(2px) scale(1.09,.91)}100%{transform:translateY(0) scale(1,1)}}'
 
-    // Ajustes móviles: por encima de la barra inferior
-    + '@media (max-width:1279px){'
-    + '#chispaD5{bottom:calc(5.25rem + env(safe-area-inset-bottom))}'
-    + '#d5Tip{bottom:calc(9.5rem + env(safe-area-inset-bottom))}'
+    // Móvil/responsive: los offsets los calcula JS en --d5-chispa-bottom
+    + '@media (max-width:360px){'
+    + '.chispa-bubble{max-width:78vw}'
+    + '.chispa-menu{min-width:0;width:84vw}'
+    + '}'
+    + '@media (pointer:coarse) and (max-height:430px){'
+    + '.chispa-bubble{max-width:min(78vw,230px)}'
     + '}'
     + '@media (prefers-reduced-motion:reduce){'
     + '.chispa-flicker,.chispa-eyes,.chispa-spark,.chispa-body{animation:none!important}'
@@ -409,7 +414,7 @@
         lsSet(LS.tour, true);
         if (mascotaHiddenByTour && mascotaEl) { mascotaEl.style.display = ''; mascotaHiddenByTour = false; }
         say('¡Listo! Ya conoces lo principal. Toca a Chispa si quieres repetir el tour.');
-        setTimeout(function () { if (!bubbleBusy()) showVerse(); }, 4500);
+        if (!quietMode) setTimeout(function () { if (!bubbleBusy()) showVerse(); }, 4500);
     }
 
     // ---------------------------------------------------------------- tips
@@ -520,6 +525,54 @@
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
     function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
+    var autoPos = true;
+
+    function setBottomVar(px) {
+        document.documentElement.style.setProperty('--d5-chispa-bottom', px + 'px');
+    }
+
+    function navOffset() {
+        var nav = document.querySelector('.mobile-bottom-nav');
+        if (nav) {
+            var cs = window.getComputedStyle(nav);
+            if (cs.display !== 'none' && cs.visibility !== 'hidden') {
+                var r = nav.getBoundingClientRect();
+                if (r.height > 0 && r.bottom > window.innerHeight - 96) return r.height + 8;
+            }
+        }
+        return 16;
+    }
+
+    function updateChispaOffset() {
+        if (!mascotaEl || !autoPos || mascotaDrag.active) return;
+        var desktop = window.matchMedia('(min-width:1280px)').matches;
+        var base = desktop ? 16 : navOffset();
+        var ps = document.getElementById('playerSection');
+        if (ps && !ps.classList.contains('hidden') && window.getComputedStyle(ps).display !== 'none') {
+            var bar = document.getElementById('playerBar') || ps;
+            var top = bar.getBoundingClientRect().top;
+            if (top > 0 && top < window.innerHeight) {
+                var above = window.innerHeight - top + 8;
+                if (above > base) base = above;
+            }
+        }
+        setBottomVar(base);
+    }
+
+    function watchPlayer() {
+        var ps = document.getElementById('playerSection');
+        if (!ps || ps.__d5watched) return;
+        ps.__d5watched = true;
+        if ('MutationObserver' in window) {
+            new MutationObserver(updateChispaOffset).observe(ps, { attributes: true, attributeFilter: ['class', 'style'] });
+        }
+        if (window.ResizeObserver) {
+            new ResizeObserver(updateChispaOffset).observe(ps);
+            var bar = document.getElementById('playerBar');
+            if (bar) new ResizeObserver(updateChispaOffset).observe(bar);
+        }
+    }
+
     function jump() {
         if (reduceMotion) return;
         mascotaEl.classList.add('is-jump');
@@ -536,16 +589,21 @@
     }
 
     function savePos() {
+        autoPos = false;
         lsSet('mjd5-pos-v2', { right: parseInt(mascotaEl.style.right, 10), bottom: parseInt(mascotaEl.style.bottom, 10) });
+        if (mascotaEl.style.bottom) setBottomVar(parseInt(mascotaEl.style.bottom, 10) || 16);
     }
 
     function restorePos() {
         var p = lsGet('mjd5-pos-v2', null);
         if (!p || typeof p.right !== 'number' || typeof p.bottom !== 'number' || isNaN(p.right) || isNaN(p.bottom)) return;
         var r = mascotaEl.getBoundingClientRect();
+        autoPos = false;
         mascotaEl.style.left = 'auto';
         mascotaEl.style.right = clamp(p.right, 8, window.innerWidth - r.width - 8) + 'px';
-        mascotaEl.style.bottom = clamp(p.bottom, 8, window.innerHeight - r.height - 8) + 'px';
+        var b = clamp(p.bottom, 8, window.innerHeight - r.height - 8);
+        mascotaEl.style.bottom = b + 'px';
+        setBottomVar(b);
     }
 
     function initEyes(trigger) {
@@ -693,6 +751,8 @@
         if (isLanzamiento) return; // en el gate no mostramos mascota ni tour
 
         buildMascota();
+        updateChispaOffset();
+        watchPlayer();
 
         // Reacciones a la actividad del sitio
         window.addEventListener('d5:pray', function () {
@@ -705,25 +765,29 @@
         });
 
         // Saludo inicial
-        setTimeout(function () {
-            if (tourActive) return;
-            say('¡Hola! Soy Chispa, tu guía en Misión Juvenil D5.');
-        }, reduceMotion ? 200 : 1400);
+        if (!quietMode) {
+            setTimeout(function () {
+                if (tourActive) return;
+                say('¡Hola! Soy Chispa, tu guía en Misión Juvenil D5.');
+            }, reduceMotion ? 200 : 1400);
+        }
 
         // Frases espontáneas cuando el usuario llevó un rato inactivo
         setInterval(function () {
-            if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
+            if (quietMode || tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
             if (Date.now() - lastUser < 40000) return;
             say(pick(IDLE_PHRASES));
         }, 50000);
 
         // Versículos: Chispa comparte uno sin invadir otras burbujas
         loadVerses();
-        setTimeout(function () {
-            if (!tourActive && !bubbleBusy()) showVerse();
-        }, reduceMotion ? 6000 : 12000);
+        if (!quietMode) {
+            setTimeout(function () {
+                if (!tourActive && !bubbleBusy()) showVerse();
+            }, reduceMotion ? 6000 : 12000);
+        }
         setInterval(function () {
-            if (tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
+            if (quietMode || tourActive || document.hidden || mascotaDrag.active || bubbleBusy()) return;
             showVerse();
         }, 75000);
 
@@ -735,12 +799,17 @@
         }
 
         // Micro-tip por página (excepto si va a arrancar el tour).
-        if (page !== 'index.html') {
+        if (page !== 'index.html' && !quietMode) {
             setTimeout(showTip, reduceMotion ? 300 : 1800);
         }
 
-        // Reposicionar en resize si hay tour activo
-        window.addEventListener('resize', function () { if (tourActive) paintStep(); });
+        // Reposicionar en resize / cambio de orientación
+        window.addEventListener('resize', function () { if (tourActive) paintStep(); updateChispaOffset(); });
+        window.addEventListener('orientationchange', updateChispaOffset);
+        document.addEventListener('visibilitychange', updateChispaOffset);
+        if (mqQuiet && mqQuiet.addEventListener) {
+            mqQuiet.addEventListener('change', function (e) { quietMode = e.matches; updateChispaOffset(); });
+        }
     }
 
     if (document.readyState === 'loading') {
