@@ -792,28 +792,49 @@
             </div>
         </section>
 
-        <!-- 2. BANNER DE LA PALABRA / CITA BÍBLICA -->
-        <section class="w-full bg-duo-yellow py-8 border-b-[4px] border-duo-yellow-dark">
-            <div class="max-w-6xl mx-auto px-5 lg:px-8">
-                <div class="bg-white rounded-3xl border-[3px] border-neutral-900 p-6 lg:p-8 shadow-[0_6px_0_#111d26] flex flex-col md:flex-row items-center gap-6">
-                    <!-- Sello / Trophy SVG -->
-                    <div class="w-20 h-20 bg-duo-yellow rounded-2xl border-[3px] border-neutral-900 flex items-center justify-center flex-shrink-0 shadow-[0_4px_0_#111d26]">
-                        <svg class="w-10 h-10 text-neutral-900" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
-                        </svg>
-                    </div>
-                    <!-- Scripture Verse -->
-                    <div class="flex-1 text-center md:text-left space-y-1">
-                        <span class="text-xs font-headline font-black uppercase tracking-widest text-secondary-dark">PRINCIPIO INSTITUCIONAL // HECHOS 17:6</span>
-                        <blockquote class="font-headline font-black text-lg sm:text-xl lg:text-2xl text-neutral-900 uppercase leading-tight">
-                            «ESTOS QUE TRASTORNAN EL MUNDO ENTERO TAMBIÉN HAN VENIDO ACÁ»
-                        </blockquote>
-                    </div>
-                    <!-- Action Badge -->
-                    <div class="flex-shrink-0">
-                        <span class="inline-block px-4 py-2 bg-neutral-900 text-white rounded-xl font-headline font-extrabold text-xs uppercase tracking-wider shadow-[0_3px_0_#333]">
-                            AULAS CON ALTAR
+        <!-- 2. BANNER DE LA PALABRA: PROMESA DE HOY -->
+        <section class="w-full bg-surface-container border-b-[4px] border-primary-container">
+            <div class="max-w-5xl mx-auto px-5 lg:px-8 py-8">
+                <div class="bg-white border-2 border-primary-container shadow-[0_6px_0_#449bd1] overflow-hidden">
+                    <!-- Barra superior azul: identidad institucional -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-5 sm:px-6 py-3 bg-primary text-white">
+                        <span class="inline-flex items-center gap-1.5 font-headline font-black text-[10px] uppercase tracking-widest">
+                            <span class="material-symbols-outlined !text-sm">account_balance</span>
+                            Principio Institucional · Hechos 17:6
                         </span>
+                        <span class="hidden lg:inline-block font-body font-bold text-[11px] text-white/75 italic">«Estos que trastornan el mundo entero también han venido acá»</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-duo-purple text-white font-headline font-black text-[10px] uppercase tracking-widest border-2 border-white/25 self-start sm:self-auto">
+                            <span class="material-symbols-outlined !text-sm">groups</span>
+                            Aulas con Altar
+                        </span>
+                    </div>
+                    <!-- Cuerpo -->
+                    <div class="p-6 lg:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-20 h-20 bg-primary text-white flex items-center justify-center flex-shrink-0 shadow-[0_4px_0_#02557d]">
+                            <span class="material-symbols-outlined text-[44px]">menu_book</span>
+                        </div>
+                        <!-- Promesa de Hoy (rotativa, fuente: assets/data/versiculos.json) -->
+                        <div class="flex-1 text-center md:text-left" id="verse-container">
+                            <span class="inline-flex items-center gap-1.5 font-headline font-black text-[10px] uppercase tracking-widest text-primary">
+                                <span class="material-symbols-outlined !text-sm">menu_book</span>
+                                Promesa de Hoy para ti
+                            </span>
+                            <blockquote id="verse-text" class="font-headline font-black text-lg sm:text-xl lg:text-2xl text-on-surface leading-tight mt-2">
+                                «Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias.»
+                            </blockquote>
+                            <cite id="verse-ref" class="block not-italic font-body font-bold text-sm text-on-surface-variant mt-2">— Filipenses 4:6-7</cite>
+                        </div>
+                    </div>
+                    <!-- Acciones -->
+                    <div class="px-6 lg:px-8 pb-6 flex flex-wrap items-center justify-center md:justify-end gap-2">
+                        <button onclick="copyVerse()" type="button" class="btn-3d btn-3d-blue px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
+                            <span class="material-symbols-outlined !text-[18px]">content_copy</span>
+                            <span id="copy-verse-text">Copiar Cita</span>
+                        </button>
+                        <button onclick="shareVerse()" type="button" class="btn-3d btn-3d-white px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
+                            <span class="material-symbols-outlined !text-[18px]">share</span>
+                            <span>Compartir</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1739,6 +1760,7 @@
 
     <script src="assets/js/social-footer.js" defer></script>
     <script src="assets/js/nav-active.js" defer></script>
+    <script src="assets/js/daily-promise.js" defer></script>
 <!-- Botpress (chatbot temporal mientras termina Fuego D5 IA) -->
 <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>

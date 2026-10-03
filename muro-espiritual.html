@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Muro Espiritual | Misón Juvenil D5</title>
+    <title>Muro Espiritual | Misión Juvenil D5</title>
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -1036,20 +1036,30 @@
         </section>
 
         <!-- ============ PROMESA DEL DÍA ============ -->
-        <section class="w-full bg-inverse-surface text-inverse-on-surface border-y-4 border-primary-container">
+        <section class="w-full bg-surface-container-low border-y-4 border-primary-container">
             <div class="max-w-7xl mx-auto px-5 lg:px-12 py-14">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-10 reveal">
-                    <div class="flex-1">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary text-on-primary border-2 border-primary-dark mb-4">
+                <div class="max-w-5xl mx-auto bg-surface-container-lowest border-2 border-primary-container shadow-[0_6px_0_#449bd1] overflow-hidden reveal">
+                    <!-- Barra superior azul -->
+                    <div class="flex items-center justify-between gap-2 px-5 sm:px-6 py-3 bg-primary text-on-primary">
+                        <span class="inline-flex items-center gap-1.5 font-headline font-black text-[10px] uppercase tracking-widest">
                             <span class="material-symbols-outlined !text-[16px]">menu_book</span>
-                            <span class="font-headline font-black text-[10px] uppercase tracking-widest">Promesa de Hoy para ti</span>
-                        </div>
-                        <blockquote class="font-headline font-black text-lg sm:text-xl text-surface-container-lowest leading-snug mb-4">
-                            "Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias."
-                        </blockquote>
-                        <cite class="font-body font-bold text-sm text-primary-fixed block not-italic">— Filipenses 4:6-7 (RVR1960)</cite>
+                            Promesa de Hoy para ti
+                        </span>
                     </div>
-                    <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto shrink-0">
+                    <!-- Cuerpo -->
+                    <div class="p-6 lg:p-8 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-20 h-20 bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-[0_4px_0_#02557d]">
+                            <span class="material-symbols-outlined text-[44px]">menu_book</span>
+                        </div>
+                        <div class="flex-1 text-center md:text-left" id="verse-container">
+                            <blockquote id="verse-text" class="font-headline font-black text-lg sm:text-xl text-on-surface leading-snug">
+                                "Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias."
+                            </blockquote>
+                            <cite id="verse-ref" class="font-body font-bold text-sm text-on-surface-variant block not-italic mt-2">— Filipenses 4:6-7</cite>
+                        </div>
+                    </div>
+                    <!-- Acciones -->
+                    <div class="px-6 lg:px-8 pb-6 flex flex-wrap items-center justify-center md:justify-end gap-2">
                         <button class="btn-3d btn-3d-blue px-5 py-3 font-headline font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2" onclick="copyVerse()" type="button" id="btn-copy-verse">
                             <span class="material-symbols-outlined !text-[18px]">content_copy</span>
                             <span id="copy-verse-text">Copiar Cita</span>
@@ -1441,19 +1451,8 @@
             closeEncourageModal();
         }
 
-        function copyVerse() {
-            var text = '\u201cPor nada est\u00e9is afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oraci\u00f3n y ruego, con acci\u00f3n de gracias.\u201d - Filipenses 4:6-7';
-            navigator.clipboard.writeText(text).then(function() {
-                var copyBtn = document.getElementById('copy-verse-text');
-                copyBtn.innerText = '\u00a1Copiado!';
-                setTimeout(function() { copyBtn.innerText = 'Copiar Cita'; }, 2500);
-            });
-        }
-        function shareVerse() {
-            if (navigator.share) {
-                navigator.share({ title: 'Muro Espiritual D5', text: 'Filipenses 4:6-7', url: window.location.href });
-            } else { copyVerse(); }
-        }
+        /* copyVerse() y shareVerse() viven en assets/js/daily-promise.js (usan el versículo mostrado) */
+
 
         function toggleFaq(btn) {
             var item = btn.closest('.faq-item');
@@ -1494,6 +1493,7 @@
     <script src="assets/js/mobile-nav.js" defer></script>
     <script src="assets/js/social-footer.js" defer></script>
     <script src="assets/js/nav-active.js" defer></script>
+    <script src="assets/js/daily-promise.js" defer></script>
 <!-- Botpress (chatbot temporal mientras termina Fuego D5 IA) -->
 <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/05/08/05/20250508053644-M1VHWMG8.js" defer></script>
