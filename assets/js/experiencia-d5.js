@@ -2,7 +2,7 @@
    experiencia-d5.js — "Experiencia D5"
 
    Un solo widget autónomo para todas las páginas:
-     1) Mascota "Chispa" (SVG inline, abajo a la izquierda)
+     1) Mascota "Chispa" (SVG inline, abajo a la derecha)
      2) Tutorial de primera visita en la home (spotlight)
      3) Micro-tips de una sola vez en páginas clave
      4) Sonido de bienvenida (chime procedural con Web Audio)
