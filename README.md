@@ -22,9 +22,11 @@ Misión Juvenil trabaja para formar, equipar y movilizar jóvenes en contextos e
 
 ## Experiencia D5 (Chispa)
 
+> **"Una chispa enciende a un distrito."**
+
 "Experiencia D5" es la capa de acompañamiento del sitio, cargada automáticamente en las páginas principales (`assets/js/experiencia-d5.js`):
 
-- **Mascota Chispa**: personaje SVG animado en la esquina inferior derecha. Sus ojos siguen el cursor, reacciona al hover, salta, se alegra y se puede arrastrar (con la posición recordada en `localStorage`). En móvil se reposiciona sola para no tapar la barra inferior ni el reproductor sticky.
+- **Mascota Chispa**: personaje SVG animado en la esquina inferior derecha. Encarna el lema del D5: una chispa que, sumada a otras, enciende a todo un distrito. Sus ojos siguen el cursor, reacciona al hover, salta, se alegra y se puede arrastrar (con la posición recordada en `localStorage`). En móvil se reposiciona sola para no tapar la barra inferior ni el reproductor sticky.
 - **Menú de Chispa**: hacer el tour, hablar por WhatsApp, pedir un versículo, activar/desactivar el sonido y cerrar.
 - **Tour de primera visita** en la portada (spotlight guiado de una sola vez) y **micro-tips** de una sola vez en páginas clave.
 - **Sonidos procedurales** con Web Audio API (escala pentatónica, sin archivos de audio).

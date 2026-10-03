@@ -17,8 +17,8 @@
     if (window.__experienciaD5Init) return;
     window.__experienciaD5Init = true;
 
-    var page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    var isLanzamiento = page === 'lanzamiento.html';
+    var page = (window.location.pathname.replace(/\/+$/, '').split('/').pop() || 'index').toLowerCase().replace(/\.html$/, '');
+    var isLanzamiento = page === 'lanzamiento';
     var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     var mqQuiet = window.matchMedia ? window.matchMedia('(pointer:coarse) and (max-height:430px)') : null;
     var quietMode = mqQuiet ? mqQuiet.matches : false;
@@ -41,17 +41,17 @@
     var CSS = ''
     + '#chispaD5{position:fixed;right:1rem;bottom:var(--d5-chispa-bottom,1rem);z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;font-family:Rubik,sans-serif}'
     + '#chispaD5 *{box-sizing:border-box}'
-    + '#chispaTrigger{width:64px;height:64px;padding:0;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 4px 0 rgba(200,96,24,.35));transition:transform .15s ease;touch-action:pan-y}'
-    + '#chispaTrigger:hover{transform:translateY(-3px)}'
+    + '#chispaTrigger{width:80px;height:80px;padding:0;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 4px 0 rgba(200,96,24,.35));transition:transform .15s ease;touch-action:none}'
+    + '#chispaTrigger:hover{transform:translateY(-5px)}'
     + '#chispaTrigger:active{transform:translateY(1px)}'
-    + '#chispaTrigger svg{display:block;width:100%;height:100%;animation:chispaBob 3.8s ease-in-out infinite}'
-    + '.chispa-body{transform-box:fill-box;transform-origin:50% 94%;animation:chispaBreath 3.6s ease-in-out infinite}'
-    + '.chispa-flicker{transform-box:fill-box;transform-origin:50% 90%;animation:chispaFlicker 2.4s ease-in-out infinite}'
+    + '#chispaTrigger svg{display:block;width:100%;height:100%;animation:chispaBob 3s ease-in-out infinite}'
+    + '.chispa-body{transform-box:fill-box;transform-origin:50% 94%;animation:chispaBreath 2.9s ease-in-out infinite}'
+    + '.chispa-flicker{transform-box:fill-box;transform-origin:50% 90%;animation:chispaFlicker 1.9s ease-in-out infinite}'
     + '.chispa-face{transform-box:fill-box;transform-origin:center;transition:transform .18s ease}'
-    + '#chispaTrigger:hover .chispa-face{transform:scale(1.14)}'
-    + '.chispa-eyes{transform-box:fill-box;transform-origin:center;animation:chispaBlink 4.5s ease-in-out infinite}'
+    + '#chispaTrigger:hover .chispa-face{transform:scale(1.18)}'
+    + '.chispa-eyes{transform-box:fill-box;transform-origin:center;animation:chispaBlink 3.8s ease-in-out infinite}'
     + '.chispa-pupil{transition:transform .12s ease-out}'
-    + '.chispa-spark{transform-box:fill-box;transform-origin:center;animation:chispaSpark 2.2s ease-in-out infinite}'
+    + '.chispa-spark{transform-box:fill-box;transform-origin:center;animation:chispaSpark 1.7s ease-in-out infinite}'
     + '.chispa-mouth-happy{display:none}'
     + '.is-happy .chispa-mouth{display:none}'
     + '.is-happy .chispa-mouth-happy{display:block}'
@@ -86,7 +86,7 @@
     + '#d5Tour-dots i.on{background:#F58634}'
 
     // Micro-tip
-    + '#d5Tip{position:fixed;right:1rem;bottom:calc(var(--d5-chispa-bottom,1rem) + 4.75rem);z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
+    + '#d5Tip{position:fixed;right:1rem;bottom:calc(var(--d5-chispa-bottom,1rem) + 5.75rem);z-index:56;max-width:260px;background:#ffffff;border:2px solid #473458;box-shadow:0 5px 0 #31233E;padding:.7rem .8rem;font-family:"Nunito Sans",sans-serif}'
     + '#d5Tip[hidden]{display:none}'
     + '#d5Tip strong{display:flex;align-items:center;gap:.4rem;font-family:Rubik,sans-serif;font-weight:900;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#473458;margin-bottom:.25rem}'
     + '#d5Tip strong .material-symbols-outlined{font-size:16px}'
@@ -96,15 +96,17 @@
     + '#d5Tip-target{position:fixed;z-index:9997;border:3px solid #473458;box-shadow:0 0 0 4px rgba(71,52,88,.15);pointer-events:none}'
     + '#d5Tip-target[hidden]{display:none}'
 
-    + '@keyframes chispaFlicker{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.05) rotate(-2deg)}}'
+    + '@keyframes chispaFlicker{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.08) rotate(-3deg)}}'
     + '@keyframes chispaBlink{0%,90%,100%{transform:scaleY(1)}93%{transform:scaleY(.08)}}'
-    + '@keyframes chispaBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-1.5deg)}}'
-    + '@keyframes chispaSpark{0%,100%{opacity:.45;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(25deg)}}'
-    + '@keyframes chispaBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.045,.955)}}'
+    + '@keyframes chispaBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-2.5deg)}}'
+    + '@keyframes chispaSpark{0%,100%{opacity:.45;transform:scale(.55) rotate(0)}50%{opacity:1;transform:scale(1.25) rotate(32deg)}}'
+    + '@keyframes chispaBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.06,.94)}}'
     + '@keyframes chispaJump{0%{transform:translateY(0) scale(1,1)}28%{transform:translateY(-11px) scale(.93,1.09)}58%{transform:translateY(2px) scale(1.09,.91)}100%{transform:translateY(0) scale(1,1)}}'
 
     // Móvil/responsive: los offsets los calcula JS en --d5-chispa-bottom
+    + '@media (max-width:640px){#chispaTrigger{width:60px;height:60px}}'
     + '@media (max-width:360px){'
+    + '#chispaTrigger{width:54px;height:54px}'
     + '.chispa-bubble{max-width:78vw}'
     + '.chispa-menu{min-width:0;width:84vw}'
     + '}'
@@ -169,7 +171,7 @@
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(freq, t);
                 gain.gain.setValueAtTime(0.0001, t);
-                gain.gain.exponentialRampToValueAtTime(0.14, t + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.085, t + 0.03);
                 gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.42);
                 osc.connect(gain).connect(audioCtx.destination);
                 osc.start(t);
@@ -220,26 +222,30 @@
         var t = ctx.currentTime;
         try {
             if (type === 'tap') {
-                tone(ctx, note(1 + Math.floor(Math.random() * 3)), t, 0.15, 0.05, 'triangle');
+                tone(ctx, note(1 + Math.floor(Math.random() * 3)), t, 0.15, 0.03, 'triangle');
             } else if (type === 'pop') {
-                tone(ctx, note(3), t, 0.13, 0.075, 'triangle', note(6));
+                tone(ctx, note(3), t, 0.13, 0.05, 'triangle', note(6));
             } else if (type === 'tick') {
-                tone(ctx, note(5 + Math.floor(Math.random() * 2)) * 1.5, t, 0.08, 0.032, 'square');
+                tone(ctx, note(5 + Math.floor(Math.random() * 2)) * 1.5, t, 0.08, 0.02, 'square');
             } else if (type === 'pray') {
-                tone(ctx, note(0), t, 0.7, 0.055, 'sine');
-                tone(ctx, note(2), t + 0.03, 0.7, 0.04, 'sine');
-                tone(ctx, note(4), t + 0.06, 0.6, 0.03, 'sine');
+                tone(ctx, note(0), t, 0.7, 0.038, 'sine');
+                tone(ctx, note(2), t + 0.03, 0.7, 0.028, 'sine');
+                tone(ctx, note(4), t + 0.06, 0.6, 0.02, 'sine');
             } else if (type === 'success') {
-                [0, 2, 4, 5].forEach(function (i, k) { tone(ctx, note(i + 2), t + k * 0.085, 0.32, 0.055, 'triangle'); });
+                [0, 2, 4, 5].forEach(function (i, k) { tone(ctx, note(i + 2), t + k * 0.085, 0.32, 0.038, 'triangle'); });
             } else if (type === 'whoosh') {
-                tone(ctx, 520, t, 0.18, 0.035, 'sine', 260);
+                tone(ctx, 520, t, 0.18, 0.024, 'sine', 260);
+            } else if (type === 'lift') {
+                tone(ctx, 300, t, 0.24, 0.028, 'sine', 640);
+            } else if (type === 'land') {
+                tone(ctx, 220, t, 0.2, 0.032, 'sine', 130);
             } else if (type === 'turn') {
-                tone(ctx, note(3), t, 0.13, 0.05, 'triangle');
+                tone(ctx, note(3), t, 0.13, 0.034, 'triangle');
             } else if (type === 'finish') {
-                [2, 4, 5, 7].forEach(function (i, k) { tone(ctx, note(i + 2), t + k * 0.08, 0.3, 0.055, 'triangle'); });
+                [2, 4, 5, 7].forEach(function (i, k) { tone(ctx, note(i + 2), t + k * 0.08, 0.3, 0.038, 'triangle'); });
             } else if (type === 'error') {
-                tone(ctx, 311, t, 0.16, 0.05, 'sine');
-                tone(ctx, 247, t + 0.14, 0.24, 0.05, 'sine');
+                tone(ctx, 311, t, 0.16, 0.032, 'sine');
+                tone(ctx, 247, t + 0.14, 0.24, 0.032, 'sine');
             }
         } catch (e) { /* sin audio disponible */ }
     }
@@ -261,6 +267,8 @@
             var k = sfxForTarget(e.target);
             if (k) sfx(k);
         }, true);
+        // iOS no desbloquea el audio en pointerdown; aseguramos el contexto en el primer pointerup.
+        document.addEventListener('pointerup', function () { audioCtxGet(); }, { once: true });
         document.addEventListener('submit', function () {
             sfx('success');
             try { window.dispatchEvent(new CustomEvent('d5:submit')); } catch (e) {}
@@ -269,7 +277,7 @@
 
     function armSound() {
         var fire = function () { playChime(); };
-        document.addEventListener('pointerdown', fire, { once: true });
+        document.addEventListener('pointerup', fire, { once: true });
         document.addEventListener('keydown', fire, { once: true });
     }
 
@@ -318,6 +326,18 @@
         holeEl = tourEl.querySelector('#d5Tour-hole');
         cardEl = tourEl.querySelector('#d5Tour-card');
         dotsEl = tourEl.querySelector('#d5Tour-dots');
+        cardEl.setAttribute('tabindex', '-1');
+        document.addEventListener('keydown', function (e) {
+            if (!tourActive || !tourEl) return;
+            if (e.key === 'Escape') { e.preventDefault(); endTour(); return; }
+            if (e.key === 'Tab') {
+                var f = tourEl.querySelectorAll('button:not([disabled])');
+                if (!f.length) return;
+                var first = f[0], last = f[f.length - 1], ae = document.activeElement;
+                if (e.shiftKey && (ae === first || ae === cardEl)) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && ae === last) { e.preventDefault(); first.focus(); }
+            }
+        });
         tourEl.addEventListener('click', function (e) {
             var b = e.target.closest('[data-tour]');
             if (!b) return;
@@ -404,36 +424,43 @@
         if (tip) tip.hidden = true;
         hideBotpress(true);
         tourEl.hidden = false;
+        try { cardEl.focus({ preventScroll: true }); } catch (e) { try { cardEl.focus(); } catch (e2) {} }
         goToStep(0);
     }
 
     function endTour() {
         tourActive = false;
+        var hadFocus = !!(tourEl && tourEl.contains(document.activeElement));
         if (tourEl) tourEl.hidden = true;
         hideBotpress(false);
         lsSet(LS.tour, true);
         if (mascotaHiddenByTour && mascotaEl) { mascotaEl.style.display = ''; mascotaHiddenByTour = false; }
-        say('¡Listo! Ya conoces lo principal. Toca a Chispa si quieres repetir el tour.');
+        if (hadFocus) {
+            var t = document.getElementById('chispaTrigger');
+            if (t) { try { t.focus({ preventScroll: true }); } catch (e) { try { t.focus(); } catch (e2) {} } }
+        }
+        say('¡Listo! Toca a Chispa para repetir el tour.');
         if (!quietMode) setTimeout(function () { if (!bubbleBusy()) showVerse(); }, 4500);
     }
 
     // ---------------------------------------------------------------- tips
     var TIPS = {
-        'podcast.html': { sel: null, text: 'Dale play a un episodio: el reproductor aparece pegado abajo y puedes seguir navegando.' },
-        'muro-espiritual.html': { sel: '#verse-container', text: 'Aquí está tu promesa del día. Más abajo puedes dejar tu petición de oración.' },
-        'salud-mental.html': { sel: null, text: '¿Necesitas hablar con alguien? Puedes pedir acompañamiento en un solo click.' }
+        'podcast': { sel: null, text: 'Dale play: el reproductor queda abajo y sigues navegando.' },
+        'muro-espiritual': { sel: '#verse-container', text: 'Esta es tu promesa del día. Abajo deja tu petición.' },
+        'salud-mental': { sel: null, text: '¿Necesitas hablar? Pide acompañamiento en un click.' }
     };
 
     function showTip() {
         var tip = TIPS[page];
         if (!tip) return;
         var seen = lsGet(LS.tips, []);
+        if (!Array.isArray(seen)) seen = [];
         if (seen.indexOf(page) !== -1) return;
         var box = document.createElement('div');
         box.id = 'd5Tip';
         box.setAttribute('role', 'status');
         box.innerHTML =
-            '<strong><span class="material-symbols-outlined">local_fire_department</span>Consejo de Chispa</strong>' +
+            '<strong><span class="material-symbols-outlined">local_fire_department</span>Tip de Chispa</strong>' +
             '<p>' + tip.text + '</p>' +
             '<button type="button">Entendido</button>';
         document.body.appendChild(box);
@@ -518,9 +545,9 @@
     var mascotaDrag = { active: false };
     var suppressClick = false;
     var lastUser = Date.now();
-    var IDLE_PHRASES = ['¿Exploramos algo?', 'Puedes hacer el tour cuando quieras.', 'En el Muro de Fuego cada petición es una luz.', 'Dale play al podcast, está buenísimo.', 'Cuenta conmigo, estoy aquí.'];
+    var IDLE_PHRASES = ['¿Exploramos algo?', 'Haz el tour cuando quieras.', 'Cada petición enciende el Muro.', 'Dale play al podcast.', 'Aquí estoy.'];
     var PRAISE = ['¡Amén!', '¡Gracias por orar!', '¡Eso es interceder!', '¡Se nota el fuego!'];
-    var WELCOME = ['¡Recibido!', '¡Bienvenido a la familia!', '¡Vamos con toda!', '¡Gracias por dar el paso!'];
+    var WELCOME = ['¡Recibido!', '¡Bienvenido!', '¡Vamos con toda!', '¡Gracias por el paso!'];
 
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
     function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -544,6 +571,7 @@
     }
 
     function updateChispaOffset() {
+        if (window.__chispaVida) return;
         if (!mascotaEl || !autoPos || mascotaDrag.active) return;
         var desktop = window.matchMedia('(min-width:1280px)').matches;
         var base = desktop ? 16 : navOffset();
@@ -625,7 +653,7 @@
         }
         function lookRandom() {
             var a = Math.random() * Math.PI * 2;
-            tx = Math.cos(a) * 1.6; ty = Math.sin(a) * 1.4;
+            tx = Math.cos(a) * 2.0; ty = Math.sin(a) * 1.7;
             schedule();
         }
         window.addEventListener('pointermove', function (e) {
@@ -634,8 +662,8 @@
         }, { passive: true });
         setInterval(function () {
             if (document.hidden || mascotaDrag.active || tourActive) return;
-            if (Date.now() - lastUser > 2600) lookRandom();
-        }, 5200);
+            if (Date.now() - lastUser > 1500) lookRandom();
+        }, 3200);
     }
 
     function initDrag(trigger) {
@@ -691,15 +719,15 @@
             '<button type="button" data-act="sound"><span class="material-symbols-outlined">' + (soundEnabled ? 'volume_up' : 'volume_off') + '</span><span class="lbl">Sonido: ' + (soundEnabled ? 'activado' : 'desactivado') + '</span></button>' +
             '<button type="button" data-act="close"><span class="material-symbols-outlined">close</span>Cerrar</button>' +
             '</div>' +
-            '<button type="button" id="chispaTrigger" aria-label="Abrir a Chispa, la mascota de Misión Juvenil D5" aria-expanded="false">' + chispaSvg(64) + '</button>';
+            '<button type="button" id="chispaTrigger" aria-label="Abrir a Chispa, la mascota de Misión Juvenil D5" aria-expanded="false">' + chispaSvg(80) + '</button>';
         document.body.appendChild(mascotaEl);
-        restorePos();
+        if (!window.__chispaVida) restorePos();
 
         var menu = mascotaEl.querySelector('.chispa-menu');
         var trigger = mascotaEl.querySelector('#chispaTrigger');
 
         initEyes(trigger);
-        initDrag(trigger);
+        if (!window.__chispaVida) initDrag(trigger);
 
         trigger.addEventListener('click', function () {
             if (suppressClick) return;
@@ -768,7 +796,7 @@
         if (!quietMode) {
             setTimeout(function () {
                 if (tourActive) return;
-                say('¡Hola! Soy Chispa, tu guía en Misión Juvenil D5.');
+                say('¡Hola! Soy Chispa, tu guía del D5.');
             }, reduceMotion ? 200 : 1400);
         }
 
@@ -792,14 +820,14 @@
         }, 75000);
 
         // Tour sólo en la home, una vez.
-        if (page === 'index.html' && !lsGet(LS.tour, false)) {
+        if (page === 'index' && !lsGet(LS.tour, false)) {
             setTimeout(function () {
                 if (!tourActive) startTour();
             }, reduceMotion ? 400 : 2600);
         }
 
         // Micro-tip por página (excepto si va a arrancar el tour).
-        if (page !== 'index.html' && !quietMode) {
+        if (page !== 'index' && !quietMode) {
             setTimeout(showTip, reduceMotion ? 300 : 1800);
         }
 
@@ -824,7 +852,9 @@
         sound: setSound,
         sfx: sfx,
         verse: function () { showVerse(); },
+        say: say,
+        busy: bubbleBusy,
         celebrate: celebrate,
-        reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); } catch (e) {} }
+        reset: function () { try { localStorage.removeItem(LS.tour); localStorage.removeItem(LS.tips); localStorage.removeItem('mjd5-pos-v2'); localStorage.removeItem('mjd5-roam'); } catch (e) {} }
     };
 })();
