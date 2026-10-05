@@ -68,6 +68,35 @@
     + '.chispa-menu .material-symbols-outlined{font-size:18px;color:#006491}'
     + '.chispa-hide{display:none!important}'
 
+    // Poses: capa propia sin animación, para componer con respiración y parpadeo
+    + '.chispa-pose{transform-box:fill-box;transform-origin:50% 92%;transition:transform .38s cubic-bezier(.22,1,.36,1)}'
+    + '.chispa-eyes-closed{display:none}'
+    + '.p-orar .chispa-eyes,.p-dormir .chispa-eyes{display:none}'
+    + '.p-orar .chispa-eyes-closed,.p-dormir .chispa-eyes-closed{display:block}'
+    + '.p-orar .chispa-mouth-happy,.p-celebrar .chispa-mouth-happy,.p-saludar .chispa-mouth-happy{display:block}'
+    + '.p-orar .chispa-mouth,.p-celebrar .chispa-mouth,.p-saludar .chispa-mouth{display:none}'
+    + '.p-saludar .chispa-pose{transform:rotate(-7deg) translateY(-2px)}'
+    + '.p-orar .chispa-pose{transform:scale(1.03) translateY(-1px)}'
+    + '.p-orar .chispa-flicker{filter:saturate(1.12) brightness(1.06)}'
+    + '.p-dormir .chispa-pose{transform:scale(.97,.93) rotate(5deg)}'
+    + '.p-celebrar .chispa-pose{transform:scale(1.06,.97) translateY(-1px)}'
+    + '.p-senalar .chispa-pose{transform:rotate(var(--d5-apunta,0deg)) translateY(-3px)}'
+    + '.p-senalar .chispa-spark{animation-duration:.85s}'
+    + '.p-escuchar .chispa-pose{animation:chispaSway 2.4s ease-in-out infinite}'
+    + '.p-escuchar .chispa-spark{opacity:.5}'
+    // "z" de dormir: sube y se desvanece
+    + '.chispa-zzz{display:none;transform-box:fill-box;transform-origin:center}'
+    + '.p-dormir .chispa-zzz{display:block;animation:chispaZ 2.8s ease-out infinite}'
+    // Halo: el detalle propio del D5, el brillo de la llama cuando ora la comunidad
+    + '.chispa-halo{opacity:0;transition:opacity .6s ease;pointer-events:none}'
+    + '.p-orar .chispa-halo{opacity:.3}'
+    + '.is-oracomun .chispa-halo{opacity:.5;animation:chispaHalo 2.2s ease-in-out}'
+    + '.is-oracomun .chispa-flicker{filter:brightness(1.12) saturate(1.15)}'
+    + '.is-oracomun .chispa-spark{animation-duration:1s}'
+    + '@keyframes chispaZ{0%{opacity:0;transform:translate(0,4px) scale(.7)}22%{opacity:.9}100%{opacity:0;transform:translate(-5px,-15px) scale(1.15)}}'
+    + '@keyframes chispaSway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}'
+    + '@keyframes chispaHalo{0%{opacity:.16}45%{opacity:.52}100%{opacity:.16}}'
+
     // Tour
     + '#d5Tour{position:fixed;inset:0;z-index:9998}'
     + '#d5Tour[hidden]{display:none}'
@@ -117,6 +146,10 @@
     + '.chispa-flicker,.chispa-eyes,.chispa-spark,.chispa-body{animation:none!important}'
     + '#chispaTrigger svg{animation:none!important}'
     + '.is-jump .chispa-body{animation:none!important}'
+    + '.p-escuchar .chispa-pose,.p-dormir .chispa-zzz,.is-oracomun .chispa-halo{animation:none!important}'
+    + '.p-dormir .chispa-zzz{opacity:.85}'
+    + '.is-oracomun .chispa-halo{opacity:.45}'
+    + '.chispa-pose{transition:none}'
     + '#chispaTrigger{transition:none}'
     + '#d5Tour-hole{transition:none}'
     + '}';
@@ -131,6 +164,7 @@
         return ''
         + '<svg viewBox="0 0 72 72" width="' + (size || 72) + '" height="' + (size || 72) + '" role="img" aria-label="Chispa, la mascota de Misión Juvenil D5">'
         + '<g class="chispa-body">'
+        + '<g class="chispa-pose">'
         + '<g class="chispa-flicker">'
         + '<path d="M36 6C29 18 12 27 12 43c0 13 10 22 24 22s24-9 24-22C60 27 43 18 36 6z" fill="#F58634" stroke="#C86018" stroke-width="3.5" stroke-linejoin="round"/>'
         + '<path d="M36 31c-4.5 7-11 11.5-11 19 0 7.5 5 11.5 11 11.5s11-4 11-11.5c0-7.5-6.5-12-11-19z" fill="#FFC64D"/>'
@@ -144,11 +178,20 @@
         + '<circle cx="31.3" cy="44.1" r="0.85" fill="#ffffff"/>'
         + '<circle cx="43.3" cy="44.1" r="0.85" fill="#ffffff"/>'
         + '</g>'
+        + '<g class="chispa-eyes-closed">'
+        + '<path d="M25.8 46.4q4.2 3.8 8.4 0" fill="none" stroke="#3A2410" stroke-width="2.4" stroke-linecap="round"/>'
+        + '<path d="M37.8 46.4q4.2 3.8 8.4 0" fill="none" stroke="#3A2410" stroke-width="2.4" stroke-linecap="round"/>'
+        + '</g>'
         + '<path class="chispa-mouth" d="M30.5 54c1.6 2.2 9.4 2.2 11 0" fill="none" stroke="#3A2410" stroke-width="2.8" stroke-linecap="round"/>'
         + '<path class="chispa-mouth-happy" d="M29 53.4c1.9 3.8 12.1 3.8 14 0z" fill="#3A2410"/>'
         + '</g>'
         + '</g>'
+        + '</g>'
         + '<path class="chispa-spark" d="M61 12l1.7 4.4L67 18l-4.3 1.7L61 24l-1.7-4.3L55 18l4.3-1.6z" fill="#FFC64D"/>'
+        + '<g class="chispa-zzz">'
+        + '<text x="50" y="22" font-family="Rubik,sans-serif" font-size="10" font-weight="900" fill="#C86018">z</text>'
+        + '</g>'
+        + '<g class="chispa-halo"><circle cx="36" cy="40" r="26" fill="#FFC64D"/></g>'
         + '</svg>';
     }
 
@@ -304,7 +347,6 @@
     ];
 
     var tourEl, holeEl, cardEl, dotsEl, tourIndex = 0, tourSteps = [], tourActive = false, mascotaEl;
-    var mascotaHiddenByTour = false;
 
     function buildTour() {
         tourEl = document.createElement('div');
@@ -388,8 +430,10 @@
             holeEl.style.width = Math.min(window.innerWidth, r.width + pad * 2) + 'px';
             holeEl.style.height = Math.min(window.innerHeight, r.height + pad * 2) + 'px';
             placeCard(r);
+            senalarEn(found.el);
         } else {
             holeEl.style.display = 'none';
+            clearSenalar();
             cardEl.style.left = '50%';
             cardEl.style.top = '50%';
             cardEl.style.transform = 'translate(-50%,-50%)';
@@ -418,8 +462,11 @@
         if (!tourEl) buildTour();
         tourActive = true;
         tourIndex = 0;
-        mascotaHiddenByTour = true;
-        if (mascotaEl) mascotaEl.style.display = 'none';
+        // Chispa no se oculta: acompaña el tour señalando cada paso.
+        if (mascotaEl) {
+            mascotaEl.style.zIndex = '10001';
+            mascotaEl.style.pointerEvents = 'none';
+        }
         var tip = document.getElementById('d5Tip');
         if (tip) tip.hidden = true;
         hideBotpress(true);
@@ -434,7 +481,8 @@
         if (tourEl) tourEl.hidden = true;
         hideBotpress(false);
         lsSet(LS.tour, true);
-        if (mascotaHiddenByTour && mascotaEl) { mascotaEl.style.display = ''; mascotaHiddenByTour = false; }
+        clearSenalar();
+        if (mascotaEl) { mascotaEl.style.zIndex = ''; mascotaEl.style.pointerEvents = ''; }
         if (hadFocus) {
             var t = document.getElementById('chispaTrigger');
             if (t) { try { t.focus({ preventScroll: true }); } catch (e) { try { t.focus(); } catch (e2) {} } }
@@ -659,6 +707,76 @@
         celebrate._t = setTimeout(function () { mascotaEl.classList.remove('is-happy'); }, 1700);
     }
 
+    // ---------------------------------------------------------------- poses
+    // Cada pose es una clase en la capa .chispa-pose, que no tiene animación
+    // propia: compone con la respiración y el parpadeo. Ver chispa-biblia.md §5.
+    var POSES = {
+        saludar: 2600, orar: 2400, celebrar: 1900,
+        dormir: 0, senalar: 0, escuchar: 0   // 0 = permanente, la quita clearPose()
+    };
+    var poseActual = '';
+    function pose(name, ms) {
+        if (!mascotaEl) return;
+        for (var k in POSES) {
+            if (!Object.prototype.hasOwnProperty.call(POSES, k)) continue;
+            if (k !== name) mascotaEl.classList.remove('p-' + k);
+        }
+        clearTimeout(pose._t);
+        poseActual = name || '';
+        if (!name) return;
+        if (!Object.prototype.hasOwnProperty.call(POSES, name)) return;
+        mascotaEl.classList.add('p-' + name);
+        var dur = (ms == null ? POSES[name] : ms);
+        if (dur > 0) {
+            pose._t = setTimeout(function () {
+                if (poseActual === name) { mascotaEl.classList.remove('p-' + name); poseActual = ''; }
+            }, dur);
+        }
+    }
+    function clearPose() { orarSeq++; pose(''); }
+
+// La comunidad ora: Chispa se une en silencio y la llama brilla.
+// Sin salto y sin encadenarse si llegan varios "orar" seguidos.
+    var orarLock = 0, orarSeq = 0;
+    function orarPorLaComunidad() {
+        var ahora = Date.now();
+        if (ahora - orarLock < 6000) return;   // no acumular reacciones
+        orarLock = ahora;
+        var seq = ++orarSeq;
+        pose('orar', 3400);                    // dura lo que toda la secuencia
+        if (mascotaEl) mascotaEl.classList.add('is-oracomun');
+        say(pick(PRAISE), 6000, 3);
+        setTimeout(function () {
+            if (seq !== orarSeq) return;       // si la despertaron, no celebrar
+            if (mascotaEl) mascotaEl.classList.remove('is-oracomun');
+            pose('celebrar');
+        }, 2600);
+    }
+
+    // Durante el tour: Chispa acompaña en vez de estorbar.
+    var senalarTarget = null;
+    function senalarEn(target) {
+        senalarTarget = target || null;
+        if (!mascotaEl) return;
+        if (!target) { clearPose(); return; }
+        var r = target.getBoundingClientRect();
+        var mr = mascotaEl.getBoundingClientRect();
+        if (!r.width && !r.height) return;
+        // Ángulo hacia el objetivo, limitado para que la llama no se tumbe
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var mx = mr.left + mr.width / 2, my = mr.top + mr.height / 2;
+        var ang = Math.atan2(cy - my, cx - mx) * 180 / Math.PI;
+        var tilt = Math.max(-26, Math.min(26, ang * 0.35));
+        mascotaEl.style.setProperty('--d5-apunta', tilt.toFixed(1) + 'deg');
+        pose('senalar');
+    }
+
+    // Si choca con un paso del tour, no la dejamos ladeada.
+    function clearSenalar() {
+        if (poseActual === 'senalar') clearPose();
+        senalarTarget = null;
+    }
+
     function savePos() {
         autoPos = false;
         lsSet('mjd5-pos-v2', { right: parseInt(mascotaEl.style.right, 10), bottom: parseInt(mascotaEl.style.bottom, 10) });
@@ -826,8 +944,7 @@
 
         // Reacciones a la actividad del sitio
         window.addEventListener('d5:pray', function () {
-            celebrate();
-            say(pick(PRAISE), 6000, 3);
+            orarPorLaComunidad();
         });
         window.addEventListener('d5:submit', function () {
             celebrate();
@@ -903,6 +1020,11 @@
         busy: bubbleBusy,
         celebrate: celebrate,
         page: page,
+        pose: pose,
+        clearPose: clearPose,
+        poses: function () { var a = []; for (var k in POSES) if (Object.prototype.hasOwnProperty.call(POSES, k)) a.push(k); return a; },
+        currentPose: function () { return poseActual; },
+        pray: orarPorLaComunidad,
         voice: function (on) {
             voiceOn = !!on;
             try { lsSet('mjd5-voice', voiceOn); } catch (e) {}

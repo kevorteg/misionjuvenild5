@@ -14,6 +14,10 @@ dist/
 build/
 .cache/
 
+# Hoja de contactos de Chispa: se regenera con tools/shot-chispa-poses.mjs
+# (los SVG de referencia sí se versionan)
+media/chispa/poses/*.png
+
 # Configuración local del editor
 .vscode/*
 !.vscode/extensions.json
