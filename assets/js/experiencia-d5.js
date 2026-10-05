@@ -1014,6 +1014,7 @@
     window.ChispaD5 = {
         tour: function () { startTour(); },
         sound: setSound,
+        soundOn: function () { return soundEnabled; },
         sfx: sfx,
         verse: function () { showVerse(); },
         say: say,
