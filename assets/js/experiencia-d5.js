@@ -325,8 +325,10 @@
     }
 
     // ---------------------------------------------------------------- utils
-    function rectOf(sel) {
-        var el = document.querySelector(sel);
+    // Acepta un selector o el elemento directo: los pasos declarativos
+    // (data-chispa-tour) ya traen la referencia y no dependen de un id.
+    function rectOf(t) {
+        var el = (t && t.nodeType === 1) ? t : document.querySelector(t);
         if (!el) return null;
         return { el: el, rect: el.getBoundingClientRect() };
     }
@@ -345,6 +347,22 @@
         { sel: '#un-click h2', title: 'Todo a un click', text: 'Podcast, recursos, muro espiritual y más. Explora sin complicarte.' },
         { sel: '#unirme h2', title: '¿Quieres unirte?', text: 'Déjanos tus datos o escríbenos por WhatsApp. Te acompañamos en el proceso.' }
     ];
+
+    // Micro-tours declarativos: data-chispa-tour="Titulo|Explicacion".
+    // Cada pagina declara sus propios pasos pegados al elemento, asi no hay
+    // selectores fragilelos que se rompen al mover una seccion.
+    function collectTourSteps() {
+        var out = [], nodes = document.querySelectorAll('[data-chispa-tour]');
+        for (var i = 0; i < nodes.length; i++) {
+            var raw = nodes[i].getAttribute('data-chispa-tour') || '';
+            var cut = raw.indexOf('|');
+            var title = (cut === -1 ? raw : raw.slice(0, cut)).trim();
+            var text = (cut === -1 ? '' : raw.slice(cut + 1)).trim();
+            if (!title && !text) continue;
+            out.push({ el: nodes[i], title: title || 'Aquí', text: text });
+        }
+        return out;
+    }
 
     var tourEl, holeEl, cardEl, dotsEl, tourIndex = 0, tourSteps = [], tourActive = false, mascotaEl;
 
@@ -393,7 +411,7 @@
     function goToStep(i) {
         tourIndex = i;
         var st = tourSteps[i];
-        var f = rectOf(st.sel);
+        var f = rectOf(st.el || st.sel);
         if (f && f.rect.height > 0) {
             try { f.el.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'center' }); }
             catch (e) { try { f.el.scrollIntoView(); } catch (e2) { /* sin scroll */ } }
@@ -413,7 +431,7 @@
 
     function paintStep() {
         var step = tourSteps[tourIndex];
-        var found = rectOf(step.sel);
+        var found = rectOf(step.el || step.sel);
         cardEl.querySelector('h3').textContent = step.title;
         cardEl.querySelector('p').textContent = step.text;
         var dots = '';
@@ -457,8 +475,10 @@
 
     function startTour() {
         if (tourActive) return;
-        tourSteps = TOUR_HOME;
-        if (!TOUR_HOME.length) return;
+        // Si la pagina declara pasos propios mandan sobre los de la home.
+        var declarados = collectTourSteps();
+        tourSteps = declarados.length ? declarados : TOUR_HOME;
+        if (!tourSteps.length) return;
         if (!tourEl) buildTour();
         tourActive = true;
         tourIndex = 0;
@@ -1014,6 +1034,9 @@ function bubbleBusy() {
             setTimeout(showTip, reduceMotion ? 300 : 1800);
         }
 
+        // Ayuda declarativa en formularios (data-chispa-help).
+        bindHelpHints();
+
         // Reposicionar en resize / cambio de orientación
         window.addEventListener('resize', function () { if (tourActive) paintStep(); updateChispaOffset(); });
         window.addEventListener('orientationchange', updateChispaOffset);
@@ -1021,6 +1044,34 @@ function bubbleBusy() {
         if (mqQuiet && mqQuiet.addEventListener) {
             mqQuiet.addEventListener('change', function (e) { quietMode = e.matches; updateChispaOffset(); });
         }
+    }
+
+    // Ayuda de formularios: data-chispa-help="consejo" en el campo.
+    // Reglas duras, por privacidad y por no molestar:
+    //  1. Nunca lee ni repite lo que el usuario escribio. El texto sale solo
+    //     del atributo, que vive en el HTML, no del valor del campo.
+    //  2. Solo reacciona al gesto de enfocar. Si acaba de escribir, se calla.
+    //  3. Una vez por campo y por sesion, y con la prioridad mas baja: nunca
+    //     pisa un versiculo ni una frase que ya este saliendo.
+    function bindHelpHints() {
+        var visto = {};
+        // Tecleo propio: lastUser solo se actualiza con el raton, asi que
+        // escribir no lo movia y el consejo aparecia encima de la frase
+        // que el usuario estaba escribiendo.
+        var tecleo = 0;
+        document.addEventListener('keydown', function () { tecleo = Date.now(); }, true);
+        document.addEventListener('focusin', function (e) {
+            var el = e.target;
+            if (!el || !el.getAttribute) return;
+            var txt = el.getAttribute('data-chispa-help');
+            if (!txt) return;
+            if (quietMode || tourActive || document.hidden) return;
+            if (Date.now() - tecleo < 2500) return;
+            var id = el.id || el.getAttribute('name') || el.tagName;
+            if (visto[id]) return;
+            visto[id] = 1;
+            say(txt, 5200, 1);
+        });
     }
 
     if (document.readyState === 'loading') {

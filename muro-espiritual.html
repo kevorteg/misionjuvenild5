@@ -558,7 +558,7 @@
                                 <span>Nombre o Seudónimo</span>
                                 <span class="font-body font-bold text-[10px] text-on-surface-variant normal-case">Opcional</span>
                             </label>
-                            <input class="w-full px-4 py-3 bg-surface-container-low text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary border-2 border-outline-variant transition-colors" id="input-author" placeholder="Ej. Juan de Bogotá, Sofía..." type="text">
+                            <input class="w-full px-4 py-3 bg-surface-container-low text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary border-2 border-outline-variant transition-colors" id="input-author" data-chispa-help="Si prefieres no firmar, deja el nombre en blanco. Tu petición se publica igual." placeholder="Ej. Juan de Bogotá, Sofía..." type="text">
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-headline font-black text-xs uppercase tracking-wider text-on-surface" for="input-location">Ciudad, Colegio o Campus</label>
@@ -606,7 +606,7 @@
                             <label class="font-headline font-black text-xs uppercase tracking-wider text-on-surface" for="petition-text" id="label-desc">Describe tu petición</label>
                             <span class="font-body font-bold text-[10px] text-on-surface-variant" id="char-counter">0 / 400</span>
                         </div>
-                        <textarea class="w-full p-4 bg-surface-container-low text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary border-2 border-outline-variant resize-none transition-colors" id="petition-text" maxlength="400" oninput="updateCounter(this)" placeholder="Escribe aquí con total libertad. Nuestro equipo y la comunidad intercederán con fe por este motivo..." rows="4"></textarea>
+                        <textarea class="w-full p-4 bg-surface-container-low text-on-surface font-body font-bold text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary border-2 border-outline-variant resize-none transition-colors" id="petition-text" maxlength="400" oninput="updateCounter(this)" data-chispa-help="Escribe tu petición tal como la sientes. Puedes contar lo que sea: nadie va a leer tu nombre." placeholder="Escribe aquí con total libertad. Nuestro equipo y la comunidad intercederán con fe por este motivo..." rows="4"></textarea>
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="font-headline font-black text-xs uppercase tracking-wider text-on-surface" for="file-upload">Adjunta foto o video <span class="font-body font-bold text-[10px] text-on-surface-variant normal-case">(opcional)</span></label>
@@ -692,8 +692,13 @@
         <section class="max-w-7xl mx-auto px-5 lg:px-12 pt-16 pb-12">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
                 <div>
-                    <span class="font-headline font-black text-[10px] uppercase tracking-widest text-secondary block mb-1">Intercesión en Tiempo Real</span>
+<span class="font-headline font-black text-[10px] uppercase tracking-widest text-secondary block mb-1">Intercesión en Tiempo Real</span>
                     <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">Feed del Muro Espiritual</h2>
+                    <p class="font-body font-bold text-xs text-on-surface-variant mt-2 max-w-xl">
+                        <strong class="font-black uppercase tracking-widest text-[10px] text-secondary-dark">Demostración:</strong>
+                        estas peticiones, sus testimonios y los conteos de oración son datos de ejemplo.
+                        Al conectar el muro real, los números serán los de la comunidad.
+                    </p>
                 </div>
                 <div class="flex flex-wrap gap-2" id="filter-chips">
                     <button class="filter-chip active px-4 py-2 bg-primary text-on-primary font-headline font-black text-[11px] uppercase tracking-wider shadow-[0_3px_0_#004b6f] transition-transform active:translate-y-[2px] active:shadow-none border-2 border-primary-dark" onclick="filterFeed(this, 'all')" type="button">Todas (12)</button>
