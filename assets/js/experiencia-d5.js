@@ -597,9 +597,18 @@
         if (prio >= 2) speak(text);
     }
 
-    function bubbleBusy() {
+function bubbleBusy() {
         var bubble = mascotaEl && mascotaEl.querySelector('.chispa-bubble');
         return !!(bubble && !bubble.hidden);
+    }
+
+    // Cierra la burbuja sin decir nada. Para dormirse: un versículo largo
+    // quedándose pegado mientras duerme rompe el silencio de la escena.
+    function silence() {
+        clearTimeout(say._t);
+        var bubble = mascotaEl && mascotaEl.querySelector('.chispa-bubble');
+        if (bubble) bubble.hidden = true;
+        sayPrio = 0;
     }
 
     var FALLBACK_VERSES = [
@@ -636,6 +645,7 @@
     var mascotaDrag = { active: false };
     var suppressClick = false;
     var lastUser = Date.now();
+    var podcastOn = false;
     var IDLE_PHRASES = ['¿Exploramos algo?', 'Haz el tour cuando quieras.', 'Cada petición enciende el Muro.', 'Dale play al podcast.', 'Aquí estoy.'];
     var PRAISE = ['¡Amén!', '¡Gracias por orar!', '¡Eso es interceder!', '¡Se nota el fuego!'];
     var WELCOME = ['¡Recibido!', '¡Bienvenido!', '¡Vamos con toda!', '¡Gracias por el paso!'];
@@ -946,6 +956,15 @@
         window.addEventListener('d5:pray', function () {
             orarPorLaComunidad();
         });
+        // Si hay audio sonando, Chispa se queda escuchando en vez de dormir.
+        window.addEventListener('d5:podcast', function (e) {
+            var d = (e && e.detail) || {};
+            if (d.action === 'play') { podcastOn = true; if (!bubbleBusy()) pose('escuchar'); }
+            else if (d.action === 'pause' || d.action === 'ended') {
+                podcastOn = false;
+                if (poseActual === 'escuchar') clearPose();
+            }
+        });
         window.addEventListener('d5:submit', function () {
             celebrate();
             say(pick(WELCOME), 6000, 3);
@@ -1019,6 +1038,7 @@
         verse: function () { showVerse(); },
         say: say,
         busy: bubbleBusy,
+        silence: silence,
         celebrate: celebrate,
         page: page,
         pose: pose,
@@ -1026,6 +1046,7 @@
         poses: function () { var a = []; for (var k in POSES) if (Object.prototype.hasOwnProperty.call(POSES, k)) a.push(k); return a; },
         currentPose: function () { return poseActual; },
         pray: orarPorLaComunidad,
+        playing: function () { return podcastOn; },
         voice: function (on) {
             voiceOn = !!on;
             try { lsSet('mjd5-voice', voiceOn); } catch (e) {}

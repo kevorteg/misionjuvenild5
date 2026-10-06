@@ -24,6 +24,7 @@
         perch: null, pf: .5, until: 0, t: 0, sq: 0, stay: false, perchRead: 0, pr: null
     };
     var enabled, lastAct = Date.now(), ptr = { x: 0, y: 0 };
+    var sleepAt = 0;   // instante en que se puede dormir (90-120 s de calma)
     var pd = null, drag = false, samples = [], block = false, lastSpark = 0, roamBtn = null;
     var fyCache = -1, perchDirty = true, wasHidden = false;
 
@@ -156,15 +157,56 @@
         }
     }
 
+    // Un solo sistema de sueño. chispa-vida lleva el reloj de inactividad
+    // (es el único que ya lo tenía) y ChispaD5 decide cómo se ve la pose.
+    // No hay una segunda regla dormida en otro archivo.
     function sleep() {
         go('sleep');
-        el.classList.add('is-sleep');
-        talk('zZz...', 3500);
+        var D = window.ChispaD5;
+        // Si tenía algo que decir, se calla antes de dormirse.
+        if (D && D.silence) D.silence();
+        if (D && D.pose) D.pose('dormir');
     }
+
+    // Chispa no se duerme si hay un podcast sonando: se queda escuchando.
+    function durmiendo() { return S.mode === 'sleep'; }
+    function hayAudio() {
+        var D = window.ChispaD5;
+        return !!(D && D.playing && D.playing());
+    }
+
     function wake() {
-        el.classList.remove('is-sleep');
+        if (!durmiendo()) return;
+        sleepAt = 0;
         go('idle', 600);
-        talk('¡Ya desperté!', 2200);
+        var D = window.ChispaD5;
+        if (D && D.clearPose) D.clearPose();
+        hop();
+        // "¡Ya desperté!" sólo la primera vez de la sesión.
+        var dicho = false;
+        try { dicho = sessionStorage.getItem('mjd5-wakeSaid') === '1'; } catch (e) {}
+        if (!dicho) {
+            try { sessionStorage.setItem('mjd5-wakeSaid', '1'); } catch (e) {}
+            talk('¡Ya desperté!', 2400);
+        }
+    }
+
+    // Despertar sin frases: para el podcast y para el tour, donde ya hay otra
+// voz hablando y un "¡Ya desperté!" seria ruido.
+function despertarSinFrases() {
+    if (!durmiendo()) return;
+    sleepAt = 0;
+    go('idle', 400);
+    var D = window.ChispaD5;
+    if (D && D.clearPose) D.clearPose();
+    if (D && D.silence) D.silence();
+}
+
+    // El saltito de despertar. Con movimiento reducido el CSS lo anula solo.
+    function hop() {
+        el.classList.add('is-jump');
+        clearTimeout(hop._t);
+        hop._t = setTimeout(function () { el.classList.remove('is-jump'); }, 640);
     }
 
     // ------------------------------------------------------------ bucle
@@ -176,6 +218,8 @@
         if (!el || drag || document.hidden) return;
         if (el.style.display === 'none') { wasHidden = true; return; }
         if (RM) { apply(0, 1, 1); return; }
+        // No guides el tour dormida: si el tour se abre, se despierta en silencio.
+        if (tourOpen()) despertarSinFrases();
         if (menu.classList.contains('is-open') || isTyping() || tourOpen()) return;
         if (wasHidden) { wasHidden = false; invalidate(); S.y = floorY(); }
         if (now - lastFloor > 250) { lastFloor = now; fyCache = -1; }
@@ -189,7 +233,37 @@
             if (S.y > fy) S.y = fy; else if (!S.stay && S.y < fy) S.y = fy;
             sy = 1 + Math.sin(S.t * 2) * .02;
             if (auto() && now > S.until) {
-                if (Date.now() - lastAct > 60000 && S.y >= fy - 4) sleep(); else think();
+                var quieta = Date.now() - lastAct;
+                if (hayAudio() && quieta > 12000) {
+                    // Con un podcast sonando no duerme: se queda oyendo.
+                    sleepAt = 0;
+                    if (S.mode !== 'escuchar') {
+                        go('escuchar');
+                        var C = window.ChispaD5;
+                        if (C && C.pose) C.pose('escuchar');
+                    }
+                } else if (sleepAt && Date.now() > sleepAt) {
+                    // 90-120 s de calma: se duerme donde esté, en el suelo o
+                    // encajada en un alféizar. No hace falta que esté abajo.
+                    sleepAt = 0;
+                    sleep();
+                } else {
+                    // Mientras no toque, sigue con su vida de siempre.
+                    if (!sleepAt) sleepAt = Date.now() + rnd(90000, 120000);
+                    think();
+                }
+            }
+
+        } else if (S.mode === 'escuchar') {
+            // Despierta, quieta y balanceándose: el detalle de "está oyendo".
+            if (!hayAudio()) {
+                go('idle', 800);
+                var C2 = window.ChispaD5;
+                if (C2 && C2.clearPose) C2.clearPose();
+            } else {
+                rot = Math.sin(S.t * .9) * 1.7;
+                sy = 1 + Math.sin(S.t * 1.7) * .016;
+                sx = 1 - Math.sin(S.t * 1.7) * .012;
             }
 
         } else if (S.mode === 'walk') {
@@ -268,10 +342,21 @@
     }
 
     // ------------------------------------------------------------ interacción
+    window.addEventListener('d5:podcast', function (e) {
+        var d = (e && e.detail) || {};
+        if (d.action === 'play') despertarSinFrases();
+    });
+
     function activity() {
         if (tourOpen()) return;
         lastAct = Date.now();
+        sleepAt = 0;          // cada actividad postpone el sueño
         if (S.mode === 'sleep') wake();
+        if (S.mode === 'escuchar' && !hayAudio()) {
+            go('idle', 600);
+            var D = window.ChispaD5;
+            if (D && D.clearPose) D.clearPose();
+        }
     }
 
     function initInteraction() {
@@ -292,7 +377,7 @@
                 pd.gy = e.clientY - S.y;
                 S.perch = null;
                 el.classList.add('is-drag');
-                if (S.mode === 'sleep') el.classList.remove('is-sleep');
+                if (S.mode === 'sleep') wake();   // arrastrar también despierta
                 snd('lift');
             }
             S.x = clamp(e.clientX - pd.gx, 8, maxX());
@@ -319,6 +404,7 @@
             }
             samples = [];
             lastAct = Date.now();
+            sleepAt = 0;
             if (RM) { go('idle', 1000); return; }
             go('fall');
             if (Math.hypot(S.vx, S.vy) > 600) talk(pick(['¡Wiiiii!', '¡Otra vez!', '¡Wow!']), 2000);
@@ -438,9 +524,8 @@
             clearInterval(iv);
 
             menu = el.querySelector('.chispa-menu');
-            var st = document.createElement('style');
-            st.textContent = '.is-sleep .chispa-eyes{animation:none!important;transform:scaleY(.1)}';
-            document.head.appendChild(st);
+            // El sueño visual lo lleva la pose .p-dormir de experiencia-d5.js.
+            // Aquí ya no se inyecta CSS de sueño: un solo sistema, un solo lugar.
 
             size = readSize();
             var r = trg.getBoundingClientRect();
