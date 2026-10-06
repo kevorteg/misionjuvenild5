@@ -96,7 +96,10 @@
 
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-    tailwind.config = {
+    // Si el CDN no carga, esto es ReferenceError y tapa el error real:
+    // la pagina quedaria sin estilos igualmente, pero sin diagnostico.
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
       theme: {
         extend: {
           "colors": {
