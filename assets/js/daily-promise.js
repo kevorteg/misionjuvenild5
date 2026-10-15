@@ -171,14 +171,59 @@
         downloadToastTimer = setTimeout(function () { label.textContent = prev; }, 2500);
     }
 
-    window.shareVerse = function () {
+    // ---------- Compartir promesa ----------
+    window.shareVerse = function (event) {
+        if (event) event.preventDefault();
+
         var text = currentText();
-        if (navigator.share) {
-            navigator.share({ title: 'Misión Juvenil D5', text: text, url: window.location.href }).catch(function () {});
-        } else {
-            window.copyVerse();
+        if (!text) return;
+
+        var label = document.getElementById('copy-verse-text');
+        var prev = label ? label.textContent : '';
+        function doneShare(msg) {
+            if (!label) return;
+            label.textContent = msg || '¡Compartido!';
+            setTimeout(function () { label.textContent = prev; }, 2500);
         }
+
+        // 1) Web Share API (móvil / navegadores modernos)
+        if (navigator.share) {
+            navigator.share({
+                title: 'Misión Juvenil D5',
+                text: text,
+                url: window.location.href
+            }).then(function () { doneShare('¡Compartido!'); })
+              .catch(function () {
+                  // Si el usuario cancela o falla, intentar copiar al portapapeles
+                  copyTextToClipboard(text, doneShare);
+              });
+            return;
+        }
+
+        // 2) Fallback: WhatsApp directo (muy usado en Colombia)
+        var waUrl = 'https://wa.me/?text=' + encodeURIComponent(text + ' — Misión Juvenil D5 ' + window.location.href);
+        if (/Android|iPhone|iPad|iPod/.test(navigator.userAgent)) {
+            // En móvil: abrir WhatsApp
+            window.open(waUrl, '_blank');
+            doneShare('Abriendo WhatsApp');
+            return;
+        }
+
+        // 3) Escritorio: copiar al portapapeles
+        copyTextToClipboard(text, doneShare);
     };
+
+    function copyTextToClipboard(text, done) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+                if (done) done('¡Enlace copiado!');
+            }).catch(function () {
+                fallbackCopy(text, function () { if (done) done('¡Copiado!'); });
+            });
+        } else {
+            fallbackCopy(text, function () { if (done) done('¡Copiado!'); });
+        }
+    }
 
     window.getPromesaActual = function () {
         return current ? { text: current.text, ref: current.ref } : null;
