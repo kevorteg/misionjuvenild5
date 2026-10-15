@@ -49,22 +49,127 @@
         } catch (e) { /* sin soporte */ }
     }
 
-    window.copyVerse = function (btn) {
+    // ---------- Copiar cita al portapapeles ----------
+    window.copyVerse = function (event) {
+        if (event) event.preventDefault();   // evita cualquier recarga / envío por defecto
+
         var label = document.getElementById('copy-verse-text');
-        if (!label && btn) label = btn.querySelector('[data-copy-label]');
         function done() {
             if (!label) return;
             var prev = label.textContent;
             label.textContent = '\u00a1Copiado!';
             setTimeout(function () { label.textContent = prev; }, 2500);
         }
+
         var text = currentText();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
+        if (!text) return;
+
+        // Intentar copiar texto + imagen si existe un fondo/imagen asociada al versículo
+        var imgEl = document.getElementById('verse-img') || document.querySelector('#verse-container img');
+        var imgUrl = imgEl ? imgEl.src : null;
+
+        if (imgUrl && window.ClipboardItem) {
+            fetch(imgUrl)
+                .then(function (res) { return res.blob(); })
+                .then(function (blob) {
+                    var item = new ClipboardItem({ 'text/plain': new Blob([text], { type: 'text/plain' }), 'image/png': blob });
+                    return navigator.clipboard.write([item]);
+                })
+                .then(done)
+                .catch(function () {
+                    // Si falla la imagen, copiar solo texto
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(done).catch(function () { fallbackCopy(text, done); });
+                    } else {
+                        fallbackCopy(text, done);
+                    }
+                });
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(done).catch(function () { fallbackCopy(text, done); });
         } else {
             fallbackCopy(text, done);
         }
     };
+
+    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo) ----------
+    window.downloadVerseCard = function () {
+        if (!current) return;
+
+        var W = 800, H = 450;
+        var canvas = document.createElement('canvas');
+        canvas.width = W;
+        canvas.height = H;
+        var ctx = canvas.getContext('2d');
+
+        // Fondo blanco institucional
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, W, H);
+
+        // Borde inferior azul (como la marca)
+        ctx.fillStyle = '#006491';
+        ctx.fillRect(0, H - 8, W, 8);
+
+        // Cita
+        ctx.fillStyle = '#111d26';
+        ctx.font = 'bold 34px Rubik, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        var maxWidth = W - 120;
+        var lines = wrapText(ctx, current.text, maxWidth);
+        var lineHeight = 44;
+        var startY = H / 2 - (lines.length * lineHeight) / 2 + 10;
+
+        for (var i = 0; i < lines.length; i++) {
+            ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
+        }
+
+        // Referencia
+        ctx.fillStyle = '#4E575F';
+        ctx.font = 'bold 20px Rubik, sans-serif';
+        ctx.fillText(current.ref, W / 2, H - 70);
+
+        // Pie de página
+        ctx.fillStyle = '#006491';
+        ctx.font = 'bold 16px Rubik, sans-serif';
+        ctx.fillText('Misión Juvenil D5 · Promesa de Hoy', W / 2, H - 25);
+
+        var link = document.createElement('a');
+        link.download = 'promesa-d5.png';
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showDownloadToast();
+    };
+
+    function wrapText(ctx, text, maxWidth) {
+        var words = text.split(' ');
+        var lines = [];
+        var currentLine = words[0];
+
+        for (var i = 1; i < words.length; i++) {
+            var test = currentLine + ' ' + words[i];
+            var metrics = ctx.measureText(test);
+            if (metrics.width > maxWidth && i > 1) {
+                lines.push(currentLine);
+                currentLine = words[i];
+            } else {
+                currentLine = test;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+    var downloadToastTimer = null;
+    function showDownloadToast(msg) {
+        var label = document.getElementById('copy-verse-text');
+        if (!label) return;
+        var prev = label.textContent;
+        label.textContent = msg || '¡Imagen descargada!';
+        clearTimeout(downloadToastTimer);
+        downloadToastTimer = setTimeout(function () { label.textContent = prev; }, 2500);
+    }
 
     window.shareVerse = function () {
         var text = currentText();

@@ -835,9 +835,13 @@
                     </div>
                     <!-- Acciones -->
                     <div class="px-6 lg:px-8 pb-6 flex flex-wrap items-center justify-center md:justify-end gap-2">
-                        <button onclick="copyVerse()" type="button" class="btn-3d btn-3d-blue px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
+                        <button onclick="copyVerse(event)" type="button" class="btn-3d btn-3d-blue px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
                             <span class="material-symbols-outlined !text-[18px]">content_copy</span>
                             <span id="copy-verse-text">Copiar Cita</span>
+                        </button>
+                        <button onclick="downloadVerseCard()" type="button" class="btn-3d btn-3d-green px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
+                            <span class="material-symbols-outlined !text-[18px]">image</span>
+                            <span>Descargar Imagen</span>
                         </button>
                         <button onclick="shareVerse()" type="button" class="btn-3d btn-3d-white px-4 py-2.5 font-headline font-black text-xs uppercase tracking-wider flex items-center gap-2">
                             <span class="material-symbols-outlined !text-[18px]">share</span>
