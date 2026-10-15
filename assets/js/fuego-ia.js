@@ -174,6 +174,72 @@
       texto: 'Hay una sección de preguntas frecuentes con las dudas que más se repiten.\n' +
         'Está en preguntas-frecuentes.html.',
       fuentes: [{ titulo: 'Preguntas Frecuentes', url: 'preguntas-frecuentes.html' }]
+    },
+    {
+      claves: ['versículo', 'versiculo', 'promesa', 'biblico', 'bíblico', 'palabra del día', 'jorge 1', 'jeremías 29'],
+      texto: 'La palabra para hoy: «Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas.» (Josué 1:9).\n' +
+        'Otra que anima: «Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis» (Jeremías 29:11).\n' +
+        'Puedes copiar el versículo desde recursos.html o compartirlo.',
+      fuentes: [
+        { titulo: 'Recursos', url: 'recursos.html' },
+        { titulo: 'Preguntas Frecuentes', url: 'preguntas-frecuentes.html' }
+      ]
+    },
+    {
+      claves: ['muro espiritual', 'dejar petición', 'orar por mí', 'intercesión', 'petición de oración', 'anónimo'],
+      texto: 'El Muro Espiritual es el espacio donde puedes dejar tu petición de forma anónima y cientos de intercesores orarán por ti.\n' +
+        'También puedes publicar un testimonio o enviar ánimo a alguien más.\n' +
+        'Entra desde muro-espiritual.html o desde el menú de la web.',
+      fuentes: [
+        { titulo: 'Muro Espiritual', url: 'muro-espiritual.html' },
+        { titulo: 'Recursos', url: 'recursos.html' }
+      ]
+    },
+    {
+      claves: ['testimonios', 'vidas transformadas', 'historia de cambio', 'estudiante inesperado'],
+      texto: 'Hay muchos testimonios de jóvenes cuyas vidas cambiaron con el D5: desde el estudiante rebelde que terminó bautizándose hasta docentes escépticos que permitieron la cátedra de religión.\n' +
+        'Puedes leerlos en Quiénes Somos y también compartir el tuyo desde la web.',
+      fuentes: [
+        { titulo: 'Quiénes Somos', url: 'quienes-somos.html' },
+        { titulo: 'Impacto', url: 'impacto.html' }
+      ]
+    },
+    {
+      claves: ['calendario', 'próximos encuentros', 'eventos', 'convocatoria', 'jornada'],
+      texto: 'En calendario.html están las fechas de los próximos encuentros, campamentos, jornadas de impacto y espacios de integración del distrito.\n' +
+        'La mayoría son gratuitos y abiertos para cualquier estudiante.',
+      fuentes: [{ titulo: 'Calendario', url: 'calendario.html' }]
+    },
+    {
+      claves: ['quiénes somos', 'quienes son', 'historia', 'grace', '2004', 'árbol', 'nació', 'equipo'],
+      texto: 'Misión Juvenil D5 nació en 2004 debajo de un árbol en la Universidad del Valle, con apenas cinco jóvenes. Hoy es una red presente en más de 14 universidades y 20+ colegios del Distrito 5.\n' +
+        'La página Quiénes Somos cuenta la historia completa, con capítulos, anécdotas y el equipo.',
+      fuentes: [
+        { titulo: 'Quiénes Somos', url: 'quienes-somos.html' },
+        { titulo: 'Impacto', url: 'impacto.html' }
+      ]
+    },
+    {
+      claves: ['boletín', 'boletin', 'suscribir', 'newsletter', 'recibir contenido', 'correo'],
+      texto: 'Puedes recibir contenido breve y devocionales por WhatsApp o correo suscribiéndote al boletín en el pie del sitio, o pidiéndole a tu líder que te agregue al grupo de devocionales diarios.',
+      fuentes: [
+        { titulo: 'A un Click', url: 'digital.html' },
+        { titulo: 'Contacto', url: 'contacto.html' }
+      ]
+    },
+    {
+      claves: ['dónde están', 'sedes', 'campus', 'presencia', 'universidades activas', 'colegios aliados'],
+      texto: 'D5 está presente en 14+ universidades y 20+ colegios. Cada sede tiene su coordinador, horario y círculo estudiantil. Puedes ver la lista en Colegios y Universidades, y saber cómo iniciar un grupo si aún no hay uno en tu institución.',
+      fuentes: [
+        { titulo: 'Colegios', url: 'colegios.html' },
+        { titulo: 'Universidades', url: 'universidades.html' },
+        { titulo: 'Preguntas Frecuentes', url: 'preguntas-frecuentes.html' }
+      ]
+    },
+    {
+      claves: ['descargar', 'guía pdf', 'material', 'desenrúdate', 'desenrùdate', 'revista'],
+      texto: 'En recursos.html está el catálogo de materiales descargables: guías PDF, devocionales, la revista Desenrúdate (Vol. 1 y Vol. 2) y más. Todo es 100% gratuito.',
+      fuentes: [{ titulo: 'Recursos', url: 'recursos.html' }]
     }
   ];
 

@@ -25,6 +25,12 @@
     };
     var enabled, lastAct = Date.now(), ptr = { x: 0, y: 0 };
     var sleepAt = 0;   // instante en que se puede dormir (90-120 s de calma)
+    // ---------- Modo noche (9:00 p.m. – 5:00 a.m., hora local del dispositivo) ----------
+    var NOCHE_H_INICIO = 21;
+    var NOCHE_H_FIN = 5;
+    var modoNoche = false;
+    var nocheZZZ = null;
+    var nocheYaDespierta = false;
     var pd = null, drag = false, samples = [], block = false, lastSpark = 0, roamBtn = null;
     var fyCache = -1, perchDirty = true, wasHidden = false;
 
@@ -77,7 +83,7 @@
     }
     function floorY() { return fyCache < 0 ? computeFloor() : fyCache; }
 
-    function go(mode, ms) { S.mode = mode; S.t = 0; S.until = performance.now() + (ms || 0); }
+    function go(mode, ms) { S.mode = mode; S.t = 0; S.until = Date.now() + (ms || 0); }
 
     function flyTo(x, y, perch, stay) {
         S.tx = clamp(x, 8, maxX());
@@ -166,6 +172,153 @@
         // Si tenía algo que decir, se calla antes de dormirse.
         if (D && D.silence) D.silence();
         if (D && D.pose) D.pose('dormir');
+        if (modoNoche) cicloSueños();
+    }
+
+    // ---------- Modo noche ----------
+    function esNoche() {
+        var h = new Date().getHours();
+        return h >= NOCHE_H_INICIO || h < NOCHE_H_FIN;
+    }
+
+    function revisarNoche() {
+        var ahora = esNoche();
+        if (ahora && !modoNoche) {
+            modoNoche = true;
+            // Si está despierta, quieta, sin tour, sin audio y sin que se escriba: se duerme.
+            if (!durmiendo() && S.mode !== 'escuchar' && !tourOpen() && !isTyping() && !hayAudio()) {
+                sleep();
+            }
+        }
+        if (nocheZZZ) actualizarZZZ();
+    }
+
+    function ponerZZZ() {
+        if (RM || nocheZZZ) return;
+        var z = document.createElement('div');
+        z.id = 'chispaZzz';
+        z.style.cssText = 'position:fixed;z-index:56;pointer-events:none;font-family:Rubik,sans-serif;font-weight:900;font-size:16px;color:#C86018;opacity:0;animation:chispaZzzSubir 2.5s ease-in-out infinite';
+        z.textContent = 'z';
+        document.body.appendChild(z);
+        nocheZZZ = z;
+        if (!document.getElementById('chispaZzzStyle')) {
+            var st = document.createElement('style');
+            st.id = 'chispaZzzStyle';
+            st.textContent = '@keyframes chispaZzzSubir { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: .9; } 100% { transform: translateY(-30px) scale(1.4); opacity: 0; } }';
+            document.head.appendChild(st);
+        }
+    }
+
+    function actualizarZZZ() {
+        if (!nocheZZZ || !el) return;
+        var r = el.getBoundingClientRect();
+        nocheZZZ.style.left = (r.left + r.width / 2 - 7) + 'px';
+        nocheZZZ.style.top = (r.top - 26) + 'px';
+        nocheZZZ.style.display = (modoNoche && durmiendo()) ? 'block' : 'none';
+        if (RM) { nocheZZZ.style.animation = 'none'; nocheZZZ.style.opacity = '1'; }
+    }
+
+    // ---------- Frases de sueño (globos, uno a la vez) ----------
+    var SUEÑO_FRASES = [
+      'Dios tiene un plan para ti',
+      'Hay un versículo esperándote.',
+      'Tu juventud importa.',
+      'Aquí hay un lugar para ti.',
+      'Mañana es un nuevo día para empezar.',
+      'Descansa, Él cuida de ti.',
+      'Sueño con jóvenes que se atreven a creer.',
+      'Tu petición cuenta: déjala en el muro.'
+    ];
+    var sueñoIdx = -1;
+    var sueñoTimer = null;
+    var sueñoEl = null;
+
+    function ponerSueño() {
+      if (sueñoEl) return;
+      var d = document.createElement('div');
+      d.id = 'chispaSueño';
+      d.style.cssText = 'position:fixed;z-index:57;pointer-events:auto;display:none;font-family:Rubik,sans-serif;font-weight:900;font-size:13px;color:#31233E;';
+      d.innerHTML =
+        '<svg viewBox="0 0 64 40" width="120" height="75" style="display:block;margin:0 auto">' +
+          '<path d="M10 22c0-5 4-9 9-9s9 4 9 9c0 3-2 5-5 5h-4c-3 0-5-2-5-5zm20 0c0-5 4-9 9-9s9 4 9 9c0 3-2 5-5 5h-4c-3 0-5-2-5-5z" fill="#F58634" stroke="#C86018" stroke-width="2" stroke-linejoin="round"/>' +
+        '</svg>' +
+        '<div id="chispaSueñoTexto" style="position:absolute;top:14px;left:10px;right:10px;bottom:22px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;"></div>' +
+        '<div id="chispaSueñoBurbujas" style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:4px;"></div>';
+      document.body.appendChild(d);
+      sueñoEl = d;
+
+      var bur = d.querySelector('#chispaSueñoBurbujas');
+      for (var i = 0; i < 3; i++) {
+        var b = document.createElement('div');
+        b.className = 'chispaBurbuja';
+        b.style.cssText = 'width:6px;height:6px;background:#F58634;border-radius:50%;opacity:0;animation:chispaBurbujaSubir 1.6s ease-in-out infinite';
+        b.style.animationDelay = (i * 0.4) + 's';
+        bur.appendChild(b);
+      }
+      if (!document.getElementById('chispaSueñoStyle')) {
+        var st = document.createElement('style');
+        st.id = 'chispaSueñoStyle';
+        st.textContent = '@keyframes chispaBurbujaSubir { 0% { transform: translateY(0); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }';
+        document.head.appendChild(st);
+      }
+      d.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        despertarNoche();
+      });
+    }
+
+    function siguienteSueño() {
+      if (!modoNoche || !durmiendo()) return;
+      var arr = SUEÑO_FRASES;
+      var i;
+      for (var n = 0; n < 8; n++) {
+        i = Math.floor(Math.random() * arr.length);
+        if (i !== sueñoIdx) break;
+      }
+      sueñoIdx = i;
+      var t = document.getElementById('chispaSueñoTexto');
+      if (t) t.textContent = arr[i];
+      var d = document.getElementById('chispaSueño');
+      if (d) {
+        d.style.display = 'block';
+        actualizarSueñoPos();
+      }
+      setTimeout(function () {
+        var dd = document.getElementById('chispaSueño');
+        if (dd) dd.style.display = 'none';
+      }, 7000);
+    }
+
+    function cicloSueños() {
+      clearInterval(sueñoTimer);
+      if (modoNoche && durmiendo()) {
+        siguienteSueño();
+        sueñoTimer = setInterval(function () {
+          if (modoNoche && durmiendo()) siguienteSueño();
+        }, 9000);
+      }
+    }
+
+    function actualizarSueñoPos() {
+      if (!sueñoEl || !el) return;
+      var r = el.getBoundingClientRect();
+      sueñoEl.style.left = (r.left + r.width / 2 - 60) + 'px';
+      sueñoEl.style.top = (r.top - 80) + 'px';
+    }
+
+    function despertarNoche() {
+      if (!durmiendo()) return;
+      sleepAt = 0;
+      go('idle', 600);
+      clearInterval(sueñoTimer);
+      var d = document.getElementById('chispaSueño');
+      if (d) d.style.display = 'none';
+      var D = window.ChispaD5;
+      if (D && D.clearPose) D.clearPose();
+      hop();
+      nocheYaDespierta = true;
+      try { sessionStorage.setItem('mjd5-nocheDespierta', '1'); } catch (e) {}
+      talk('¡Ay, me quedé dormida! Pero ya que estás aquí…', 2600);
     }
 
     // Chispa no se duerme si hay un podcast sonando: se queda escuchando.
@@ -179,6 +332,9 @@
         if (!durmiendo()) return;
         sleepAt = 0;
         go('idle', 600);
+        clearInterval(sueñoTimer);
+        var d = document.getElementById('chispaSueño');
+        if (d) d.style.display = 'none';
         var D = window.ChispaD5;
         if (D && D.clearPose) D.clearPose();
         hop();
@@ -188,6 +344,10 @@
         if (!dicho) {
             try { sessionStorage.setItem('mjd5-wakeSaid', '1'); } catch (e) {}
             talk('¡Ya desperté!', 2400);
+        }
+        if (modoNoche) {
+            nocheYaDespierta = true;
+            try { sessionStorage.setItem('mjd5-nocheDespierta', '1'); } catch (e) {}
         }
     }
 
@@ -232,7 +392,7 @@ function despertarSinFrases() {
         if (S.mode === 'idle') {
             if (S.y > fy) S.y = fy; else if (!S.stay && S.y < fy) S.y = fy;
             sy = 1 + Math.sin(S.t * 2) * .02;
-            if (auto() && now > S.until) {
+            if (auto() && Date.now() > S.until) {
                 var quieta = Date.now() - lastAct;
                 if (hayAudio() && quieta > 12000) {
                     // Con un podcast sonando no duerme: se queda oyendo.
@@ -242,9 +402,10 @@ function despertarSinFrases() {
                         var C = window.ChispaD5;
                         if (C && C.pose) C.pose('escuchar');
                     }
-                } else if (sleepAt && Date.now() > sleepAt) {
+                } else if (sleepAt && Date.now() > sleepAt && !nocheYaDespierta) {
                     // 90-120 s de calma: se duerme donde esté, en el suelo o
                     // encajada en un alféizar. No hace falta que esté abajo.
+                    // En modo noche, si ya se despertó con toque, no vuelve a dormir sola.
                     sleepAt = 0;
                     sleep();
                 } else {
@@ -339,6 +500,8 @@ function despertarSinFrases() {
         }
 
         apply(rot, sx, sy);
+        actualizarZZZ();
+        actualizarSueñoPos();
     }
 
     // ------------------------------------------------------------ interacción
@@ -351,7 +514,7 @@ function despertarSinFrases() {
         if (tourOpen()) return;
         lastAct = Date.now();
         sleepAt = 0;          // cada actividad postpone el sueño
-        if (S.mode === 'sleep') wake();
+        if (S.mode === 'sleep' && !modoNoche) wake();  // en noche solo toque directo sobre ella despierta
         if (S.mode === 'escuchar' && !hayAudio()) {
             go('idle', 600);
             var D = window.ChispaD5;
@@ -377,7 +540,7 @@ function despertarSinFrases() {
                 pd.gy = e.clientY - S.y;
                 S.perch = null;
                 el.classList.add('is-drag');
-                if (S.mode === 'sleep') wake();   // arrastrar también despierta
+                if (S.mode === 'sleep') { if (modoNoche) despertarNoche(); else wake(); }   // arrastrar también despierta
                 snd('lift');
             }
             S.x = clamp(e.clientX - pd.gx, 8, maxX());
@@ -405,6 +568,7 @@ function despertarSinFrases() {
             samples = [];
             lastAct = Date.now();
             sleepAt = 0;
+            if (S.mode === 'sleep') { if (modoNoche) despertarNoche(); else wake(); }
             if (RM) { go('idle', 1000); return; }
             go('fall');
             if (Math.hypot(S.vx, S.vy) > 600) talk(pick(['¡Wiiiii!', '¡Otra vez!', '¡Wow!']), 2000);
@@ -417,10 +581,11 @@ function despertarSinFrases() {
             if (block) { e.stopPropagation(); e.preventDefault(); block = false; }
         }, true);
 
-        // Cariño: si el cursor se queda encima un momento, se pone feliz
+        // Cariño: si el cursor se queda encima un momento, se pone feliz (excepto dormida de noche)
         var petT = null;
         trg.addEventListener('pointerenter', function () {
             if (RM) return;
+            if (modoNoche && durmiendo()) return;
             petT = setTimeout(function () {
                 if (window.ChispaD5 && window.ChispaD5.celebrate) window.ChispaD5.celebrate();
                 talk(pick(['¡Me haces cosquillas!', '¡Qué bien!', '¡Gracias!']), 2000);
@@ -428,9 +593,9 @@ function despertarSinFrases() {
         });
         trg.addEventListener('pointerleave', function () { clearTimeout(petT); });
 
-        // Doble click / doble toque en un espacio vacío: Chispa vuela hasta ahí
+        // Doble click / doble toque en un espacio vacío: Chispa vuela hasta ahí (no la despierta de noche)
         document.addEventListener('dblclick', function (e) {
-            if (!auto() || tourOpen() || isTyping()) return;
+            if (!auto() || tourOpen() || isTyping() || (modoNoche && durmiendo())) return;
             if (e.target.closest && e.target.closest('a,button,input,textarea,select,label,#chispaD5')) return;
             activity();
             flyTo(e.clientX - size / 2, e.clientY - size / 2, null, false);
@@ -537,10 +702,42 @@ function despertarSinFrases() {
             initInteraction();
             initMenu();
             watchLayout();
+
+            // Modo noche: leer estado de despierta y revisar horario
+            try { nocheYaDespierta = sessionStorage.getItem('mjd5-nocheDespierta') === '1'; } catch (e) {}
+            ponerZZZ();
+            revisarNoche();
+            setInterval(revisarNoche, 60000);
+
             requestAnimationFrame(frame);
         }, 150);
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
     else boot();
+
+    // API de depuración: forzar modo noche de día (ChispaD5.noche(true/false))
+    // Mencionado en PROMPT_AGENTE_FUEGO_D5.md Parte A.
+    if (window.ChispaD5) {
+        window.ChispaD5.noche = function (forzar) {
+            var activar = forzar !== false;
+            if (activar && !modoNoche) {
+                modoNoche = true;
+                nocheYaDespierta = false;
+                ponerZZZ();
+                revisarNoche();
+                if (!durmiendo() && S.mode !== 'escuchar' && !tourOpen() && !isTyping() && !hayAudio()) {
+                    sleep();
+                }
+            } else if (!activar && modoNoche) {
+                modoNoche = false;
+                nocheYaDespierta = false;
+                clearInterval(sueñoTimer);
+                sueñoTimer = null;
+                var d = document.getElementById('chispaSueño');
+                if (d) d.style.display = 'none';
+                if (durmiendo()) wake();
+            }
+        };
+    }
 })();

@@ -51,6 +51,15 @@ var episodeCardsEl = document.querySelectorAll('.episode-card');
 
 var currentId = 'ep9';
 var toastTimer = null;
+var PLAYBACK_KEY = 'mjd5-podcast-pos';
+var savedPositions = {};
+try {
+    var sp = sessionStorage.getItem(PLAYBACK_KEY);
+    if (sp) savedPositions = JSON.parse(sp);
+} catch (e) { savedPositions = {}; }
+function savePositions() {
+    try { sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(savedPositions)); } catch (e) {}
+}
 
 function fmt(sec) {
     if (!isFinite(sec)) return '00:00';
@@ -95,7 +104,13 @@ function playEpisode(id) {
     if (playerSubtitle) playerSubtitle.textContent = 'Podcast D5 Fuego';
     if (playerArt) playerArt.src = ep.img;
     audio.src = mediaUrl(ep.audio);
-    audio.currentTime = 0;
+    // Restaurar posición guardada si existe
+    var pos = savedPositions[id];
+    if (pos && pos > 0 && pos < (audio.duration || 0)) {
+        audio.currentTime = pos;
+    } else {
+        audio.currentTime = 0;
+    }
     markPlaying(id);
     openPlayer();
     d5Emit('select', { id: id, title: ep.title, cat: ep.cat });
@@ -131,6 +146,10 @@ audio.addEventListener('play', function () {
 audio.addEventListener('pause', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';
     d5Emit('pause', { id: currentId });
+    if (audio.currentTime > 0) {
+        savedPositions[currentId] = audio.currentTime;
+        savePositions();
+    }
 });
 
 audio.addEventListener('loadedmetadata', function () {
@@ -147,6 +166,8 @@ audio.addEventListener('timeupdate', function () {
 audio.addEventListener('ended', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';
     showToast('Episodio finalizado');
+    delete savedPositions[currentId];
+    savePositions();
     d5Emit('ended', { id: currentId });
 });
 

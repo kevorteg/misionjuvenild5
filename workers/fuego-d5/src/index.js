@@ -34,12 +34,17 @@ const CRISIS = [
   'desesperación', 'colapso', 'ataque de panico', 'ataque de pánico',
 ];
 
+const CONTACTO_CRISIS =
+  'WhatsApp oficial: +57 313 715 439 · Página de apoyo: salud-mental.html · ' +
+  'Correo: info@misionjuvenild5.com · También puedes hablar con un líder de tu campus.';
+
 const CRISIS_REPLY =
   'Entiendo que estás pasando por algo muy pesado, y no estás solo. Esto es más grande ' +
   'que un chat: en Misión Juvenil D5 hay personas preparadas para escucharte. ' +
-  'Escríbele hoy desde salud-mental.html y te atendemos.';
+  CONTACTO_CRISIS +
+  ' No estás solo/a.';
 
-const ORIGIN_FALLBACK = '*';
+const ORIGIN_FALLBACK = '';
 
 function allowedOrigins(env) {
   const raw = env.ALLOWED_ORIGINS || ORIGIN_FALLBACK;
@@ -130,6 +135,14 @@ export default {
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders(request, env) });
+    }
+
+    // Kill switch: apagar el chat sin tocar el resto del sitio.
+    // Activar con: npx wrangler secret put CHAT_ENABLED  (valor: false)
+    if (env.CHAT_ENABLED === 'false') {
+      return json(request, env, {
+        error: 'El chat está temporalmente desactivado. Vuelve más tarde.',
+      }, 503);
     }
 
     if (url.pathname === '/api/health') {
