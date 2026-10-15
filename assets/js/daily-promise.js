@@ -186,32 +186,48 @@
             setTimeout(function () { label.textContent = prev; }, 2500);
         }
 
+        // Acortar texto para evitar URLs demasiado largas (evita RESULT_CODE_KILLED_BAD_MESSAGE en Android)
+        var shortText = text.length > 200 ? text.slice(0, 200).trim() + '…' : text;
+        var pageUrl = window.location.href || '';
+
         // 1) Web Share API (móvil / navegadores modernos)
         if (navigator.share) {
             navigator.share({
                 title: 'Misión Juvenil D5',
-                text: text,
-                url: window.location.href
+                text: shortText,
+                url: pageUrl
             }).then(function () { doneShare('¡Compartido!'); })
-              .catch(function () {
-                  // Si el usuario cancela o falla, intentar copiar al portapapeles
-                  copyTextToClipboard(text, doneShare);
+              .catch(function (err) {
+                  // Si falla (incluye Android killing el proceso), ir al fallback
+                  shareFallback(shortText, pageUrl, doneShare);
               });
             return;
         }
 
-        // 2) Fallback: WhatsApp directo (muy usado en Colombia)
-        var waUrl = 'https://wa.me/?text=' + encodeURIComponent(text + ' — Misión Juvenil D5 ' + window.location.href);
+        // 2) Escritorio o navegador sin Web Share: fallback directo
+        shareFallback(shortText, pageUrl, doneShare);
+    };
+
+    function shareFallback(text, pageUrl, done) {
+        // WhatsApp directo con URL corta y texto validado (máx ~2000 chars para evitar bad message)
+        var waBody = text + ' — Misión Juvenil D5';
+        if (pageUrl) waBody += ' ' + pageUrl;
+        var waUrl = 'https://wa.me/?text=' + encodeURIComponent(waBody);
+
         if (/Android|iPhone|iPad|iPod/.test(navigator.userAgent)) {
-            // En móvil: abrir WhatsApp
-            window.open(waUrl, '_blank');
-            doneShare('Abriendo WhatsApp');
+            // En móvil: abrir WhatsApp en pestaña nueva
+            try {
+                window.open(waUrl, '_blank');
+                done('Abriendo WhatsApp');
+            } catch (e) {
+                copyTextToClipboard(text, done);
+            }
             return;
         }
 
-        // 3) Escritorio: copiar al portapapeles
-        copyTextToClipboard(text, doneShare);
-    };
+        // Escritorio: copiar al portapapeles
+        copyTextToClipboard(text, done);
+    }
 
     function copyTextToClipboard(text, done) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
