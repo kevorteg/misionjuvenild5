@@ -38,6 +38,7 @@
         calendario: ['Mira todo lo que viene este mes.', 'Agenda D5: no te pierdas nada.'],
         impacto: ['Esto es lo que el D5 ya encendió.', 'Mira el impacto real del D5.'],
         digital: ['A un Click: podcast, recursos y más.', 'Todo el D5 a un solo click.'],
+        'fuego-d5': ['¡Aquí estoy! Pregúntame lo que quieras.', 'Esta es mi oficina. ¿Qué buscas?'],
         404: ['Te perdiste… pero yo te guío de vuelta.', 'Esa página no existe, pero aquí estoy.']
     };
 

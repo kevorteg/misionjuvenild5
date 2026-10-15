@@ -24,6 +24,15 @@
 
     var WA = 'https://wa.me/573137159439?text=Hola%2C%20quiero%20unirme%20a%20Misi%C3%B3n%20Juvenil%20D5';
 
+    /* El chat no se ofrece en estas paginas: salud mental es delicado,
+       lanzamiento es una landing previa y en fuego-d5 ya se esta. */
+    var CHAT_EXCLUIDAS = ['salud-mental', 'lanzamiento', 'fuego-d5'];
+    function chatDisponible() {
+        var p = (location.pathname.replace(/\/+$/, '').split('/').pop() || 'index')
+            .toLowerCase().replace(/\.html$/, '');
+        return CHAT_EXCLUIDAS.indexOf(p) === -1;
+    }
+
     // Lo que no debe interferirse nunca.
     var RESPETA = 'a, input, textarea, select, video, audio, [contenteditable=""], [contenteditable="true"]';
 
@@ -63,6 +72,9 @@
         var C = window.ChispaD5;
         var sonido = C && C.soundOn ? C.soundOn() : true;
         menu.innerHTML =
+            (chatDisponible()
+                ? '<a href="fuego-d5.html" data-accion="chat">' + icono('forum') + '<span>Pregúntale a Chispa</span></a>'
+                : '') +
             '<button type="button" data-accion="verso">' + icono('auto_stories') + '<span>Versículo del día</span></button>' +
             '<button type="button" data-accion="tour">' + icono('school') + '<span>Hacer el tour</span></button>' +
             '<a href="' + WA + '" target="_blank" rel="noopener" data-accion="wa">' + icono('chat') + '<span>Hablar por WhatsApp</span></a>' +
@@ -132,6 +144,9 @@
         else if (accion === 'sonido') C.sound(!(C.soundOn && C.soundOn()));
         else if (accion === 'copiar') { copiarEnlace(); return; } // no cerrar: hay aviso
         cerrar();
+        /* El clic del menú llama a preventDefault para no romper la selección,
+           así que el enlace al chat hay que cumplirlo a mano. */
+        if (accion === 'chat') location.href = 'fuego-d5.html';
     }
 
     function tourAbierto() {

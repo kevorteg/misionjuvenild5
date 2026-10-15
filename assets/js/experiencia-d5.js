@@ -60,7 +60,7 @@
     + '.is-drag #chispaTrigger{cursor:grabbing}'
     + '.chispa-bubble{max-width:230px;background:#ffffff;color:#111d26;border:2px solid #F58634;box-shadow:0 5px 0 #C86018;padding:.6rem .75rem;font-family:"Nunito Sans",sans-serif;font-weight:800;font-size:13px;line-height:1.35}'
     + '.chispa-bubble strong{display:block;font-family:Rubik,sans-serif;font-weight:900;text-transform:uppercase;font-size:10px;letter-spacing:.08em;color:#C86018;margin-bottom:.15rem}'
-    + '.chispa-menu{display:none;flex-direction:column;background:#ffffff;border:2px solid #006491;box-shadow:0 5px 0 #02557d;min-width:190px}'
+    + '.chispa-menu{display:none;flex-direction:column;background:#ffffff;border:2px solid #006491;box-shadow:0 5px 0 #02557d;min-width:190px;max-height:min(62vh,340px);overflow-y:auto}'
     + '.chispa-menu.is-open{display:flex}'
             + '.chispa-menu button,.chispa-menu a{display:flex;align-items:center;gap:.5rem;width:100%;padding:.6rem .75rem;border:0;border-bottom:1px solid #E5E5E5;background:#ffffff;cursor:pointer;font-family:Rubik,sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#111d26;text-align:left;text-decoration:none}'
             + '.chispa-menu button:last-child,.chispa-menu a:last-child{border-bottom:0}'
@@ -477,7 +477,11 @@
         if (tourActive) return;
         // Si la pagina declara pasos propios mandan sobre los de la home.
         var declarados = collectTourSteps();
-        tourSteps = declarados.length ? declarados : TOUR_HOME;
+        /* Un paso sin elemento en esta pagina no se muestra: antes el tour
+           caia en TOUR_HOME y en paginas sin esos selectores pintaba tarjetas
+           de la home ("¿Quieres unirte?") senalando nada. */
+        var base = declarados.length ? declarados : TOUR_HOME;
+        tourSteps = base.filter(function (s) { return !!rectOf(s.el || s.sel); });
         if (!tourSteps.length) return;
         if (!tourEl) buildTour();
         tourActive = true;
@@ -898,12 +902,22 @@ function bubbleBusy() {
         trigger.addEventListener('pointercancel', end);
     }
 
+    /* El chat de Chispa no se ofrece en estas paginas: salud mental es delicado,
+       lanzamiento es una landing previa y en fuego-d5 ya se esta. */
+    var CHAT_EXCLUIDAS = ['salud-mental', 'lanzamiento', 'fuego-d5'];
+    function chatDisponible() {
+        return CHAT_EXCLUIDAS.indexOf(page) === -1;
+    }
+
     function buildMascota() {
         mascotaEl = document.createElement('div');
         mascotaEl.id = 'chispaD5';
         mascotaEl.innerHTML =
             '<div class="chispa-bubble" hidden><strong>Chispa</strong><span></span></div>' +
             '<div class="chispa-menu" role="menu">' +
+            (chatDisponible()
+                ? '<a data-act="chat" href="fuego-d5.html" aria-label="Abrir el chat de Chispa"><span class="material-symbols-outlined">forum</span>Pregúntale a Chispa</a>'
+                : '') +
             '<button type="button" data-act="tour"><span class="material-symbols-outlined">school</span>Hacer el tour</button>' +
                 '<a data-act="wa" href="https://wa.me/573137159439?text=Hola%2C%20quiero%20unirme%20a%20Misi%C3%B3n%20Juvenil%20D5" target="_blank" rel="noopener"><span class="material-symbols-outlined">chat</span>Hablar por WhatsApp</a>' +
             '<button type="button" data-act="verse"><span class="material-symbols-outlined">auto_stories</span>Dame un versículo</button>' +
@@ -932,6 +946,12 @@ function bubbleBusy() {
             var b = e.target.closest('[data-act]');
             if (!b) return;
             var act = b.getAttribute('data-act');
+            if (act === 'chat') {
+                /* Es un <a>: navega sola. Al cargar la otra pagina Chispa ya esta
+                   despierta, asi que no hace falta despertarla aqui. */
+                menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
+                return;
+            }
             if (act === 'tour') { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); startTour(); }
             else if (act === 'wa') {
                 menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false');
