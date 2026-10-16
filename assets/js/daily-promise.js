@@ -91,30 +91,88 @@
         }
     };
 
-    // ---------- Dibuja una llama simple estilo Chispa (esquinas cuadradas) ----------
-    function drawFlame(ctx, x, y, size, color) {
+    // ---------- Dibuja Chispa (mascota llama) estilo marca D5 ----------
+    function drawChispa(ctx, x, y, size) {
         ctx.save();
         ctx.translate(x, y);
-        ctx.scale(size / 60, size / 60);
-        ctx.fillStyle = color;
+        ctx.scale(size / 72, size / 72);
+
+        // Cuerpo exterior (llama naranja)
+        ctx.fillStyle = '#F58634';
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(12, -28, 32, -52, 0, -72);
-        ctx.bezierCurveTo(-32, -52, -12, -28, 0, 0);
+        ctx.moveTo(36, 8);
+        ctx.bezierCurveTo(52, 20, 64, 40, 64, 60);
+        ctx.bezierCurveTo(64, 70, 56, 72, 44, 72);
+        ctx.bezierCurveTo(28, 72, 20, 70, 20, 60);
+        ctx.bezierCurveTo(20, 40, 32, 20, 36, 8);
         ctx.closePath();
         ctx.fill();
-        // Núcleo más claro
+
+        // Núcleo interno (más claro)
         ctx.fillStyle = '#FFC64D';
         ctx.beginPath();
-        ctx.moveTo(0, -8);
-        ctx.bezierCurveTo(6, -22, 16, -34, 0, -44);
-        ctx.bezierCurveTo(-16, -34, -6, -22, 0, -8);
+        ctx.moveTo(36, 20);
+        ctx.bezierCurveTo(46, 30, 50, 44, 50, 56);
+        ctx.bezierCurveTo(50, 62, 42, 64, 36, 64);
+        ctx.bezierCurveTo(30, 64, 22, 62, 22, 56);
+        ctx.bezierCurveTo(22, 44, 26, 30, 36, 20);
         ctx.closePath();
         ctx.fill();
+
+        // Cara: óvalos blancos (ojos)
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.ellipse(28, 44, 4, 5, 0, 0, Math.PI * 2);
+        ctx.ellipse(44, 44, 4, 5, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Pupilas
+        ctx.fillStyle = '#3A2410';
+        ctx.beginPath();
+        ctx.arc(28, 44, 2, 0, Math.PI * 2);
+        ctx.arc(44, 44, 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Brillo en ojos
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(29, 43, 1, 0, Math.PI * 2);
+        ctx.arc(45, 43, 1, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Boca
+        ctx.strokeStyle = '#3A2410';
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(30.5, 54);
+        ctx.bezierCurveTo(32.1, 56.2, 39.9, 56.2, 41.5, 54);
+        ctx.stroke();
+
+        // Chispa (estrella de 4 puntas) arriba derecha
+        ctx.fillStyle = '#FFC64D';
+        ctx.beginPath();
+        ctx.moveTo(54, 14);
+        ctx.lineTo(58, 14);
+        ctx.lineTo(60, 16);
+        ctx.lineTo(60, 20);
+        ctx.lineTo(58, 20);
+        ctx.lineTo(58, 22);
+        ctx.lineTo(56, 22);
+        ctx.lineTo(56, 20);
+        ctx.lineTo(54, 20);
+        ctx.lineTo(54, 18);
+        ctx.lineTo(52, 18);
+        ctx.lineTo(52, 16);
+        ctx.lineTo(54, 16);
+        ctx.lineTo(54, 14);
+        ctx.closePath();
+        ctx.fill();
+
         ctx.restore();
     }
 
-    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo, diseño creativo) ----------
+    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo, diseño creativo con foto y Chispa) ----------
     window.downloadVerseCard = function () {
         if (!current) return;
 
@@ -124,80 +182,152 @@
         canvas.height = H;
         var ctx = canvas.getContext('2d');
 
-        // --- Fondo degradado azul institucional (colores de marca) ---
-        var grad = ctx.createLinearGradient(0, 0, W, H);
-        grad.addColorStop(0, '#006491');    // primary
-        grad.addColorStop(0.45, '#02557d'); // primary-dark
-        grad.addColorStop(1, '#449bd1');    // primary-container
-        ctx.fillStyle = grad;
+        // --- Fondo: foto con opacidad ---
+        ctx.fillStyle = '#006491';
         ctx.fillRect(0, 0, W, H);
 
-        // --- Acento naranja en esquina superior izquierda (esquina cuadrada) ---
-        ctx.fillStyle = '#F58634'; // secondary-orange / duo-yellow
-        ctx.fillRect(0, 0, 140, 22);
-        ctx.fillRect(0, H - 22, 220, 22);
+        var bgImg = new Image();
+        bgImg.crossOrigin = 'anonymous';
+        bgImg.src = 'media/img/hero-mj.jpg';
 
-        // --- Círculo decorativo naranja translúcido (esquina inferior derecha) ---
-        ctx.fillStyle = 'rgba(245, 134, 52, 0.12)';
-        ctx.beginPath();
-        ctx.arc(W - 140, H - 140, 150, 0, Math.PI * 2);
-        ctx.fill();
+        bgImg.onload = function () {
+            // Dibujar foto con opacidad
+            ctx.globalAlpha = 0.45;
+            ctx.drawImage(bgImg, 0, 0, W, H);
+            ctx.globalAlpha = 1.0;
 
-        // --- Llama estilo Chispa (esquina superior derecha) ---
-        drawFlame(ctx, W - 120, 130, 70, '#F58634');
+            // Overlay azul institucional para legibilidad
+            var grad = ctx.createLinearGradient(0, 0, W, H);
+            grad.addColorStop(0, 'rgba(0, 100, 145, 0.75)');
+            grad.addColorStop(0.5, 'rgba(2, 85, 125, 0.85)');
+            grad.addColorStop(1, 'rgba(68, 155, 209, 0.75)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
 
-        // --- Cita: blanco con sombra para legibilidad sobre el degradado ---
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
-        ctx.shadowBlur = 10;
-        ctx.shadowOffsetX = 2;
-        ctx.shadowOffsetY = 4;
-        ctx.font = 'bold 52px Rubik, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+            // --- Acento naranja en esquina superior izquierda (esquina cuadrada) ---
+            ctx.fillStyle = '#F58634';
+            ctx.fillRect(0, 0, 140, 22);
+            ctx.fillRect(0, H - 22, 220, 22);
 
-        var maxWidth = W - 180;
-        var lines = wrapText(ctx, current.text, maxWidth);
-        var lineHeight = 68;
-        var startY = H / 2 - (lines.length * lineHeight) / 2 + 20;
+            // --- Chispa (mascota) en esquina superior derecha ---
+            drawChispa(ctx, W - 140, 120, 110);
 
-        for (var i = 0; i < lines.length; i++) {
-            ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
-        }
+            // --- Cita: blanco con sombra para legibilidad ---
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
+            ctx.shadowBlur = 14;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 4;
+            ctx.font = 'bold 56px Rubik, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
 
-        // Quitar sombra para los siguientes textos
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
+            var maxWidth = W - 200;
+            var lines = wrapText(ctx, current.text, maxWidth);
+            var lineHeight = 74;
+            var startY = H / 2 - (lines.length * lineHeight) / 2 + 25;
 
-        // --- Referencia en naranja ---
-        ctx.fillStyle = '#F58634';
-        ctx.font = 'bold 34px Rubik, sans-serif';
-        ctx.fillText(current.ref, W / 2, H - 200);
+            for (var i = 0; i < lines.length; i++) {
+                ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
+            }
 
-        // --- Línea decorativa naranja ---
-        ctx.strokeStyle = '#F58634';
-        ctx.lineWidth = 5;
-        ctx.beginPath();
-        ctx.moveTo(W / 2 - 120, H - 140);
-        ctx.lineTo(W / 2 + 120, H - 140);
-        ctx.stroke();
+            // Quitar sombra
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
 
-        // --- Pie de página institucional ---
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-        ctx.font = 'bold 26px Rubik, sans-serif';
-        ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 70);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.font = 'bold 20px Rubik, sans-serif';
-        ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 30);
+            // --- Referencia en naranja secundario ---
+            ctx.fillStyle = '#F58634';
+            ctx.font = 'bold 36px Rubik, sans-serif';
+            ctx.fillText(current.ref, W / 2, H - 210);
 
-        // --- Descargar ---
-        var link = document.createElement('a');
-        link.download = 'promesa-d5.png';
-        link.href = canvas.toDataURL('image/png');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        showDownloadToast();
+            // --- Línea decorativa naranja ---
+            ctx.strokeStyle = '#F58634';
+            ctx.lineWidth = 6;
+            ctx.beginPath();
+            ctx.moveTo(W / 2 - 130, H - 150);
+            ctx.lineTo(W / 2 + 130, H - 150);
+            ctx.stroke();
+
+            // --- Pie de página institucional ---
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = 'bold 28px Rubik, sans-serif';
+            ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 75);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.font = 'bold 22px Rubik, sans-serif';
+            ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 35);
+
+            // --- Descargar ---
+            var link = document.createElement('a');
+            link.download = 'promesa-d5.png';
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showDownloadToast();
+        };
+
+        bgImg.onerror = function () {
+            // Fallback: degradado si la foto no carga
+            var grad = ctx.createLinearGradient(0, 0, W, H);
+            grad.addColorStop(0, '#006491');
+            grad.addColorStop(0.45, '#02557d');
+            grad.addColorStop(1, '#449bd1');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+
+            ctx.fillStyle = '#F58634';
+            ctx.fillRect(0, 0, 140, 22);
+            ctx.fillRect(0, H - 22, 220, 22);
+
+            drawChispa(ctx, W - 140, 120, 110);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 4;
+            ctx.font = 'bold 52px Rubik, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            var maxWidth = W - 180;
+            var lines = wrapText(ctx, current.text, maxWidth);
+            var lineHeight = 68;
+            var startY = H / 2 - (lines.length * lineHeight) / 2 + 20;
+
+            for (var i = 0; i < lines.length; i++) {
+                ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
+            }
+
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = '#F58634';
+            ctx.font = 'bold 34px Rubik, sans-serif';
+            ctx.fillText(current.ref, W / 2, H - 200);
+
+            ctx.strokeStyle = '#F58634';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(W / 2 - 120, H - 140);
+            ctx.lineTo(W / 2 + 120, H - 140);
+            ctx.stroke();
+
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.font = 'bold 26px Rubik, sans-serif';
+            ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 70);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.font = 'bold 20px Rubik, sans-serif';
+            ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 30);
+
+            var link = document.createElement('a');
+            link.download = 'promesa-d5.png';
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showDownloadToast();
+        };
     };
 
     function wrapText(ctx, text, maxWidth) {
