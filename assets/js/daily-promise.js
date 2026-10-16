@@ -91,98 +91,18 @@
         }
     };
 
-    // ---------- Dibuja Chispa (mascota llama) estilo marca D5 ----------
-    function drawChispa(ctx, x, y, size) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.scale(size / 72, size / 72);
-
-        // Cuerpo exterior (llama naranja)
-        ctx.fillStyle = '#F58634';
-        ctx.beginPath();
-        ctx.moveTo(36, 8);
-        ctx.bezierCurveTo(52, 20, 64, 40, 64, 60);
-        ctx.bezierCurveTo(64, 70, 56, 72, 44, 72);
-        ctx.bezierCurveTo(28, 72, 20, 70, 20, 60);
-        ctx.bezierCurveTo(20, 40, 32, 20, 36, 8);
-        ctx.closePath();
-        ctx.fill();
-
-        // Núcleo interno (más claro)
-        ctx.fillStyle = '#FFC64D';
-        ctx.beginPath();
-        ctx.moveTo(36, 20);
-        ctx.bezierCurveTo(46, 30, 50, 44, 50, 56);
-        ctx.bezierCurveTo(50, 62, 42, 64, 36, 64);
-        ctx.bezierCurveTo(30, 64, 22, 62, 22, 56);
-        ctx.bezierCurveTo(22, 44, 26, 30, 36, 20);
-        ctx.closePath();
-        ctx.fill();
-
-        // Cara: óvalos blancos (ojos)
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.ellipse(28, 44, 4, 5, 0, 0, Math.PI * 2);
-        ctx.ellipse(44, 44, 4, 5, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Pupilas
-        ctx.fillStyle = '#3A2410';
-        ctx.beginPath();
-        ctx.arc(28, 44, 2, 0, Math.PI * 2);
-        ctx.arc(44, 44, 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Brillo en ojos
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.arc(29, 43, 1, 0, Math.PI * 2);
-        ctx.arc(45, 43, 1, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Boca
-        ctx.strokeStyle = '#3A2410';
-        ctx.lineWidth = 2.5;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(30.5, 54);
-        ctx.bezierCurveTo(32.1, 56.2, 39.9, 56.2, 41.5, 54);
-        ctx.stroke();
-
-        // Chispa (estrella de 4 puntas) arriba derecha
-        ctx.fillStyle = '#FFC64D';
-        ctx.beginPath();
-        ctx.moveTo(54, 14);
-        ctx.lineTo(58, 14);
-        ctx.lineTo(60, 16);
-        ctx.lineTo(60, 20);
-        ctx.lineTo(58, 20);
-        ctx.lineTo(58, 22);
-        ctx.lineTo(56, 22);
-        ctx.lineTo(56, 20);
-        ctx.lineTo(54, 20);
-        ctx.lineTo(54, 18);
-        ctx.lineTo(52, 18);
-        ctx.lineTo(52, 16);
-        ctx.lineTo(54, 16);
-        ctx.lineTo(54, 14);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.restore();
-    }
-
-    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo, diseño creativo con foto y Chispa) ----------
+    // ---------- Descargar tarjeta de la cita como imagen (estilo HERO de index.html) ----------
+    // Replica: fondo foto hero-mj.jpg, overlay azul institucional, logo FULL.png, texto en mayúsculas, esquinas cuadradas.
     window.downloadVerseCard = function () {
         if (!current) return;
 
-        var W = 1080, H = 1080;
+        var W = 1200, H = 675;
         var canvas = document.createElement('canvas');
         canvas.width = W;
         canvas.height = H;
         var ctx = canvas.getContext('2d');
 
-        // --- Fondo: foto con opacidad ---
+        // 1) Fondo azul institucional base (por si la foto no carga)
         ctx.fillStyle = '#006491';
         ctx.fillRect(0, 0, W, H);
 
@@ -190,136 +110,114 @@
         bgImg.crossOrigin = 'anonymous';
         bgImg.src = 'media/img/hero-mj.jpg';
 
-        bgImg.onload = function () {
-            // Dibujar foto con opacidad
-            ctx.globalAlpha = 0.45;
-            ctx.drawImage(bgImg, 0, 0, W, H);
-            ctx.globalAlpha = 1.0;
+        var logoImg = new Image();
+        logoImg.crossOrigin = 'anonymous';
+        logoImg.src = 'media/img/logos/FULL.png';
 
-            // Overlay azul institucional para legibilidad
+        var ready = 0, total = 2;
+        function checkReady() {
+            ready++;
+            if (ready >= total) renderCard();
+        }
+        bgImg.onload = checkReady;
+        bgImg.onerror = checkReady;
+        logoImg.onload = checkReady;
+        logoImg.onerror = checkReady;
+
+        function renderCard() {
+            // 2) Fondo foto con opacidad (estilo hero, object-fit: cover)
+            if (bgImg.complete && bgImg.naturalWidth) {
+                var scale = Math.max(W / bgImg.naturalWidth, H / bgImg.naturalHeight);
+                var x = (W - bgImg.naturalWidth * scale) / 2;
+                var y = (H - bgImg.naturalHeight * scale) / 2;
+                ctx.globalAlpha = 0.50;
+                ctx.drawImage(bgImg, x, y, bgImg.naturalWidth * scale, bgImg.naturalHeight * scale);
+                ctx.globalAlpha = 1.0;
+            }
+
+            // 3) Overlay azul institucional igual al hero (from-primary-container/70 via-primary-container/75 to-primary-dark/85)
             var grad = ctx.createLinearGradient(0, 0, W, H);
-            grad.addColorStop(0, 'rgba(0, 100, 145, 0.75)');
-            grad.addColorStop(0.5, 'rgba(2, 85, 125, 0.85)');
-            grad.addColorStop(1, 'rgba(68, 155, 209, 0.75)');
+            grad.addColorStop(0, 'rgba(68, 155, 209, 0.70)');   // primary-container
+            grad.addColorStop(0.5, 'rgba(68, 155, 209, 0.75)');
+            grad.addColorStop(1, 'rgba(2, 85, 125, 0.85)');    // primary-dark
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, W, H);
 
-            // --- Acento naranja en esquina superior izquierda (esquina cuadrada) ---
+            // 4) Logo FULL.png (esquina superior izquierda, estilo header del hero)
+            if (logoImg.complete && logoImg.naturalWidth) {
+                var logoW = 150, logoH = 150 * (logoImg.naturalHeight / logoImg.naturalWidth);
+                ctx.drawImage(logoImg, 50, 40, logoW, logoH);
+            }
+
+            // 5) Badge superior: PROMESA DE HOY PARA TI (mayúsculas, estilo hero eyebrow)
             ctx.fillStyle = '#F58634';
-            ctx.fillRect(0, 0, 140, 22);
-            ctx.fillRect(0, H - 22, 220, 22);
+            ctx.font = 'bold 20px Rubik, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('PROMESA DE HOY PARA TI', 50, 150);
 
-            // --- Chispa (mascota) en esquina superior derecha ---
-            drawChispa(ctx, W - 140, 120, 110);
+            // Línea naranja debajo del badge
+            ctx.strokeStyle = '#F58634';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(50, 165);
+            ctx.lineTo(180, 165);
+            ctx.stroke();
 
-            // --- Cita: blanco con sombra para legibilidad ---
+            // 6) Cita: blanco, mayúsculas, negrita, grande (estilo H1 hero)
+            var citaMayus = current.text.toUpperCase();
+            var refMayus = current.ref.toUpperCase();
+
             ctx.fillStyle = '#ffffff';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
-            ctx.shadowBlur = 14;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+            ctx.shadowBlur = 12;
             ctx.shadowOffsetX = 2;
             ctx.shadowOffsetY = 4;
-            ctx.font = 'bold 56px Rubik, sans-serif';
-            ctx.textAlign = 'center';
+            ctx.font = 'bold 58px Rubik, sans-serif';
+            ctx.textAlign = 'left';
             ctx.textBaseline = 'middle';
 
-            var maxWidth = W - 200;
-            var lines = wrapText(ctx, current.text, maxWidth);
-            var lineHeight = 74;
-            var startY = H / 2 - (lines.length * lineHeight) / 2 + 25;
+            var maxWidth = W - 160;
+            var lines = wrapText(ctx, citaMayus, maxWidth);
+            var lineHeight = 80;
+            var startY = H / 2 - (lines.length * lineHeight) / 2 + 30;
 
             for (var i = 0; i < lines.length; i++) {
-                ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
+                ctx.fillText(lines[i], 50, startY + i * lineHeight);
             }
 
             // Quitar sombra
             ctx.shadowColor = 'transparent';
             ctx.shadowBlur = 0;
 
-            // --- Referencia en naranja secundario ---
+            // 7) Referencia en naranja secundario
             ctx.fillStyle = '#F58634';
-            ctx.font = 'bold 36px Rubik, sans-serif';
-            ctx.fillText(current.ref, W / 2, H - 210);
+            ctx.font = 'bold 30px Rubik, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(refMayus, 50, H - 110);
 
-            // --- Línea decorativa naranja ---
-            ctx.strokeStyle = '#F58634';
-            ctx.lineWidth = 6;
-            ctx.beginPath();
-            ctx.moveTo(W / 2 - 130, H - 150);
-            ctx.lineTo(W / 2 + 130, H - 150);
-            ctx.stroke();
-
-            // --- Pie de página institucional ---
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = 'bold 28px Rubik, sans-serif';
-            ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 75);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.font = 'bold 22px Rubik, sans-serif';
-            ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 35);
-
-            // --- Descargar ---
-            var link = document.createElement('a');
-            link.download = 'promesa-d5.png';
-            link.href = canvas.toDataURL('image/png');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showDownloadToast();
-        };
-
-        bgImg.onerror = function () {
-            // Fallback: degradado si la foto no carga
-            var grad = ctx.createLinearGradient(0, 0, W, H);
-            grad.addColorStop(0, '#006491');
-            grad.addColorStop(0.45, '#02557d');
-            grad.addColorStop(1, '#449bd1');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, W, H);
-
-            ctx.fillStyle = '#F58634';
-            ctx.fillRect(0, 0, 140, 22);
-            ctx.fillRect(0, H - 22, 220, 22);
-
-            drawChispa(ctx, W - 140, 120, 110);
-
-            ctx.fillStyle = '#ffffff';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
-            ctx.shadowBlur = 10;
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 4;
-            ctx.font = 'bold 52px Rubik, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            var maxWidth = W - 180;
-            var lines = wrapText(ctx, current.text, maxWidth);
-            var lineHeight = 68;
-            var startY = H / 2 - (lines.length * lineHeight) / 2 + 20;
-
-            for (var i = 0; i < lines.length; i++) {
-                ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
-            }
-
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-
-            ctx.fillStyle = '#F58634';
-            ctx.font = 'bold 34px Rubik, sans-serif';
-            ctx.fillText(current.ref, W / 2, H - 200);
-
+            // 8) Línea decorativa naranja
             ctx.strokeStyle = '#F58634';
             ctx.lineWidth = 5;
             ctx.beginPath();
-            ctx.moveTo(W / 2 - 120, H - 140);
-            ctx.lineTo(W / 2 + 120, H - 140);
+            ctx.moveTo(50, H - 80);
+            ctx.lineTo(220, H - 80);
             ctx.stroke();
 
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = 'bold 26px Rubik, sans-serif';
-            ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 70);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.font = 'bold 20px Rubik, sans-serif';
-            ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 30);
+            // 9) Pie de página institucional
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = 'bold 22px Rubik, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('MISIÓN JUVENIL D5', 50, H - 40);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.font = 'bold 16px Rubik, sans-serif';
+            ctx.fillText('Promesa de Hoy · Distrito D5', 50, H - 15);
 
+            // 10) Acento naranja en esquina inferior derecha (esquina cuadrada)
+            ctx.fillStyle = '#F58634';
+            ctx.fillRect(W - 100, H - 20, 100, 20);
+
+            // --- Descargar ---
             var link = document.createElement('a');
             link.download = 'promesa-d5.png';
             link.href = canvas.toDataURL('image/png');
