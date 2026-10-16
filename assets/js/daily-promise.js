@@ -91,48 +91,106 @@
         }
     };
 
-    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo) ----------
+    // ---------- Dibuja una llama simple estilo Chispa (esquinas cuadradas) ----------
+    function drawFlame(ctx, x, y, size, color) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(size / 60, size / 60);
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(12, -28, 32, -52, 0, -72);
+        ctx.bezierCurveTo(-32, -52, -12, -28, 0, 0);
+        ctx.closePath();
+        ctx.fill();
+        // Núcleo más claro
+        ctx.fillStyle = '#FFC64D';
+        ctx.beginPath();
+        ctx.moveTo(0, -8);
+        ctx.bezierCurveTo(6, -22, 16, -34, 0, -44);
+        ctx.bezierCurveTo(-16, -34, -6, -22, 0, -8);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+    // ---------- Descargar tarjeta de la cita como imagen (canvas nativo, diseño creativo) ----------
     window.downloadVerseCard = function () {
         if (!current) return;
 
-        var W = 800, H = 450;
+        var W = 1080, H = 1080;
         var canvas = document.createElement('canvas');
         canvas.width = W;
         canvas.height = H;
         var ctx = canvas.getContext('2d');
 
-        // Fondo blanco institucional
-        ctx.fillStyle = '#ffffff';
+        // --- Fondo degradado azul institucional (colores de marca) ---
+        var grad = ctx.createLinearGradient(0, 0, W, H);
+        grad.addColorStop(0, '#006491');    // primary
+        grad.addColorStop(0.45, '#02557d'); // primary-dark
+        grad.addColorStop(1, '#449bd1');    // primary-container
+        ctx.fillStyle = grad;
         ctx.fillRect(0, 0, W, H);
 
-        // Borde inferior azul (como la marca)
-        ctx.fillStyle = '#006491';
-        ctx.fillRect(0, H - 8, W, 8);
+        // --- Acento naranja en esquina superior izquierda (esquina cuadrada) ---
+        ctx.fillStyle = '#F58634'; // secondary-orange / duo-yellow
+        ctx.fillRect(0, 0, 140, 22);
+        ctx.fillRect(0, H - 22, 220, 22);
 
-        // Cita
-        ctx.fillStyle = '#111d26';
-        ctx.font = 'bold 34px Rubik, sans-serif';
+        // --- Círculo decorativo naranja translúcido (esquina inferior derecha) ---
+        ctx.fillStyle = 'rgba(245, 134, 52, 0.12)';
+        ctx.beginPath();
+        ctx.arc(W - 140, H - 140, 150, 0, Math.PI * 2);
+        ctx.fill();
+
+        // --- Llama estilo Chispa (esquina superior derecha) ---
+        drawFlame(ctx, W - 120, 130, 70, '#F58634');
+
+        // --- Cita: blanco con sombra para legibilidad sobre el degradado ---
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 4;
+        ctx.font = 'bold 52px Rubik, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        var maxWidth = W - 120;
+
+        var maxWidth = W - 180;
         var lines = wrapText(ctx, current.text, maxWidth);
-        var lineHeight = 44;
-        var startY = H / 2 - (lines.length * lineHeight) / 2 + 10;
+        var lineHeight = 68;
+        var startY = H / 2 - (lines.length * lineHeight) / 2 + 20;
 
         for (var i = 0; i < lines.length; i++) {
             ctx.fillText(lines[i], W / 2, startY + i * lineHeight);
         }
 
-        // Referencia
-        ctx.fillStyle = '#4E575F';
+        // Quitar sombra para los siguientes textos
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+
+        // --- Referencia en naranja ---
+        ctx.fillStyle = '#F58634';
+        ctx.font = 'bold 34px Rubik, sans-serif';
+        ctx.fillText(current.ref, W / 2, H - 200);
+
+        // --- Línea decorativa naranja ---
+        ctx.strokeStyle = '#F58634';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(W / 2 - 120, H - 140);
+        ctx.lineTo(W / 2 + 120, H - 140);
+        ctx.stroke();
+
+        // --- Pie de página institucional ---
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.font = 'bold 26px Rubik, sans-serif';
+        ctx.fillText('MISIÓN JUVENIL D5', W / 2, H - 70);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
         ctx.font = 'bold 20px Rubik, sans-serif';
-        ctx.fillText(current.ref, W / 2, H - 70);
+        ctx.fillText('Promesa de Hoy · ' + current.ref, W / 2, H - 30);
 
-        // Pie de página
-        ctx.fillStyle = '#006491';
-        ctx.font = 'bold 16px Rubik, sans-serif';
-        ctx.fillText('Misión Juvenil D5 · Promesa de Hoy', W / 2, H - 25);
-
+        // --- Descargar ---
         var link = document.createElement('a');
         link.download = 'promesa-d5.png';
         link.href = canvas.toDataURL('image/png');
