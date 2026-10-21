@@ -519,7 +519,8 @@
     var TIPS = {
         'podcast': { sel: null, text: 'Dale play: el reproductor queda abajo y sigues navegando.' },
         'muro-espiritual': { sel: '#verse-container', text: 'Esta es tu promesa del día. Abajo deja tu petición.' },
-        'salud-mental': { sel: null, text: '¿Necesitas hablar? Pide acompañamiento en un click.' }
+        'salud-mental': { sel: null, text: '¿Necesitas hablar? Pide acompañamiento en un click.' },
+        'transmision': { sel: null, text: 'Elige una sala activa o consulta el calendario para encontrar el próximo encuentro.' }
     };
 
     function showTip() {

@@ -4,6 +4,10 @@
   "private": true,
   "description": "Automatización de capturas móviles para Misión Juvenil",
   "scripts": {},
+  "dependencies": {
+    "livekit-client": "^2.23.0",
+    "livekit-server-sdk": "^2.19.1"
+  },
   "devDependencies": {
     "playwright": "^1.64.0",
     "ws": "^8.22.0"

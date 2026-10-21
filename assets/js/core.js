@@ -365,8 +365,8 @@ function renderColegiosGallery() {
         <div class="group relative rounded-3xl overflow-hidden aspect-square md:aspect-[4/3] bg-black/40 border border-white/5 reveal">
             <img src="${item.img}" alt="${item.titulo}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <h3 class="text-xl font-bold text-white mb-2 italic">\${item.titulo}</h3>
-                <p class="text-slate-300 text-sm font-sans line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-wide">\${item.descripcion}</p>
+                <h3 class="text-xl font-bold text-white mb-2 italic">${item.titulo}</h3>
+                <p class="text-slate-300 text-sm font-sans line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-wide">${item.descripcion}</p>
             </div>
         </div>
     `).join('');
@@ -381,8 +381,8 @@ function renderUniversidadesGallery() {
         <div class="group relative rounded-3xl overflow-hidden aspect-square md:aspect-[4/3] bg-black/40 border border-white/5 reveal">
             <img src="${item.img}" alt="${item.titulo}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <h3 class="text-xl font-bold text-white mb-2 italic">\${item.titulo}</h3>
-                <p class="text-slate-300 text-sm font-sans line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-wide">\${item.descripcion}</p>
+                <h3 class="text-xl font-bold text-white mb-2 italic">${item.titulo}</h3>
+                <p class="text-slate-300 text-sm font-sans line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 uppercase tracking-wide">${item.descripcion}</p>
             </div>
         </div>
     `).join('');

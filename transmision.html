@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Conexión D5 | Misión Juvenil D5</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&amp;family=Rubik:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz%2Cwght%2CFILL%2CGRAD@20..48%2C400%2C0..1%2C0&icon_names=account_balance%2Caccount_circle%2Caccount_tree%2Cadd%2Cadd_circle%2Cadd_comment%2Cadd_photo_alternate%2Capps%2Carrow_back%2Carrow_drop_up%2Carrow_forward%2Carrow_outward%2Carrow_upward%2Carticle%2Cassignment%2Cauto_awesome%2Cauto_stories%2Cbackpack%2Cbadge%2Cblock%2Cbolt%2Cbookmark_border%2Ccalendar_month%2Ccampaign%2Ccamera%2Ccasino%2Ccast_for_education%2Ccelebration%2Ccell_tower%2Cchair%2Cchat%2Ccheck%2Ccheck_circle%2Cchecklist%2Cchevron_left%2Cchevron_right%2Ccloud%2Cclose%2Cclose_fullscreen%2Ccontent_copy%2Cdevices%2Cdirections_walk%2Cdiversity_1%2Cdiversity_3%2Cdock_to_right%2Cdone%2Cdone_all%2Cdownload%2Cdownload_done%2Cdrag_indicator%2Ceast%2Cedit_note%2Cemoji_events%2Cemoji_objects%2Cerror%2Cevent%2Cevent_available%2Cexpand_more%2Cexplore%2Cexplore_off%2Cfamily_restroom%2Cfavorite%2Cfilter_list%2Cfingerprint%2Cflag%2Cformat_quote%2Cforum%2Cforward_media%2Cfront_hand%2Cfullscreen%2Cfullscreen_exit%2Cgraphic_eq%2Cgrid_view%2Cgroup%2Cgroup_add%2Cgroups%2Chandshake%2Cheadphones%2Chealth_and_safety%2Chelp%2Chome%2Cimage%2Cinfo%2Cinsights%2Cinventory_2%2Cios_share%2Ckeyboard_double_arrow_down%2Clink%2Clive_help%2Clive_tv%2Clocal_fire_department%2Clocal_police%2Clocal_shipping%2Clocation_city%2Clocation_on%2Clock%2Cmail%2Cmark_email_unread%2Cmenu%2Cmenu_book%2Cmic%2Cmic_off%2Cmood%2Cmood_bad%2Cmore_vert%2Cmovie%2Cmovie_edit%2Cmusic_note%2Cmy_location%2Cnear_me%2Copen_in_new%2Cpalette%2Cpark%2Cpause%2Cpayments%2Cperson_pin%2Cperson_remove%2Cphone_iphone%2Cphoto_camera%2Cphoto_library%2Cpicture_as_pdf%2Cplay_arrow%2Cplay_circle%2Cpodcasts%2Cpolicy%2Cpower_settings_new%2Cpresent_to_all%2Cprint%2Cpsychology%2Cpush_pin%2Cquick_reference_all%2Cquiz%2Crecord_voice_over%2Crefresh%2Creplay%2Crestart_alt%2Cschedule%2Cschool%2Cscreen_share%2Csearch%2Csearch_off%2Csecurity%2Cself_improvement%2Csend%2Csend_time_extension%2Csensors%2Csentiment_very_satisfied%2Csettings%2Cshare%2Cshield%2Cshield_person%2Csmart_display%2Cstar%2Cstop_screen_share%2Cstorage%2Csupport_agent%2Csync%2Ctask_alt%2Ctimeline%2Ctips_and_updates%2Ctravel_explore%2Cverified%2Cverified_user%2Cvideo_call%2Cvideocam%2Cvideocam_off%2Cview_quilt%2Cview_sidebar%2Cvisibility%2Cvolume_down%2Cvolume_off%2Cvolume_up%2Cvolunteer_activism%2Cwb_sunny%2Cwhatshot" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#682f00",
+                        "secondary-container": "#ff8e3b",
+                        "surface-tint": "#006491",
+                        "surface-container": "#e3effd",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#26323c",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "primary": "#006491",
+                        "primary-container": "#449bd1",
+                        "primary-dark": "#02557d",
+                        "secondary": "#984800",
+                        "secondary-orange": "#F58634",
+                        "secondary-dark": "#C86018",
+                        "duo-green": "#473458",
+                        "duo-green-dark": "#31233E",
+                        "duo-yellow": "#F58634",
+                        "duo-yellow-dark": "#C86018",
+                        "duo-purple": "#473458",
+                        "duo-purple-light": "#8E44AD",
+                        "duo-purple-dark": "#31233E",
+                        "brand-orange": "#F58634",
+                        "brand-blue": "#449BD1",
+                        "brand-purple": "#473458",
+                        "surface-bright": "#f7f9ff",
+                        "surface": "#ffffff",
+                        "neutral-light": "#F7F9FA",
+                        "border-gray": "#E5E5E5",
+                        "border-gray-dark": "#CECECE",
+                        "on-surface": "#111d26",
+                        "on-surface-variant": "#4E575F",
+                        "sala-dark": "#1F2E3D",
+                        "sala-panel": "#26323C"
+                    },
+                    fontFamily: {
+                        headline: ["Rubik", "sans-serif"],
+                        body: ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "4xl": "2rem"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Duolingo-style Tactile 3D Buttons & Cards */
+        .btn-3d {
+            transition: all 0.12s ease-in-out;
+            position: relative;
+            user-select: none;
+        }
+        .btn-3d-orange {
+            background-color: #F58634;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #C86018;
+            border: 2px solid #C86018;
+        }
+        .btn-3d-orange:hover {
+            background-color: #ff9344;
+        }
+        .btn-3d-orange:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #C86018;
+        }
+        .btn-3d-white {
+            background-color: #ffffff;
+            color: #3b4249;
+            box-shadow: 0 4px 0 #CECECE;
+            border: 2px solid #E5E5E5;
+        }
+        .btn-3d-white:hover {
+            background-color: #F7F9FA;
+        }
+        .btn-3d-white:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #CECECE;
+        }
+        .btn-3d-green {
+            background-color: #473458;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #31233E;
+            border: 2px solid #31233E;
+        }
+        .btn-3d-green:hover {
+            background-color: #5A4A70;
+        }
+        .btn-3d-green:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #31233E;
+        }
+        .btn-3d-blue {
+            background-color: #1CB0F6;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #1899D6;
+            border: 2px solid #1899D6;
+        }
+        .btn-3d-blue:hover {
+            background-color: #2eceff;
+        }
+        .btn-3d-blue:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #1899D6;
+        }
+        .btn-3d-purple {
+            background-color: #8E44AD;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #6C3483;
+            border: 2px solid #6C3483;
+        }
+        .btn-3d-purple:hover {
+            background-color: #9B59B6;
+        }
+        .btn-3d-purple:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #6C3483;
+        }
+        /* Variante oscura (sobre fondos azul institucional / sala) */
+        .btn-3d-dark {
+            background-color: #26323C;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #111d26;
+            border: 2px solid #111d26;
+        }
+        .btn-3d-dark:hover {
+            background-color: #33424e;
+        }
+        .btn-3d-dark:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #111d26;
+        }
+        .btn-3d-red {
+            background-color: #ba1a1a;
+            color: #ffffff;
+            box-shadow: 0 4px 0 #7d1111;
+            border: 2px solid #7d1111;
+        }
+        .btn-3d-red:hover {
+            background-color: #d32c2c;
+        }
+        .btn-3d-red:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #7d1111;
+        }
+
+        /* Chunky Tactile Cards */
+        .card-chunky {
+            border: 3px solid #E5E5E5;
+            box-shadow: 0 6px 0 #E5E5E5;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card-chunky:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #D5D5D5;
+        }
+
+        /* Dropdown 3D Menu styling */
+        .nav-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        .nav-dropdown--wide {
+            left: 50%;
+            width: min(64vw, 820px);
+            min-width: 620px;
+            max-width: 820px;
+            transform: translateX(-50%) translateY(8px);
+        }
+        .group:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .group:hover .nav-dropdown--wide {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Badge EN VIVO: pulso institucional */
+        .live-dot {
+            animation: livePulse 1.6s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes livePulse {
+            0% { transform: scale(1); opacity: 1; }
+            70% { transform: scale(2.2); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+
+        /* Chat: burbujas cuadradas D5 */
+        .chat-in {
+            background-color: #ffffff;
+            border: 2px solid #E5E5E5;
+        }
+        .chat-out {
+            background-color: #F58634;
+            color: #ffffff;
+            border: 2px solid #C86018;
+            box-shadow: 0 3px 0 #C86018;
+        }
+
+        @media (max-width: 1279px) {
+            body > div.w-full.bg-primary-container > div > div:first-child { gap: 0.5rem; font-size: 10px; }
+            body > div.w-full.bg-primary-container > div > div:last-child { display: none; }
+            footer { padding-top: 2.5rem !important; padding-bottom: 6rem !important; }
+            footer .grid { gap: 1.5rem !important; }
+            #menuToggle { display: none !important; }
+            .mobile-join-action {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 2.75rem;
+                height: 2.75rem;
+                color: #ffffff;
+                background: #F58634;
+                border: 2px solid #C86018;
+                box-shadow: 0 3px 0 #C86018;
+            }
+            .mobile-join-action:active { transform: translateY(3px); box-shadow: none; }
+            #mobileMenu {
+                position: fixed;
+                inset: 0;
+                z-index: 60;
+                overflow-y: auto;
+                background: #ffffff;
+                padding: 1rem 1rem 6.5rem;
+            }
+            .mobile-menu-shell {
+                max-width: 34rem;
+                margin: 0 auto;
+            }
+            .mobile-menu-topline {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.5rem 0 1.25rem;
+                border-bottom: 2px solid #e2e8f0;
+            }
+            .mobile-app-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 3.25rem;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .mobile-app-link .material-symbols-outlined { color: #006491; }
+            .mobile-app-section {
+                padding-top: 1.5rem;
+                padding-bottom: 0.35rem;
+                color: #6b7280;
+                font-size: 10px;
+                letter-spacing: 0.16em;
+            }
+            .mobile-bottom-nav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 45;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                min-height: 4.25rem;
+                padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+                background: #ffffff;
+                border-top: 2px solid #dbe3eb;
+                box-shadow: 0 -4px 0 rgba(207, 219, 233, 0.55);
+            }
+            .mobile-bottom-nav a,
+            .mobile-bottom-nav button {
+                border: 0;
+                margin: 0;
+                padding: 0;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.15rem;
+                color: #64748b;
+                font-size: 9px;
+                font-weight: 900;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+            .mobile-bottom-nav a.active,
+            .mobile-bottom-nav button.active { color: #006491; }
+            .mobile-bottom-nav .material-symbols-outlined { font-size: 22px; }
+            body.mobile-menu-open { overflow: hidden; }
+        }
+        @media (min-width: 1280px) {
+            .mobile-bottom-nav { display: none; }
+        }
+
+        /* Animación de aparición al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Scrollbar de la sala (azul institucional) */
+        .sala-scroll::-webkit-scrollbar { width: 6px; }
+        .sala-scroll::-webkit-scrollbar-track { background: #26323C; }
+        .sala-scroll::-webkit-scrollbar-thumb { background: #449bd1; }
+        .sala-scroll::-webkit-scrollbar-thumb:hover { background: #F58634; }
+
+        /* EXPERIMENTO: bordes redondeados a 0 (reversible: elimina esta regla) */
+        *, *::before, *::after {
+            border-radius: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-body text-on-surface antialiased overflow-x-hidden selection:bg-duo-yellow selection:text-neutral-900">
+
+    <!-- DOBLE BARRA DE NAVEGACIÓN (HEADER INSTITUCIONAL) -->
+    <!-- TOP BAR: Azul Eléctrico -->
+    <div class="w-full bg-primary-container text-white text-xs font-semibold py-2 px-4 lg:px-8 border-b border-[#3684B3] relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
+            <div class="flex items-center flex-wrap gap-4 sm:gap-6 font-body">
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="mailto:info@misionjuvenild5.com">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                    </svg>
+                    <span>info@misionjuvenild5.com</span>
+                </a>
+                <a class="inline-flex items-center gap-2 hover:text-white/80 transition-colors" href="https://wa.me/573137159439" target="_blank" rel="noopener">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path>
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-[11px] uppercase tracking-wider text-white/80 font-headline hidden md:inline">Síguenos:</span>
+                <a aria-label="Instagram" class="w-6 h-6 bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://www.instagram.com/misionjuvenil_d5" target="_blank" rel="noopener">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg>
+                </a>
+                <a aria-label="Facebook" class="w-6 h-6 bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://www.facebook.com/MisionJuvenilD5" target="_blank" rel="noopener">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"></path>
+                    </svg>
+                </a>
+                <a aria-label="YouTube" class="w-6 h-6 bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://www.youtube.com/@MisionJuvenil-ey7ql" target="_blank" rel="noopener">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                    </svg>
+                </a>
+                <button type="button" aria-label="TikTok" class="w-6 h-6 bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors cursor-pointer"><svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.48 2.73 1.25-.07 2.39-.81 2.89-1.96.28-.62.37-1.31.37-1.99.01-4.96.01-9.92.01-14.88z"></path>
+                </svg>
+                </button>
+                <a aria-label="Spotify" class="w-6 h-6 bg-white/15 hover:bg-white/30 flex items-center justify-center transition-colors" href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-white border-b-2 border-slate-200 shadow-sm px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto h-20 flex items-center justify-between gap-3">
+            <!-- Brand Logo -->
+            <a class="flex items-center group flex-shrink-0" href="index.html">
+                <img alt="Misión Juvenil D5" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" src="media/img/logos/FULL.png">
+            </a>
+
+            <!-- Menú de Navegación -->
+            <nav class="hidden xl:flex flex-nowrap items-center gap-2 2xl:gap-5 shrink-0 font-headline font-extrabold text-[13px] 2xl:text-sm uppercase tracking-wide 2xl:tracking-wider text-neutral-700">
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="index.html">Inicio</a>
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="quienes-somos.html">¿Quiénes Somos?</a>
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="impacto.html">¿Qué Hacemos?</a>
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="calendario.html">Calendario</a>
+
+                <!-- Dropdown: A un Click -->
+                    <div class="relative group py-2 shrink-0 whitespace-nowrap">
+                        <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-[13px] 2xl:text-sm focus:outline-none" href="index.html#un-click">
+                        <span>A un Click</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown con fotos -->
+                        <div class="nav-dropdown nav-dropdown--wide absolute top-full pt-2 z-50" style="left:50%;transform:translateX(-50%)">
+                            <div class="bg-white border-[3px] border-neutral-200 shadow-[0_10px_30px_-12px_rgba(17,29,38,0.35)]">
+                                <div class="flex items-center justify-between gap-4 px-5 py-3.5 bg-secondary-orange border-b-[3px] border-secondary-dark">
+                                    <div>
+                                        <p class="font-headline font-black text-white text-[12px] uppercase tracking-wider leading-tight">Misión Juvenil A un Click</p>
+                                        <p class="text-[9px] font-bold uppercase tracking-widest text-white/85 mt-1">El podcast oficial · episodio nuevo cada semana</p>
+                                    </div>
+                                    <a href="podcast.html" class="flex-shrink-0 flex items-center justify-center px-4 py-2 bg-white text-secondary-dark border-2 border-secondary-dark font-headline font-black text-[10px] uppercase tracking-wider shadow-[0_3px_0_#C86018] hover:translate-y-0.5 hover:shadow-none active:translate-y-1 active:shadow-none transition-all">Ver todos</a>
+                                </div>
+                                <div class="flex gap-5 p-4 sm:p-5">
+                                    <div class="flex-1 min-w-0 border-r-[3px] border-neutral-100 pr-4 sm:pr-5">
+                                        <p class="pb-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-neutral-400">A un Click</p>
+                                        <div class="divide-y divide-neutral-100">
+                                            <a href="podcast.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-secondary-orange flex-shrink-0">music_note</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Podcast D5 Fuego</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Todos los episodios</span>
+                                                </span>
+                                            </a>
+                                            <a href="transmision.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-secondary-orange flex-shrink-0">live_tv</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Transmisión en Vivo</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Devocionales y campus</span>
+                                                </span>
+                                            </a>
+                                            <a href="recursos.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">menu_book</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Recursos &amp; Guías</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Para tu crecimiento</span>
+                                                </span>
+                                            </a>
+                                            <a href="muro-espiritual.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">volunteer_activism</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Muro Espiritual</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Oración y peticiones</span>
+                                                </span>
+                                            </a>
+                                            <a href="digital.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">bolt</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">A un Click Digital</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Contenido breve</span>
+                                                </span>
+                                            </a>
+                                            <a href="https://open.spotify.com/show/74uFkpw2U8yMsExF5hXlPR" target="_blank" rel="noopener" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                                <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">podcasts</span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Escuchar en Spotify</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Streaming oficial</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-[260px] shrink-0">
+                                        <p class="pb-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-neutral-400">Podcast destacado</p>
+                                        <div class="space-y-3">
+                                            <a href="podcast.html" class="group flex items-center gap-3 rounded-xl border-[2px] border-neutral-100 bg-neutral-50 p-2.5 transition-colors hover:border-secondary-orange hover:bg-orange-50">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/audio/podcasts/minuatura ep 9.jpg" alt="Carátula del episodio 09" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-secondary-orange shadow-[0_2px_0_#C86018]">Ep 09</span>
+                                                </span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Desafíos en la Academia</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Vida universitaria</span>
+                                                </span>
+                                            </a>
+                                            <a href="podcast.html" class="group flex items-center gap-3 rounded-xl border-[2px] border-neutral-100 bg-neutral-50 p-2.5 transition-colors hover:border-primary hover:bg-blue-50">
+                                                <span class="relative flex-shrink-0">
+                                                    <img src="media/img/podcasts/minuatura ep 6.jpg" alt="Carátula del episodio 06" class="w-14 h-14 object-cover border-2 border-neutral-200">
+                                                    <span class="absolute -top-1.5 -left-1.5 px-1 py-0.5 font-headline font-black text-[8px] uppercase tracking-wider text-white bg-primary shadow-[0_2px_0_#02557D]">Ep 06</span>
+                                                </span>
+                                                <span class="min-w-0 flex-1">
+                                                    <span class="block font-headline font-black text-[10px] uppercase tracking-tight text-neutral-800 leading-snug">Silenciar el Ruido Interior</span>
+                                                    <span class="mt-0.5 block text-[8px] font-black uppercase tracking-[0.16em] text-neutral-400">Descanso mental</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Servicios -->
+                    <div class="relative group py-2 shrink-0 whitespace-nowrap">
+                        <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-[13px] 2xl:text-sm focus:outline-none" href="#unirme">
+                        <span>Servicios</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+                    <!-- Dropdown Servicios -->
+                    <div class="nav-dropdown absolute top-full left-0 w-72 pt-2 z-50">
+                        <div class="bg-white rounded-2xl p-2.5 border-[3px] border-neutral-200 shadow-[0_6px_0_#D5D5D5] space-y-1">
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="salud-mental.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/FOTOS HOME/about-mj.jpg" alt="Salud Mental">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Salud Mental</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Acompañamiento 1-a-1</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="colegios.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/fotos colegios/IMG_20241120_081622.jpg" alt="Colegios">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Colegios</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Pastoral de bachillerato</span>
+                                </div>
+                            </a>
+                            <a class="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-all" href="universidades.html">
+                                <img loading="lazy" class="w-14 h-11 rounded-lg object-cover flex-shrink-0" src="media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg" alt="Universidades">
+                                <div class="min-w-0">
+                                    <span class="block text-xs font-black text-neutral-800">Universidades</span>
+                                    <span class="block text-[10px] text-neutral-500 lowercase">Círculos y sedes activas</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- CTA + Mobile -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <a class="hidden xl:inline-flex btn-3d btn-3d-orange px-5 sm:px-7 py-2.5 sm:py-3 font-headline font-black text-sm uppercase tracking-wider items-center gap-2" href="https://chat.whatsapp.com/FDTf5jQ5yfF4xSTOev0JeT" target="_blank" rel="noopener">
+                    <span>¡UNIRME AHORA!</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                <a class="mobile-join-action xl:hidden" href="https://chat.whatsapp.com/FDTf5jQ5yfF4xSTOev0JeT" target="_blank" rel="noopener" aria-label="Unirme ahora">
+                    <span class="material-symbols-outlined">group_add</span>
+                </a>
+                <button id="menuToggle" class="xl:hidden btn-3d btn-3d-white w-11 h-11 flex items-center justify-center" aria-label="Abrir navegación" aria-expanded="false">
+                    <span class="material-symbols-outlined text-2xl" id="menuIcon">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="hidden xl:hidden" aria-hidden="true">
+            <div class="mobile-menu-shell font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
+                <div class="mobile-menu-topline">
+                    <div>
+                        <p class="text-[10px] font-black tracking-[0.18em] text-secondary-orange">MISIÓN JUVENIL D5</p>
+                        <p class="mt-1 text-base font-black text-neutral-900">NAVEGACIÓN</p>
+                    </div>
+                    <button id="mobileMenuClose" class="btn-3d btn-3d-white w-10 h-10 flex items-center justify-center" type="button" aria-label="Cerrar navegación">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <p class="mobile-app-section">PRINCIPAL</p>
+                <a class="mobile-app-link text-primary" href="index.html"><span>Inicio</span><span class="material-symbols-outlined">home</span></a>
+                <a class="mobile-app-link" href="quienes-somos.html"><span>Quiénes somos</span><span class="material-symbols-outlined">groups</span></a>
+                <a class="mobile-app-link" href="impacto.html"><span>Qué hacemos</span><span class="material-symbols-outlined">insights</span></a>
+                <a class="mobile-app-link" href="calendario.html"><span>Calendario</span><span class="material-symbols-outlined">event</span></a>
+                <p class="mobile-app-section">A UN CLICK</p>
+                <a class="mobile-app-link" href="podcast.html"><span>Podcast D5</span><span class="material-symbols-outlined">podcasts</span></a>
+                <a class="mobile-app-link text-primary" href="transmision.html"><span>Conexión D5</span><span class="material-symbols-outlined">live_tv</span></a>
+                <a class="mobile-app-link" href="recursos.html"><span>Recursos</span><span class="material-symbols-outlined">menu_book</span></a>
+                <a class="mobile-app-link" href="muro-espiritual.html"><span>Muro espiritual</span><span class="material-symbols-outlined">volunteer_activism</span></a>
+                <a class="mobile-app-link" href="digital.html"><span>A un Click</span><span class="material-symbols-outlined">bolt</span></a>
+                <p class="mobile-app-section">SERVICIOS</p>
+                <a class="mobile-app-link" href="salud-mental.html"><span>Salud mental</span><span class="material-symbols-outlined">psychology</span></a>
+                <a class="mobile-app-link" href="colegios.html"><span>Colegios</span><span class="material-symbols-outlined">school</span></a>
+                <a class="mobile-app-link" href="universidades.html"><span>Universidades</span><span class="material-symbols-outlined">account_balance</span></a>
+                <a class="mobile-app-link" href="contacto.html"><span>Contacto</span><span class="material-symbols-outlined">mail</span></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-bottom-nav xl:hidden" aria-label="Navegación principal móvil">
+        <a href="index.html"><span class="material-symbols-outlined">home</span><span>Inicio</span></a>
+        <a href="podcast.html"><span class="material-symbols-outlined">podcasts</span><span>Podcast</span></a>
+        <a href="recursos.html"><span class="material-symbols-outlined">menu_book</span><span>Recursos</span></a>
+        <button type="button" id="mobileBottomMenu" aria-label="Abrir menú"><span class="material-symbols-outlined">apps</span><span>Más</span></button>
+    </nav>
+
+    <main>
+        <!-- 1. HERO DE TRANSMISIÓN -->
+        <section class="relative w-full bg-primary-dark overflow-hidden border-b-[4px] border-[#014364]" id="vivo" data-chispa-tour="Bienvenido a Conexión D5|Aquí puedes consultar si hay una transmisión activa y entrar a la sala principal.">
+            <!-- Fondo foto + overlay azul institucional -->
+            <div class="absolute inset-0">
+                <img alt="Jóvenes de Misión Juvenil reunidos en un campus" class="w-full h-full object-cover opacity-30" src="media/img/hero-mj.jpg">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary-dark/90 to-sala-dark"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-5 lg:px-12 py-14 lg:py-20">
+                <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                    <div class="max-w-3xl">
+                        <!-- Badge EN VIVO -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary-orange border-2 border-secondary-dark mb-4">
+                            <span class="relative flex w-2.5 h-2.5" id="hero-live-indicator">
+                                <span class="live-dot absolute inset-0 bg-white"></span>
+                                <span class="relative w-2.5 h-2.5 bg-white"></span>
+                            </span>
+                            <span class="font-headline font-black text-[11px] uppercase tracking-widest text-white" id="hero-live-badge">CONSULTANDO ESTADO</span>
+                        </div>
+
+                        <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-duo-yellow">Salas de Misión Juvenil D5</p>
+                        <h1 class="mt-2 font-headline font-black text-[20px] sm:text-[32px] lg:text-[42px] text-white uppercase leading-[1.1]">
+                            Conexión D5:<br class="hidden sm:block"> <span class="text-duo-yellow">devocionales y encuentros universitarios</span>
+                        </h1>
+
+                        <p class="mt-3 font-body font-bold text-sm sm:text-base text-white/85 max-w-2xl">
+                            Comparte un devocional, conversa con jóvenes de otros campus o reúnanse para planear una iniciativa. Un espacio digital para la fe y la comunidad universitaria.
+                        </p>
+
+                        <!-- Stats chips -->
+                        <div class="flex flex-wrap gap-2.5 mt-5">
+                            <span class="px-3 py-1.5 bg-white/10 border border-white/25 font-headline font-black text-[10px] uppercase tracking-widest text-white" id="hero-main-count">Sala principal: consultando</span>
+                            <span class="px-3 py-1.5 bg-white/10 border border-white/25 font-headline font-black text-[10px] uppercase tracking-widest text-white" id="hero-campus-count">0 campus en vivo</span>
+                            <span class="px-3 py-1.5 bg-white/10 border border-white/25 font-headline font-black text-[10px] uppercase tracking-widest text-white">Devocionales · conversaciones · proyectos</span>
+                        </div>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
+                        <button class="btn-3d btn-3d-orange px-6 py-3 font-headline font-black text-sm uppercase tracking-wider text-center" id="hero-enter-live" type="button">CONSULTAR ENCUENTRO</button>
+                        <a class="px-3 py-2 text-center font-headline font-black text-xs uppercase tracking-wider text-white underline decoration-white/50 underline-offset-4 hover:text-duo-yellow" href="#mesas">Explorar salas por campus</a>
+                        <button class="px-3 py-2 text-center font-headline font-black text-[10px] uppercase tracking-wider text-white/75 underline decoration-white/30 underline-offset-4 hover:text-white" id="btn-share-invite" type="button">Compartir invitación</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ACCESO A LAS SALAS -->
+        <section class="w-full bg-sala-dark border-b-[4px] border-primary-dark py-10 lg:py-12" id="room-access" data-chispa-tour="Entra a una sala|Escribe tu nombre y elige la sala. El acceso de anfitrión está dentro de la opción para el equipo.">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-duo-yellow">Entra a Conexión D5</p>
+                        <h2 class="mt-2 font-headline font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">Encuentra tu sala</h2>
+                        <p class="mt-3 max-w-2xl font-body font-bold text-sm text-white/75">Elige la sala principal o la de tu campus. Si el equipo configuró una clave de reunión, la necesitarás para entrar como participante.</p>
+                        <details class="mt-5 border-2 border-[#33424e] bg-[#191321] p-3" id="leaderAccess">
+                            <summary class="cursor-pointer font-headline font-black text-xs uppercase tracking-wider text-white marker:text-secondary-orange">Acceso de equipo · anfitriones</summary>
+                            <p class="mt-2 font-body text-xs font-bold text-white/60">La clave asignada al equipo permite iniciar la sala seleccionada. El servidor verifica el permiso antes de abrirla.</p>
+                            <label for="leaderCode" class="mt-3 block font-headline font-black text-[10px] uppercase tracking-widest text-white/70">Clave de acceso del equipo</label>
+                            <input id="leaderCode" name="leaderCode" type="password" maxlength="120" autocomplete="off" data-chispa-help="La clave del equipo la entrega quien administra las salas." class="mt-1 h-11 w-full border-2 border-[#33424e] bg-sala-dark px-3 text-sm text-white" placeholder="Clave entregada por el equipo">
+                            <button class="btn-3d btn-3d-orange mt-3 min-h-11 w-full px-4 font-headline font-black text-xs uppercase tracking-wider" type="button" id="btnStartSelectedRoom">INICIAR SALA COMO ANFITRIÓN</button>
+                            <p id="leaderAccessMessage" class="mt-2 min-h-4 font-body font-bold text-xs text-secondary-orange" aria-live="polite"></p>
+                        </details>
+                    </div>
+                    <div class="lg:col-span-5 border-[3px] border-[#33424e] bg-sala-panel p-4 shadow-[0_6px_0_#111d26]">
+                        <form id="roomAccessForm" class="space-y-3">
+                            <label for="roomAccessName" class="block font-headline font-black text-[10px] uppercase tracking-widest text-white/70">Nombre para mostrar</label>
+                            <input id="roomAccessName" name="name" maxlength="32" required autocomplete="name" data-chispa-help="Elige el nombre con el que te reconocerá tu comunidad." class="h-11 w-full border-2 border-[#33424e] bg-sala-dark px-3 text-sm text-white" placeholder="Ej. Alex D5">
+                            <label for="roomAccessCode" class="block font-headline font-black text-[10px] uppercase tracking-widest text-white/70">Clave de reunión <span class="font-bold normal-case tracking-normal text-white/45">(si te la dieron)</span></label>
+                            <input id="roomAccessCode" name="joinCode" type="password" maxlength="120" autocomplete="off" class="h-11 w-full border-2 border-[#33424e] bg-sala-dark px-3 text-sm text-white" placeholder="Clave compartida por el equipo">
+                            <label for="roomAccessChoice" class="block font-headline font-black text-[10px] uppercase tracking-widest text-white/70">Sala o campus</label>
+                            <select id="roomAccessChoice" name="room" class="h-11 w-full border-2 border-[#33424e] bg-sala-dark px-3 text-sm text-white" data-chispa-help="Escoge la sala principal o el espacio de tu campus.">
+                                <option value="MJ-D5-Vigilia">Sala principal · Conexión D5</option>
+                                <option value="MJ-D5-Univalle">Universidad del Valle</option>
+                                <option value="MJ-D5-ICESI">Universidad Icesi</option>
+                                <option value="MJ-D5-USC">Universidad Santiago de Cali</option>
+                                <option value="MJ-D5-Javeriana">Pontificia Universidad Javeriana</option>
+                                <option value="MJ-D5-SENA">SENA</option>
+                                <option value="MJ-D5-UAO">Universidad Autónoma</option>
+                            </select>
+                            <button class="btn-3d btn-3d-orange min-h-11 w-full px-4 font-headline font-black text-xs uppercase tracking-wider" type="submit" id="btnJoinSelectedRoom">ENTRAR A LA SALA</button>
+                            <p id="roomAccessMessage" class="min-h-4 font-body font-bold text-xs text-secondary-orange" aria-live="polite"></p>
+                        </form>
+                        <div class="mt-3 border-t-2 border-[#33424e] pt-3 text-center">
+                            <a class="font-headline font-black text-[10px] uppercase tracking-wider text-white/65 underline decoration-white/30 underline-offset-4 hover:text-white" href="en-vivo.html?room=MJ-D5-Vigilia">¿Quieres conocer la interfaz? Abre la sala de muestra</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PARA QUÉ SIRVE LA SALA -->
+        <section class="w-full bg-white py-12 lg:py-14 border-b-[3px] border-border-gray" id="para-que-sirve">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <div class="reveal text-center max-w-2xl mx-auto mb-8 space-y-3">
+                    <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-secondary-orange">Una sala para encontrarnos</p>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">¿Qué puedes hacer aquí?</h2>
+                    <p class="font-body font-bold text-sm text-on-surface-variant">Conexión D5 puede acompañar un devocional, una conversación entre campus o la planeación de una iniciativa juvenil.</p>
+                </div>
+                <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <article class="card-chunky bg-neutral-light p-5">
+                        <span class="material-symbols-outlined text-2xl text-primary">video_call</span>
+                        <h3 class="mt-2 font-headline font-black text-base sm:text-lg text-on-surface uppercase">Reunirnos en vivo</h3>
+                        <p class="mt-2 font-body font-bold text-sm text-on-surface-variant">Escucha al presentador, activa tu micrófono cuando te den la palabra y comparte tu cámara si quieres.</p>
+                    </article>
+                    <article class="card-chunky bg-neutral-light p-5">
+                        <span class="material-symbols-outlined text-2xl text-secondary-orange">forum</span>
+                        <h3 class="mt-2 font-headline font-black text-base sm:text-lg text-on-surface uppercase">Conversar y participar</h3>
+                        <p class="mt-2 font-body font-bold text-sm text-on-surface-variant">Escribe en el chat, levanta la mano y envía reacciones durante la reunión.</p>
+                    </article>
+                    <article class="card-chunky bg-neutral-light p-5">
+                        <span class="material-symbols-outlined text-2xl text-duo-purple">groups</span>
+                        <h3 class="mt-2 font-headline font-black text-base sm:text-lg text-on-surface uppercase">Conectar por campus</h3>
+                        <p class="mt-2 font-body font-bold text-sm text-on-surface-variant">Únete a una mesa universitaria activa para conversar en grupos más pequeños.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MESAS REDONDAS POR CAMPUS -->
+        <section class="w-full bg-neutral-light py-16 border-b-[3px] border-border-gray" id="mesas" data-chispa-tour="Explora los campus|Cada tarjeta muestra el estado de su sala. Cuando esté en vivo, podrás entrar desde allí.">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+
+                <div class="reveal text-center max-w-2xl mx-auto mb-10 space-y-3">
+                    <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-secondary-orange">Conexión paralela</p>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">Mesas redondas por campus</h2>
+                    <p class="font-body font-bold text-sm text-on-surface-variant">Elige el espacio de tu universidad para conversar, organizarte y encontrarte con otros jóvenes de tu campus.</p>
+                </div>
+
+                <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mesasGrid">
+
+                    <!-- UNIVALLE -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="univalle">
+                        <div class="relative h-36 border-b-[3px] border-border-gray">
+                            <img alt="Sede Univalle" class="w-full h-full object-cover" src="media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg">
+                            <div class="absolute inset-0 bg-primary-dark/35"></div>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-Univalle">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Universidad del Valle</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Sedes Meléndez y San Fernando</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-Univalle">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-Univalle"></div>
+                            <button class="btn-3d btn-3d-blue w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-Univalle" data-campus-name="Universidad del Valle" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                    <!-- ICESI -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="icesi">
+                        <div class="relative h-36 border-b-[3px] border-border-gray">
+                            <img alt="Sede ICESI" class="w-full h-full object-cover" src="media/img/Universidades fotos/Icesi/Icesi1.jpg">
+                            <div class="absolute inset-0 bg-primary-dark/35"></div>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-ICESI">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Universidad Icesi</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Facultades de Diseño y Salud</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-ICESI">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-ICESI"></div>
+                            <button class="btn-3d btn-3d-blue w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-ICESI" data-campus-name="Universidad Icesi" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                    <!-- USC -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="usc">
+                        <div class="relative h-36 border-b-[3px] border-border-gray bg-primary">
+                            <img alt="Sede USC" class="w-full h-full object-cover opacity-70" src="media/img/FOTOS HOME/about-mj.jpg">
+                            <div class="absolute inset-0 bg-primary/50"></div>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-USC">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">U. Santiago de Cali</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Facultad de Salud</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-USC">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-USC"></div>
+                            <button class="btn-3d btn-3d-blue w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-USC" data-campus-name="U. Santiago de Cali" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                    <!-- JAVERIANA -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="javeriana">
+                        <div class="relative h-36 border-b-[3px] border-border-gray">
+                            <img alt="Sede Javeriana" class="w-full h-full object-cover" src="media/img/Universidades fotos/Javeriana/puj1.jpg">
+                            <div class="absolute inset-0 bg-primary-dark/35"></div>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-Javeriana">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Pontificia Javeriana</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Círculo de negocios</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-Javeriana">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-Javeriana"></div>
+                            <button class="btn-3d btn-3d-white w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-Javeriana" data-campus-name="Pontificia Javeriana" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                    <!-- SENA -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="sena">
+                        <div class="relative h-36 border-b-[3px] border-border-gray bg-duo-purple flex items-center justify-center">
+                            <span class="font-headline font-black text-4xl text-white/30">SENA</span>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-SENA">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">SENA</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Telemática y Electricidad</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-SENA">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-SENA"></div>
+                            <button class="btn-3d btn-3d-blue w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-SENA" data-campus-name="SENA" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                    <!-- UAO -->
+                    <article class="card-chunky bg-white overflow-hidden flex flex-col" data-campus="uao">
+                        <div class="relative h-36 border-b-[3px] border-border-gray">
+                            <img alt="Sede UAO" class="w-full h-full object-cover" src="media/img/Universidades fotos/Uao/UAO1.jpg">
+                            <div class="absolute inset-0 bg-primary-dark/35"></div>
+                            <span class="js-room-badge absolute top-2 left-2 px-2 py-1 bg-white border-2 border-border-gray font-headline font-black text-[9px] uppercase tracking-wider text-on-surface" data-room="MJ-D5-UAO">CONSULTANDO</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Universidad Autónoma</h3>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1">Campus Camacho</p>
+                            <p class="font-body font-bold text-xs text-on-surface-variant mt-1 js-room-count" data-room="MJ-D5-UAO">Sin transmisión activa</p>
+                            <div class="flex -space-x-2 my-3 js-room-avatars" data-room="MJ-D5-UAO"></div>
+                            <button class="btn-3d btn-3d-blue w-full mt-auto py-2.5 font-headline font-black text-xs uppercase tracking-wider js-open-mesa" data-room="MJ-D5-UAO" data-campus-name="Universidad Autónoma" type="button">ENTRAR A LA MESA</button>
+                            
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. AGENDA Y RECURSOS -->
+        <section class="w-full bg-sala-dark py-14 lg:py-16 border-b-[4px] border-primary-dark" id="agenda" data-chispa-tour="Próximos encuentros|Consulta aquí las fechas y actividades publicadas.">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                    <div class="max-w-2xl">
+                        <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-duo-yellow">Sigue conectado</p>
+                        <h2 class="mt-2 font-headline font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">Fe, comunidad y próximos encuentros</h2>
+                        <p class="mt-2 font-body font-bold text-sm text-white/70">Consulta las fechas publicadas y encuentra contenido para compartir entre reuniones.</p>
+                    </div>
+                    <a class="btn-3d btn-3d-orange px-5 py-3 text-center font-headline font-black text-xs uppercase tracking-wider" href="calendario.html">VER CALENDARIO</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <a href="calendario.html" class="group border-[3px] border-white/15 bg-white/5 overflow-hidden hover:border-duo-yellow transition-colors">
+                        <div class="h-40 overflow-hidden"><img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="media/img/hero-mj.jpg" alt="Jóvenes compartiendo en comunidad" loading="lazy"></div>
+                        <div class="p-4"><span class="font-headline font-black text-[10px] uppercase tracking-widest text-duo-yellow">Agenda</span><h3 class="mt-1 font-headline font-black text-base uppercase text-white">Próximos encuentros</h3><p class="mt-1 font-body text-xs font-bold text-white/65">Revisa las fechas y actividades que ya están publicadas.</p></div>
+                    </a>
+                    <a href="podcast.html" class="group border-[3px] border-white/15 bg-white/5 overflow-hidden hover:border-duo-yellow transition-colors">
+                        <div class="h-40 overflow-hidden"><img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="media/audio/podcasts/minuatura ep 8.jpg" alt="Jóvenes conversando en un episodio del podcast" loading="lazy"></div>
+                        <div class="p-4"><span class="font-headline font-black text-[10px] uppercase tracking-widest text-duo-yellow">Podcast D5</span><h3 class="mt-1 font-headline font-black text-base uppercase text-white">Conversaciones que edifican</h3><p class="mt-1 font-body text-xs font-bold text-white/65">Escucha historias y reflexiones de jóvenes de la comunidad.</p></div>
+                    </a>
+                    <a href="recursos.html" class="group border-[3px] border-white/15 bg-white/5 overflow-hidden hover:border-duo-yellow transition-colors">
+                        <div class="h-40 overflow-hidden"><img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="media/recursos/thumbnails/devocionales.png" alt="Biblia abierta para un momento devocional" loading="lazy"></div>
+                        <div class="p-4"><span class="font-headline font-black text-[10px] uppercase tracking-widest text-duo-yellow">Recursos</span><h3 class="mt-1 font-headline font-black text-base uppercase text-white">Guías para compartir</h3><p class="mt-1 font-body text-xs font-bold text-white/65">Encuentra devocionales y materiales descargables para tu campus.</p></div>
+                    </a>
+                </div>
+                <p class="mt-5 font-body text-xs font-bold text-white/50">La agenda actual muestra actividades publicadas. La programación de nuevas salas desde esta página está en preparación.</p>
+            </div>
+        </section>
+
+        <!-- 6. CÓMO FUNCIONA -->
+        <section class="w-full bg-white py-16 border-b-[3px] border-border-gray">
+            <div class="max-w-7xl mx-auto px-5 lg:px-12">
+                <div class="reveal text-center max-w-2xl mx-auto mb-10 space-y-3">
+                    <p class="font-headline font-black text-[11px] uppercase tracking-[0.2em] text-secondary-orange">Paso a paso</p>
+                    <h2 class="font-headline font-black text-2xl sm:text-3xl text-on-surface uppercase tracking-tight">Cómo conectarte</h2>
+                </div>
+                <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card-chunky bg-white p-5 text-center space-y-3">
+                        <span class="inline-flex w-12 h-12 bg-primary text-white border-2 border-primary-dark items-center justify-center font-headline font-black text-lg">1</span>
+                        <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Entra a una sala activa</h3>
+                        <p class="font-body font-bold text-sm text-on-surface-variant">Elige la sala principal o tu campus y escribe el nombre que verán los demás al entrar.</p>
+                    </div>
+                    <div class="card-chunky bg-white p-5 text-center space-y-3">
+                        <span class="inline-flex w-12 h-12 bg-secondary-orange text-white border-2 border-secondary-dark items-center justify-center font-headline font-black text-lg">2</span>
+                        <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Participa a tu manera</h3>
+                        <p class="font-body font-bold text-sm text-on-surface-variant">Escucha con micrófono apagado y pide la palabra para hablar o activar tu cámara.</p>
+                    </div>
+                    <div class="card-chunky bg-white p-5 text-center space-y-3">
+                        <span class="inline-flex w-12 h-12 bg-duo-purple text-white border-2 border-duo-green-dark items-center justify-center font-headline font-black text-lg">3</span>
+                        <h3 class="font-headline font-black text-base sm:text-lg text-on-surface uppercase">Conversa con respeto</h3>
+                        <p class="font-body font-bold text-sm text-on-surface-variant">Usa el chat y las reacciones; la lista de participantes aparece dentro de la sala.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-[#1F2E3D] text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-5 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-neutral-700">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 px-3 bg-white flex items-center justify-center">
+                            <img alt="Logo D5" class="h-6 w-auto object-contain" src="media/img/logos/FULL.png">
+                        </div>
+                        <span class="font-headline font-black text-xl tracking-tight">MISIÓN JUVENIL D5</span>
+                    </div>
+                    <p class="font-body font-bold text-sm text-neutral-300 leading-relaxed">Plataforma juvenil de valores, liderazgo y bienestar integral en colegios, institutos y facultades de toda la nación.</p>
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 bg-duo-green/20 border border-duo-green text-duo-green text-xs font-headline font-black uppercase">VINCULACIÓN ABIERTA</span>
+                        <span class="px-3 py-1 bg-secondary-orange/20 border border-secondary-orange text-secondary-orange text-xs font-headline font-black uppercase">OFICIAL</span>
+                    </div>
+                </div>
+                <!-- Col 2: Ecosistema -->
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">ECOSISTEMA</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="podcast.html">Podcast D5 Fuego</a></li>
+                        <li><a class="hover:text-white transition-colors" href="recursos.html">Huellas de Eternidad</a></li>
+                        <li><a class="hover:text-white transition-colors" href="muro-espiritual.html">Muro de Oración</a></li>
+                        <li><a class="hover:text-white transition-colors" href="digital.html">A un Click</a></li>
+                        <li><a class="hover:text-white transition-colors" href="salud-mental.html">Red de Mentores</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: Sedes -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">CAMPUS &amp; SEDES</h4>
+                    <ul class="font-body font-bold text-xs space-y-2.5 text-neutral-300">
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad del Valle</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Libre</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Icesi</a></li>
+                        <li><a class="hover:text-white transition-colors" href="universidades.html">Universidad Santiago de Cali</a></li>
+                        <li><a class="hover:text-white transition-colors" href="colegios.html">SENA &amp; Red de Bachilleratos</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4: Boletín -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-headline font-black text-sm uppercase text-duo-yellow tracking-wider">BOLETÍN INFORMATIVO</h4>
+                    <p class="font-body font-bold text-xs text-neutral-300">Recibe comunicados oficiales, fechas de campamentos y talleres en tu correo.</p>
+                    <div class="flex gap-2">
+                        <input id="newsletterEmail" class="flex-1 h-11 px-3.5 bg-neutral-800 border-2 border-neutral-700 text-xs text-white font-bold placeholder:text-neutral-500 focus:border-secondary-orange focus:ring-0" placeholder="tu.correo@institucion.edu.co" type="email">
+                        <button class="btn-3d btn-3d-orange px-4 h-11 font-headline font-black text-xs uppercase" id="newsletterBtn" type="button">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body font-bold text-xs text-neutral-400">
+                <p>© 2026 Misión Juvenil D5. Identidad, liderazgo y comunidad estudiantil.</p>
+                <div class="flex items-center gap-6">
+                    <a class="hover:text-white transition-colors" href="politica-de-datos.html">Política de Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="terminos-de-uso.html">Términos de uso</a>
+                    <a class="hover:text-white transition-colors" href="contacto.html">Contacto Institucional</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast de feedback -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 bg-inverse-surface text-white font-headline font-black text-sm uppercase tracking-wider opacity-0 pointer-events-none transition-all duration-300 shadow-[0_6px_0_#111d26]"></div>
+
+    <script>
+        // ===== Toast =====
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            if (!t) return;
+            t.textContent = msg;
+            t.classList.remove('opacity-0', 'pointer-events-none');
+            clearTimeout(t._timer);
+            t._timer = setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ===== Reveal al hacer scroll =====
+            (function () {
+                const els = document.querySelectorAll('.reveal');
+                if (!('IntersectionObserver' in window)) {
+                    els.forEach(el => el.classList.add('reveal-visible'));
+                    return;
+                }
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('reveal-visible');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                els.forEach(el => io.observe(el));
+            })();
+
+            // ===== Menú móvil =====
+            (function () {
+                const toggle = document.getElementById('menuToggle');
+                const menu = document.getElementById('mobileMenu');
+                const icon = document.getElementById('menuIcon');
+                const close = document.getElementById('mobileMenuClose');
+                const bottomMenu = document.getElementById('mobileBottomMenu');
+                if (!toggle || !menu) return;
+                const setMenu = (open) => {
+                    menu.classList.toggle('hidden', !open);
+                    menu.setAttribute('aria-hidden', String(!open));
+                    toggle.setAttribute('aria-expanded', String(open));
+                    document.body.classList.toggle('mobile-menu-open', open);
+                    if (icon) icon.textContent = open ? 'close' : 'menu';
+                };
+                toggle.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
+                if (close) close.addEventListener('click', () => setMenu(false));
+                if (bottomMenu) bottomMenu.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    setMenu(true);
+                });
+                menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+            })();
+
+            // ===== Compartir invitación =====
+            function shareInvite() {
+                const url = window.location.href;
+                if (navigator.share) {
+                    navigator.share({ title: 'Transmisión en Vivo | Misión Juvenil D5', url: url }).catch(() => {});
+                } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(() => showToast('¡Enlace de invitación copiado!'));
+                } else {
+                    showToast('Copia este enlace: ' + url);
+                }
+            }
+            const shareBtn = document.getElementById('btn-share-invite');
+            if (shareBtn) shareBtn.addEventListener('click', shareInvite);
+            const shareRoom = document.getElementById('btn-share-room');
+            if (shareRoom) shareRoom.addEventListener('click', shareInvite);
+
+            // ===== Estado real de salas LiveKit y asistentes =====
+            var roomStates = Object.create(null);
+            var mainRoomName = 'MJ-D5-Vigilia';
+            var heroEnterButton = document.getElementById('hero-enter-live');
+
+            function showInactiveMessage(roomName) {
+                var room = roomName ? roomStates[roomName] : null;
+                var proxima = room && room.proxima ? ' ' + room.proxima : ' Consulta las fechas publicadas en el calendario.';
+                showToast('Por el momento no estamos transmitiendo.' + proxima);
+            }
+
+            function participantInitials(name) {
+                return String(name || 'Joven D5').trim().split(/\s+/).slice(0, 2).map(function (part) { return part.charAt(0); }).join('').toUpperCase() || '?';
+            }
+            function participantColor(name) {
+                var palette = ['#006491', '#F58634', '#473458', '#449bd1', '#02557d', '#C86018'];
+                var hash = 0;
+                String(name || '').split('').forEach(function (char) { hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0; });
+                return palette[Math.abs(hash) % palette.length];
+            }
+
+            function renderRoomCard(roomName, room) {
+                var active = !!(room && room.active);
+                document.querySelectorAll('.js-open-mesa[data-room="' + roomName + '"]').forEach(function (button) { button.disabled = false; });
+                document.querySelectorAll('.js-room-badge[data-room="' + roomName + '"]').forEach(function (badge) {
+                    badge.textContent = active ? 'EN VIVO' : 'SIN TRANSMISIÓN';
+                    badge.classList.toggle('bg-secondary-orange', active);
+                    badge.classList.toggle('border-secondary-dark', active);
+                    badge.classList.toggle('text-white', active);
+                    badge.classList.toggle('bg-white', !active);
+                    badge.classList.toggle('border-border-gray', !active);
+                    badge.classList.toggle('text-on-surface', !active);
+                });
+                document.querySelectorAll('.js-room-count[data-room="' + roomName + '"]').forEach(function (label) {
+                    label.textContent = active ? room.count + (room.count === 1 ? ' persona conectada' : ' personas conectadas') : 'Por ahora no estamos transmitiendo. ' + (room.proxima || 'Consulta el calendario para ver los encuentros publicados.');
+                });
+                document.querySelectorAll('.js-room-avatars[data-room="' + roomName + '"]').forEach(function (container) {
+                    container.replaceChildren();
+                    (active ? room.participants : []).slice(0, 4).forEach(function (person, index) {
+                        var avatar = document.createElement('span');
+                        avatar.className = 'w-7 h-7 border-2 border-white font-headline font-black text-[9px] text-white flex items-center justify-center';
+                        avatar.style.backgroundColor = participantColor(person.name);
+                        avatar.textContent = participantInitials(person.name);
+                        avatar.title = String(person.name || 'Joven D5');
+                        container.appendChild(avatar);
+                    });
+                    var remaining = active ? room.count - 4 : 0;
+                    if (remaining > 0) {
+                        var extra = document.createElement('span');
+                        extra.className = 'w-7 h-7 border-2 border-white bg-primary-container font-headline font-black text-[9px] text-white flex items-center justify-center';
+                        extra.textContent = '+' + remaining;
+                        container.appendChild(extra);
+                    }
+                });
+            }
+
+            function paintMainRoom(room) {
+                var active = !!(room && room.active);
+                var heroBadge = document.getElementById('hero-live-badge');
+                var heroIndicator = document.getElementById('hero-live-indicator');
+                var heroCount = document.getElementById('hero-main-count');
+                var heroCampusCount = document.getElementById('hero-campus-count');
+                var activeCampuses = Object.keys(roomStates).filter(function (name) { return name !== mainRoomName && roomStates[name] && roomStates[name].active; }).length;
+                if (heroBadge) heroBadge.textContent = active ? 'EN VIVO AHORA' : 'SIN TRANSMISIÓN ACTIVA';
+                if (heroIndicator) heroIndicator.classList.toggle('hidden', !active);
+                if (heroCount) heroCount.textContent = 'Sala principal: ' + (room ? room.count : 0) + ' conectados';
+                if (heroCampusCount) heroCampusCount.textContent = activeCampuses + (activeCampuses === 1 ? ' campus en vivo' : ' campus en vivo');
+                if (heroEnterButton) {
+                    heroEnterButton.disabled = false;
+                    heroEnterButton.textContent = active ? 'ENTRAR A CONEXIÓN D5' : 'VER PRÓXIMOS ENCUENTROS';
+                    heroEnterButton.className = 'btn-3d btn-3d-orange px-6 py-3 font-headline font-black text-sm uppercase tracking-wider text-center';
+                }
+            }
+
+            function goToRoom(roomName, name) { window.location.href = 'en-vivo.html?room=' + encodeURIComponent(roomName) + (name ? '&name=' + encodeURIComponent(name) : ''); }
+            if (heroEnterButton) heroEnterButton.addEventListener('click', function () {
+                if (roomStates[mainRoomName] && roomStates[mainRoomName].active) goToRoom(mainRoomName);
+                else document.getElementById('agenda').scrollIntoView({ behavior: 'smooth' });
+            });
+            var roomForm = document.getElementById('roomAccessForm');
+            if (roomForm) roomForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var name = document.getElementById('roomAccessName').value.trim().slice(0, 32);
+                var roomName = document.getElementById('roomAccessChoice').value;
+                var message = document.getElementById('roomAccessMessage');
+                if (!name) return;
+                if (roomStates[roomName] && roomStates[roomName].active) {
+                    try { sessionStorage.setItem('mjd5-pending-join-access', JSON.stringify({ room: roomName, code: document.getElementById('roomAccessCode').value, createdAt: Date.now() })); } catch (error) {}
+                    goToRoom(roomName, name);
+                }
+                else if (message) message.textContent = 'Esta sala está fuera de línea. Revisa el calendario para ver los próximos encuentros.';
+            });
+            var startSelected = document.getElementById('btnStartSelectedRoom');
+            if (startSelected) startSelected.addEventListener('click', function () {
+                var name = document.getElementById('roomAccessName').value.trim().slice(0, 32);
+                var codeInput = document.getElementById('leaderCode');
+                var message = document.getElementById('leaderAccessMessage');
+                if (!name) { message.textContent = 'Escribe primero el nombre que aparecerá en la sala.'; document.getElementById('roomAccessName').focus(); return; }
+                if (!codeInput.value.trim()) { message.textContent = 'Ingresa la clave de acceso asignada al equipo.'; codeInput.focus(); return; }
+                var roomName = document.getElementById('roomAccessChoice').value;
+                try { sessionStorage.setItem('mjd5-pending-host-access', JSON.stringify({ room: roomName, code: codeInput.value, createdAt: Date.now() })); }
+                catch (error) { message.textContent = 'No se pudo preparar el acceso. Intenta de nuevo en esta ventana.'; return; }
+                window.location.href = 'en-vivo.html?room=' + encodeURIComponent(roomName) + '&mode=start&name=' + encodeURIComponent(name);
+            });
+            document.querySelectorAll('.js-open-mesa').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var roomName = button.getAttribute('data-room');
+                    if (roomStates[roomName] && roomStates[roomName].active) goToRoom(roomName);
+                    else showInactiveMessage(roomName);
+                });
+            });
+            document.querySelectorAll('.js-notify-mesa').forEach(function (button) {
+                button.addEventListener('click', showInactiveMessage);
+            });
+
+            function refreshRoomStates() {
+                fetch('/api/livekit-rooms', { cache: 'no-store' }).then(function (response) {
+                    if (!response.ok) throw new Error('estado no disponible');
+                    return response.json();
+                }).then(function (data) {
+                    if (!data || !Array.isArray(data.rooms)) throw new Error('respuesta incompleta');
+                    roomStates = Object.create(null);
+                    data.rooms.forEach(function (room) { roomStates[room.name] = room; renderRoomCard(room.name, room); });
+                    paintMainRoom(roomStates[mainRoomName]);
+                }).catch(function () {
+                    roomStates = Object.create(null);
+                    var heroBadge = document.getElementById('hero-live-badge');
+                    var heroIndicator = document.getElementById('hero-live-indicator');
+                    var heroCount = document.getElementById('hero-main-count');
+                    var heroCampusCount = document.getElementById('hero-campus-count');
+                    if (heroBadge) heroBadge.textContent = 'ESTADO NO DISPONIBLE';
+                    if (heroIndicator) heroIndicator.classList.add('hidden');
+                    if (heroCount) heroCount.textContent = 'Sala principal: sin consultar';
+                    if (heroCampusCount) heroCampusCount.textContent = 'Campus: sin consultar';
+                    if (heroEnterButton) { heroEnterButton.disabled = false; heroEnterButton.textContent = 'VER CALENDARIO'; }
+                    document.querySelectorAll('.js-room-count').forEach(function (label) { label.textContent = 'No se pudo consultar el estado de la sala.'; });
+                    document.querySelectorAll('.js-room-badge').forEach(function (badge) { badge.textContent = 'ESTADO NO DISPONIBLE'; });
+                    document.querySelectorAll('.js-open-mesa').forEach(function (button) { button.disabled = true; });
+                });
+            }
+            refreshRoomStates();
+            window.setInterval(refreshRoomStates, 15000);
+
+            // ===== Newsletter =====
+            (function () {
+                const btn = document.getElementById('newsletterBtn');
+                const email = document.getElementById('newsletterEmail');
+                if (!btn || !email) return;
+                btn.addEventListener('click', () => {
+                    showToast('¡Gracias por suscribirte al boletín!');
+                    email.value = '';
+                });
+            })();
+        });
+    </script>
+
+    <script src="assets/js/social-footer.js" defer></script>
+    <script src="assets/js/nav-active.js" defer></script>
+    <script src="assets/js/experiencia-d5.js" defer></script>
+    <script src="assets/js/transmision-context-menu.js" defer></script>
+</body>
+
+</html>

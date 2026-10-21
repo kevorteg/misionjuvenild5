@@ -35,6 +35,10 @@ Misión Juvenil trabaja para formar, equipar y movilizar jóvenes en contextos e
 
 El **Muro de Fuego** (`assets/js/muro-fuego.js`, en `muro-espiritual.html`) dibuja en canvas 2D el muro de peticiones y se integra con el sonido y las reacciones de Chispa.
 
+## Reuniones en vivo
+
+La sala de videollamadas usa LiveKit Cloud y funciones serverless de Vercel. Configuración, roles, límites del plan Build y consideraciones de privacidad: [LIVEKIT-SETUP.md](LIVEKIT-SETUP.md). La interfaz está en `en-vivo.html` y la página de estado de salas en `transmision.html`.
+
 Las convenciones visuales de la marca (tipografía compacta, esquinas cuadradas, botones 3D, paleta institucional, header y footer comunes) están documentadas en `AGENTS.md`.
 
 ## Páginas principales

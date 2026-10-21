@@ -19,8 +19,8 @@
         <span class="material-symbols-outlined" aria-hidden="true">${name}</span>
     `;
 
-    const navLink = (page, label, extraClass = '') => `
-        <a class="${extraClass} hover:text-primary transition-colors py-2 ${isActive(page) ? 'text-primary border-b-2 border-primary' : ''}" href="${page}">${label}</a>
+    const navLink = (page, label) => `
+        <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 ${isActive(page) ? 'text-primary border-primary bg-blue-50' : 'border-transparent'}" href="${page}">${label}</a>
     `;
 
     const menuMarkup = `
@@ -67,16 +67,16 @@
     </div>
 
     <header class="sticky top-0 z-40 w-full bg-white border-b-2 border-slate-200 shadow-sm px-4 lg:px-8">
-        <div class="max-w-7xl mx-auto h-20 flex items-center justify-between gap-6">
+        <div class="max-w-7xl mx-auto h-20 flex items-center justify-between gap-3">
             <a class="flex items-center group flex-shrink-0" href="index.html">
                 <img alt="Misión Juvenil D5" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" src="media/img/logos/FULL.png">
             </a>
 
-            <nav class="hidden xl:flex items-center gap-6 font-headline font-extrabold text-sm uppercase tracking-wider text-neutral-700">
-                ${navItems.map(([page, label]) => navLink(page, label, page === 'index.html' ? 'text-primary border-b-2 border-primary' : '')).join('')}
+            <nav class="hidden xl:flex flex-nowrap items-center gap-2 2xl:gap-5 shrink-0 font-headline font-extrabold text-[13px] 2xl:text-sm uppercase tracking-wide 2xl:tracking-wider text-neutral-700">
+                ${navItems.map(([page, label]) => navLink(page, label)).join('')}
 
-                <div class="relative group py-2">
-                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#un-click">
+                <div class="relative group py-2 shrink-0 whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-[13px] 2xl:text-sm focus:outline-none" href="#un-click">
                         <span>A un Click</span>
                         <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -98,6 +98,10 @@
                                         <a href="podcast.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
                                             <span class="material-symbols-outlined !text-lg text-secondary-orange flex-shrink-0">music_note</span>
                                             <span class="min-w-0 flex-1"><span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Podcast D5 Fuego</span><span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Todos los episodios</span></span>
+                                        </a>
+                                        <a href="transmision.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
+                                            <span class="material-symbols-outlined !text-lg text-secondary-orange flex-shrink-0">live_tv</span>
+                                            <span class="min-w-0 flex-1"><span class="block font-headline font-black text-[9px] uppercase tracking-wide text-neutral-800 leading-snug">Transmisión en Vivo</span><span class="mt-0.5 block text-[8px] font-black uppercase tracking-wider text-neutral-400">Mesas y vigilia</span></span>
                                         </a>
                                         <a href="recursos.html" class="flex items-center gap-2.5 py-2.5 hover:bg-neutral-50 focus-visible:bg-neutral-50 transition-colors">
                                             <span class="material-symbols-outlined !text-lg text-primary flex-shrink-0">menu_book</span>
@@ -130,8 +134,8 @@
                     </div>
                 </div>
 
-                <div class="relative group py-2">
-                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-sm focus:outline-none" href="#servicios">
+                <div class="relative group py-2 shrink-0 whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1 hover:text-primary transition-colors uppercase font-headline font-extrabold text-[13px] 2xl:text-sm focus:outline-none" href="#servicios">
                         <span>Servicios</span>
                         <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -164,7 +168,7 @@
                     </div>
                 </div>
 
-                <a class="hover:text-primary transition-colors py-2" href="contacto.html">Contacto</a>
+                <a class="whitespace-nowrap shrink-0 hover:text-primary transition-colors px-2.5 py-0.5 border-2 border-transparent" href="contacto.html">Contacto</a>
             </nav>
 
             <div class="flex items-center gap-3 flex-shrink-0">
@@ -201,6 +205,7 @@
                 <a class="mobile-app-link ${isActive('calendario.html') ? 'text-primary' : ''}" href="calendario.html"><span>Calendario</span><span class="material-symbols-outlined">event</span></a>
                 <p class="mobile-app-section">A UN CLICK</p>
                 <a class="mobile-app-link ${isActive('podcast.html') ? 'text-primary' : ''}" href="podcast.html"><span>Podcast D5</span><span class="material-symbols-outlined">podcasts</span></a>
+                <a class="mobile-app-link ${isActive('transmision.html') ? 'text-primary' : ''}" href="transmision.html"><span>Transmisión en vivo</span><span class="material-symbols-outlined">live_tv</span></a>
                 <a class="mobile-app-link ${isActive('recursos.html') ? 'text-primary' : ''}" href="recursos.html"><span>Recursos</span><span class="material-symbols-outlined">menu_book</span></a>
                 <a class="mobile-app-link ${isActive('muro-espiritual.html') ? 'text-primary' : ''}" href="muro-espiritual.html"><span>Muro espiritual</span><span class="material-symbols-outlined">volunteer_activism</span></a>
                 <a class="mobile-app-link ${isActive('digital.html') ? 'text-primary' : ''}" href="digital.html"><span>A un Click</span><span class="material-symbols-outlined">bolt</span></a>

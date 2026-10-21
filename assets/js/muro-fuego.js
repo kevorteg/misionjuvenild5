@@ -64,6 +64,14 @@
         };
     }
 
+    // textContent devuelve el texto YA decodificado, así que volver a meterlo con
+    // innerHTML reabriría la inyección: hay que escaparlo otra vez al pintarlo.
+    function escapar(texto) {
+        return String(texto == null ? '' : texto)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function visible(card) {
         return card.style.display !== 'none';
     }
@@ -174,8 +182,8 @@
     function showLabel(e) {
         if (!label) return;
         var info = infoOf(e.card);
-        label.innerHTML = '<div style="font-family:Rubik,sans-serif;font-weight:900;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#C86018;margin-bottom:.2rem">' + info.author + '</div>' +
-            '<div style="font-family:\'Nunito Sans\',sans-serif;font-weight:700;font-size:12px;line-height:1.35;color:#111d26;margin-bottom:.3rem">' + info.snippet + '</div>' +
+        label.innerHTML = '<div style="font-family:Rubik,sans-serif;font-weight:900;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#C86018;margin-bottom:.2rem">' + escapar(info.author) + '</div>' +
+            '<div style="font-family:\'Nunito Sans\',sans-serif;font-weight:700;font-size:12px;line-height:1.35;color:#111d26;margin-bottom:.3rem">' + escapar(info.snippet) + '</div>' +
             '<div style="font-family:Rubik,sans-serif;font-weight:900;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#006491">' + info.count + ' oraciones · toca la brasa</div>';
         label.classList.remove('hidden');
         var lw = label.offsetWidth || 200, lh = label.offsetHeight || 90;

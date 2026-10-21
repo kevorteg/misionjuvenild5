@@ -126,8 +126,6 @@ async function handleDownload(url, filename) {
         cleanName += '.' + extension;
     }
 
-    console.log("Preparing robust fetch download for:", url);
-
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Network response was not ok');
@@ -147,8 +145,6 @@ async function handleDownload(url, filename) {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(blobUrl);
         }, 300);
-
-        console.log("Download forced successfully via blob:", cleanName);
     } catch (error) {
         console.error("Fetch download failed, falling back to basic download:", error);
 

@@ -6,6 +6,10 @@
     sessionKey: 'fuegoD5:v1'
   };
 
+  function isFuegoWorkerConfigured() {
+    return !!FUEGO_CONFIG.workerUrl && !/USUARIO/i.test(FUEGO_CONFIG.workerUrl);
+  }
+
   var CANALES = {
     podcast: {
       titulo: 'Fuego D5 · Podcast',
@@ -545,6 +549,20 @@
     historial.pop();
 
     try {
+      if (!isFuegoWorkerConfigured()) {
+        pintarIndicador(false);
+        var localSinWorker = buscarRespuestaLocal(pregunta);
+        agregarMensaje({
+          rol: 'ia',
+          autor: 'Fuego D5 IA',
+          texto: localSinWorker ? localSinWorker.texto : 'El asistente está en preparación. Puedes explorar el contenido y los recursos de Misión Juvenil D5 desde esta página.',
+          crisis: !!(localSinWorker && localSinWorker.crisis),
+          fuentes: localSinWorker && localSinWorker.fuentes ? localSinWorker.fuentes : [],
+          aviso: 'Chat de Fuego D5: no configurado. Las respuestas disponibles son de la guía local del sitio.'
+        });
+        return;
+      }
+
       var respuesta = await fetch(FUEGO_CONFIG.workerUrl + '/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

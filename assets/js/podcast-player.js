@@ -54,11 +54,27 @@ var toastTimer = null;
 var PLAYBACK_KEY = 'mjd5-podcast-pos';
 var savedPositions = {};
 try {
-    var sp = sessionStorage.getItem(PLAYBACK_KEY);
+    var sp = localStorage.getItem(PLAYBACK_KEY) || sessionStorage.getItem(PLAYBACK_KEY);
     if (sp) savedPositions = JSON.parse(sp);
 } catch (e) { savedPositions = {}; }
+var lastPodcastSave = 0;
 function savePositions() {
-    try { sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(savedPositions)); } catch (e) {}
+    try {
+        localStorage.setItem(PLAYBACK_KEY, JSON.stringify(savedPositions));
+        sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(savedPositions));
+    } catch (e) {}
+}
+function savePodcastPosition(force) {
+    if (!audio || !currentId || !isFinite(audio.currentTime) || audio.currentTime <= 0) return;
+    var now = Date.now();
+    if (!force && now - lastPodcastSave < 4000) return;
+    lastPodcastSave = now;
+    if (isFinite(audio.duration) && audio.duration > 0 && audio.currentTime >= audio.duration - 2) {
+        delete savedPositions[currentId];
+    } else {
+        savedPositions[currentId] = audio.currentTime;
+    }
+    savePositions();
 }
 
 function fmt(sec) {
@@ -104,23 +120,27 @@ function playEpisode(id) {
     if (playerSubtitle) playerSubtitle.textContent = 'Podcast D5 Fuego';
     if (playerArt) playerArt.src = ep.img;
     audio.src = mediaUrl(ep.audio);
-    // Restaurar posición guardada si existe
-    var pos = savedPositions[id];
-    if (pos && pos > 0 && pos < (audio.duration || 0)) {
-        audio.currentTime = pos;
-    } else {
-        audio.currentTime = 0;
-    }
+    // La duración aún no está disponible al asignar src: restaurar al cargar metadata.
+    var pos = Number(savedPositions[id]) || 0;
     markPlaying(id);
     openPlayer();
     d5Emit('select', { id: id, title: ep.title, cat: ep.cat });
     var label = 'EP ' + (id.match(/\d+/) || [''])[0];
-    audio.play().then(function () {
-        showToast('▶ ' + label + ' · Reproduciendo');
-    }).catch(function () {
-        if (playIcon) playIcon.textContent = 'play_arrow';
-        showToast('No se pudo cargar el audio');
-    });
+    var startPlayback = function () {
+        if (currentId !== id) return;
+        audio.removeEventListener('loadedmetadata', onMetadata);
+        if (pos > 0 && pos < audio.duration - 2) audio.currentTime = pos;
+        else audio.currentTime = 0;
+        audio.play().then(function () {
+            showToast(pos > 0 ? '▶ ' + label + ' · Continuando donde quedaste' : '▶ ' + label + ' · Reproduciendo');
+        }).catch(function () {
+            if (playIcon) playIcon.textContent = 'play_arrow';
+            showToast('No se pudo cargar el audio');
+        });
+    };
+    var onMetadata = function () { startPlayback(); };
+    audio.addEventListener('loadedmetadata', onMetadata);
+    if (audio.readyState >= 1) startPlayback();
 }
 
 function getCurrentId() {
@@ -147,8 +167,7 @@ audio.addEventListener('pause', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';
     d5Emit('pause', { id: currentId });
     if (audio.currentTime > 0) {
-        savedPositions[currentId] = audio.currentTime;
-        savePositions();
+        savePodcastPosition(true);
     }
 });
 
@@ -162,6 +181,11 @@ audio.addEventListener('timeupdate', function () {
         if (scrubFill) scrubFill.style.width = pct + '%';
         if (scrubThumb) scrubThumb.style.left = pct + '%';
     }
+    savePodcastPosition(false);
+});
+window.addEventListener('pagehide', function () { savePodcastPosition(true); });
+document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') savePodcastPosition(true);
 });
 audio.addEventListener('ended', function () {
     if (playIcon) playIcon.textContent = 'play_arrow';

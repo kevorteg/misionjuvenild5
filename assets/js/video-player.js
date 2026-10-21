@@ -22,6 +22,34 @@ var MJ_VIDEOS = {
 
 (function () {
     var overlay, video, svgPlay, svgPause, lblPlay, curEl, durEl, fill, thumb, titleEl, subEl, btnSpeed, volSlider, volBtn, volIcon, speedIdx = 0, speeds = [1, 1.25, 1.5];
+    var currentVideoKey = null;
+    var lastProgressSave = 0;
+    var VIDEO_PROGRESS_KEY = 'mjd5-video-progress-v1';
+
+    function readVideoProgress() {
+        try {
+            var raw = localStorage.getItem(VIDEO_PROGRESS_KEY);
+            var parsed = raw ? JSON.parse(raw) : {};
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (e) { return {}; }
+    }
+
+    function saveVideoProgress(force) {
+        if (!video || !currentVideoKey || !video.currentSrc || !isFinite(video.currentTime) || video.currentTime <= 0) return;
+        var now = Date.now();
+        if (!force && now - lastProgressSave < 4000) return;
+        lastProgressSave = now;
+        var duration = video.duration;
+        if (isFinite(duration) && duration > 0 && video.currentTime >= duration - 2) {
+            var finished = readVideoProgress();
+            delete finished[currentVideoKey];
+            try { localStorage.setItem(VIDEO_PROGRESS_KEY, JSON.stringify(finished)); } catch (e) {}
+            return;
+        }
+        var positions = readVideoProgress();
+        positions[currentVideoKey] = { src: MJ_VIDEOS[currentVideoKey].src, time: video.currentTime, savedAt: now };
+        try { localStorage.setItem(VIDEO_PROGRESS_KEY, JSON.stringify(positions)); } catch (e) {}
+    }
 
     function fmt(s) {
         if (!isFinite(s)) return '00:00';
@@ -96,8 +124,16 @@ var MJ_VIDEOS = {
                 if (fill) fill.style.width = pct + '%';
                 if (thumb) thumb.style.left = 'calc(' + pct + '% - 6px)';
             }
+            saveVideoProgress(false);
         });
-        video.addEventListener('ended', function () { if (video instanceof HTMLVideoElement) { /* mantiene boton en play */ } });
+        video.addEventListener('pause', function () { saveVideoProgress(true); });
+        video.addEventListener('ended', function () {
+            saveVideoProgress(true);
+            var positions = readVideoProgress();
+            if (currentVideoKey) delete positions[currentVideoKey];
+            try { localStorage.setItem(VIDEO_PROGRESS_KEY, JSON.stringify(positions)); } catch (e) {}
+        });
+        window.addEventListener('pagehide', function () { saveVideoProgress(true); });
 
         document.addEventListener('keydown', function (e) {
             if (overlay.classList.contains('mjv-open')) {
@@ -151,6 +187,7 @@ var MJ_VIDEOS = {
 
     function closePlayer() {
         if (!overlay) return;
+        saveVideoProgress(true);
         overlay.classList.remove('mjv-open');
         document.body.style.overflow = '';
         video.pause();
@@ -160,9 +197,16 @@ var MJ_VIDEOS = {
     window.openVideoPlayer = function (key, startOverride) {
         var cfg = MJ_VIDEOS[key];
         if (!cfg || !overlay) return;
+        saveVideoProgress(true);
+        if (video && !video.paused) video.pause();
+        currentVideoKey = key;
+        lastProgressSave = 0;
         if (titleEl) titleEl.textContent = cfg.title;
         if (subEl) subEl.textContent = cfg.subtitle;
-        var start = (typeof startOverride === 'number') ? startOverride : cfg.start;
+        var positions = readVideoProgress();
+        var saved = positions[key];
+        var savedTime = saved && saved.src === cfg.src && isFinite(saved.time) ? saved.time : 0;
+        var start = savedTime > 5 ? savedTime : ((typeof startOverride === 'number') ? startOverride : cfg.start);
         video.src = mediaUrl(cfg.src);
         video.poster = mediaUrl(cfg.poster || '');
         fill.style.width = '0%';
@@ -174,7 +218,7 @@ var MJ_VIDEOS = {
         d5Emit('open');
         var onMeta = function () {
             video.removeEventListener('loadedmetadata', onMeta);
-            if (start > 0) video.currentTime = start;
+            if (start > 0 && (!isFinite(video.duration) || start < video.duration - 2)) video.currentTime = start;
             video.play().catch(function () { });
         };
         video.addEventListener('loadedmetadata', onMeta);
