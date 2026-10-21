@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=720, initial-scale=1">
+<title>Misión Juvenil D5 · Reel de presentación</title>
+<style>
+  *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111d26;color:#fff;font-family:Arial,Helvetica,sans-serif}
+  body{display:grid;place-items:center}.stage{position:relative;width:720px;height:1280px;overflow:hidden;background:#111d26;isolation:isolate}
+  .scene{position:absolute;inset:0;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .75s ease,transform 1.3s cubic-bezier(.2,.7,.2,1),visibility .75s;overflow:hidden}
+  .scene.active{opacity:1;visibility:visible;transform:scale(1)}
+  .blue{background:linear-gradient(150deg,#02557d 0%,#006491 48%,#111d26 100%)}
+  .dark{background:linear-gradient(155deg,#111d26 0%,#26323c 62%,#473458 100%)}
+  .cream{background:#f7f9fa;color:#111d26}
+  .orange{background:linear-gradient(145deg,#c86018 0%,#f58634 58%,#984800 100%)}
+  .orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.16;animation:float 7s ease-in-out infinite alternate}
+  .orb.a{width:520px;height:520px;background:#449bd1;right:-210px;top:90px}.orb.b{width:370px;height:370px;background:#f58634;left:-190px;bottom:80px;animation-delay:-2s}
+  .eyebrow{font-size:18px;font-weight:900;letter-spacing:.21em;text-transform:uppercase;color:#ffad67}
+  .headline{margin:24px 0 0;font-size:66px;line-height:.99;font-weight:950;letter-spacing:-.055em;text-transform:uppercase}
+  .headline .accent{color:#ff9b4e}.bodycopy{font-size:27px;line-height:1.26;font-weight:700;letter-spacing:-.02em;color:#e8eef2}
+  .small{font-size:18px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+  .content{position:absolute;inset:0;padding:76px 54px;display:flex;flex-direction:column;justify-content:center;z-index:2}
+  .topline{position:absolute;left:54px;right:54px;top:42px;display:flex;align-items:center;justify-content:space-between;z-index:5;font-size:14px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#ffffffbb}
+  .topline .dot{width:10px;height:10px;background:#f58634;box-shadow:0 0 0 7px #f5863433;margin-right:12px;display:inline-block}
+  .photo{position:absolute;object-fit:cover;box-shadow:0 18px 0 #111d2638;border:3px solid #fff}
+  .photo-card{position:absolute;background:#fff;padding:12px 12px 42px;box-shadow:0 18px 0 #111d2638;transform:rotate(4deg)}
+  .photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #ffffff70;background:#ffffff12;font-size:15px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+  .pill .dot{width:10px;height:10px;background:#f58634;box-shadow:0 0 0 5px #f5863433}
+  .scene.active .rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+  .scene.active .delay1{animation-delay:.16s}.scene.active .delay2{animation-delay:.34s}.scene.active .delay3{animation-delay:.52s}
+  .scene.active .slide{animation:slide .85s cubic-bezier(.2,.8,.2,1) both}
+  .scene.active .photo-card{animation:cardIn .9s cubic-bezier(.2,.8,.2,1) both}
+  .scene.active .pulse{animation:pulse 1.6s ease-in-out infinite}
+  .scene.active .wave span{animation:wave .75s ease-in-out infinite alternate}
+  .scene.active .wave span:nth-child(2n){animation-delay:.15s}.scene.active .wave span:nth-child(3n){animation-delay:.3s}
+  .window-ui{position:absolute;right:34px;bottom:108px;width:370px;padding:14px;background:#26323c;border:3px solid #449bd1;box-shadow:0 12px 0 #111d2680;transform:rotate(-3deg)}
+  .window-top{display:flex;align-items:center;gap:7px;padding:3px 4px 13px;color:#fff9;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+  .window-top i{width:9px;height:9px;background:#f58634;display:block}.window-screen{height:205px;position:relative;overflow:hidden;background:#111d26}
+  .window-screen img{width:100%;height:100%;object-fit:cover;opacity:.8}.live-tag{position:absolute;top:12px;left:12px;background:#f58634;padding:8px 10px;font-size:11px;font-weight:900;letter-spacing:.12em}
+  .seats{position:absolute;left:12px;right:12px;bottom:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+  .seat{height:27px;border:1px solid #fff8;background:#ffffff16}.seat.on{background:#449bd1;border-color:#99ddff}.seat.hot{background:#f58634;border-color:#ffd3af}
+  .wave{display:flex;align-items:center;gap:8px;height:94px;margin-top:32px}.wave span{display:block;width:10px;height:25px;background:#ff9b4e;transform-origin:center}
+  .prayer-card{position:absolute;right:40px;bottom:122px;width:300px;background:#fff;color:#111d26;padding:23px;border-left:8px solid #f58634;box-shadow:0 12px 0 #111d2640;transform:rotate(3deg)}
+  .prayer-card .label{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:#006491}.prayer-card p{font-size:22px;line-height:1.25;font-weight:800;margin:12px 0 0}
+  .logo-box{background:#fff;padding:16px 20px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 0 #111d2640}
+  .logo-box img{width:285px;height:auto;display:block}
+  .progress{position:absolute;left:0;right:0;bottom:0;height:7px;background:#ffffff22;z-index:10}.progress span{display:block;height:100%;width:0;background:#f58634}
+  .grain{position:absolute;inset:-40%;z-index:1;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");animation:grain .25s steps(2) infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes slide{from{opacity:0;transform:translateX(70px) rotate(2deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
+  @keyframes float{to{transform:translate3d(0,-38px,0) scale(1.08)}}
+  @keyframes cardIn{from{opacity:0;transform:translateY(80px) rotate(10deg)}to{opacity:1;transform:translateY(0) rotate(4deg)}}
+  @keyframes pulse{50%{transform:scale(1.05);box-shadow:0 0 0 18px #f5863400}}
+  @keyframes wave{to{transform:scaleY(2.2)}}
+  @keyframes grain{0%{transform:translate(0,0)}100%{transform:translate(-4%,3%)}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="stage" aria-label="Video vertical de presentación de Misión Juvenil D5">
+  <section class="scene blue active" data-scene="0">
+    <div class="orb a"></div><div class="orb b"></div><div class="grain"></div>
+    <div class="topline"><span><i class="dot"></i>Distrito 5 · Juventud</span><span>Una comunidad en movimiento</span></div>
+    <div class="content">
+      <div class="eyebrow rise">Tu campus. Tu comunidad. Tu fe.</div>
+      <h1 class="headline rise delay1">¿Y si tu fe<br>también tiene<br><span class="accent">un lugar</span><br>en tu campus?</h1>
+      <p class="bodycopy rise delay2">Hay un espacio para conectar, crecer y servir.</p>
+      <div class="photo-card" style="left:104px;bottom:92px;width:460px;height:278px;animation-delay:.5s"><img src="../media/img/hero-mj.jpg" alt="Jóvenes de Misión Juvenil reunidos"></div>
+      <div class="pill rise delay3" style="position:absolute;left:52px;bottom:420px"><span class="dot"></span> Misión Juvenil D5</div>
+    </div>
+  </section>
+  <section class="scene dark" data-scene="1">
+    <div class="orb a"></div><div class="grain"></div>
+    <div class="topline"><span><i class="dot"></i>Crecer juntos</span><span>02 / 06</span></div>
+    <img class="photo" src="../media/img/FOTOS HOME/about-mj.jpg" alt="Comunidad juvenil" style="width:720px;height:690px;left:0;top:110px;object-position:center 45%;opacity:.64;mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)">
+    <div class="content" style="justify-content:flex-end;padding-bottom:146px">
+      <div class="eyebrow rise">Más que una página</div>
+      <h2 class="headline rise delay1">Una red<br>que te anima<br>a <span class="accent">avanzar.</span></h2>
+      <p class="bodycopy rise delay2">Encuentra comunidad, liderazgo y propósito en cada etapa de tu camino.</p>
+      <div class="pill rise delay3" style="margin-top:34px;align-self:flex-start">Comunidad · Fe · Servicio</div>
+    </div>
+  </section>
+  <section class="scene cream" data-scene="2">
+    <div class="orb b" style="opacity:.1"></div><div class="topline" style="color:#4e575f"><span><i class="dot"></i>En cada campus</span><span>03 / 06</span></div>
+    <div class="content" style="padding-top:130px;justify-content:flex-start">
+      <div class="eyebrow rise" style="color:#006491">Conecta con tu campus</div>
+      <h2 class="headline rise delay1" style="font-size:61px">Tu lugar<br>también está<br><span style="color:#f58634">aquí.</span></h2>
+      <p class="bodycopy rise delay2" style="color:#4e575f">Colegios, universidades y jóvenes creciendo con una misma misión.</p>
+      <div class="photo-card slide" style="left:60px;bottom:190px;width:430px;height:310px;transform:rotate(-4deg);animation-delay:.45s"><img src="../media/img/Universidades fotos/Univalle_melendez/Melendez1.jpg" alt="Campus universitario"></div>
+      <div class="photo-card slide" style="right:42px;bottom:100px;width:285px;height:230px;transform:rotate(5deg);animation-delay:.7s"><img src="../media/img/fotos colegios/IMG_20241120_081622.jpg" alt="Actividad juvenil"></div>
+      <div class="pill rise delay3" style="position:absolute;left:54px;bottom:120px;background:#006491;color:white;border-color:#006491">Colegios + Universidades</div>
+    </div>
+  </section>
+  <section class="scene orange" data-scene="3">
+    <div class="orb a" style="background:#fff;opacity:.12"></div><div class="grain"></div>
+    <div class="topline"><span><i class="dot" style="background:#fff"></i>A un click</span><span>04 / 06</span></div>
+    <div class="content">
+      <div class="eyebrow rise" style="color:#fff4e8">Ideas que encienden</div>
+      <h2 class="headline rise delay1">Historias<br>que edifican.<br><span style="color:#26323c">Palabras que<br>acompañan.</span></h2>
+      <p class="bodycopy rise delay2">Podcast, recursos y reflexiones para llevar contigo.</p>
+      <div class="photo-card slide" style="right:42px;bottom:150px;width:370px;height:370px;transform:rotate(4deg);padding-bottom:32px"><img src="../media/img/podcasts/minuatura ep 6.jpg" alt="Podcast D5 Fuego"></div>
+      <div class="wave" style="position:absolute;left:52px;bottom:270px"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="pill rise delay3" style="position:absolute;left:52px;bottom:200px;background:#26323c">Podcast D5 Fuego</div>
+    </div>
+  </section>
+  <section class="scene blue" data-scene="4">
+    <div class="orb b"></div><div class="grain"></div>
+    <div class="topline"><span><i class="dot"></i>Conexión D5</span><span>05 / 06</span></div>
+    <div class="content" style="justify-content:flex-start;padding-top:142px">
+      <div class="eyebrow rise">Nos vemos en vivo</div>
+      <h2 class="headline rise delay1" style="font-size:62px">Devocionales.<br>Conversaciones.<br><span class="accent">Proyectos.</span></h2>
+      <p class="bodycopy rise delay2">Una sala para encontrarnos, compartir y construir juntos.</p>
+      <div class="window-ui slide">
+        <div class="window-top"><i></i><i></i><i></i><span style="margin-left:8px">Conexión D5 · Sala principal</span></div>
+        <div class="window-screen"><img src="../media/img/hero-mj.jpg" alt="Sala de jóvenes"><span class="live-tag pulse">ENCUENTRO EN VIVO</span>
+          <div class="seats"><i class="seat on"></i><i class="seat hot"></i><i class="seat on"></i><i class="seat"></i><i class="seat on"></i><i class="seat"></i><i class="seat on"></i><i class="seat"></i><i class="seat hot"></i><i class="seat on"></i></div>
+        </div>
+      </div>
+      <div class="pill rise delay3" style="position:absolute;left:54px;bottom:116px">Un espacio para cada campus</div>
+    </div>
+  </section>
+  <section class="scene dark" data-scene="5">
+    <div class="orb a"></div><div class="orb b"></div><div class="grain"></div>
+    <div class="topline"><span><i class="dot"></i>Una palabra a tiempo</span><span>06 / 06</span></div>
+    <div class="content">
+      <div class="eyebrow rise">Acompañarnos también es crecer</div>
+      <h2 class="headline rise delay1">Aquí hay<br>un lugar para<br><span class="accent">ti.</span></h2>
+      <p class="bodycopy rise delay2">Comparte, aprende y encuentra una comunidad que camina contigo.</p>
+      <div class="prayer-card slide"><div class="label">Muro Espiritual · Comunidad</div><p>“No estás solo. Caminamos juntos en fe y esperanza.”</p></div>
+      <div class="logo-box rise delay3" style="position:absolute;left:54px;bottom:138px"><img src="../media/img/logos/FULL.png" alt="Misión Juvenil D5"></div>
+      <div class="small rise delay3" style="position:absolute;left:54px;bottom:78px;color:#ffffffcf">Crecer · Conectar · Servir</div>
+    </div>
+  </section>
+  <div class="progress"><span id="progressFill"></span></div>
+</main>
+<script>
+  (function(){
+    var scenes=Array.prototype.slice.call(document.querySelectorAll('[data-scene]'));
+    var fill=document.getElementById('progressFill');
+    var duration=60000,sceneDuration=duration/scenes.length,start=performance.now(),active=-1;
+    function frame(now){
+      var elapsed=Math.min(now-start,duration);
+      var index=Math.min(scenes.length-1,Math.floor(elapsed/sceneDuration));
+      if(index!==active){scenes.forEach(function(scene,i){scene.classList.toggle('active',i===index)});active=index}
+      fill.style.width=(elapsed/duration*100)+'%';
+      if(elapsed<duration){requestAnimationFrame(frame)}else{window.__reelFinished=true;fill.style.width='100%'}
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
