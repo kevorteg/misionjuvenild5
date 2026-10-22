@@ -16,7 +16,7 @@ Misión Juvenil trabaja para formar, equipar y movilizar jóvenes en contextos e
 - Calendario de actividades y encuentros.
 - Información sobre el trabajo en colegios y universidades.
 - Espacio de salud mental y acompañamiento emocional.
-- Muro espiritual para compartir peticiones de oración.
+- Muro espiritual para compartir peticiones de oración (construcción segura con DOM API, sin inyección en atributos inline).
 - Preguntas frecuentes sobre identidad, participación, actividades y contacto.
 - Información institucional, historia y líneas de trabajo de Misión Juvenil.
 
@@ -38,6 +38,14 @@ El **Muro de Fuego** (`assets/js/muro-fuego.js`, en `muro-espiritual.html`) dibu
 ## Reuniones en vivo
 
 La sala de videollamadas usa LiveKit Cloud y funciones serverless de Vercel. Configuración, roles, límites del plan Build y consideraciones de privacidad: [LIVEKIT-SETUP.md](LIVEKIT-SETUP.md). La interfaz está en `en-vivo.html` y la página de estado de salas en `transmision.html`.
+
+### Funcionalidades
+- Salas por campus (`transmision.html`) con estado en tiempo real.
+- Roles: Administrador, Anfitrión, Moderador delegado, Expositor con turno y Asistente.
+- Panel de moderación: dar/quitar turno, silenciar/expulsar, asignar moderadores, terminar sala.
+- Chat, reacciones, levantar la mano, vista de escenario/mesa con diseño responsive.
+- Notificaciones y control de acceso con claves por sala.
+- Página pública de transmisiones con información agregada (sin exposición innecesaria de datos privados).
 
 Las convenciones visuales de la marca (tipografía compacta, esquinas cuadradas, botones 3D, paleta institucional, header y footer comunes) están documentadas en `AGENTS.md`.
 
