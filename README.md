@@ -70,7 +70,7 @@ Las convenciones visuales de la marca (tipografía compacta, esquinas cuadradas,
 - JavaScript en el navegador para interacciones, filtros, animaciones, formularios y reproducción de audio/video.
 - Web Audio API para los sonidos de la experiencia D5.
 - Canvas 2D para el Muro de Fuego.
-- Google Fonts y Material Symbols para tipografía e iconografía.
+- Google Fonts y **Material Symbols** optimizado con `icon_names` (subset a los iconos usados en HTML y JS, con ejes limitados) para reducir el peso de la fuente.
 - Archivos multimedia locales (imágenes, audio, video y documentos).
 
 ## Estructura del proyecto
